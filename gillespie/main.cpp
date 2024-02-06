@@ -13,8 +13,26 @@
 #include <getopt.h>
 
 #include "gsl_rng.h"
+#include "gsl_sf_pow_int.h"
 
 using namespace std;
+
+inline unsigned long long int two_pow(unsigned long long int i){
+    
+    return ((unsigned long long int)gsl_sf_pow_int(2.0, ((int)i)));
+    
+}
+
+//return the number of bits necessary to write n in base 2
+unsigned int inline bits(unsigned int n){
+    
+    unsigned int s;
+    
+    for(s=0; two_pow(s) <= (unsigned long long int)n; s++){}
+    
+    return s;
+    
+}
 
 class System{
     
@@ -60,26 +78,24 @@ void System::iterate(void){
 int main(int argc, char * argv[]) {
     
     int options;
+    long s=0;
     
-    System sys;
-    
-    
-    
-    
-    while ((options = getopt(argc, argv, ":Ss:")) != -1) {
+
+    while ((options = getopt(argc, argv, ":s:")) != -1) {
          
          switch (options) {
                  
              case 's':
-                 (sys.seed) = (long)atoi(optarg);
+                 s = (long)atoi(optarg);
                  break;
                  
          }
          
      }
     
-    
-    
+    System sys(s);
+
+   
     return 0;
     
 }
