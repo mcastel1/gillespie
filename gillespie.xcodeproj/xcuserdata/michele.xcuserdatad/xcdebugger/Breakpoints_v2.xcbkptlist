@@ -14,10 +14,42 @@
             filePath = "gillespie/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "main(argc, argv)"
             landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "85E0CB42-4BF6-43FB-9BD7-5C38215A3A5B - 40e678f257758647"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "144">
+               </Location>
+               <Location
+                  uuid = "85E0CB42-4BF6-43FB-9BD7-5C38215A3A5B - 40e678f2577581a0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "105"
+                  endingLineNumber = "105"
+                  offsetFromSymbolStart = "196">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

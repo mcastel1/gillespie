@@ -38,12 +38,12 @@ class System{
     
 public:
     
-    long seed;
+    long seed, /*the maximum number of molecules allowed for each spwecies*/N;
     vector<unsigned long long int> x;
     gsl_rng* ran;
     
     System(void);
-    System(long);
+    System(unsigned int, unsigned int);
     void iterate(void);
     
 
@@ -56,14 +56,16 @@ System::System(void){
 }
 
 
-System::System(long seed_in){
+System::System(unsigned int N_in, unsigned int seed_in){
     
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+
+    N = N_in;
     seed = seed_in;
 
     x.resize(3);
-    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    
     gsl_rng_set(ran, seed);
-
     
 }
 
@@ -78,22 +80,26 @@ void System::iterate(void){
 int main(int argc, char * argv[]) {
     
     int options;
-    long s=0;
+    unsigned int seed=0, N=0;
     
 
-    while ((options = getopt(argc, argv, ":s:")) != -1) {
+    while ((options = getopt(argc, argv, ":N:s:")) != -1) {
          
          switch (options) {
                  
+             case 'N':
+                 N = ((unsigned int)atoi(optarg));
+                 break;
+                 
              case 's':
-                 s = (long)atoi(optarg);
+                 seed = ((unsigned int)atoi(optarg));
                  break;
                  
          }
          
      }
      
-    System sys(s);
+    System sys(N, seed);
 
    
     return 0;
