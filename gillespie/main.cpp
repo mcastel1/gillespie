@@ -24,7 +24,7 @@ inline unsigned long long int two_pow(unsigned long long int i){
 }
 
 //return the number of bits necessary to write n in base 2
-unsigned int inline bits(unsigned int n){
+unsigned int inline bits(unsigned long long int n){
     
     unsigned int s;
     
@@ -38,8 +38,9 @@ class System{
     
 public:
     
-    long seed, /*the maximum number of molecules allowed for each spwecies*/N;
-    vector<unsigned long long int> x;
+    unsigned long long int seed, /*the maximum number of molecules allowed for each spwecies*/N;
+    //the vector containing the numbers of molecules: x[i] is a vector. { x[i][0], x[i][1], x[i][2], ... } is the expression in base 2 of the number of molecules of species i
+    vector< vector<unsigned long long int> > x;
     gsl_rng* ran;
     
     System(void);
@@ -58,12 +59,18 @@ System::System(void){
 
 System::System(unsigned int N_in, unsigned int seed_in){
     
+    unsigned int i;
+    
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
 
     N = N_in;
     seed = seed_in;
 
     x.resize(3);
+    for(i=0; i<3; ++i){
+        x[i].resize(bits(N));
+        
+    }
     
     gsl_rng_set(ran, seed);
     
