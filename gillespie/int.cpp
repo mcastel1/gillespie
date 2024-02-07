@@ -96,7 +96,7 @@ inline Int Int::operator+ (const Int& addend) {
     unsigned int p, s;
     
     
-    cout << "I am about to make a sum A+B:\n";
+//    cout << "I am about to make a sum A+B:\n";
 //    cout << "\n\nA:\n";
 //    this->Print();
 //    this->PrintBase10();
@@ -111,33 +111,37 @@ inline Int Int::operator+ (const Int& addend) {
         (result.b)[s] = b[s];
     }
     result.b.back().Clear();
-
+    
     for(p=0; p<addend.b.size(); p++){
         
         carry.Clear();
         
-        cout << "Summing ...";
-         ((addend_copy.b)[p]).Print();
-
+//        cout << "Summing ...";
+//        ((addend_copy.b)[p]).Print();
+        
         for(s=p+1,
             (((carry.b)[p]).n) = ((((result.b)[p]).n) & (((addend.b)[p]).n)),
             (((result.b)[p]).n) ^= (((addend.b)[p]).n);
             s<b.size();
             s++){
             
- 
+            
             (((carry.b)[s]).n) = ((((result.b)[s]).n) & (((carry.b)[s-1]).n));
             (((result.b)[s]).n) ^= (((carry.b)[s-1]).n);
             
         }
+        
+        //add the last extra bit, which was not present in *this nor in b
+        ((((result.b)[s]).n) ^= (((carry.b)[s-1]).n));
+        
+//        cout << "... Result =";
+//        result.Print();
 
     }
     
     //the last bit of result is nonzero only if the last carry in the operation is nonzero
-    result.b.back() = carry.b.back();
 
-    cout << "... Result =";
-    result.Print();
+
 
     return result;
 
