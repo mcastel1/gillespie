@@ -11,6 +11,9 @@
 
 #endif /* main_h */
 
+#define n_bits 64
+const unsigned long long int ullong_1 = 1;
+
 using namespace std;
 
 
@@ -26,6 +29,9 @@ public:
     Int(void);
     Int(unsigned long long int);
     
+    
+    void SetBit(unsigned int, unsigned int, bool);
+//    void SetRandom(unsigned long long int);
     //bitwise sum
     Int operator + (const Int&);
     
