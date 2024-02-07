@@ -96,39 +96,42 @@ inline Int Int::operator+ (const Int& addend) {
     unsigned int p, s;
     
     
-//    cout << "I am about to make a sum A+B:\n";
-//    cout << "\n\nA:\n";
-//    this->Print();
+    cout << "I am about to make a sum A+B:\n";
+    cout << "\n\nA:\n";
+    this->Print();
+    this->PrintBase10();
+    
 //    cout << "\n\nB:\n";
-//    Int addend_copy;
-//    addend_copy = addend;
+    Int addend_copy;
+    addend_copy = addend;
 //    addend_copy.Print();
+//    addend_copy.PrintBase10();
 
-    for(result.Clear(), p=0; p<addend.b.size(); p++){
+    for(result = (*this), p=0; p<addend.b.size(); p++){
         
         carry.Clear();
         
+        cout << "Summing ...";
+         ((addend_copy.b)[p]).Print();
+
         for(s=p+1,
-            (((carry.b)[p]).n) = (((b[p]).n) & (((addend.b)[p]).n)),
-            (((result.b)[p]).n) ^= ((b[p].n)^(((addend.b)[p]).n));
+            (((carry.b)[p]).n) = ((((result.b)[p]).n) & (((addend.b)[p]).n)),
+            (((result.b)[p]).n) ^= (((addend.b)[p]).n);
             s<b.size();
             s++){
             
-//            cout << "A[p]:";
-//            this->b[p].Print();
-//            
-//            cout << "B[p]:";
-//            addend_copy.b[p].Print();
-            
-            
-            (((carry.b)[s]).n) = (((b[s]).n) & (((carry.b)[s-1]).n));
-            (((result.b)[s]).n) ^= (((b[s]).n) ^ (((carry.b)[s-1]).n));
+ 
+            (((carry.b)[s]).n) = ((((result.b)[s]).n) & (((carry.b)[s-1]).n));
+            (((result.b)[s]).n) ^= (((carry.b)[s-1]).n);
             
         }
         
-        //the last bit of result is nonzero only if the last carry in the operation is nonzero
-        result.b.back() = carry.b.back();
+
         
+        //the last bit of result is nonzero only if the last carry in the operation is nonzero
+//        result.b.back() = carry.b.back();
+        cout << "... Result =";
+        result.Print();
     }
     
     return result;
