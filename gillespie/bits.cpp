@@ -71,10 +71,10 @@ void Bits::SetRandom(unsigned int seed){
 
 void Bits::Print(void){
     
-    cout << "Bits = {";
+    cout << "{ ";
     for(unsigned int s=0; s<n_bits; s++){
         cout << this->GetBit(n_bits-1-s);
     }
-    cout << " }";
+    cout << " }\n";
     
 }

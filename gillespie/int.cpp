@@ -42,6 +42,21 @@ void Int::SetRandom(unsigned int seed){
     
 }
 
+
+void Int::Print(void){
+    
+    unsigned int s;
+    
+    cout << "Int:\n";
+    for(s=0; s<b.size(); s++){
+        cout << "b[" << s << "] = ";
+        b[s].Print();
+    }
+    cout << "\n";
+    
+}
+
+
 inline Int Int::operator+ (const Int& addend) {
     
     Int result(b.size()+1), carry(b.size());
