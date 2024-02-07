@@ -190,25 +190,26 @@ inline Int Int::operator+ (const Int& addend) {
 
 }
 
+
 inline Int Int::operator- (const Int& subtrahend) {
     
     if(subtrahend.b.size() == (b.size())){
         
-        Int result(two_pow(b.size())-1), carry(two_pow(b.size())-1), subtrahend_complement, one;
+        Int result(two_pow(b.size())-1), one(two_pow(b.size())-1), subtrahend_complement;
             
+        
+        one.SetAll(1);
         
         subtrahend_complement = subtrahend;
         subtrahend_complement = subtrahend_complement.Complement();
         
-        (*this)+subtrahend_complement+one;
+        result = (*this)+subtrahend_complement+one;
    
-        //the last bit of result is nonzero only if the last carry in the operation is nonzero
         return result;
-
         
     }else{
         
-        cout << "Cannot sum two Ints with different sizes!!\n";
+        cout << "Cannot substract two Ints with different sizes!!\n";
         
         Int dummy;
         return dummy;

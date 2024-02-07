@@ -84,10 +84,17 @@ int main(int argc, char * argv[]) {
      
     System sys(N, seed);
     
-    Int i(342);
-    i.SetAll(1);
-    i.Print();
+    Int a(12), b(12), c;
+    a.SetRandom(0);
+    b.SetRandom(1);
+        
     
+    a.PrintBase10();
+    b.PrintBase10();
+    
+    c=a-b;
+    
+    c.PrintBase10();
     
     
 
