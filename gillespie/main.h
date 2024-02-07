@@ -16,6 +16,7 @@ const unsigned long long int ullong_1 = 1;
 
 using namespace std;
 
+//a class storing a collectio of bits
 class Bits{
   
 private:

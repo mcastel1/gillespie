@@ -200,7 +200,9 @@ int main(int argc, char * argv[]) {
      
     System sys(N, seed);
     
-    Bits a(34);
+    Bits a(4);
+    a.Print();
+    a.SetBit(12, true);
     a.Print();
     
     
