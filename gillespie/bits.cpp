@@ -69,6 +69,20 @@ void Bits::SetRandom(unsigned int seed){
 }
 
 
+//return the one's complement of *this 
+Bits Bits::Complement(void){
+    
+    Bits result;
+    
+    for(unsigned int s=0; s<n_bits; s++){
+        result.SetBit(s, 1-(this->GetBit(s)));
+    }
+    
+    return result;
+    
+}
+
+
 //set all bits of *this to 0
 void Bits::Clear(void){
     

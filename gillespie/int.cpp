@@ -155,3 +155,29 @@ inline Int Int::operator+ (const Int& addend) {
     }
 
 }
+
+inline Int Int::operator- (const Int& addend) {
+    
+    if(addend.b.size() == (b.size())){
+        
+        Int result(two_pow(b.size())-1), carry(two_pow(b.size())-1);
+        unsigned int p, s;
+        
+        
+         
+   
+        //the last bit of result is nonzero only if the last carry in the operation is nonzero
+        return result;
+
+        
+    }else{
+        
+        cout << "Cannot sum two Ints with different sizes!!\n";
+        
+        Int dummy;
+        return dummy;
+        
+    }
+
+}
+

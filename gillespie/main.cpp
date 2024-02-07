@@ -84,16 +84,18 @@ int main(int argc, char * argv[]) {
      
     System sys(N, seed);
     
-    Int i(12), j(12), k;
     
-    i.SetRandom(0);
-    i.PrintBase10();
-    j.SetRandom(1);
-    j.PrintBase10();
     
-    k=i+j;
-    
-    k.PrintBase10();
+//    Int i(12), j(12), k;
+//    
+//    i.SetRandom(0);
+//    i.PrintBase10();
+//    j.SetRandom(1);
+//    j.PrintBase10();
+//    
+//    k=i+j;
+//    
+//    k.PrintBase10();
     
     
     return 0;

@@ -26,6 +26,7 @@ public:
     void SetBit(unsigned int, bool);
     bool GetBit(unsigned int);
     void SetRandom(unsigned int);
+    Bits Complement(void);
     void Clear(void);
     void Print(void);
         
