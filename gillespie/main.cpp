@@ -73,7 +73,7 @@ inline Int Int::operator+ (const Int& addend) {
 
 
 //set the i-th entry of input equal to bit
-void SetBit(unsigned int* input, unsigned int s, bool bit){
+void SetBit(unsigned long long int* input, unsigned int s, bool bit){
     
     unsigned int p;
     unsigned long long int result;
@@ -94,6 +94,15 @@ void SetBit(unsigned int* input, unsigned int s, bool bit){
         }
         
     }
+    
+    (*input) = result;
+    
+}
+
+//return the s-th bit ofinput
+bool GetBit(unsigned long long int input, unsigned int s){
+    
+    return ((input >> s) & ullong_1);
     
 }
 
@@ -171,7 +180,7 @@ int main(int argc, char * argv[]) {
      
     System sys(N, seed);
     
-    Int a(N), b(N);
+    unsigned long long int a, b;
     
     
     
