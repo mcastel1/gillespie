@@ -90,9 +90,8 @@ int main(int argc, char * argv[]) {
     j.SetRandom(1);
     
     i.Print();
-    j.Print();
+    i.PrintBase10();
     
-    k = i+j;
     
     
     return 0;

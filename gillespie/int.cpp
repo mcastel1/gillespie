@@ -64,11 +64,11 @@ void Int::PrintBase10(void){
     cout << "Int in base 10: {";
     for(p=0; p<n_bits; p++){
         
-        for(result[p]=0, s=0; s<b.size(); s++){
-            result[p] += two_pow(s) * (b[s].GetBit(p));
+        for(result[n_bits-1-p]=0, s=0; s<b.size(); s++){
+            result[n_bits-1-p] += two_pow(s) * (b[s].GetBit(n_bits-1-p));
         }
         
-        cout << result[p] << " ";
+        cout << result[n_bits-1-p] << " ";
         
     }
     
