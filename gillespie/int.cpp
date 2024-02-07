@@ -21,6 +21,27 @@ Int::Int(unsigned long long int N){
 }
 
 
+//initialize *this randomly
+void Int::SetRandom(unsigned int seed){
+    
+    unsigned int s, p;
+    gsl_rng* ran;
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+
+
+    for(s=0; s<b.size(); s++){
+        for(p=0; p<n_bits; p++){
+            b[s].SetBit(p, (bool)(gsl_rng_uniform_int(ran, 2)));
+        }
+    }
+    
+    gsl_rng_free(ran);
+
+    
+}
+
 inline Int Int::operator+ (const Int& addend) {
     
     Int result(b.size()+1), carry(b.size());

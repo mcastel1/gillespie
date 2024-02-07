@@ -25,6 +25,7 @@ public:
     
     Int(void);
     Int(unsigned long long int);
+    void SetRandom(unsigned int);
     
     
 //    void SetRandom(unsigned long long int);
