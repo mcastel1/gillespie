@@ -21,6 +21,17 @@ Int::Int(unsigned long long int N){
 }
 
 
+//set *this to zero
+void Int::Clear(){
+    
+    unsigned int s;
+    
+    for(s=0; s<b.size(); s++){
+        b[s].n = 0;
+    }
+    
+}
+
 //initialize *this randomly
 void Int::SetRandom(unsigned int seed){
     
@@ -86,6 +97,8 @@ inline Int Int::operator+ (const Int& addend) {
     
     
     for(p=0; p<addend.b.size(); p++){
+        
+        carry.Clear();
         
         for(s=p+1,
             carry.b[p].n = ((b[p].n) & (addend.b[p].n)),

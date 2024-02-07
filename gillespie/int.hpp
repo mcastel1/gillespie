@@ -25,6 +25,8 @@ public:
     
     Int(void);
     Int(unsigned long long int);
+    
+    void Clear(void);
     void SetRandom(unsigned int);
     void Print(void);
     void PrintBase10(void);
