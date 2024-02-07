@@ -16,6 +16,22 @@ const unsigned long long int ullong_1 = 1;
 
 using namespace std;
 
+class UnsignedLongLongInt{
+  
+private:
+    unsigned long long int n;
+    
+public:
+    
+    UnsignedLongLongInt();
+    UnsignedLongLongInt(unsigned long long int);
+    void SetBit(unsigned int, bool);
+    bool GetBit(unsigned int);
+        
+    
+};
+
+
 
 class Int{
     

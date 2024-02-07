@@ -35,6 +35,13 @@ unsigned int inline bits(unsigned long long int n){
 }
 
 
+UnsignedLongLongInt::UnsignedLongLongInt(){}
+
+UnsignedLongLongInt::UnsignedLongLongInt(unsigned long long int n_in){
+    
+    n  = n_in;
+    
+}
 
 Int::Int(void){
         
@@ -73,7 +80,7 @@ inline Int Int::operator+ (const Int& addend) {
 
 
 //set the i-th entry of input equal to bit
-void SetBit(unsigned long long int* input, unsigned int s, bool bit){
+void UnsignedLongLongInt::SetBit(unsigned int s, bool bit){
     
     unsigned int p;
     unsigned long long int result;
@@ -83,7 +90,7 @@ void SetBit(unsigned long long int* input, unsigned int s, bool bit){
         
         if(p!=s){
             
-            result |= ((((*input) >> p) & ullong_1) << p);
+            result |= (((n >> p) & ullong_1) << p);
             
         }else{
             
@@ -95,16 +102,17 @@ void SetBit(unsigned long long int* input, unsigned int s, bool bit){
         
     }
     
-    (*input) = result;
+    n = result;
     
 }
 
 //return the s-th bit ofinput
-bool GetBit(unsigned long long int input, unsigned int s){
+bool UnsignedLongLongInt::GetBit(unsigned int s){
     
-    return ((input >> s) & ullong_1);
+    return ((n >> s) & ullong_1);
     
 }
+
 
 /*
 void Int::SetRandom(unsigned long long int seed){
@@ -159,7 +167,7 @@ void System::iterate(void){
 int main(int argc, char * argv[]) {
     
     int options;
-    unsigned int seed=0, N=0;
+    unsigned int seed=0, N=0, s;
     
 
     while ((options = getopt(argc, argv, ":N:s:")) != -1) {
@@ -180,7 +188,12 @@ int main(int argc, char * argv[]) {
      
     System sys(N, seed);
     
-    unsigned long long int a, b;
+    UnsignedLongLongInt a(34);
+    cout << "bits = {";
+    for(s=0; s<n_bits; s++){
+        cout << a.GetBit(s);
+    }
+    cout << " }";
     
     
     
