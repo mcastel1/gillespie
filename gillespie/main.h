@@ -16,44 +16,10 @@ const unsigned long long int ullong_1 = 1;
 
 using namespace std;
 
-//a class storing a collectio of bits
-class Bits{
-  
-private:
-    unsigned long long int n;
-    
-public:
-    
-    Bits();
-    Bits(unsigned long long int);
-    
-    void SetBit(unsigned int, bool);
-    bool GetBit(unsigned int);
-    void Print(void);
-        
-    
-};
 
+class Int;
+class Bits;
 
-
-class Int{
-    
-private:
-    
-    //b[i] is the i-th bit of the representation of *this in base 2
-    vector<unsigned long long int> b;
-    
-public:
-    
-    Int(void);
-    Int(unsigned long long int);
-    
-    
-//    void SetRandom(unsigned long long int);
-    //bitwise sum
-    Int operator + (const Int&);
-    
-};
 
 class System{
     
