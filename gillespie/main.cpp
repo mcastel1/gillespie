@@ -34,10 +34,10 @@ unsigned int inline bits(unsigned long long int n){
     
 }
 
-#include "main.h"
+#include "main.hpp"
 #include "bits.cpp"
 #include "int.cpp"
-
+#include "system.cpp"
 
 
 /*
@@ -57,36 +57,6 @@ void Int::SetRandom(unsigned long long int seed){
     
 }
  */
-
-
-
-System::System(void){
-    
-}
-
-
-System::System(unsigned int N_in, unsigned int seed_in){
-    
-    unsigned int i;
-    
-    ran = gsl_rng_alloc(gsl_rng_gfsr4);
-
-    N = N_in;
-    seed = seed_in;
-
-    for(x.clear(), i=0; i<3; ++i){
-        x.push_back(Int(N));
-    }
-    
-    gsl_rng_set(ran, seed);
-    
-}
-
-void System::iterate(void){
-    
-    
-    
-}
 
 
 

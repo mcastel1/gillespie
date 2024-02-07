@@ -5,8 +5,7 @@
 //  Created by Michele on 07/02/2024.
 //
 
-#include <stdio.h>
-#include "bits.h"
+#include "bits.hpp"
 
 Bits::Bits(){}
 
