@@ -35,11 +35,57 @@ unsigned int inline bits(unsigned long long int n){
 }
 
 
-UnsignedLongLongInt::UnsignedLongLongInt(){}
+Bits::Bits(){}
 
-UnsignedLongLongInt::UnsignedLongLongInt(unsigned long long int n_in){
+Bits::Bits(unsigned long long int n_in){
     
     n  = n_in;
+    
+}
+
+
+//set the i-th entry of input equal to bit
+void Bits::SetBit(unsigned int s, bool bit){
+    
+    unsigned int p;
+    unsigned long long int result;
+    
+    result = 0;
+    for(p=0; p<n_bits; p++){
+        
+        if(p!=s){
+            
+            result |= (((n >> p) & ullong_1) << p);
+            
+        }else{
+            
+            if(bit){
+                result |= (ullong_1 << s);
+            }
+            
+        }
+        
+    }
+    
+    n = result;
+    
+}
+
+//return the s-th bit ofinput
+bool Bits::GetBit(unsigned int s){
+    
+    return ((n >> s) & ullong_1);
+    
+}
+
+
+void Bits::Print(void){
+    
+    cout << "Bits = {";
+    for(unsigned int s=0; s<n_bits; s++){
+        cout << this->GetBit(n_bits-1-s);
+    }
+    cout << " }";
     
 }
 
@@ -78,40 +124,6 @@ inline Int Int::operator+ (const Int& addend) {
 
 }
 
-
-//set the i-th entry of input equal to bit
-void UnsignedLongLongInt::SetBit(unsigned int s, bool bit){
-    
-    unsigned int p;
-    unsigned long long int result;
-    
-    result = 0;
-    for(p=0; p<n_bits; p++){
-        
-        if(p!=s){
-            
-            result |= (((n >> p) & ullong_1) << p);
-            
-        }else{
-            
-            if(bit){
-                result |= (ullong_1 << s);
-            }
-            
-        }
-        
-    }
-    
-    n = result;
-    
-}
-
-//return the s-th bit ofinput
-bool UnsignedLongLongInt::GetBit(unsigned int s){
-    
-    return ((n >> s) & ullong_1);
-    
-}
 
 
 /*
@@ -188,12 +200,8 @@ int main(int argc, char * argv[]) {
      
     System sys(N, seed);
     
-    UnsignedLongLongInt a(34);
-    cout << "bits = {";
-    for(s=0; s<n_bits; s++){
-        cout << a.GetBit(s);
-    }
-    cout << " }";
+    Bits a(34);
+    a.Print();
     
     
     
