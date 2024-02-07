@@ -87,10 +87,13 @@ int main(int argc, char * argv[]) {
     Int i(12), j(12), k;
     
     i.SetRandom(0);
+    i.PrintBase10();
     j.SetRandom(1);
+    j.PrintBase10();
     
     k=i+j;
     
+    k.PrintBase10();
     
     
     return 0;

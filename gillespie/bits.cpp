@@ -69,6 +69,13 @@ void Bits::SetRandom(unsigned int seed){
 }
 
 
+//set all bits of *this to 0
+void Bits::Clear(void){
+    
+    n = 0;
+    
+}
+
 void Bits::Print(void){
     
     cout << "{ ";

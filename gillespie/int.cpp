@@ -97,17 +97,22 @@ inline Int Int::operator+ (const Int& addend) {
     
     
     cout << "I am about to make a sum A+B:\n";
-    cout << "\n\nA:\n";
-    this->Print();
-    this->PrintBase10();
+//    cout << "\n\nA:\n";
+//    this->Print();
+//    this->PrintBase10();
     
 //    cout << "\n\nB:\n";
     Int addend_copy;
     addend_copy = addend;
 //    addend_copy.Print();
 //    addend_copy.PrintBase10();
+    
+    for(result.Clear(), s=0; s<b.size(); s++){
+        (result.b)[s] = b[s];
+    }
+    result.b.back().Clear();
 
-    for(result = (*this), p=0; p<addend.b.size(); p++){
+    for(p=0; p<addend.b.size(); p++){
         
         carry.Clear();
         
@@ -125,15 +130,15 @@ inline Int Int::operator+ (const Int& addend) {
             (((result.b)[s]).n) ^= (((carry.b)[s-1]).n);
             
         }
-        
 
-        
-        //the last bit of result is nonzero only if the last carry in the operation is nonzero
-//        result.b.back() = carry.b.back();
-        cout << "... Result =";
-        result.Print();
     }
     
+    //the last bit of result is nonzero only if the last carry in the operation is nonzero
+    result.b.back() = carry.b.back();
+
+    cout << "... Result =";
+    result.Print();
+
     return result;
 
 }

@@ -26,6 +26,7 @@ public:
     void SetBit(unsigned int, bool);
     bool GetBit(unsigned int);
     void SetRandom(unsigned int);
+    void Clear(void);
     void Print(void);
         
     friend class Int;
