@@ -12,6 +12,7 @@
 
 #endif /* system_hpp */
 
+//a reaction-diffusion system
 class System{
     
 public:

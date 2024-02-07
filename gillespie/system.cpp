@@ -11,7 +11,6 @@ System::System(void){
     
 }
 
-
 System::System(unsigned int N_in, unsigned int seed_in){
     
     unsigned int i;

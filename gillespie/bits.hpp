@@ -12,7 +12,7 @@
 #endif /* bits_h */
 
 
-//a class storing a collectio of bits
+// a collection of bits
 class Bits{
   
 private:

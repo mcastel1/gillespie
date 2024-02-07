@@ -12,6 +12,8 @@
 
 #endif /* int_hpp */
 
+
+//an int represented in base 2 in b
 class Int{
     
 private:
