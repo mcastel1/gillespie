@@ -19,7 +19,7 @@ class Int{
 private:
     
     //b[i] is the i-th bit of the representation of *this in base 2
-    vector<unsigned long long int> b;
+    vector<Bits> b;
     
 public:
     

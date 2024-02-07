@@ -27,6 +27,7 @@ public:
     bool GetBit(unsigned int);
     void Print(void);
         
+    friend class Int;
     
 };
 
