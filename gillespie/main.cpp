@@ -14,6 +14,7 @@
 
 #include "gsl_rng.h"
 #include "gsl_sf_pow_int.h"
+#include "main.h"
 
 using namespace std;
 
@@ -34,25 +35,18 @@ unsigned int inline bits(unsigned long long int n){
     
 }
 
-class System{
-    
-public:
-    
-    unsigned long long int seed, /*the maximum number of molecules allowed for each spwecies*/N;
-    //the vector containing the numbers of molecules: x[i] is a vector. { x[i][0], x[i][1], x[i][2], ... } is the expression in base 2 of the number of molecules of species i
-    vector< vector<unsigned long long int> > x;
-    gsl_rng* ran;
-    
-    System(void);
-    System(unsigned int, unsigned int);
-    void iterate(void);
-    
 
-};
+
+
+
+Int::Int(unsigned long long int N){
+    
+    b.resize(bits(N));
+    
+}
+
 
 System::System(void){
-    
-  
     
 }
 
@@ -66,10 +60,8 @@ System::System(unsigned int N_in, unsigned int seed_in){
     N = N_in;
     seed = seed_in;
 
-    x.resize(3);
-    for(i=0; i<3; ++i){
-        x[i].resize(bits(N));
-        
+    for(x.clear(), i=0; i<3; ++i){
+        x.push_back(Int(N));
     }
     
     gsl_rng_set(ran, seed);
