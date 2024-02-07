@@ -30,7 +30,6 @@ public:
     Int(unsigned long long int);
     
     
-    void SetBit(unsigned int, unsigned int, bool);
 //    void SetRandom(unsigned long long int);
     //bitwise sum
     Int operator + (const Int&);

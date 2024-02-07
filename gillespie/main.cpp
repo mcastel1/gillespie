@@ -72,16 +72,27 @@ inline Int Int::operator+ (const Int& addend) {
 }
 
 
-//set the i-th entry of the s-th bit of *this equal to bit
-void Int::SetBit(unsigned int s, unsigned int i, bool bit){
+//set the i-th entry of input equal to bit
+void SetBit(unsigned int* input, unsigned int s, bool bit){
     
     unsigned int p;
     unsigned long long int result;
     
     result = 0;
-    for(p=0; p<s; p++){
+    for(p=0; p<n_bits; p++){
         
-        result ^= (((b[s] >> p) & ullong_1) << p);
+        if(p!=s){
+            
+            result |= ((((*input) >> p) & ullong_1) << p);
+            
+        }else{
+            
+            if(bit){
+                result |= (ullong_1 << s);
+            }
+            
+        }
+        
     }
     
 }
