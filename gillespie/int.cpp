@@ -32,6 +32,20 @@ void Int::Clear(){
     
 }
 
+
+//return the one-complement of *this
+Int Int::Complement(void){
+    
+    Int result(two_pow(b.size())-1);
+    
+    for(unsigned int s=0; s<b.size(); s++){
+        (result.b)[s] = (b[s]).Complement();
+    }
+    
+    return result;
+    
+}
+
 //initialize *this randomly
 void Int::SetRandom(unsigned int seed){
     
@@ -160,11 +174,12 @@ inline Int Int::operator- (const Int& addend) {
     
     if(addend.b.size() == (b.size())){
         
-        Int result(two_pow(b.size())-1), carry(two_pow(b.size())-1);
+        Int result(two_pow(b.size())-1), carry(two_pow(b.size())-1), addend_complement;
+        
         unsigned int p, s;
         
         
-         
+//        addend_complement = addend.Complement();
    
         //the last bit of result is nonzero only if the last carry in the operation is nonzero
         return result;

@@ -84,6 +84,11 @@ int main(int argc, char * argv[]) {
      
     System sys(N, seed);
     
+    Int i(124);
+    i.SetRandom(0);
+    i.Print();
+    i.Complement().Print();
+    
     
     
 //    Int i(12), j(12), k;
