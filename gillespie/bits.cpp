@@ -51,6 +51,24 @@ bool Bits::GetBit(unsigned int s){
 }
 
 
+//set *this randomly with seed seed
+void Bits::SetRandom(unsigned int seed){
+    
+    unsigned int s;
+    gsl_rng* ran;
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+
+    for(s=0; s<n_bits; s++){
+        SetBit(s, (bool)(gsl_rng_uniform_int(ran, 2)));
+    }
+    
+    gsl_rng_free(ran);
+
+}
+
+
 void Bits::Print(void){
     
     cout << "Bits = {";

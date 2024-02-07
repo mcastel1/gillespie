@@ -84,9 +84,9 @@ int main(int argc, char * argv[]) {
      
     System sys(N, seed);
     
-    Bits a(43243);
-    a.Print();
-    a.SetBit(1, false);
+    Bits a;
+    
+    a.SetRandom(0);
     a.Print();
     
     
