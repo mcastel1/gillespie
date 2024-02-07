@@ -16,7 +16,6 @@
 #include "gsl_sf_pow_int.h"
 #include "main.h"
 
-using namespace std;
 
 inline unsigned long long int two_pow(unsigned long long int i){
     
@@ -37,13 +36,41 @@ unsigned int inline bits(unsigned long long int n){
 
 
 
-
+Int::Int(void){
+        
+}
 
 Int::Int(unsigned long long int N){
     
     b.resize(bits(N));
     
 }
+
+
+inline Int Int::operator+ (const Int& addend) {
+    
+    Int result(b.size()), carry(b.size());
+    unsigned int p, s;
+    
+    
+    p=0;
+    
+    for(s=0; s<b.size(); s++){
+        
+        if(s==0){
+            carry.b[s] = ((b[s]) & (addend.b[p]));
+            (b[s])^= (addend.b[p]);
+        }else{
+            carry.b[s] = ((b[s]) & (carry.b[s-1]));
+            (b[s])^= (carry.b[s-1]);
+        }
+        
+    }
+    
+    return result;
+
+}
+
 
 
 System::System(void){
@@ -99,8 +126,8 @@ int main(int argc, char * argv[]) {
      }
      
     System sys(N, seed);
-
-   
+    
+    
     return 0;
     
 }

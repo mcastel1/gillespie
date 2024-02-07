@@ -11,15 +11,23 @@
 
 #endif /* main_h */
 
+using namespace std;
+
+
 class Int{
     
 private:
     
+    //b[i] is the i-th bit of the representation of *this in base 2
     vector<unsigned long long int> b;
     
 public:
     
+    Int(void);
     Int(unsigned long long int);
+    
+    //bitwise sum
+    Int operator + (const Int&);
     
 };
 
