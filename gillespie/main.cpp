@@ -116,7 +116,7 @@ int main(int argc, char * argv[]) {
     
     Bits a(43243);
     a.Print();
-    a.SetBit(12, true);
+    a.SetBit(1, false);
     a.Print();
     
     
