@@ -1,0 +1,67 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 14.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      1635,         59]
+NotebookOptionsPosition[      1162,         42]
+NotebookOutlinePosition[      1559,         58]
+CellTagsIndexPosition[      1516,         55]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"BaseForm", "[", 
+  RowBox[{"34", ",", "2"}], "]"}]], "Input",
+ CellChangeTimes->{{3.916293050225586*^9, 3.916293053953115*^9}},
+ CellLabel->"In[97]:=",ExpressionUUID->"98bf8e74-ef14-434d-97ec-8c5fa573a5c4"],
+
+Cell[BoxData[
+ TagBox[
+  InterpretationBox[
+   StyleBox[
+    SubscriptBox["\<\"100010\"\>", "\<\"2\"\>"],
+    ShowStringCharacters->False],
+   34,
+   Editable->False],
+  BaseForm[#, 2]& ]], "Output",
+ CellChangeTimes->{3.916293054396669*^9},
+ CellLabel->
+  "Out[97]//BaseForm=",ExpressionUUID->"fd1dc7ac-d5f2-43ae-9de3-faa25c98c8e2"]
+}, Open  ]]
+},
+WindowSize->{808, 865},
+WindowMargins->{{13, Automatic}, {Automatic, 98}},
+FrontEndVersion->"14.0 for Mac OS X ARM (64-bit) (December 12, 2023)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"e45f3789-c2a2-46e9-a67f-f8cf45260cda"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 230, 4, 30, "Input",ExpressionUUID->"98bf8e74-ef14-434d-97ec-8c5fa573a5c4"],
+Cell[813, 28, 333, 11, 48, "Output",ExpressionUUID->"fd1dc7ac-d5f2-43ae-9de3-faa25c98c8e2"]
+}, Open  ]]
+}
+]
+*)
+
