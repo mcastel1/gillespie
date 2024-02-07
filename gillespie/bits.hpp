@@ -24,6 +24,7 @@ public:
     Bits(unsigned long long int);
     
     void SetBit(unsigned int, bool);
+    void SetAll(bool);
     bool GetBit(unsigned int);
     void SetRandom(unsigned int);
     Bits Complement(void);

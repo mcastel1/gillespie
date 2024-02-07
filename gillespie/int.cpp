@@ -68,6 +68,26 @@ void Int::SetRandom(unsigned int seed){
 }
 
 
+//set all n_bits entries of *this to the respective binary values of i
+void Int::SetAll(unsigned long long int i){
+    
+    Bits m(i);
+    
+    if(b.size() <= n_bits){
+        
+        for(unsigned int s=0; s<b.size(); s++){
+            (b[s]).SetAll(m.GetBit(s));
+        }
+        
+    }else{
+        
+        cout << "Cannot SetAll if b.size() > n_bits!!\n";
+        
+    }
+    
+}
+
+
 void Int::Print(void){
     
     unsigned int s;
@@ -170,16 +190,17 @@ inline Int Int::operator+ (const Int& addend) {
 
 }
 
-inline Int Int::operator- (const Int& addend) {
+inline Int Int::operator- (const Int& subtrahend) {
     
-    if(addend.b.size() == (b.size())){
+    if(subtrahend.b.size() == (b.size())){
         
-        Int result(two_pow(b.size())-1), carry(two_pow(b.size())-1), addend_complement;
+        Int result(two_pow(b.size())-1), carry(two_pow(b.size())-1), subtrahend_complement, one;
+            
         
-        unsigned int p, s;
+        subtrahend_complement = subtrahend;
+        subtrahend_complement = subtrahend_complement.Complement();
         
-        
-//        addend_complement = addend.Complement();
+        (*this)+subtrahend_complement+one;
    
         //the last bit of result is nonzero only if the last carry in the operation is nonzero
         return result;

@@ -29,6 +29,7 @@ public:
     void Clear(void);
     Int Complement(void);
     void SetRandom(unsigned int);
+    void SetAll(unsigned long long int);
     void Print(void);
     void PrintBase10(void);
     

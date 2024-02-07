@@ -43,6 +43,19 @@ void Bits::SetBit(unsigned int s, bool bit){
     
 }
 
+
+
+
+//set all n_bits entries of *this equal to *bit
+void Bits::SetAll(bool bit){
+    
+    for(unsigned int s=0; s<n_bits; s++){
+        this->SetBit(s, bit);
+    }
+    
+}
+
+
 //return the s-th bit ofinput
 bool Bits::GetBit(unsigned int s){
     
