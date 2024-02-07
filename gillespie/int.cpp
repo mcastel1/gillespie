@@ -92,57 +92,66 @@ void Int::PrintBase10(void){
 
 inline Int Int::operator+ (const Int& addend) {
     
-    Int result(two_pow(b.size())), carry(two_pow(b.size())-1);
-    unsigned int p, s;
-    
-    
-//    cout << "I am about to make a sum A+B:\n";
-//    cout << "\n\nA:\n";
-//    this->Print();
-//    this->PrintBase10();
-    
-//    cout << "\n\nB:\n";
-    Int addend_copy;
-    addend_copy = addend;
-//    addend_copy.Print();
-//    addend_copy.PrintBase10();
-    
-    for(result.Clear(), s=0; s<b.size(); s++){
-        (result.b)[s] = b[s];
-    }
-    result.b.back().Clear();
-    
-    for(p=0; p<addend.b.size(); p++){
+    if(addend.b.size() == (b.size())){
         
-        carry.Clear();
+        Int result(two_pow(b.size())), carry(two_pow(b.size())-1);
+        unsigned int p, s;
         
-//        cout << "Summing ...";
-//        ((addend_copy.b)[p]).Print();
         
-        for(s=p+1,
-            (((carry.b)[p]).n) = ((((result.b)[p]).n) & (((addend.b)[p]).n)),
-            (((result.b)[p]).n) ^= (((addend.b)[p]).n);
-            s<b.size();
-            s++){
+        //    cout << "I am about to make a sum A+B:\n";
+        //    cout << "\n\nA:\n";
+        //    this->Print();
+        //    this->PrintBase10();
+        
+        //    cout << "\n\nB:\n";
+        Int addend_copy;
+        addend_copy = addend;
+        //    addend_copy.Print();
+        //    addend_copy.PrintBase10();
+        
+        for(result.Clear(), s=0; s<b.size(); s++){
+            (result.b)[s] = b[s];
+        }
+        result.b.back().Clear();
+        
+        for(p=0; p<addend.b.size(); p++){
             
+            carry.Clear();
             
-            (((carry.b)[s]).n) = ((((result.b)[s]).n) & (((carry.b)[s-1]).n));
-            (((result.b)[s]).n) ^= (((carry.b)[s-1]).n);
+            //        cout << "Summing ...";
+            //        ((addend_copy.b)[p]).Print();
+            
+            for(s=p+1,
+                (((carry.b)[p]).n) = ((((result.b)[p]).n) & (((addend.b)[p]).n)),
+                (((result.b)[p]).n) ^= (((addend.b)[p]).n);
+                s<b.size();
+                s++){
+                
+                
+                (((carry.b)[s]).n) = ((((result.b)[s]).n) & (((carry.b)[s-1]).n));
+                (((result.b)[s]).n) ^= (((carry.b)[s-1]).n);
+                
+            }
+            
+            //add the last extra bit, which was not present in *this nor in b
+            ((((result.b)[s]).n) ^= (((carry.b)[s-1]).n));
+            
+            //        cout << "... Result =";
+            //        result.Print();
             
         }
         
-        //add the last extra bit, which was not present in *this nor in b
-        ((((result.b)[s]).n) ^= (((carry.b)[s-1]).n));
+        //the last bit of result is nonzero only if the last carry in the operation is nonzero
+        return result;
+
         
-//        cout << "... Result =";
-//        result.Print();
-
+    }else{
+        
+        cout << "Cannot sum two Ints with different sizes!!\n";
+        
+        Int dummy;
+        return dummy;
+        
     }
-    
-    //the last bit of result is nonzero only if the last carry in the operation is nonzero
-
-
-
-    return result;
 
 }
