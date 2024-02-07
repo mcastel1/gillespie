@@ -67,14 +67,17 @@ inline Int Int::operator+ (const Int& addend) {
         
         for(s=p+1,
             carry.b[p].n = ((b[p].n) & (addend.b[p].n)),
-            (b[p].n) ^= (addend.b[p].n);
+            result.b[p].n = (b[p].n)^(addend.b[p].n);
             s<b.size();
             s++){
             
             carry.b[s].n = ((b[s].n) & (carry.b[s-1].n));
-            (b[s].n) ^= (carry.b[s-1].n);
+            result.b[s].n = (b[s].n) ^ (carry.b[s-1].n);
             
         }
+        
+        //the last bit of result is nonzero only if the last carry in the operation is nonzero
+        result.b.back() = carry.b.back();
         
     }
     
