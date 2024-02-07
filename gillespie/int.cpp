@@ -56,6 +56,28 @@ void Int::Print(void){
     
 }
 
+void Int::PrintBase10(void){
+    
+    unsigned int s, p;
+    vector<unsigned long long int> result(n_bits);
+    
+    cout << "Int in base 10: {";
+    for(p=0; p<n_bits; p++){
+        
+        for(result[p]=0, s=0; s<b.size(); s++){
+            result[p] += two_pow(s) * (b[s].GetBit(p));
+        }
+        
+        cout << result[p] << " ";
+        
+    }
+    
+    cout << "}\n";
+    
+    result.clear();
+    
+}
+
 
 inline Int Int::operator+ (const Int& addend) {
     
