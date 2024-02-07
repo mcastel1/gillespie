@@ -63,7 +63,7 @@ void Int::SetRandom(unsigned long long int seed){
 int main(int argc, char * argv[]) {
     
     int options;
-    unsigned int seed=0, N=0, s;
+    unsigned int seed=0, N=0;
     
 
     while ((options = getopt(argc, argv, ":N:s:")) != -1) {
