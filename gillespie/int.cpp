@@ -23,20 +23,22 @@ Int::Int(unsigned long long int N){
 
 inline Int Int::operator+ (const Int& addend) {
     
-    Int result(b.size()), carry(b.size());
+    Int result(b.size()+1), carry(b.size());
     unsigned int p, s;
     
     
-    p=0;
-    
-    for(s=1,
-        carry.b[s].n = ((b[s].n) & (addend.b[p].n)),
-        (b[s].n)^= (addend.b[p].n);
-        s<b.size();
-        s++){
+    for(p=0; p<addend.b.size(); p++){
         
-        carry.b[s].n = ((b[s].n) & (carry.b[s-1].n));
-        (b[s].n)^= (carry.b[s-1].n);
+        for(s=p+1,
+            carry.b[p].n = ((b[p].n) & (addend.b[p].n)),
+            (b[p].n) ^= (addend.b[p].n);
+            s<b.size();
+            s++){
+            
+            carry.b[s].n = ((b[s].n) & (carry.b[s-1].n));
+            (b[s].n) ^= (carry.b[s-1].n);
+            
+        }
         
     }
     
