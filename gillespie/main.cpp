@@ -84,11 +84,15 @@ int main(int argc, char * argv[]) {
      
     System sys(N, seed);
     
-    Int i(12);
+    Int i(12), j(12), k;
     
     i.SetRandom(0);
-    i.Print();
+    j.SetRandom(1);
     
+    i.Print();
+    j.Print();
+    
+    k = i+j;
     
     
     return 0;

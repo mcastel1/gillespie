@@ -59,7 +59,7 @@ void Int::Print(void){
 
 inline Int Int::operator+ (const Int& addend) {
     
-    Int result(b.size()+1), carry(b.size());
+    Int result(two_pow(b.size())), carry(two_pow(b.size())-1);
     unsigned int p, s;
     
     
