@@ -100,6 +100,34 @@ void Int::SetAll(unsigned long long int i){
 }
 
 
+//set to zero the first bits of *this that is equal to one (stating from the last bit) and leave the others unchanged, write the result in *this
+inline void Int::RemoveFirstSignificantBit(void){
+    
+    int s;
+    Bits mask_before, mask_now;
+    
+    cout << " before the first significant bit is set to 0:";
+    Print();
+
+    //remove the last significant bit in minuend
+    for(s=(this->GetSize())-1, mask_before.SetAll(0); s>=0; s--){
+        
+        (mask_now.n) = (mask_before.n) | (((*this)[s]).n);
+        
+        (b[s]).n =  (((*this)[s]).n) & (mask_before.n) & (mask_now.n);
+        
+        mask_before = mask_now;
+        
+    }
+    
+    cout << " after the first significant bit is set to 0:";
+    Print();
+    
+    
+    
+}
+
+
 void Int::Print(void){
     
     unsigned int s;
@@ -211,6 +239,7 @@ inline Int Int::operator - (const Int& m) {
     
     
     Int minuend, subtrahend, one(1);
+    Bits mask_before, mask_now;
     
     
     minuend = (*this);
@@ -229,15 +258,8 @@ inline Int Int::operator - (const Int& m) {
     cout << "subtrahend.Complement : ";
     subtrahend.Complement().Print();
     
-    minuend = minuend + subtrahend.Complement() + one;
-    
-    cout << "minuend after 2 sums:";
-    minuend.Print();
-
-    
-    //this is wrong : find a way to set to zero the last bit in parallel
-    minuend[this->GetSize()].SetAll(false);
-    //this is wrong : find a way to set to zero the last bit in parallel
+    minuend = (minuend + subtrahend.Complement() + one);
+    minuend.RemoveFirstSignificantBit();
 
     
     return minuend;
