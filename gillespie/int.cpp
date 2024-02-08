@@ -80,7 +80,7 @@ void Int::SetRandom(unsigned int seed){
 
     for(s=0; s<b.size(); s++){
         for(p=0; p<n_bits; p++){
-            b[s].SetBit(p, (bool)(gsl_rng_uniform_int(ran, 2)));
+            b[s].Set(p, (bool)(gsl_rng_uniform_int(ran, 2)));
         }
     }
     
@@ -98,7 +98,7 @@ void Int::SetAll(unsigned long long int i){
     if(b.size() <= n_bits){
         
         for(unsigned int s=0; s<b.size(); s++){
-            (b[s]).SetAll(m.GetBit(s));
+            (b[s]).SetAll(m.Get(s));
         }
         
     }else{
@@ -174,7 +174,7 @@ inline unsigned long long int Int::Get(unsigned int p){
     unsigned long long int result;
     
     for(result=0, s=0; s<GetSize(); s++){
-        result += two_pow(s) * (b[s].GetBit(n_bits-1-p));
+        result += two_pow(s) * (b[s].Get(n_bits-1-p));
     }
     
     return result;

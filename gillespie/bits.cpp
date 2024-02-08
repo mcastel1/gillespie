@@ -16,8 +16,8 @@ Bits::Bits(unsigned long long int n_in){
 }
 
 
-//set the i-th entry of input equal to bit
-void Bits::SetBit(unsigned int s, bool bit){
+//set the s-th bit of *this equal to bit
+void Bits::Set(unsigned int s, bool bit){
     
     unsigned int p;
     unsigned long long int result;
@@ -50,14 +50,14 @@ void Bits::SetBit(unsigned int s, bool bit){
 void Bits::SetAll(bool bit){
     
     for(unsigned int s=0; s<n_bits; s++){
-        this->SetBit(s, bit);
+        this->Set(s, bit);
     }
     
 }
 
 
 //return the s-th bit ofinput
-bool Bits::GetBit(unsigned int s){
+bool Bits::Get(unsigned int s){
     
     return ((n >> s) & ullong_1);
     
@@ -74,7 +74,7 @@ void Bits::SetRandom(unsigned int seed){
     gsl_rng_set(ran, seed);
 
     for(s=0; s<n_bits; s++){
-        SetBit(s, (bool)(gsl_rng_uniform_int(ran, 2)));
+        Set(s, (bool)(gsl_rng_uniform_int(ran, 2)));
     }
     
     gsl_rng_free(ran);
@@ -88,7 +88,7 @@ Bits Bits::Complement(void){
     Bits result;
     
     for(unsigned int s=0; s<n_bits; s++){
-        result.SetBit(s, 1-(this->GetBit(s)));
+        result.Set(s, 1-(this->Get(s)));
     }
     
     return result;
@@ -107,7 +107,7 @@ void Bits::Print(void){
     
     cout << "{ ";
     for(unsigned int s=0; s<n_bits; s++){
-        cout << this->GetBit(n_bits-1-s);
+        cout << this->Get(n_bits-1-s);
     }
     cout << " }\n";
     
