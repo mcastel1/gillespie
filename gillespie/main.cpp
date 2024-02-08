@@ -84,7 +84,12 @@ int main(int argc, char * argv[]) {
      
     System sys(N, seed);
     
+    Int a(1234), b(334);
     
+    a.SetRandom(23); b.SetRandom(3);
+    a.PrintBase10(); b.PrintBase10();
+    
+    (a-b).PrintBase10();
     
     
 
