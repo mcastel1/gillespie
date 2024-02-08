@@ -33,6 +33,18 @@ void Int::Clear(){
 }
 
 
+void Int::Resize(unsigned int size){
+    
+    b.resize(size);
+    
+}
+
+unsigned int Int::GetSize(void){
+    
+    return ((unsigned int)(b.size()));
+    
+}
+
 //return the one-complement of *this
 Int Int::Complement(void){
     
@@ -123,70 +135,74 @@ void Int::PrintBase10(void){
     
 }
 
-
-inline Int Int::operator+ (const Int& addend) {
+//returns *this + m
+inline Int Int::operator+ (const Int& m) {
     
-    if(addend.b.size() == (b.size())){
-        
-        Int result(two_pow(b.size())), carry(two_pow(b.size())-1);
-        unsigned int p, s;
-        
-        
-        //    cout << "I am about to make a sum A+B:\n";
-        //    cout << "\n\nA:\n";
-        //    this->Print();
-        //    this->PrintBase10();
-        
-        //    cout << "\n\nB:\n";
-        Int addend_copy;
-        addend_copy = addend;
-        //    addend_copy.Print();
-        //    addend_copy.PrintBase10();
-        
-        for(result.Clear(), s=0; s<b.size(); s++){
-            (result.b)[s] = b[s];
-        }
-        result.b.back().Clear();
-        
-        for(p=0; p<addend.b.size(); p++){
-            
-            carry.Clear();
-            
-            //        cout << "Summing ...";
-            //        ((addend_copy.b)[p]).Print();
-            
-            for(s=p+1,
-                (((carry.b)[p]).n) = ((((result.b)[p]).n) & (((addend.b)[p]).n)),
-                (((result.b)[p]).n) ^= (((addend.b)[p]).n);
-                s<b.size();
-                s++){
-                
-                
-                (((carry.b)[s]).n) = ((((result.b)[s]).n) & (((carry.b)[s-1]).n));
-                (((result.b)[s]).n) ^= (((carry.b)[s-1]).n);
-                
-            }
-            
-            //add the last extra bit, which was not present in *this nor in b
-            ((((result.b)[s]).n) ^= (((carry.b)[s-1]).n));
-            
-            //        cout << "... Result =";
-            //        result.Print();
-            
-        }
-        
-        //the last bit of result is nonzero only if the last carry in the operation is nonzero
-        return result;
-
-        
+    
+    Int augend, carry, addend;
+    unsigned int p, s;
+    
+    //the augend is the largest among *this and m, and the addend the other one
+    if(b.size() > m.b.size()){
+        augend = (*this);
+        addend = m;
     }else{
+        augend = m;
+        addend = (*this);
+    }
+
+    //the carry may propagate until the end of augend -> resize carry correctly
+    carry.Resize(augend.GetSize());
+    //add an extra bit to augend because the sum may increase its size
+    augend.Resize(augend.GetSize()+1);
+    
+    //    cout << "I am about to make a sum A+B:\n";
+    //    cout << "\n\nA:\n";
+    //    this->Print();
+    //    this->PrintBase10();
+    
+    //    cout << "\n\nB:\n";
+//    addend_copy = m;
+    //    addend_copy.Print();
+    //    addend_copy.PrintBase10();
+    
+//    for(augend.Clear(), s=0; s<b.size(); s++){
+//        (augend.b)[s] = b[s];
+//    }
+//    augend.b.back().Clear();
+    
+    for(p=0; p<addend.GetSize(); p++){
+        //sum addend[p] to augend
         
-        cout << "Cannot sum two Ints with different sizes!!\n";
+        carry.Clear();
         
-        Int dummy;
-        return dummy;
+        //        cout << "Summing ...";
+        //        ((addend_copy.b)[p]).Print();
+        
+        //run over all bits of augend
+        for(s=p+1,
+            (((carry.b)[p]).n) = ((((augend.b)[p]).n) & (((addend.b)[p]).n)),
+            (((augend.b)[p]).n) ^= (((addend.b)[p]).n);
+            s<augend.GetSize()-1;
+            s++){
+            
+            
+            (((carry.b)[s]).n) = ((((augend.b)[s]).n) & (((carry.b)[s-1]).n));
+            (((augend.b)[s]).n) ^= (((carry.b)[s-1]).n);
+            
+        }
+        
+      
+        //add the last extra bit, which was not present in *this nor in b
+        ((((augend.b)[s]).n) ^= (((carry.b)[s-1]).n));
+        
+        //        cout << "... Result =";
+        //        result.Print();
         
     }
+    
+    //the last bit of result is nonzero only if the last carry in the operation is nonzero
+    return augend;
 
 }
 
