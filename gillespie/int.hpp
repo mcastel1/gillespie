@@ -29,7 +29,7 @@ public:
     void Resize(unsigned int);
     unsigned int GetSize(void);
     void Clear(void);
-    Int Complement(void);
+    Int Complement(unsigned int);
     void SetRandom(unsigned int);
     void SetAll(unsigned long long int);
     void RemoveFirstSignificantBit(void);

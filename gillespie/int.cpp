@@ -45,13 +45,23 @@ unsigned int Int::GetSize(void){
     
 }
 
-//return the one-complement of *this
-Int Int::Complement(void){
+//return the one-complement of *this with respect to a size 'size' of the binary representation
+Int Int::Complement(unsigned int size){
     
-    Int result(two_pow(b.size())-1);
+    unsigned int s;
+    Int result;
+    Bits one;
     
-    for(unsigned int s=0; s<b.size(); s++){
+    one.SetAll(true);
+    result.Resize(size);
+    
+    //set the first bits common to *this
+    for(s=0; s<GetSize(); s++){
         (result.b)[s] = (b[s]).Complement();
+    }
+    for(s=GetSize(); s<result.GetSize(); s++){
+        (result.b)[s] = one;
+        
     }
     
     return result;
@@ -106,8 +116,8 @@ inline void Int::RemoveFirstSignificantBit(void){
     int s;
     Bits mask_before, mask_now;
     
-    cout << " before the first significant bit is set to 0:";
-    Print();
+//    cout << " before the first significant bit is set to 0:";
+//    Print();
 
     //remove the last significant bit in minuend
     for(s=(this->GetSize())-1, mask_before.SetAll(0); s>=0; s--){
@@ -120,8 +130,8 @@ inline void Int::RemoveFirstSignificantBit(void){
         
     }
     
-    cout << " after the first significant bit is set to 0:";
-    Print();
+//    cout << " after the first significant bit is set to 0:";
+//    Print();
     
     
     
@@ -239,7 +249,6 @@ inline Int Int::operator - (const Int& m) {
     
     
     Int minuend, subtrahend, one(1);
-    Bits mask_before, mask_now;
     
     
     minuend = (*this);
@@ -256,11 +265,19 @@ inline Int Int::operator - (const Int& m) {
     one.Print();
     
     cout << "subtrahend.Complement : ";
-    subtrahend.Complement().Print();
+    subtrahend.Complement(minuend.GetSize()).Print();
     
-    minuend = (minuend + subtrahend.Complement() + one);
+    minuend = (minuend + subtrahend.Complement(minuend.GetSize()) + one);
+    
+    cout << "minuend + subtrahend.Complement + 1 ";
+    minuend.Print();
+ 
+    
     minuend.RemoveFirstSignificantBit();
 
+    cout << "(minuend + ~subtrahend + 1 ).remove first digit";
+    minuend.Print();
+ 
     
     return minuend;
     
