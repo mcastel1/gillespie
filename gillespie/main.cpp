@@ -87,22 +87,6 @@ int main(int argc, char * argv[]) {
     
     
     
-    Int a(34), b(12), c;
-    
-    a.SetRandom(0);
-    b.SetRandom(1);
-        
-    
-    a.PrintBase10();
-    b.PrintBase10();
-    
-    c=a-b;
-    
-//    for(int s=0; s<n_bits; s++){
-//        cout << "result = " << c.Get(s) << " - " << a.Get(s) - b.Get(s) << "\n";
-//    }
-    
-    
 
     
     
