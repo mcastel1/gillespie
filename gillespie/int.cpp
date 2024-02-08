@@ -136,7 +136,7 @@ void Int::PrintBase10(void){
 }
 
 //returns *this + m
-inline Int Int::operator+ (const Int& m) {
+inline Int Int::operator + (const Int& m) {
     
     
     Int augend, carry, addend;
@@ -207,31 +207,43 @@ inline Int Int::operator+ (const Int& m) {
 }
 
 
-inline Int Int::operator- (const Int& subtrahend) {
+inline Int Int::operator - (const Int& m) {
     
-    if(subtrahend.b.size() == (b.size())){
-        
-        Int result(two_pow(b.size())-1), one(two_pow(b.size())-1), subtrahend_complement;
-            
-        
-        one.SetAll(1);
-        
-        subtrahend_complement = subtrahend;
-        subtrahend_complement = subtrahend_complement.Complement();
-        
-        result = (*this)+subtrahend_complement+one;
-   
-        return result;
-        
-    }else{
-        
-        cout << "Cannot substract two Ints with different sizes!!\n";
-        
-        Int dummy;
-        return dummy;
-        
-    }
+    
+    Int minuend, subtrahend, one(1);
+    
+    
+    minuend = (*this);
+    subtrahend = m;
+    one.SetAll(1);
+    
+    cout << "minuend : ";
+    minuend.Print();
+    
+    cout << "subtrahend : ";
+    subtrahend.Print();
+    
+    cout << "one : ";
+    one.Print();
+    
+    cout << "subtrahend.Complement : ";
+    subtrahend.Complement().Print();
+    
+    minuend = minuend + subtrahend.Complement() + one;
+    
+    cout << "minuend after 2 sums:";
+    minuend.Print();
 
+    
+    //this is wrong : find a way to set to zero the last bit in parallel
+    minuend[this->GetSize()].SetAll(false);
+    //this is wrong : find a way to set to zero the last bit in parallel
+
+    
+    return minuend;
+    
+    
+    
 }
 
 

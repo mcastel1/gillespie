@@ -87,7 +87,7 @@ int main(int argc, char * argv[]) {
     
     
     
-    Int a(34), b(53), c;
+    Int a(34), b(12), c;
     
     a.SetRandom(0);
     b.SetRandom(1);
@@ -96,7 +96,7 @@ int main(int argc, char * argv[]) {
     a.PrintBase10();
     b.PrintBase10();
     
-    c=a+b;
+    c=a-b;
     
     c.PrintBase10();
     
