@@ -234,3 +234,10 @@ inline Int Int::operator- (const Int& subtrahend) {
 
 }
 
+
+//overload of [] operator
+Bits Int::operator[](const unsigned int& i){
+    
+    return(b[i]);
+    
+}

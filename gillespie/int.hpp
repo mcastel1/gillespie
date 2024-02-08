@@ -39,5 +39,6 @@ public:
 //    void SetRandom(unsigned long long int);
     //bitwise sum
     Int operator + (const Int&), operator - (const Int&);
+    Bits operator [] (const unsigned int&);
 
 };
