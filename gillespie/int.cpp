@@ -158,7 +158,7 @@ void Int::PrintBase10(void){
     cout << "Int in base 10: {";
     for(p=0; p<n_bits; p++){
         
-        cout << Get(p) << " ";
+        cout << Get(n_bits-1-p) << " ";
         
     }
     
@@ -174,7 +174,7 @@ inline unsigned long long int Int::Get(unsigned int p){
     unsigned long long int result;
     
     for(result=0, s=0; s<GetSize(); s++){
-        result += two_pow(s) * (b[s].Get(n_bits-1-p));
+        result += two_pow(s) * (b[s].Get(p));
     }
     
     return result;
