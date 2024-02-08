@@ -98,7 +98,9 @@ int main(int argc, char * argv[]) {
     
     c=a-b;
     
-    c.PrintBase10();
+//    for(int s=0; s<n_bits; s++){
+//        cout << "result = " << c.Get(s) << " - " << a.Get(s) - b.Get(s) << "\n";
+//    }
     
     
 

@@ -33,6 +33,7 @@ public:
     void SetRandom(unsigned int);
     void SetAll(unsigned long long int);
     void RemoveFirstSignificantBit(void);
+    unsigned long long int Get(unsigned int);
     void Print(void);
     void PrintBase10(void);
     

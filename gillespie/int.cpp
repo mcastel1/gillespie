@@ -153,25 +153,34 @@ void Int::Print(void){
 
 void Int::PrintBase10(void){
     
-    unsigned int s, p;
-    vector<unsigned long long int> result(n_bits);
+    unsigned int  p;
     
     cout << "Int in base 10: {";
     for(p=0; p<n_bits; p++){
         
-        for(result[n_bits-1-p]=0, s=0; s<b.size(); s++){
-            result[n_bits-1-p] += two_pow(s) * (b[s].GetBit(n_bits-1-p));
-        }
-        
-        cout << result[n_bits-1-p] << " ";
+        cout << Get(p) << " ";
         
     }
     
     cout << "}\n";
+        
+}
+
+
+//return the unsigned long long int written in the p-th bit of *this
+inline unsigned long long int Int::Get(unsigned int p){
     
-    result.clear();
+    unsigned int s;
+    unsigned long long int result;
+    
+    for(result=0, s=0; s<GetSize(); s++){
+        result += two_pow(s) * (b[s].GetBit(n_bits-1-p));
+    }
+    
+    return result;
     
 }
+
 
 //returns *this + m
 inline Int Int::operator + (const Int& m) {
@@ -255,28 +264,28 @@ inline Int Int::operator - (const Int& m) {
     subtrahend = m;
     one.SetAll(1);
     
-    cout << "minuend : ";
-    minuend.Print();
+//    cout << "minuend : ";
+//    minuend.Print();
+//    
+//    cout << "subtrahend : ";
+//    subtrahend.Print();
     
-    cout << "subtrahend : ";
-    subtrahend.Print();
+//    cout << "one : ";
+//    one.Print();
     
-    cout << "one : ";
-    one.Print();
-    
-    cout << "subtrahend.Complement : ";
-    subtrahend.Complement(minuend.GetSize()).Print();
-    
+//    cout << "subtrahend.Complement : ";
+//    subtrahend.Complement(minuend.GetSize()).Print();
+//    
     minuend = (minuend + subtrahend.Complement(minuend.GetSize()) + one);
     
-    cout << "minuend + subtrahend.Complement + 1 ";
-    minuend.Print();
+//    cout << "minuend + subtrahend.Complement + 1 ";
+//    minuend.Print();
  
     
     minuend.RemoveFirstSignificantBit();
 
-    cout << "(minuend + ~subtrahend + 1 ).remove first digit";
-    minuend.Print();
+//    cout << "(minuend + ~subtrahend + 1 ).remove first digit";
+//    minuend.Print();
  
     
     return minuend;
