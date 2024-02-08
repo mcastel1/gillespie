@@ -94,7 +94,9 @@
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
-            endingLineNumber = "110">
+            endingLineNumber = "110"
+            landmarkName = "main(argc, argv)"
+            landmarkType = "9">
             <Locations>
                <Location
                   uuid = "6BBC15FC-473D-4562-BF2C-4E34F8B1B3A9 - 40e678f257758624"
