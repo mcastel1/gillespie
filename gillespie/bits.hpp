@@ -16,9 +16,10 @@
 class Bits{
   
 private:
-    unsigned long long int n;
-    
+
 public:
+    
+    unsigned long long int n;
     
     Bits();
     Bits(unsigned long long int);

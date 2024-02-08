@@ -136,3 +136,10 @@ inline Bits Bits::operator ^ (const Bits& m){
     return Bits((n ^ (m.n)));
     
 }
+
+
+inline Bits operator ~ (const Bits& m){
+    
+    return Bits((~(m.n)));
+    
+}
