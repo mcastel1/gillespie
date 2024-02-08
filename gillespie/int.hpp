@@ -37,10 +37,8 @@ public:
     void Print(void);
     void PrintBase10(void);
     
-    
-//    void SetRandom(unsigned long long int);
     //bitwise sum
     Int operator + (const Int&), operator - (const Int&);
-    Bits operator [] (const unsigned int&);
+    Bits operator [] (const unsigned int&),  operator < (const Int&);
 
 };

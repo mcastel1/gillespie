@@ -296,8 +296,29 @@ inline Int Int::operator - (const Int& m) {
 
 
 //overload of [] operator
-Bits Int::operator[](const unsigned int& i){
+Bits Int::operator [] (const unsigned int& i){
     
     return(b[i]);
+    
+}
+
+
+
+//Confronto *this con m e scrivo in changer il risultato. changer è uguale a 1 se *this < m e a 0 altrimenti
+Bits Int::operator < (const Int& m){
+    
+    int s;
+    Bits changer, check;
+    
+    
+    changer = (~((b[GetSize() - 1]).n)) & (((m.b)[GetSize() - 1]).n);
+    check = (((b[GetSize() - 1]).n) ^ (((m.b)[GetSize() - 1]).n));
+    
+    for(s=GetSize() - 2; s >=0; s--){
+        changer = (((check.n) & (changer.n)) | ((~(check.n)) & ((~((b[s]).n)) & (((m.b)[s]).n))) );
+        (check.n) = ((check.n) | (((b[s]).n) ^ (((m.b)[s]).n)));
+    }
+    
+    return changer;
     
 }

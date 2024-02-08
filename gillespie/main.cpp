@@ -85,13 +85,17 @@ int main(int argc, char * argv[]) {
     System sys(N, seed);
     
     Int a(1234), b(334);
+    Bits compare;
     
-    a.SetRandom(23); b.SetRandom(3);
-    a.PrintBase10(); b.PrintBase10();
+    a.SetRandom(23); 
+    b.SetRandom(3);
+    a.PrintBase10(); 
+    b.PrintBase10();
     
-    (a-b).PrintBase10();
+//    (a-b).PrintBase10();
     
-    
+    compare = (a < b);
+    compare.Print();
 
     
     
