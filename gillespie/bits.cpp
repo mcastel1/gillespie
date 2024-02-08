@@ -112,3 +112,27 @@ void Bits::Print(void){
     cout << " }\n";
     
 }
+
+
+//return (this->n) | (m.n) (bitwise OR)
+inline Bits Bits::operator | (const Bits& m){
+    
+    return Bits((n | (m.n)));
+    
+}
+
+
+//return (this->n) & (m.n) (bitwise AND)
+inline Bits Bits::operator & (const Bits& m){
+    
+    return Bits((n & (m.n)));
+    
+}
+
+
+//return (this->n) ^ (m.n) (bitwise xOR)
+inline Bits Bits::operator ^ (const Bits& m){
+    
+    return Bits((n ^ (m.n)));
+    
+}

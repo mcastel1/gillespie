@@ -33,5 +33,7 @@ public:
         
     friend class Int;
     
+    Bits operator & (const Bits&), operator | (const Bits&), operator ^ (const Bits&);
+    
 };
 

@@ -311,12 +311,12 @@ Bits Int::operator < (const Int& m){
     Bits changer, check;
     
     
-    changer = (~((b[GetSize() - 1]).n)) & (((m.b)[GetSize() - 1]).n);
-    check = (((b[GetSize() - 1]).n) ^ (((m.b)[GetSize() - 1]).n));
+    changer = (~(b[GetSize() - 1])) & ((m.b)[GetSize() - 1]);
+    check = ((b[GetSize() - 1]) ^ ((m.b)[GetSize() - 1]));
     
-    for(s=GetSize() - 2; s >=0; s--){
-        changer = (((check.n) & (changer.n)) | ((~(check.n)) & ((~((b[s]).n)) & (((m.b)[s]).n))) );
-        (check.n) = ((check.n) | (((b[s]).n) ^ (((m.b)[s]).n)));
+    for(s=GetSize()-2; s >=0; s--){
+        changer = ((check & changer) | ((~check) & ((~(b[s])) & ((m.b)[s]))) );
+        check = (check | ((b[s]) ^ ((m.b)[s])));
     }
     
     return changer;
