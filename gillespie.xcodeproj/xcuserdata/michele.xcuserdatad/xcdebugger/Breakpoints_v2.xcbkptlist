@@ -14,9 +14,9 @@
             filePath = "gillespie/int.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "251"
-            endingLineNumber = "251"
-            landmarkName = "Int::operator +(m)"
+            startingLineNumber = "236"
+            endingLineNumber = "236"
+            landmarkName = "Int::operator -(m)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -77,10 +77,8 @@
             filePath = "gillespie/int.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
-            landmarkName = "Int::operator &lt;(m)"
-            landmarkType = "7">
+            startingLineNumber = "326"
+            endingLineNumber = "326">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -93,8 +91,8 @@
             filePath = "gillespie/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "110"
-            endingLineNumber = "110"
+            startingLineNumber = "102"
+            endingLineNumber = "102"
             landmarkName = "main(argc, argv)"
             landmarkType = "9">
             <Locations>

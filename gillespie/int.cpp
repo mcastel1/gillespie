@@ -186,7 +186,8 @@ inline unsigned long long int Int::Get(unsigned int p){
 inline Int Int::operator + (const Int& m) {
     
     
-    Int augend, carry, addend;
+    Int augend, addend;
+    Bits carry;
     unsigned int p, s;
     
     //the augend is the largest among *this and m, and the addend the other one
@@ -199,54 +200,30 @@ inline Int Int::operator + (const Int& m) {
     }
 
     //the carry may propagate until the end of augend -> resize carry correctly
-    carry.Resize(augend.GetSize());
+//    carry.Resize(augend.GetSize());
     //add an extra bit to augend because the sum may increase its size
     augend.Resize(augend.GetSize()+1);
     
-    //    cout << "I am about to make a sum A+B:\n";
-    //    cout << "\n\nA:\n";
-    //    this->Print();
-    //    this->PrintBase10();
-    
-    //    cout << "\n\nB:\n";
-//    addend_copy = m;
-    //    addend_copy.Print();
-    //    addend_copy.PrintBase10();
-    
-//    for(augend.Clear(), s=0; s<b.size(); s++){
-//        (augend.b)[s] = b[s];
-//    }
-//    augend.b.back().Clear();
-    
-    for(p=0; p<addend.GetSize(); p++){
-        //sum addend[p] to augend
+
+
+    for(carry.Clear(), p=0; p<addend.GetSize(); p++){
+        //run over  bits of addend
         
-        carry.Clear();
-        
-        //        cout << "Summing ...";
-        //        ((addend_copy.b)[p]).Print();
-        
-        //run over all bits of augend
-        for(s=p+1,
-            (((carry.b)[p]).n) = ((((augend.b)[p]).n) & (((addend.b)[p]).n)),
-            (((augend.b)[p]).n) ^= (((addend.b)[p]).n);
-            s<augend.GetSize()-1;
-            s++){
-            
-            
-            (((carry.b)[s]).n) = ((((augend.b)[s]).n) & (((carry.b)[s-1]).n));
-            (((augend.b)[s]).n) ^= (((carry.b)[s-1]).n);
-            
-        }
-        
-      
-        //add the last extra bit, which was not present in *this nor in b
-        ((((augend.b)[s]).n) ^= (((carry.b)[s-1]).n));
-        
-        //        cout << "... Result =";
-        //        result.Print();
+        (((augend.b)[p]).n) = ((augend[p]).n) ^ ((addend[p]).n) ^ (carry.n);
+        (carry.n) = (((addend[p]).n) & (((augend[p]).n) | (carry.n))) | (((augend[p]).n) & (carry.n));
+
+    }
+    for(p=addend.GetSize(); p<augend.GetSize()-1; p++){
+        //run over the extra bits of augend
+
+        (((augend.b)[p]).n) = ((augend[p]).n) ^ (carry.n);
+        (carry.n) = (((augend[p]).n) & (carry.n));
         
     }
+    
+    //add the last extra bit
+    (((augend.b)[p]).n) = (carry.n);
+
     
     //the last bit of result is nonzero only if the last carry in the operation is nonzero
     return augend;
