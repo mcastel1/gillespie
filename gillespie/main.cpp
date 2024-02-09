@@ -84,7 +84,7 @@ int main(int argc, char * argv[]) {
     
     System sys(N, seed);
     
-    Int a(10), b(10), c;
+    Int a(234), b(234), c;
     
     
     a.SetRandom(0);

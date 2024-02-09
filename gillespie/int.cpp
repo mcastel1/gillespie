@@ -142,7 +142,7 @@ void Int::Print(void){
     
     unsigned int s;
     
-    cout << "Int:\n";
+    cout << "\n";
     for(s=0; s<b.size(); s++){
         cout << "b[" << s << "] = ";
         b[s].Print();
@@ -206,25 +206,81 @@ inline Int Int::operator + (const Int& m) {
     
 
 
-    for(carry.Clear(), p=0; p<addend.GetSize(); p++){
+    for(p=0, carry.Clear();
+        p<addend.GetSize();
+        p++){
         //run over  bits of addend
         
-        t = (((augend[p]).n) ^ ((addend[p]).n) ^ (carry.n));
+//        cout << "**** p = " << p << "\n";
+//        
+//        
+//        cout << " --- before --- ";
+//        
+//        cout << "augend : ";
+//        augend.Print();
+//        
+//        cout << "addend : ";
+//        addend.Print();
+//
+//        cout << "carry : ";
+//        carry.Print();
+  
+        
+        (t.n) = (((augend[p]).n) ^ ((addend[p]).n) ^ (carry.n));
         (carry.n) = (((addend[p]).n) & (((augend[p]).n) | (carry.n))) | (((augend[p]).n) & (carry.n));
-        augend[p] = t;
+        ((augend.b)[p]).n = (t.n);
+        
+//        cout << " --- after --- ";
+//
+//        cout << "augend : ";
+//        augend.Print();
+//        
+//        cout << "addend : ";
+//        addend.Print();
+//
+//        cout << "carry : ";
+//        carry.Print();
+        
 
     }
     for(p=addend.GetSize(); p<augend.GetSize()-1; p++){
         //run over the extra bits of augend
 
-        t = ((augend[p]).n) ^ (carry.n);
+        (t.n) = (((augend[p]).n) ^ (carry.n));
         (carry.n) = (((augend[p]).n) & (carry.n));
-        augend[p] = t;
+        ((augend.b)[p].n) = (t.n);
         
     }
     
+//    
+//    cout << "**** last operation\n";
+//    
+//    
+//    cout << " --- before --- ";
+//    
+//    cout << "augend : ";
+//    augend.Print();
+//    
+//    cout << "addend : ";
+//    addend.Print();
+//
+//    cout << "carry : ";
+//    carry.Print();
+    
     //add the last extra bit
     (((augend.b)[p]).n) = (carry.n);
+    
+    
+//    cout << " --- after --- ";
+//
+//    cout << "augend : ";
+//    augend.Print();
+//    
+//    cout << "addend : ";
+//    addend.Print();
+//
+//    cout << "carry : ";
+//    carry.Print();
 
     
     //the last bit of result is nonzero only if the last carry in the operation is nonzero
