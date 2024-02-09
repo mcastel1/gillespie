@@ -80,34 +80,22 @@ int main(int argc, char * argv[]) {
                  
          }
          
-     }
-     
+    }
+    
     System sys(N, seed);
     
-    Int a(334), b(334);
-    unsigned int r, s;
-    Bits compare;
+    Int a(10), b(10), c;
     
-    for(r=0; r<1009; r+=2){
-        
-        a.SetRandom(r);
-        b.SetRandom(r+2);
-//        a.PrintBase10();
-//        b.PrintBase10();
-        
-        //    (a-b).PrintBase10();
-        
-        compare = (a < b);
-        
-//        compare.Print();
-        
-        for(s=0; s<n_bits; ++s){
-            
-            if( ((a.Get(s)) < (b.Get(s))) != compare.Get(s) ){cout << "!!!!!!!!\n"; break;}
-            
-        }
-        
-    }
+    
+    a.SetRandom(0);
+    b.SetRandom(1);
+    
+    a.PrintBase10();
+    b.PrintBase10();
+    
+    c=a+b;
+    
+    c.PrintBase10();
     
     
     return 0;

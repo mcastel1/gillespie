@@ -187,8 +187,8 @@ inline Int Int::operator + (const Int& m) {
     
     
     Int augend, addend;
-    Bits carry;
-    unsigned int p, s;
+    Bits carry, t;
+    unsigned int p;
     
     //the augend is the largest among *this and m, and the addend the other one
     if(b.size() > m.b.size()){
@@ -209,15 +209,17 @@ inline Int Int::operator + (const Int& m) {
     for(carry.Clear(), p=0; p<addend.GetSize(); p++){
         //run over  bits of addend
         
-        (((augend.b)[p]).n) = ((augend[p]).n) ^ ((addend[p]).n) ^ (carry.n);
+        t = (((augend[p]).n) ^ ((addend[p]).n) ^ (carry.n));
         (carry.n) = (((addend[p]).n) & (((augend[p]).n) | (carry.n))) | (((augend[p]).n) & (carry.n));
+        augend[p] = t;
 
     }
     for(p=addend.GetSize(); p<augend.GetSize()-1; p++){
         //run over the extra bits of augend
 
-        (((augend.b)[p]).n) = ((augend[p]).n) ^ (carry.n);
+        t = ((augend[p]).n) ^ (carry.n);
         (carry.n) = (((augend[p]).n) & (carry.n));
+        augend[p] = t;
         
     }
     
