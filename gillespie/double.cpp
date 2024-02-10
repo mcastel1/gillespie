@@ -78,3 +78,27 @@ void Double::Print(void){
     s.Print();
     
 }
+
+
+void Double::PrintBase10(void){
+    
+    unsigned int i, p;
+    double b_10, e_10;
+    
+    cout << "Double in base 10: {";
+    for(p=0; p<n_bits; p++){
+        
+        for(b_10=1.0, i=0; i<b.size(); i++){
+            b_10 += pow(2.0, -(i+1)) * (b[b.size()-1-i].Get(p));
+        }
+        for(e_10=-1023.0, i=0; i<e.size(); i++){
+            e_10 += two_pow(i) * (e[i].Get(p));
+        }
+    
+        cout << pow(-1.0, s.Get(p)) * pow(2.0, e_10) * b_10 << " ";
+        
+    }
+    
+    cout << "}\n";
+        
+}
