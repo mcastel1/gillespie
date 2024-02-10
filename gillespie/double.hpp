@@ -27,5 +27,6 @@ private:
 public:
     
     Double(void);
-       
+    void Clear(void);
+    
 };
