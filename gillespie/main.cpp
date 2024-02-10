@@ -99,8 +99,6 @@ int main(int argc, char * argv[]) {
     
     vector<Int> A(S), B(S);
     vector<unsigned long long int> a(S), b(S);
-    unsigned long long int c;
-    Int C;
     gsl_rng* ran;
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     gsl_rng_set(ran, seed);
@@ -129,7 +127,7 @@ int main(int argc, char * argv[]) {
     end = clock();
     time = end - start;
     
-    cout << "Time = " << end - start << "\n";
+    cout << "Time with bits = " << end - start << "\n";
     
     
    
@@ -143,7 +141,7 @@ int main(int argc, char * argv[]) {
     }
     end = clock();
     time = end - start;
-    cout << "Time = " << end - start << "\n";
+    cout << "Time without bits = " << end - start << "\n";
 
     
     

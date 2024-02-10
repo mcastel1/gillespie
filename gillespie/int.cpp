@@ -234,7 +234,7 @@ inline Int Int::operator + (const Int& addend) {
 }
 
 
-//add addend to *this and store the result in *this
+//add addend to *this and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize() and this->GetSize() to have been reallocated with the one extra bit before the method is called 
 inline void Int::AddTo(Int& addend){
     
     Bits carry, t;
