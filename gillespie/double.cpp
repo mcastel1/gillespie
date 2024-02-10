@@ -57,6 +57,24 @@ inline void Double::SetRandom(unsigned int seed){
     
     gsl_rng_free(ran);
 
-    
 }
 
+
+void Double::Print(void){
+    
+    unsigned int i;
+    
+    cout << "\n";
+    for(i=0; i<b.size(); i++){
+        cout << "b[" << i << "] = ";
+        b[i].Print();
+    }
+    cout << "\n";
+    for(i=0; i<e.size(); i++){
+        cout << "e[" << i << "] = ";
+        e[i].Print();
+    }
+    cout << "\n";
+    s.Print();
+    
+}
