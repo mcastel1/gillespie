@@ -235,14 +235,14 @@ inline Int Int::operator + (const Int& addend) {
 
 
 
-inline void Int::AddTo(const Int& addend){
+inline void Int::AddTo(Int& addend){
     
     Bits carry, t;
     unsigned int p;
 
     
     for(p=0, carry.Clear();
-        p<this->GetSize();
+        p<addend.GetSize();
         p++){
         //run over  bits of addend
         
@@ -251,7 +251,7 @@ inline void Int::AddTo(const Int& addend){
         ((b)[p]).n = (t.n);
         
     }
-    for(p=this->GetSize(); p<this->GetSize()-1; p++){
+    for(p=addend.GetSize(); p<GetSize()-1; p++){
         //run over the extra bits of augend
         
         (t.n) = (((b[p]).n) ^ (carry.n));

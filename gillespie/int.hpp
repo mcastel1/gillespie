@@ -39,7 +39,7 @@ public:
     
     //bitwise sum
     Int operator + (const Int&), operator - (const Int&);
-    void AddTo(const Int&);
+    void AddTo(Int&);
     Bits operator [] (const unsigned int&),  operator < (const Int&);
 
 };
