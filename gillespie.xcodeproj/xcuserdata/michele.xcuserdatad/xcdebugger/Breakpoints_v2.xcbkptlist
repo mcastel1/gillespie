@@ -7,36 +7,20 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "186DBFA3-EBA2-4890-8B50-A1D1B34940D6"
+            uuid = "6D2D86E2-210D-4DF5-A4EA-F7FBAB7083F1"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gillespie/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "115"
-            endingLineNumber = "115"
-            landmarkName = "main(argc, argv)"
-            landmarkType = "9">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "497CFF69-6B0C-4EED-B8D0-1BBC33085610"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "gillespie/main.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "101"
-            endingLineNumber = "101"
+            startingLineNumber = "117"
+            endingLineNumber = "117"
             landmarkName = "main(argc, argv)"
             landmarkType = "9">
             <Locations>
                <Location
-                  uuid = "497CFF69-6B0C-4EED-B8D0-1BBC33085610 - 40e678f257758624"
+                  uuid = "6D2D86E2-210D-4DF5-A4EA-F7FBAB7083F1 - 40e678f2577580bb"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -46,12 +30,12 @@
                   urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101"
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
                   offsetFromSymbolStart = "484">
                </Location>
                <Location
-                  uuid = "497CFF69-6B0C-4EED-B8D0-1BBC33085610 - 40e678f257758624"
+                  uuid = "6D2D86E2-210D-4DF5-A4EA-F7FBAB7083F1 - 40e678f2577580bb"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -61,12 +45,12 @@
                   urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "101"
-                  endingLineNumber = "101"
-                  offsetFromSymbolStart = "256">
+                  startingLineNumber = "112"
+                  endingLineNumber = "112"
+                  offsetFromSymbolStart = "568">
                </Location>
                <Location
-                  uuid = "497CFF69-6B0C-4EED-B8D0-1BBC33085610 - 40e678f257758605"
+                  uuid = "6D2D86E2-210D-4DF5-A4EA-F7FBAB7083F1 - 40e678f257758014"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -76,12 +60,12 @@
                   urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "102"
-                  endingLineNumber = "102"
-                  offsetFromSymbolStart = "308">
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "692">
                </Location>
                <Location
-                  uuid = "497CFF69-6B0C-4EED-B8D0-1BBC33085610 - 40e678f257758605"
+                  uuid = "6D2D86E2-210D-4DF5-A4EA-F7FBAB7083F1 - 40e678f257758014"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -91,9 +75,9 @@
                   urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "102"
-                  endingLineNumber = "102"
-                  offsetFromSymbolStart = "304">
+                  startingLineNumber = "117"
+                  endingLineNumber = "117"
+                  offsetFromSymbolStart = "684">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -101,47 +85,92 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "463331FE-3DA7-4122-9769-55FDC5D1DE19"
-            shouldBeEnabled = "No"
+            uuid = "C76D4456-D8AC-484C-AF90-4662B54C5BC0"
+            shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "gillespie/int.cpp"
+            filePath = "gillespie/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
-            landmarkName = "Int::operator +(m)"
-            landmarkType = "7">
+            startingLineNumber = "134"
+            endingLineNumber = "134"
+            landmarkName = "main(argc, argv)"
+            landmarkType = "9">
             <Locations>
                <Location
-                  uuid = "463331FE-3DA7-4122-9769-55FDC5D1DE19 - 92a44c90c4fb67d9"
+                  uuid = "C76D4456-D8AC-484C-AF90-4662B54C5BC0 - 40e678f2577582ab"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Int::operator+(Int const&amp;)"
+                  symbolName = "main"
                   moduleName = "gillespie"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/int.cpp"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205"
-                  offsetFromSymbolStart = "252">
+                  startingLineNumber = "128"
+                  endingLineNumber = "128"
+                  offsetFromSymbolStart = "892">
                </Location>
                <Location
-                  uuid = "463331FE-3DA7-4122-9769-55FDC5D1DE19 - 3b7e045d72c8e025"
+                  uuid = "C76D4456-D8AC-484C-AF90-4662B54C5BC0 - 40e678f2577582ed"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Int::operator+(Int)"
+                  symbolName = "main"
                   moduleName = "gillespie"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/int.cpp"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "205"
-                  endingLineNumber = "205"
-                  offsetFromSymbolStart = "148">
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
+                  offsetFromSymbolStart = "888">
+               </Location>
+               <Location
+                  uuid = "C76D4456-D8AC-484C-AF90-4662B54C5BC0 - 40e678f2577582ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
+                  offsetFromSymbolStart = "884">
+               </Location>
+               <Location
+                  uuid = "C76D4456-D8AC-484C-AF90-4662B54C5BC0 - 40e678f257759dc2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "1008">
+               </Location>
+               <Location
+                  uuid = "C76D4456-D8AC-484C-AF90-4662B54C5BC0 - 40e678f257759dc2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "135"
+                  endingLineNumber = "135"
+                  offsetFromSymbolStart = "1000">
                </Location>
             </Locations>
          </BreakpointContent>

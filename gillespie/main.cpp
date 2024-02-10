@@ -97,14 +97,33 @@ int main(int argc, char * argv[]) {
     clock_t start=0, end=0, time;
     unsigned int s;
     
-    Int A(10), B(10), C(20);
+    vector<Int> A(S), B(S);
+    vector<unsigned long long int> a(S), b(S);
+    unsigned long long int c;
+    Int C;
+    gsl_rng* ran;
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+
     
-    A.SetRandom(0);
-    B.SetRandom(1);
+    
+    for(s=0; s<S; s++){
+        A[s] = Int(10);
+        B[s] = Int(10);
+        (A[s]).SetRandom(s);
+        (B[s]).SetRandom(s+1);
+    }
+    
     start = clock();
     for(time =0, s=0; s<S; s++){
         
-        C=A+B;
+//        A.SetRandom(s);
+//        B.SetRandom(s+1);
+//        
+        C=A[s]+B[s];
+//        c = gsl_rng_uniform_int(ran, 10);
+
+        
     }
     end = clock();
     time = end - start;
@@ -112,16 +131,14 @@ int main(int argc, char * argv[]) {
     cout << "Time = " << end - start << "\n";
     
     
-    unsigned long long int a, b, c;
-    gsl_rng* ran;
-    ran = gsl_rng_alloc(gsl_rng_gfsr4);
-    gsl_rng_set(ran, seed);
-
-    a = gsl_rng_uniform_int(ran, 10);
-    b = gsl_rng_uniform_int(ran, 10);
+   
+    for(s=0; s<S; s++){
+        a[s] = gsl_rng_uniform_int(ran, 10);
+        b[s] = gsl_rng_uniform_int(ran, 10);
+    }
     start = clock();
     for(time=0, s=0; s<S; s++){
-        c=a+b;
+        c=a[s]+b[s];
     }
     end = clock();
     time = end - start;
