@@ -27,7 +27,5 @@ private:
 public:
     
     Double(void);
-    Double(double);
-    
-   
+       
 };

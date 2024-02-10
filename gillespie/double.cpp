@@ -6,3 +6,14 @@
 //
 
 #include "double.hpp"
+
+//default constructor
+Double::Double(void){
+    
+    b.resize(54);
+    e.resize(11);
+    
+}
+
+
+
