@@ -15,9 +15,14 @@
 #include "gsl_rng.h"
 #include "gsl_sf_pow_int.h"
 
-//g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
-//./main.o -N 1 -s 0 -S 1024
+/*compile on mac
+g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
+./main.o -N 1 -s 0 -S 1024
+*/
 
+/*
+ note: - the performance test is very different if you do it on Xcode or on command line with -O3
+ */
 
 inline unsigned long long int two_pow(unsigned long long int i){
     
@@ -102,7 +107,7 @@ int main(int argc, char * argv[]) {
         A=A+B;
     }
     end = clock();
-    time += end - start;
+    time = end - start;
     
     cout << "Time = " << end - start << "\n";
     
@@ -119,7 +124,7 @@ int main(int argc, char * argv[]) {
         a=a+b;
     }
     end = clock();
-    time += end - start;
+    time = end - start;
     cout << "Time = " << end - start << "\n";
 
     
