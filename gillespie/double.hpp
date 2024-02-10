@@ -11,3 +11,23 @@
 #include <stdio.h>
 
 #endif /* double_hpp */
+
+//a double represented in base 2
+class Double{
+    
+private:
+    
+    //the fraction
+    vector<Bits> b;
+    //the exponent
+    vector<Bits> e;
+    //the sign
+    bool s;
+    
+public:
+    
+    Double(void);
+    Double(double);
+    
+   
+};
