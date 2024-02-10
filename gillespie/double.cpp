@@ -36,3 +36,27 @@ inline void Double::Clear(){
     
 }
 
+
+//initialize *this randomly with seed seed
+inline void Double::SetRandom(unsigned int seed){
+    
+    unsigned int i;
+    gsl_rng* ran;
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    
+    for(i=0; i<b.size(); i++){
+        b[i].SetRandom(ran);
+    }
+    for(i=0; i<e.size(); i++){
+        e[i].SetRandom(ran);
+    }
+    s = (bool)gsl_rng_uniform_int(ran, 2);
+    
+    gsl_rng_free(ran);
+
+    
+}
+

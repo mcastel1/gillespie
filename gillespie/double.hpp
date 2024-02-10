@@ -28,5 +28,6 @@ public:
     
     Double(void);
     void Clear(void);
+    void SetRandom(unsigned int);
     
 };

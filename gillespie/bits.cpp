@@ -67,18 +67,26 @@ bool Bits::Get(unsigned int s){
 //set *this randomly with seed seed
 void Bits::SetRandom(unsigned int seed){
     
-    unsigned int s;
     gsl_rng* ran;
     
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     gsl_rng_set(ran, seed);
 
+    SetRandom(ran);
+    
+    gsl_rng_free(ran);
+
+}
+
+//set *this randomly with random number generator ran
+void Bits::SetRandom(gsl_rng* ran){
+    
+    unsigned int s;
+    
     for(s=0; s<n_bits; s++){
         Set(s, (bool)(gsl_rng_uniform_int(ran, 2)));
     }
     
-    gsl_rng_free(ran);
-
 }
 
 
