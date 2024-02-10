@@ -118,12 +118,12 @@ int main(int argc, char * argv[]) {
     start = clock();
     for(time =0, s=0; s<S; s++){
         
-        A[s].PrintBase10();
-        B[s].PrintBase10();
+//        A[s].PrintBase10();
+//        B[s].PrintBase10();
         
         A[s].AddTo(B[s]);
         
-        A[s].PrintBase10();
+//        A[s].PrintBase10();
         
     }
     end = clock();

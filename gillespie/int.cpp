@@ -234,7 +234,7 @@ inline Int Int::operator + (const Int& addend) {
 }
 
 
-
+//add addend to *this and store the result in *this
 inline void Int::AddTo(Int& addend){
     
     Bits carry, t;
