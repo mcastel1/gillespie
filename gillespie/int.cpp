@@ -210,37 +210,10 @@ inline Int Int::operator + (const Int& m) {
         p<addend.GetSize();
         p++){
         //run over  bits of addend
-        
-//        cout << "**** p = " << p << "\n";
-//        
-//        
-//        cout << " --- before --- ";
-//        
-//        cout << "augend : ";
-//        augend.Print();
-//        
-//        cout << "addend : ";
-//        addend.Print();
-//
-//        cout << "carry : ";
-//        carry.Print();
-  
-        
+    
         (t.n) = (((augend[p]).n) ^ ((addend[p]).n) ^ (carry.n));
         (carry.n) = (((addend[p]).n) & (((augend[p]).n) | (carry.n))) | (((augend[p]).n) & (carry.n));
         ((augend.b)[p]).n = (t.n);
-        
-//        cout << " --- after --- ";
-//
-//        cout << "augend : ";
-//        augend.Print();
-//        
-//        cout << "addend : ";
-//        addend.Print();
-//
-//        cout << "carry : ";
-//        carry.Print();
-        
 
     }
     for(p=addend.GetSize(); p<augend.GetSize()-1; p++){
@@ -252,35 +225,8 @@ inline Int Int::operator + (const Int& m) {
         
     }
     
-//    
-//    cout << "**** last operation\n";
-//    
-//    
-//    cout << " --- before --- ";
-//    
-//    cout << "augend : ";
-//    augend.Print();
-//    
-//    cout << "addend : ";
-//    addend.Print();
-//
-//    cout << "carry : ";
-//    carry.Print();
-    
     //add the last extra bit
     (((augend.b)[p]).n) = (carry.n);
-    
-    
-//    cout << " --- after --- ";
-//
-//    cout << "augend : ";
-//    augend.Print();
-//    
-//    cout << "addend : ";
-//    addend.Print();
-//
-//    cout << "carry : ";
-//    carry.Print();
 
     
     //the last bit of result is nonzero only if the last carry in the operation is nonzero
