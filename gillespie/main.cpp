@@ -108,10 +108,11 @@ int main(int argc, char * argv[]) {
     
     
     for(s=0; s<S; s++){
-        A[s] = Int(10);
-        B[s] = Int(10);
+        A[s] = Int(8);
+        B[s] = Int(8);
         (A[s]).SetRandom(s);
         (B[s]).SetRandom(s+1);
+        (A[s]).Resize(A[s].GetSize()+1);
     }
     
     start = clock();
@@ -120,7 +121,7 @@ int main(int argc, char * argv[]) {
 //        A.SetRandom(s);
 //        B.SetRandom(s+1);
 //        
-        C=A[s]+B[s];
+        A[s].AddTo(B[s]);
 //        c = gsl_rng_uniform_int(ran, 10);
 
         
@@ -133,12 +134,12 @@ int main(int argc, char * argv[]) {
     
    
     for(s=0; s<S; s++){
-        a[s] = gsl_rng_uniform_int(ran, 10);
-        b[s] = gsl_rng_uniform_int(ran, 10);
+        a[s] = gsl_rng_uniform_int(ran, 9);
+        b[s] = gsl_rng_uniform_int(ran, 9);
     }
     start = clock();
     for(time=0, s=0; s<S; s++){
-        c=a[s]+b[s];
+        a[s]+=b[s];
     }
     end = clock();
     time = end - start;
