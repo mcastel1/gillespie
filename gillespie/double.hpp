@@ -19,7 +19,7 @@ private:
     
     //the fraction
     vector<Bits> b;
-    //the exponent
+    //the exponent, encoded in the first 11 bits of e
     vector<Bits> e;
     //the sign
     bool s;
