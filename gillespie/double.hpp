@@ -17,12 +17,12 @@ class Double{
     
 private:
     
-    //the fraction
+    //the fraction: b has size 54
     vector<Bits> b;
-    //the exponent, encoded in the first 11 bits of e
+    //the exponent: b has size 11
     vector<Bits> e;
     //the sign
-    bool s;
+    Bits s;
     
 public:
     
