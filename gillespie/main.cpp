@@ -97,14 +97,14 @@ int main(int argc, char * argv[]) {
     clock_t start=0, end=0, time;
     unsigned int s;
     
-    Int A(10000), B(10);
+    Int A(10), B(10), C(20);
     
     A.SetRandom(0);
     B.SetRandom(1);
     start = clock();
     for(time =0, s=0; s<S; s++){
         
-        A=A+B;
+        C=A+B;
     }
     end = clock();
     time = end - start;
@@ -112,16 +112,16 @@ int main(int argc, char * argv[]) {
     cout << "Time = " << end - start << "\n";
     
     
-    unsigned long long int a, b;
+    unsigned long long int a, b, c;
     gsl_rng* ran;
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     gsl_rng_set(ran, seed);
 
-    a = gsl_rng_uniform_int(ran, 1000);
+    a = gsl_rng_uniform_int(ran, 10);
     b = gsl_rng_uniform_int(ran, 10);
     start = clock();
     for(time=0, s=0; s<S; s++){
-        a=a+b;
+        c=a+b;
     }
     end = clock();
     time = end - start;

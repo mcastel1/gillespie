@@ -183,54 +183,54 @@ inline unsigned long long int Int::Get(unsigned int p){
 
 
 //returns *this + m
-inline Int Int::operator + (const Int& m) {
+inline Int Int::operator + (Int m) {
     
     
-    Int augend, addend;
+    Int *augend, *addend;
     Bits carry, t;
     unsigned int p;
     
     //the augend is the largest among *this and m, and the addend the other one
     if(b.size() > m.b.size()){
-        augend = (*this);
-        addend = m;
+        augend = this;
+        addend = &m;
     }else{
-        augend = m;
-        addend = (*this);
+        augend = &m;
+        addend = this;
     }
 
     //the carry may propagate until the end of augend -> resize carry correctly
 //    carry.Resize(augend.GetSize());
     //add an extra bit to augend because the sum may increase its size
-    augend.Resize(augend.GetSize()+1);
+    augend->Resize(augend->GetSize()+1);
     
 
 
     for(p=0, carry.Clear();
-        p<addend.GetSize();
+        p<addend->GetSize();
         p++){
         //run over  bits of addend
     
-        (t.n) = (((augend[p]).n) ^ ((addend[p]).n) ^ (carry.n));
-        (carry.n) = (((addend[p]).n) & (((augend[p]).n) | (carry.n))) | (((augend[p]).n) & (carry.n));
-        ((augend.b)[p]).n = (t.n);
+        (t.n) = ((((*augend)[p]).n) ^ (((*addend)[p]).n) ^ (carry.n));
+        (carry.n) = ((((*addend)[p]).n) & ((((*augend)[p]).n) | (carry.n))) | ((((*augend)[p]).n) & (carry.n));
+        (((*augend).b)[p]).n = (t.n);
 
     }
-    for(p=addend.GetSize(); p<augend.GetSize()-1; p++){
+    for(p=addend->GetSize(); p<augend->GetSize()-1; p++){
         //run over the extra bits of augend
 
-        (t.n) = (((augend[p]).n) ^ (carry.n));
-        (carry.n) = (((augend[p]).n) & (carry.n));
-        ((augend.b)[p].n) = (t.n);
+        (t.n) = ((((*augend)[p]).n) ^ (carry.n));
+        (carry.n) = ((((*augend)[p]).n) & (carry.n));
+        (((*augend).b)[p].n) = (t.n);
         
     }
     
     //add the last extra bit
-    (((augend.b)[p]).n) = (carry.n);
+    ((((*augend).b)[p]).n) = (carry.n);
 
     
     //the last bit of result is nonzero only if the last carry in the operation is nonzero
-    return augend;
+    return (*augend);
 
 }
 
