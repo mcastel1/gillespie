@@ -15,6 +15,8 @@
 #include "gsl_rng.h"
 #include "gsl_sf_pow_int.h"
 
+//g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
+//./main.o -N 1 -s 0 -S 1024
 
 
 inline unsigned long long int two_pow(unsigned long long int i){
@@ -63,10 +65,9 @@ void Int::SetRandom(unsigned long long int seed){
 int main(int argc, char * argv[]) {
     
     int options;
-    unsigned int seed=0, N=0;
-    
+    unsigned int seed=0, N=0, S=0;
 
-    while ((options = getopt(argc, argv, ":N:s:")) != -1) {
+    while ((options = getopt(argc, argv, ":N:s:S:")) != -1) {
          
          switch (options) {
                  
@@ -78,24 +79,50 @@ int main(int argc, char * argv[]) {
                  seed = ((unsigned int)atoi(optarg));
                  break;
                  
+             case 'S':
+                 S = ((unsigned int)atoi(optarg));
+                 break;
+      
+                 
          }
          
     }
     
     System sys(N, seed);
+    clock_t start=0, end=0, time;
+    unsigned int s;
     
-    Int a(234), b(234), c;
+    Int A(10000), B(10);
+    
+    A.SetRandom(0);
+    B.SetRandom(1);
+    start = clock();
+    for(time =0, s=0; s<S; s++){
+        
+        A=A+B;
+    }
+    end = clock();
+    time += end - start;
+    
+    cout << "Time = " << end - start << "\n";
     
     
-    a.SetRandom(0);
-    b.SetRandom(1);
+    unsigned long long int a, b;
+    gsl_rng* ran;
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+
+    a = gsl_rng_uniform_int(ran, 1000);
+    b = gsl_rng_uniform_int(ran, 10);
+    start = clock();
+    for(time=0, s=0; s<S; s++){
+        a=a+b;
+    }
+    end = clock();
+    time += end - start;
+    cout << "Time = " << end - start << "\n";
+
     
-    a.PrintBase10();
-    b.PrintBase10();
-    
-    c=a+b;
-    
-    c.PrintBase10();
     
     
     return 0;

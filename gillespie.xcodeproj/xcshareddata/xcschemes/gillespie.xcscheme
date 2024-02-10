@@ -56,6 +56,10 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "-S 1024"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-N 1000"
             isEnabled = "YES">
          </CommandLineArgument>
