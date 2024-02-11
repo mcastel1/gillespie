@@ -107,7 +107,7 @@ inline void Double::SetAllVertically(double x){
 
         for(bit = 0; bit < 8; bit++, p++)
         {
-//            printf("%d", byte & 1);
+            printf("%d", byte & 1);
             
             
             if(p < b.size()){
