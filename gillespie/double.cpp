@@ -74,7 +74,7 @@ void Double::Print(void){
         cout << "e[" << i << "] = ";
         e[i].Print();
     }
-    cout << "\n";
+    cout << "\ns = ";
     s.Print();
     
 }
@@ -84,13 +84,14 @@ void Double::Print(void){
 //set all entries of *this according to the double x
 void Double::SetAllVertically(double x){
     
-    
+    //set the exponent
     //x = (-1)^s * 2^(e-1023) * (1+ ....).
     //log_2|x| = e-1023 + log(1+...)
     //integer_part(log_2|x|) = e-1023
+    e.SetAll(floor(gsl_sf_log_abs(x)/gsl_sf_log(2.0)) + 1023);
     
     //set the sign
-    s.SetAll((x >= 0.0));
+    s.SetAll((x >= 0.0 ? false : true));
     
     
 }
