@@ -296,7 +296,7 @@ inline void Int::operator -= (Int& m) {
 }
 
 
-//overload of [] operator
+//overload of [] operator. IT IS IMPORTANT THAT THIS RETURNS A REFERENCE, NOT AN Int: OTHERWISE THE RETURNED OBJECT, WHEN MODIFIED, WILL NOT CHANGE *this
 inline Bits& Int::operator [] (const unsigned int& i){
     
     return((b[i]));
