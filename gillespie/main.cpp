@@ -13,7 +13,7 @@
 #include <getopt.h>
 
 #include "gsl_rng.h"
-#include "gsl_sf_pow_int.h"
+#include "gsl_math.h"
 
 /*compile on mac
 g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
@@ -26,7 +26,7 @@ g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/i
 
 inline unsigned long long int two_pow(unsigned long long int i){
     
-    return ((unsigned long long int)gsl_sf_pow_int(2.0, ((int)i)));
+    return ((unsigned long long int)gsl_pow_int(2.0, ((int)i)));
     
 }
 
@@ -94,58 +94,10 @@ int main(int argc, char * argv[]) {
          
     }
     
-    System sys(N, seed);
-    clock_t start=0, end=0, time;
-    unsigned int s;
-    
-    vector<Int> A(S), B(S);
-    vector<unsigned long long int> a(S), b(S);
-    unsigned long long int c;
-    Int C;
-    gsl_rng* ran;
-    ran = gsl_rng_alloc(gsl_rng_gfsr4);
-    gsl_rng_set(ran, seed);
-
-    
-    
-    for(s=0; s<S; s++){
-        A[s] = Int(10);
-        B[s] = Int(10);
-        (A[s]).SetRandom(s);
-        (B[s]).SetRandom(s+1);
-    }
-    
-    start = clock();
-    for(time =0, s=0; s<S; s++){
-        
-//        A.SetRandom(s);
-//        B.SetRandom(s+1);
-//        
-        C=A[s]+B[s];
-//        c = gsl_rng_uniform_int(ran, 10);
-
-        
-    }
-    end = clock();
-    time = end - start;
-    
-    cout << "Time = " << end - start << "\n";
-    
-    
-   
-    for(s=0; s<S; s++){
-        a[s] = gsl_rng_uniform_int(ran, 10);
-        b[s] = gsl_rng_uniform_int(ran, 10);
-    }
-    start = clock();
-    for(time=0, s=0; s<S; s++){
-        c=a[s]+b[s];
-    }
-    end = clock();
-    time = end - start;
-    cout << "Time = " << end - start << "\n";
-
-    
+    Double a;
+    a.SetRandom(0);
+    a.Print();
+    a.PrintBase10();
     
     
     return 0;
