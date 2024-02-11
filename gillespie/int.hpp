@@ -42,4 +42,6 @@ public:
     void operator += (Int&), operator -= (Int&);
     Bits operator [] (const unsigned int&),  operator < (const Int&);
 
+    friend class Double;
+    
 };

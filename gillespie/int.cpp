@@ -232,11 +232,11 @@ inline void Int::operator -= (Int& m) {
     
     subtrahend = m;
     
-    cout << "one : ";
-    one.Print();
+//    cout << "one : ";
+//    one.Print();
     one.SetAll(1);
-    cout << "one : ";
-    one.Print();
+//    cout << "one : ";
+//    one.Print();
 
 //    cout << "this:";
 //    this->Print();

@@ -11,7 +11,7 @@
 inline Double::Double(void){
     
     b.resize(54);
-    e.resize(11);
+    e.Resize(11);
     
 }
 
@@ -26,10 +26,10 @@ inline void Double::Clear(){
     }
     
     //set the exponent to 1023
-    for(p=0; p<e.size()-1; p++){
+    for(p=0; p<e.GetSize()-1; p++){
         (e[p]).SetAll(true);
     }
-    e.back().SetAll(false);
+    e.b.back().SetAll(false);
     
     //set the sign to +
     s.SetAll(false);
@@ -50,7 +50,7 @@ inline void Double::SetRandom(unsigned int seed){
     for(i=0; i<b.size(); i++){
         b[i].SetRandom(ran);
     }
-    for(i=0; i<e.size(); i++){
+    for(i=0; i<e.GetSize(); i++){
         e[i].SetRandom(ran);
     }
     s = (bool)gsl_rng_uniform_int(ran, 2);
@@ -70,7 +70,7 @@ void Double::Print(void){
         b[i].Print();
     }
     cout << "\n";
-    for(i=0; i<e.size(); i++){
+    for(i=0; i<e.GetSize(); i++){
         cout << "e[" << i << "] = ";
         e[i].Print();
     }
@@ -85,9 +85,9 @@ void Double::Print(void){
 void Double::SetAllVertically(double x){
     
     
-    //x = (-1)^s * 2^e * (1+ ....).
-    //log_2|x| = e + log(1+...)
-    //integer_part(log_2|x|) = e
+    //x = (-1)^s * 2^(e-1023) * (1+ ....).
+    //log_2|x| = e-1023 + log(1+...)
+    //integer_part(log_2|x|) = e-1023
     
     //set the sign
     s.SetAll((x >= 0.0));
@@ -112,7 +112,7 @@ void Double::PrintBase10(void){
 //            B = (b[b.size()-1-i].Get(p));
             b_10 += gsl_pow_int(2.0, -(i+1)) * (b[b.size()-1-i].Get(p));
         }
-        for(e_10=-1023.0, i=0; i<e.size(); i++){
+        for(e_10=-1023.0, i=0; i<e.GetSize(); i++){
             e_10 += two_pow(i) * (e[i].Get(p));
         }
     

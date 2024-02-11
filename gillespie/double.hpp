@@ -19,8 +19,8 @@ private:
     
     //the fraction: b has size 54
     vector<Bits> b;
-    //the exponent: b has size 11
-    vector<Bits> e;
+    //the exponent: e.b has size 11
+    Int e;
     //the sign
     Bits s;
     
