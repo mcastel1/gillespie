@@ -38,7 +38,7 @@ public:
     void PrintBase10(void);
     
     //bitwise sum
-    Int operator + (const Int&), operator - (const Int&);
+    Int operator + (Int&), operator - (const Int&);
     void operator += (Int&);
     Bits operator [] (const unsigned int&),  operator < (const Int&);
 
