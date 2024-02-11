@@ -28,6 +28,7 @@ public:
     void SetAll(bool);
     bool Get(unsigned int);
     void SetRandom(unsigned int);
+    void SetRandom(gsl_rng*);
     Bits Complement(void);
     void Clear(void);
     void Print(void);

@@ -10,11 +10,11 @@
 
 
 
-Int::Int(void){
+inline Int::Int(void){
         
 }
 
-Int::Int(unsigned long long int N){
+inline Int::Int(unsigned long long int N){
     
     b.resize(bits(N));
     
@@ -22,7 +22,7 @@ Int::Int(unsigned long long int N){
 
 
 //set *this to zero
-void Int::Clear(){
+inline void Int::Clear(){
     
     unsigned int s;
     
@@ -33,20 +33,20 @@ void Int::Clear(){
 }
 
 
-void Int::Resize(unsigned int size){
+inline void Int::Resize(unsigned int size){
     
     b.resize(size);
     
 }
 
-unsigned int Int::GetSize(void){
+inline unsigned int Int::GetSize(void){
     
     return ((unsigned int)(b.size()));
     
 }
 
 //return the one-complement of *this with respect to a size 'size' of the binary representation
-Int Int::Complement(unsigned int size){
+inline Int Int::Complement(unsigned int size){
     
     unsigned int s;
     Int result;
@@ -69,7 +69,7 @@ Int Int::Complement(unsigned int size){
 }
 
 //initialize *this randomly
-void Int::SetRandom(unsigned int seed){
+inline  void Int::SetRandom(unsigned int seed){
     
     unsigned int s, p;
     gsl_rng* ran;
@@ -91,7 +91,7 @@ void Int::SetRandom(unsigned int seed){
 
 
 //set all n_bits entries of *this to the respective binary values of i
-void Int::SetAll(unsigned long long int i){
+inline void Int::SetAll(unsigned long long int i){
     
     Bits m(i);
     
@@ -150,6 +150,7 @@ void Int::Print(void){
     cout << "\n";
     
 }
+
 
 void Int::PrintBase10(void){
     
@@ -310,7 +311,7 @@ inline Int Int::operator - (const Int& m) {
 
 
 //overload of [] operator
-Bits Int::operator [] (const unsigned int& i){
+inline Bits Int::operator [] (const unsigned int& i){
     
     return(b[i]);
     
@@ -319,7 +320,7 @@ Bits Int::operator [] (const unsigned int& i){
 
 
 //Confronto *this con m e scrivo in changer il risultato. changer è uguale a 1 se *this < m e a 0 altrimenti
-Bits Int::operator < (const Int& m){
+inline Bits Int::operator < (const Int& m){
     
     int s;
     Bits changer, check;

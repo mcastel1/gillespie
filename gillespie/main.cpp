@@ -13,7 +13,7 @@
 #include <getopt.h>
 
 #include "gsl_rng.h"
-#include "gsl_sf_pow_int.h"
+#include "gsl_math.h"
 
 /*compile on mac
 g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
@@ -26,7 +26,7 @@ g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/i
 
 inline unsigned long long int two_pow(unsigned long long int i){
     
-    return ((unsigned long long int)gsl_sf_pow_int(2.0, ((int)i)));
+    return ((unsigned long long int)gsl_pow_int(2.0, ((int)i)));
     
 }
 
@@ -44,6 +44,7 @@ unsigned int inline bits(unsigned long long int n){
 #include "main.hpp"
 #include "bits.cpp"
 #include "int.cpp"
+#include "double.cpp"
 #include "system.cpp"
 
 
@@ -93,7 +94,7 @@ int main(int argc, char * argv[]) {
          
     }
     
-    System sys(N, seed);
+/*    System sys(N, seed);
     clock_t start=0, end=0, time;
     unsigned int s;
     
@@ -142,8 +143,12 @@ int main(int argc, char * argv[]) {
     end = clock();
     time = end - start;
     cout << "Time without bits = " << end - start << "\n";
-
+*/
     
+    Double a;
+    a.SetRandom(0);
+    a.Print();
+    a.PrintBase10();
     
     
     return 0;
