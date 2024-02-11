@@ -85,6 +85,10 @@ void Double::Print(void){
 void Double::SetAllVertically(double x){
     
     
+    //x = (-1)^s * 2^e * (1+ ....).
+    //log_2|x| = e + log(1+...)
+    //integer_part(log_2|x|) = e
+    
     //set the sign
     s.SetAll((x >= 0.0));
     
