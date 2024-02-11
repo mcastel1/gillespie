@@ -28,6 +28,7 @@ public:
     
     Double(void);
     void Clear(void);
+    void SetAllVertically(double);
     void SetRandom(unsigned int);
     void Print(void);
     void PrintBase10(void);

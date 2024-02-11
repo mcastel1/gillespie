@@ -79,6 +79,20 @@ void Double::Print(void){
     
 }
 
+
+
+//set all entries of *this according to the double x
+void Double::SetAllVertically(double x){
+    
+    
+    //set the sign
+    s.SetAll((x >= 0.0));
+    
+    
+}
+
+
+
 //print *this in base 10
 void Double::PrintBase10(void){
     
