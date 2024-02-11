@@ -16,7 +16,12 @@
 #include "gsl_math.h"
 
 /*compile on mac
+ //compile without optimization
+ g++ main.cpp -llapack -lgsl -lcblas -lm -O0 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
+ 
+ //compile with optimization
 g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
+ 
 ./main.o -N 1 -s 0 -S 1024
 */
 
@@ -94,8 +99,8 @@ int main(int argc, char * argv[]) {
          
     }
     
-/*    System sys(N, seed);
-    clock_t start=0, end=0, time;
+  System sys(N, seed);
+    clock_t start=0, end=0;
     unsigned int s;
     
     vector<Int> A(S), B(S);
@@ -115,18 +120,17 @@ int main(int argc, char * argv[]) {
     }
     
     start = clock();
-    for(time =0, s=0; s<S; s++){
+    for(s=0; s<S; s++){
         
 //        A[s].PrintBase10();
 //        B[s].PrintBase10();
         
-        A[s].AddTo(B[s]);
+        A[s]+=(B[s]);
         
 //        A[s].PrintBase10();
         
     }
     end = clock();
-    time = end - start;
     
     cout << "Time with bits = " << end - start << "\n";
     
@@ -137,19 +141,19 @@ int main(int argc, char * argv[]) {
         b[s] = gsl_rng_uniform_int(ran, 9);
     }
     start = clock();
-    for(time=0, s=0; s<S; s++){
+    for(s=0; s<S; s++){
         a[s]+=b[s];
     }
     end = clock();
-    time = end - start;
     cout << "Time without bits = " << end - start << "\n";
-*/
+
     
+    /*
     Double a;
     a.SetRandom(0);
     a.Print();
     a.PrintBase10();
-    
+    */
     
     return 0;
     

@@ -188,7 +188,7 @@ inline Int Int::operator + (const Int& addend) {
     
     
     Bits carry, t;
-    unsigned int p;
+//    unsigned int p;
     
 //    //the augend is the largest among *this and m, and the addend the other one
 //    if(b.size() > m.b.size()){
@@ -236,7 +236,7 @@ inline Int Int::operator + (const Int& addend) {
 
 
 //add addend to *this and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize() and this->GetSize() to have been reallocated with the one extra bit before the method is called 
-inline void Int::AddTo(Int& addend){
+inline void Int::operator += (Int& addend){
     
     Bits carry, t;
     unsigned int p;
