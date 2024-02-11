@@ -10,7 +10,7 @@
 //default constructor
 inline Double::Double(void){
     
-    b.resize(54);
+    b.resize(52);
     e.Resize(11);
     
 }
@@ -82,17 +82,54 @@ void Double::Print(void){
 
 
 //set all entries of *this according to the double x
-void Double::SetAllVertically(double x){
+inline void Double::SetAllVertically(double x){
+//
+//    //set the exponent
+//    //x = (-1)^s * 2^(e-1023) * (1+ ....).
+//    //log_2|x| = e-1023 + log(1+...)
+//    //integer_part(log_2|x|) = e-1023
+//    e.SetAll(floor(gsl_sf_log_abs(x)/gsl_sf_log(2.0)) + 1023);
+//    
+//    //set the sign
+//    s.SetAll((x >= 0.0 ? false : true));
+//    
     
-    //set the exponent
-    //x = (-1)^s * 2^(e-1023) * (1+ ....).
-    //log_2|x| = e-1023 + log(1+...)
-    //integer_part(log_2|x|) = e-1023
-    e.SetAll(floor(gsl_sf_log_abs(x)/gsl_sf_log(2.0)) + 1023);
     
-    //set the sign
-    s.SetAll((x >= 0.0 ? false : true));
-    
+    uint8_t *bytePointer = (uint8_t *)&x;
+    uint8_t byte;
+    size_t index;
+    unsigned int i, p;
+
+    for(index = 0, i=0; index < sizeof(double); index++){
+        
+        byte = bytePointer[index];
+
+        for(p=0; p<8; p++, i++){
+            
+//            printf("%d", byte & 1);
+            
+            if(i < b.size()){
+                
+                b[i].SetAll(byte & 1);
+                
+            }else{
+                
+                if(i < b.size() + e.GetSize()){
+                    
+                    e[i-b.size()].SetAll(byte & 1);
+
+                }else{
+                    
+                    s.SetAll(byte & 1);
+                    
+                }
+                
+            }
+            
+            byte >>= 1;
+        }
+        
+    }
     
 }
 

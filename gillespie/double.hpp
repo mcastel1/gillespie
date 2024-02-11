@@ -17,7 +17,7 @@ class Double{
     
 private:
     
-    //the fraction: b has size 54
+    //the fraction: b has size 52
     vector<Bits> b;
     //the exponent: e.b has size 11
     Int e;
