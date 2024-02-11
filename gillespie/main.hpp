@@ -13,6 +13,7 @@
 
 #define n_bits 64
 const unsigned long long int ullong_1 = 1;
+const unsigned long long int ullong_0 = 0;
 
 using namespace std;
 

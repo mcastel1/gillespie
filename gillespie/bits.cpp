@@ -19,27 +19,11 @@ Bits::Bits(unsigned long long int n_in){
 //set the s-th bit of *this equal to bit
 void Bits::Set(unsigned int s, bool bit){
     
-    unsigned int p;
-    unsigned long long int result;
-    
-    result = 0;
-    for(p=0; p<n_bits; p++){
-        
-        if(p!=s){
-            
-            result |= (((n >> p) & ullong_1) << p);
-            
-        }else{
-            
-            if(bit){
-                result |= (ullong_1 << s);
-            }
-            
-        }
-        
+    if(bit){
+        n |= (ullong_1 << s);
+    }else{
+        n |= (ullong_0 << s);
     }
-    
-    n = result;
     
 }
 

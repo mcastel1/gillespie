@@ -118,7 +118,19 @@ inline void Double::SetAllVertically(double x){
                 
                 if(p < b.size()+e.GetSize()){
                     
-                    e[p-b.size()].SetAll(((bool)(byte & 1)));
+                    int temp;
+                    bool bb;
+                    
+                    temp = p-(b.size());
+                    bb = ((bool)(byte & 1));
+                    
+                    cout << "\nbefore";
+                    e[temp].Print();
+                    
+//                    e[temp].SetAll(((bool)(byte & 1)));
+                    e[temp].SetAll(true);
+                    cout << "\nafter";
+                    e[temp].Print();
 
                 }else{
                     

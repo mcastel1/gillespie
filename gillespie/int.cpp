@@ -151,7 +151,7 @@ void Int::Print(void){
     
     cout << "\n";
     for(s=0; s<b.size(); s++){
-        cout << "b[" << s << "] = ";
+        cout << "[" << s << "] = ";
         b[s].Print();
     }
     cout << "\n";
@@ -297,9 +297,9 @@ inline void Int::operator -= (Int& m) {
 
 
 //overload of [] operator
-inline Bits Int::operator [] (const unsigned int& i){
+inline Bits& Int::operator [] (const unsigned int& i){
     
-    return(b[i]);
+    return((b[i]));
     
 }
 

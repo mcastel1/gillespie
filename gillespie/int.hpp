@@ -41,7 +41,8 @@ public:
     //bitwise sum
     Int operator + (Int&);
     void operator += (Int&), operator -= (Int&);
-    Bits operator [] (const unsigned int&),  operator < (const Int&);
+    Bits& operator [] (const unsigned int&);
+    Bits operator < (const Int&);
 
     friend class Double;
     
