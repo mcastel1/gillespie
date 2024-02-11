@@ -96,39 +96,16 @@ inline void Double::SetAllVertically(double x){
     
     
     uint8_t *bytePointer = (uint8_t *)&x;
-    uint8_t byte;
-    size_t index;
-    unsigned int i, p;
 
-    for(index = 0, i=0; index < sizeof(double); index++){
-        
-        byte = bytePointer[index];
+    for(size_t index = 0; index < sizeof(double); index++)
+    {
+        uint8_t byte = bytePointer[index];
 
-        for(p=0; p<8; p++, i++){
-            
-//            printf("%d", byte & 1);
-            
-            if(i < b.size()){
-                
-                b[i].SetAll(byte & 1);
-                
-            }else{
-                
-                if(i < b.size() + e.GetSize()){
-                    
-                    e[i-b.size()].SetAll(byte & 1);
-
-                }else{
-                    
-                    s.SetAll(byte & 1);
-                    
-                }
-                
-            }
-            
+        for(int bit = 0; bit < 8; bit++)
+        {
+            printf("%d", byte&1);
             byte >>= 1;
         }
-        
     }
     
 }
