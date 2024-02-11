@@ -90,22 +90,17 @@ inline  void Int::SetRandom(unsigned int seed){
 }
 
 
-//set all n_bits entries of *this to the respective binary values of i
+//reize *this in order to contain all bits of i, and set all n_bits entries of *this to the respective bits of i
 inline void Int::SetAll(unsigned long long int i){
     
     Bits m(i);
     
-    if(b.size() <= n_bits){
-        
-        for(unsigned int s=0; s<b.size(); s++){
-            (b[s]).SetAll(m.Get(s));
-        }
-        
-    }else{
-        
-        cout << "Cannot SetAll if b.size() > n_bits!!\n";
-        
+    Resize(bits(m.n));
+    
+    for(unsigned int s=0; s<b.size(); s++){
+        (b[s]).SetAll(m.Get(s));
     }
+    
     
 }
 
@@ -233,36 +228,41 @@ inline void Int::operator += (Int& addend){
 inline void Int::operator -= (Int& m) {
     
     
-    Int subtrahend, one(1);
+    Int subtrahend, one;
     
     subtrahend = m;
-    one.SetAll(1);
-
-    cout << "this:";
-    this->Print();
     
-    cout << "subtrahend:";
-    subtrahend.Print();
+    cout << "one : ";
+    one.Print();
+    one.SetAll(1);
+    cout << "one : ";
+    one.Print();
+
+//    cout << "this:";
+//    this->Print();
+//    
+//    cout << "subtrahend:";
+//    subtrahend.Print();
     
     //GIVEN THAT *THIS HAS BEEN RESIZED WITH ONE ADDITIONAL ENTRY AND THAT I WANT TO COMPUTE THE COMPLEMENT WITH RESPECT TO THE ACTUAL SIZE OF THIS (WITHOUT THE ADDITIONAL ENTRY) HERE I CALL  ComplementTo with argument (this->GetSize())-1 RATHER THAN WITH ARGUMENT (this->GetSize())
     subtrahend.ComplementTo((this->GetSize())-1);
     
-    cout << "subtrahend complement:";
-    subtrahend.Print();
+//    cout << "subtrahend complement:";
+//    subtrahend.Print();
 
     
     (*this) += subtrahend;
     
-    cout << "*this + subtrahend complement:";
-    this->Print();
+//    cout << "*this + subtrahend complement:";
+//    this->Print();
 
  
     //THE += operator NEEDS *THIS TO BE RESIZED WITH ONE ADDITIONAL ENTRY EVERY TIME IT IS CALLED -> I RESIZE *this WITH ONE ADDITIONAL ENTRY 
     this->Resize(this->GetSize()+1);
     (*this) += one;
     
-    cout << "*this + subtrahend complement + 1:";
-    this->Print();
+//    cout << "*this + subtrahend complement + 1:";
+//    this->Print();
 
     
 //    minuend = (minuend + subtrahend.Complement(minuend.GetSize()) + one);
@@ -273,8 +273,8 @@ inline void Int::operator -= (Int& m) {
     
     this->RemoveFirstSignificantBit();
 
-    cout << "[*this + subtrahend complement + 1 ]_ removed first significant bit:";
-    this->Print();
+//    cout << "[*this + subtrahend complement + 1 ]_ removed first significant bit:";
+//    this->Print();
 
     
 //    cout << "(minuend + ~subtrahend + 1 ).remove first digit";

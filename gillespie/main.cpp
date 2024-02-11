@@ -103,6 +103,9 @@ int main(int argc, char * argv[]) {
     clock_t start=0, end=0;
     unsigned int s;
     
+
+    
+    
     vector<Int> A(S), B(S);
     vector<unsigned long long int> a(S), b(S);
     gsl_rng* ran;
