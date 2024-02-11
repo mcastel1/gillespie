@@ -101,7 +101,7 @@ int main(int argc, char * argv[]) {
     }
     
     Double a;
-    a.SetAllVertically(-42.242353);
+    a.SetAllVertically(-24.325);
     a.Print();
     
     
