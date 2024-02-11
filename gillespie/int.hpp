@@ -32,6 +32,7 @@ public:
     void ComplementTo(unsigned int);
     void SetRandom(unsigned int);
     void SetAll(unsigned long long int);
+    void ResizeAndSetAll(unsigned long long int);
     void RemoveFirstSignificantBit(void);
     unsigned long long int Get(unsigned int);
     void Print(void);

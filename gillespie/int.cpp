@@ -89,9 +89,21 @@ inline  void Int::SetRandom(unsigned int seed){
     
 }
 
+// set all n_bits entries of *this to the respective bits of i. This method requires b to be properly sized
+inline void Int::SetAll(unsigned long long int i){
+    
+    Bits m(i);
+        
+    for(unsigned int s=0; s<bits(m.n); s++){
+        (b[s]).SetAll(m.Get(s));
+    }
+    
+    
+}
+
 
 //reize *this in order to contain all bits of i, and set all n_bits entries of *this to the respective bits of i
-inline void Int::SetAll(unsigned long long int i){
+inline void Int::ResizeAndSetAll(unsigned long long int i){
     
     Bits m(i);
     
@@ -234,7 +246,7 @@ inline void Int::operator -= (Int& m) {
     
 //    cout << "one : ";
 //    one.Print();
-    one.SetAll(1);
+    one.ResizeAndSetAll(1);
 //    cout << "one : ";
 //    one.Print();
 
