@@ -45,28 +45,28 @@ inline unsigned int Int::GetSize(void){
     
 }
 
-//return the one-complement of *this with respect to a size 'size' of the binary representation
-inline Int Int::Complement(unsigned int size){
+//write the one-complement of *this with respect to a size 'size' of the binary representation and write it into *this
+inline void Int::ComplementTo(unsigned int size){
     
     unsigned int s;
-    Int result;
     Bits one;
     
     one.SetAll(true);
-    result.Resize(size);
+    this->Resize(size);
     
     //set the first bits common to *this
     for(s=0; s<GetSize(); s++){
-        (result.b)[s] = (b[s]).Complement();
+        b[s] = (b[s]).Complement();
     }
-    for(s=GetSize(); s<result.GetSize(); s++){
-        (result.b)[s] = one;
-        
+    for(s=GetSize(); s<this->GetSize(); s++){
+        b[s] = one;
     }
-    
-    return result;
     
 }
+
+
+
+
 
 //initialize *this randomly
 inline  void Int::SetRandom(unsigned int seed){
@@ -229,44 +229,57 @@ inline void Int::operator += (Int& addend){
     
 }
 
-
-inline Int Int::operator - (const Int& m) {
+//substract m to *this and write the result in *this. THIS FUNCTION REQUIRES THAT *THIS HAS BEEN ALREADY RESIZED WITH AN EXTRA ADDITIONAL ENTRY.
+inline void Int::operator -= (Int& m) {
     
     
-    Int minuend, subtrahend, one(1);
+    Int subtrahend, one(1);
     
-    
-    minuend = (*this);
     subtrahend = m;
     one.SetAll(1);
+
+    cout << "this:";
+    this->Print();
     
-//    cout << "minuend : ";
-//    minuend.Print();
-//    
-//    cout << "subtrahend : ";
-//    subtrahend.Print();
+    cout << "subtrahend:";
+    subtrahend.Print();
     
-//    cout << "one : ";
-//    one.Print();
+    //GIVEN THAT *THIS HAS BEEN RESIZED WITH ONE ADDITIONAL ENTRY AND THAT I WANT TO COMPUTE THE COMPLEMENT WITH RESPECT TO THE ACTUAL SIZE OF THIS (WITHOUT THE ADDITIONAL ENTRY) HERE I CALL  ComplementTo with argument (this->GetSize())-1 RATHER THAN WITH ARGUMENT (this->GetSize())
+    subtrahend.ComplementTo((this->GetSize())-1);
     
-//    cout << "subtrahend.Complement : ";
-//    subtrahend.Complement(minuend.GetSize()).Print();
-//    
-    minuend = (minuend + subtrahend.Complement(minuend.GetSize()) + one);
+    cout << "subtrahend complement:";
+    subtrahend.Print();
+
+    
+    (*this) += subtrahend;
+    
+    cout << "*this + subtrahend complement:";
+    this->Print();
+
+ 
+    //THE += operator NEEDS *THIS TO BE RESIZED WITH ONE ADDITIONAL ENTRY EVERY TIME IT IS CALLED -> I RESIZE *this WITH ONE ADDITIONAL ENTRY 
+    this->Resize(this->GetSize()+1);
+    (*this) += one;
+    
+    cout << "*this + subtrahend complement + 1:";
+    this->Print();
+
+    
+//    minuend = (minuend + subtrahend.Complement(minuend.GetSize()) + one);
     
 //    cout << "minuend + subtrahend.Complement + 1 ";
 //    minuend.Print();
  
     
-    minuend.RemoveFirstSignificantBit();
+    this->RemoveFirstSignificantBit();
 
+    cout << "[*this + subtrahend complement + 1 ]_ removed first significant bit:";
+    this->Print();
+
+    
 //    cout << "(minuend + ~subtrahend + 1 ).remove first digit";
 //    minuend.Print();
  
-    
-    return minuend;
-    
-    
     
 }
 

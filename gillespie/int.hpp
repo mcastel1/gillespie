@@ -29,7 +29,7 @@ public:
     void Resize(unsigned int);
     unsigned int GetSize(void);
     void Clear(void);
-    Int Complement(unsigned int);
+    void ComplementTo(unsigned int);
     void SetRandom(unsigned int);
     void SetAll(unsigned long long int);
     void RemoveFirstSignificantBit(void);
@@ -38,8 +38,8 @@ public:
     void PrintBase10(void);
     
     //bitwise sum
-    Int operator + (Int&), operator - (const Int&);
-    void operator += (Int&);
+    Int operator + (Int&);
+    void operator += (Int&), operator -= (Int&);
     Bits operator [] (const unsigned int&),  operator < (const Int&);
 
 };
