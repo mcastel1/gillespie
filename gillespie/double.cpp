@@ -96,12 +96,14 @@ inline void Double::SetAllVertically(double x){
     
     
     uint8_t *bytePointer = (uint8_t *)&x;
-
-    for(size_t index = 0; index < sizeof(double); index++)
+    size_t index;
+    int bit;
+    
+    for(index = 0; index < sizeof(double); index++)
     {
         uint8_t byte = bytePointer[index];
 
-        for(int bit = 0; bit < 8; bit++)
+        for(bit = 0; bit < 8; bit++)
         {
             printf("%d", byte&1);
             byte >>= 1;
