@@ -107,7 +107,7 @@ inline void Double::SetAllVertically(double x){
 
         for(bit = 0; bit < 8; bit++, p++)
         {
-            printf("%d", byte & 1);
+//            printf("%d", byte & 1);
             
             
             if(p < b.size()){
@@ -118,19 +118,19 @@ inline void Double::SetAllVertically(double x){
                 
                 if(p < b.size()+e.GetSize()){
                     
-                    int temp;
-                    bool bb;
+//                    int temp;
+//                    bool bb;
                     
-                    temp = p-(b.size());
-                    bb = ((bool)(byte & 1));
+//                    temp = p-(b.size());
+//                    bb = ((bool)(byte & 1));
                     
-                    cout << "\nbefore";
-                    e[temp].Print();
+//                    cout << "\nbefore";
+//                    e[temp].Print();
                     
-//                    e[temp].SetAll(((bool)(byte & 1)));
-                    e[temp].SetAll(true);
-                    cout << "\nafter";
-                    e[temp].Print();
+                    e[p-(b.size())].SetAll(((bool)(byte & 1)));
+//                    e[temp].SetAll(true);
+//                    cout << "\nafter";
+//                    e[temp].Print();
 
                 }else{
                     
