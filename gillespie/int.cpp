@@ -44,54 +44,6 @@ inline void Int::ComplementTo(unsigned int size){
 
 
 
-//initialize *this randomly
-inline  void Int::SetRandom(unsigned int seed){
-    
-    unsigned int s, p;
-    gsl_rng* ran;
-    
-    ran = gsl_rng_alloc(gsl_rng_gfsr4);
-    gsl_rng_set(ran, seed);
-
-
-    for(s=0; s<b.size(); s++){
-        for(p=0; p<n_bits; p++){
-            b[s].Set(p, (bool)(gsl_rng_uniform_int(ran, 2)));
-        }
-    }
-    
-    gsl_rng_free(ran);
-
-    
-}
-
-// set all n_bits entries of *this to the respective bits of i. This method requires b to be properly sized
-inline void Int::SetAll(unsigned long long int i){
-    
-    Bits m(i);
-        
-    for(unsigned int s=0; s<bits(m.n); s++){
-        (b[s]).SetAll(m.Get(s));
-    }
-    
-    
-}
-
-
-//reize *this in order to contain all bits of i, and set all n_bits entries of *this to the respective bits of i
-inline void Int::ResizeAndSetAll(unsigned long long int i){
-    
-    Bits m(i);
-    
-    Resize(bits(m.n));
-    
-    for(unsigned int s=0; s<b.size(); s++){
-        (b[s]).SetAll(m.Get(s));
-    }
-    
-    
-}
-
 
 //set to zero the first bits of *this that is equal to one (stating from the last bit) and leave the others unchanged, write the result in *this
 inline void Int::RemoveFirstSignificantBit(void){
@@ -121,18 +73,6 @@ inline void Int::RemoveFirstSignificantBit(void){
 }
 
 
-void Int::Print(void){
-    
-    unsigned int s;
-    
-    cout << "\n";
-    for(s=0; s<b.size(); s++){
-        cout << "[" << s << "] = ";
-        b[s].Print();
-    }
-    cout << "\n";
-    
-}
 
 
 void Int::PrintBase10(void){
@@ -151,19 +91,7 @@ void Int::PrintBase10(void){
 }
 
 
-//return the unsigned long long int written in the p-th bit of *this
-inline unsigned long long int Int::Get(unsigned int p){
-    
-    unsigned int s;
-    unsigned long long int result;
-    
-    for(result=0, s=0; s<GetSize(); s++){
-        result += two_pow(s) * (b[s].Get(p));
-    }
-    
-    return result;
-    
-}
+
 
 
 //returns *this + m
