@@ -108,6 +108,10 @@ int main(int argc, char * argv[]) {
     //
     
     //     System sys(N, seed);
+    
+    
+    /*
+     //some tests for Int class
     clock_t start=0, end=0;
     unsigned int s;
     
@@ -157,15 +161,18 @@ int main(int argc, char * argv[]) {
     }
     end = clock();
     cout << "Time without bits = " << end - start << "\n";
-    
+    */
 
     
-    /*
-     Double a;
-     a.SetRandom(0);
-     a.Print();
-     a.PrintBase10();
-     */
+    
+    //some tests for Double class
+    
+    Double a;
+//    a.SetRandom((int)0);
+    a.SetAllVertically(32.42354);
+    a.Print();
+    a.PrintBase10();
+    
     
     return 0;
     
