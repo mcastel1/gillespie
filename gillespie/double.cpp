@@ -45,7 +45,6 @@ inline void Double::SetRandom(unsigned int seed){
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     gsl_rng_set(ran, seed);
     
-    
     SetRandom(ran);
     
     gsl_rng_free(ran);
@@ -64,7 +63,7 @@ inline void Double::SetRandom(gsl_rng* ran){
     for(i=0; i<e.GetSize(); i++){
         e[i].SetRandom(ran);
     }
-    s = (bool)gsl_rng_uniform_int(ran, 2);
+    s = ((bool)gsl_rng_uniform_int(ran, 2));
     
 }
 

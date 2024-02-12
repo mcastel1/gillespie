@@ -101,7 +101,7 @@ int main(int argc, char * argv[]) {
     }
     
     Double a;
-    a.SetAllVertically(-24.325);
+    a.SetRandom((int)0);
     a.Print();
     a.PrintBase10();
     
