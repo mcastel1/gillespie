@@ -28,3 +28,15 @@ inline void BitSet::Clear(){
     }
     
 }
+
+inline void BitSet::Resize(unsigned int size){
+    
+    b.resize(size);
+    
+}
+
+inline unsigned int BitSet::GetSize(void){
+    
+    return ((unsigned int)(b.size()));
+    
+}

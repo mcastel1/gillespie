@@ -25,6 +25,8 @@ public:
     BitSet(unsigned long long int);
     
     void Clear(void);
+    void Resize(unsigned int);
+    unsigned int GetSize(void);
 
     friend class Int;
     friend class Double;

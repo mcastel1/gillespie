@@ -21,19 +21,6 @@ inline Int::Int(unsigned long long int N) : BitSet(N){
 }
 
 
-
-inline void Int::Resize(unsigned int size){
-    
-    b.resize(size);
-    
-}
-
-inline unsigned int Int::GetSize(void){
-    
-    return ((unsigned int)(b.size()));
-    
-}
-
 //write the one-complement of *this with respect to a size 'size' of the binary representation and write it into *this
 inline void Int::ComplementTo(unsigned int size){
     
