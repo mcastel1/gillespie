@@ -40,12 +40,23 @@ inline void Double::Clear(){
 //initialize *this randomly with seed seed
 inline void Double::SetRandom(unsigned int seed){
     
-    unsigned int i;
     gsl_rng* ran;
     
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     gsl_rng_set(ran, seed);
     
+    
+    SetRandom(ran);
+    
+    gsl_rng_free(ran);
+
+}
+
+
+//initialize *this randomly with the (already initialized) random generator *ran
+inline void Double::SetRandom(gsl_rng* ran){
+    
+    unsigned int i;
     
     for(i=0; i<b.size(); i++){
         b[i].SetRandom(ran);
@@ -55,8 +66,6 @@ inline void Double::SetRandom(unsigned int seed){
     }
     s = (bool)gsl_rng_uniform_int(ran, 2);
     
-    gsl_rng_free(ran);
-
 }
 
 
@@ -101,14 +110,13 @@ inline void Double::SetAllVertically(double x){
     int bit;
     unsigned int p;
     
-    for(index=0, p=0; index < sizeof(double); index++)
-    {
+    for(index=0, p=0; index < sizeof(double); index++){
+        
          byte = bytePointer[index];
 
-        for(bit = 0; bit < 8; bit++, p++)
-        {
-            printf("%d", byte & 1);
+        for(bit = 0; bit < 8; bit++, p++){
             
+//            printf("%d", byte & 1);
             
             if(p < b.size()){
                 
