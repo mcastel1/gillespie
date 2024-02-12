@@ -10,7 +10,7 @@
 //default constructor
 inline Double::Double(void){
     
-    b.resize(52);
+    b.Resize(52);
     e.Resize(11);
     
 }
@@ -21,7 +21,7 @@ inline void Double::Clear(){
     unsigned int p;
     
     //set the fraction to zero
-    for(p=0; p<b.size(); p++){
+    for(p=0; p<b.GetSize(); p++){
         (b[p]).n = 0;
     }
     
@@ -57,7 +57,7 @@ inline void Double::SetRandom(gsl_rng* ran){
     
     unsigned int i;
     
-    for(i=0; i<b.size(); i++){
+    for(i=0; i<b.GetSize(); i++){
         b[i].SetRandom(ran);
     }
     for(i=0; i<e.GetSize(); i++){
@@ -73,7 +73,7 @@ void Double::Print(void){
     unsigned int i;
     
     cout << "\n";
-    for(i=0; i<b.size(); i++){
+    for(i=0; i<b.GetSize(); i++){
         cout << "b[" << i << "] = ";
         b[i].Print();
     }
@@ -117,13 +117,13 @@ inline void Double::SetAllVertically(double x){
             
 //            printf("%d", byte & 1);
             
-            if(p < b.size()){
+            if(p < b.GetSize()){
                 
                 b[p].SetAll(((bool)(byte & 1)));
                 
             }else{
                 
-                if(p < b.size()+e.GetSize()){
+                if(p < b.GetSize()+e.GetSize()){
                     
 //                    int temp;
 //                    bool bb;
@@ -134,7 +134,7 @@ inline void Double::SetAllVertically(double x){
 //                    cout << "\nbefore";
 //                    e[temp].Print();
                     
-                    e[p-(b.size())].SetAll(((bool)(byte & 1)));
+                    e[p-(b.GetSize())].SetAll(((bool)(byte & 1)));
 //                    e[temp].SetAll(true);
 //                    cout << "\nafter";
 //                    e[temp].Print();
@@ -167,10 +167,10 @@ void Double::PrintBase10(void){
     cout << "Double in base 10: {";
     for(p=0; p<n_bits; p++){
         
-        for(b_10=1.0, i=0; i<b.size(); i++){
+        for(b_10=1.0, i=0; i<b.GetSize(); i++){
 //            A = gsl_pow_int(2.0, -(i+1));
 //            B = (b[b.size()-1-i].Get(p));
-            b_10 += gsl_pow_int(2.0, -(i+1)) * (b[b.size()-1-i].Get(p));
+            b_10 += gsl_pow_int(2.0, -(i+1)) * (b[b.GetSize()-1-i].Get(p));
         }
         for(e_10=-1023.0, i=0; i<e.GetSize(); i++){
             e_10 += two_pow(i) * (e[i].Get(p));
