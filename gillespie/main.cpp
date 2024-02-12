@@ -100,66 +100,65 @@ int main(int argc, char * argv[]) {
         }
         
     }
+    //
+    //    Double a;
+    //    a.SetRandom((int)0);
+    //    a.Print();
+    //    a.PrintBase10();
+    //
     
-    Double a;
-    a.SetRandom((int)0);
-    a.Print();
-    a.PrintBase10();
+    //     System sys(N, seed);
+    clock_t start=0, end=0;
+    unsigned int s;
     
     
-    /*
-     System sys(N, seed);
-     clock_t start=0, end=0;
-     unsigned int s;
-     
-     
-     
-     
-     vector<Int> A(S), B(S);
-     vector<unsigned long long int> a(S), b(S);
-     gsl_rng* ran;
-     ran = gsl_rng_alloc(gsl_rng_gfsr4);
-     gsl_rng_set(ran, seed);
-     
-     
-     
-     for(s=0; s<S; s++){
-     A[s] = Int(8);
-     B[s] = Int(4);
-     (A[s]).SetRandom(s);
-     (B[s]).SetRandom(s+1);
-     (A[s]).Resize(A[s].GetSize()+1);
-     }
-     
-     start = clock();
-     for(s=0; s<S; s++){
-     
-     A[s].PrintBase10();
-     B[s].PrintBase10();
-     
-     A[s]-=(B[s]);
-     
-     A[s].PrintBase10();
-     
-     }
-     end = clock();
-     
-     cout << "Time with bits = " << end - start << "\n";
-     
-     
-     
-     for(s=0; s<S; s++){
-     a[s] = gsl_rng_uniform_int(ran, 9);
-     b[s] = gsl_rng_uniform_int(ran, 9);
-     }
-     start = clock();
-     for(s=0; s<S; s++){
-     a[s]+=b[s];
-     }
-     end = clock();
-     cout << "Time without bits = " << end - start << "\n";
-     
-     */
+    
+    
+    vector<Int> A(S), B(S);
+    vector<unsigned long long int> a(S), b(S);
+    gsl_rng* ran;
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    
+    
+    for(s=0; s<S; s++){
+        A[s] = Int(8);
+        B[s] = Int(4);
+        (A[s]).SetRandom(s);
+        (B[s]).SetRandom(s+1);
+        (A[s]).Resize(A[s].GetSize()+1);
+    }
+    
+    start = clock();
+    for(s=0; s<S; s++){
+        
+        A[s].PrintBase10();
+        B[s].PrintBase10();
+        
+        A[s]-=(B[s]);
+        
+        A[s].PrintBase10();
+        
+    }
+    end = clock();
+    
+    cout << "Time with bits = " << end - start << "\n";
+    
+    
+    
+    for(s=0; s<S; s++){
+        a[s] = gsl_rng_uniform_int(ran, 9);
+        b[s] = gsl_rng_uniform_int(ran, 9);
+    }
+    start = clock();
+    for(s=0; s<S; s++){
+        a[s]+=b[s];
+    }
+    end = clock();
+    cout << "Time without bits = " << end - start << "\n";
+    
+
     
     /*
      Double a;
