@@ -10,13 +10,13 @@
 
 
 
-inline Int::Int(void){
+inline Int::Int(void) : BitSet(){
         
 }
 
-inline Int::Int(unsigned long long int N){
+
+inline Int::Int(unsigned long long int N) : BitSet(N){
     
-    b.resize(bits(N));
     
 }
 

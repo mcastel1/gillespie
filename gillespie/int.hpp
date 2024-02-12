@@ -13,13 +13,14 @@
 #endif /* int_hpp */
 
 
+
+
 //an int represented in base 2 in b
-class Int{
+class Int : public BitSet{
     
 private:
     
-    //b[i] is the i-th bit of the representation of *this in base 2
-    vector<Bits> b;
+    //here b[i] is the i-th bit of the representation of *this in base 2
     
 public:
     

@@ -49,6 +49,7 @@ unsigned int inline bits(unsigned long long int n){
 
 #include "main.hpp"
 #include "bits.cpp"
+#include "bitset.hpp"
 #include "int.cpp"
 #include "double.cpp"
 #include "system.cpp"

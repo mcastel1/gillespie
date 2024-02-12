@@ -11,3 +11,17 @@
 #include <stdio.h>
 
 #endif /* bitset_hpp */
+ 
+
+class BitSet{
+    
+private:
+    //b[i] is the i-th bit of the BitSet
+    vector<Bits> b;
+    
+    BitSet();
+    BitSet(unsigned long long int);
+    
+    
+};
+
