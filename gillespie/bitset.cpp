@@ -8,6 +8,11 @@
 #include "bitset.hpp"
 
 
+inline BitSet::BitSet(void){
+    
+    
+}
+
 inline BitSet::BitSet(unsigned long long int N){
     
     b.resize(bits(N));
