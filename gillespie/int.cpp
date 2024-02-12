@@ -21,17 +21,6 @@ inline Int::Int(unsigned long long int N) : BitSet(N){
 }
 
 
-//set *this to zero
-inline void Int::Clear(){
-    
-    unsigned int s;
-    
-    for(s=0; s<b.size(); s++){
-        b[s].n = 0;
-    }
-    
-}
-
 
 inline void Int::Resize(unsigned int size){
     

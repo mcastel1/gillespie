@@ -24,7 +24,8 @@ public:
     BitSet();
     BitSet(unsigned long long int);
     
-    
+    void Clear(void);
+
     friend class Int;
     friend class Double;
     

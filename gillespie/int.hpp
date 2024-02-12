@@ -29,7 +29,6 @@ public:
     
     void Resize(unsigned int);
     unsigned int GetSize(void);
-    void Clear(void);
     void ComplementTo(unsigned int);
     void SetRandom(unsigned int);
     void SetAll(unsigned long long int);
