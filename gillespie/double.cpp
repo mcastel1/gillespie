@@ -183,3 +183,11 @@ void Double::PrintBase10(void){
     cout << "}\n";
         
 }
+
+
+//sum *this to addend and write the result in *this
+inline void Double::operator += (Double& addend){
+    
+    
+    
+}
