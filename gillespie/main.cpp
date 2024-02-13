@@ -30,24 +30,9 @@
  note: - the performance test is very different if you do it on Xcode or on command line with -O3
  */
 
-inline unsigned long long int two_pow(unsigned long long int i){
-    
-    return ((unsigned long long int)gsl_pow_int(2.0, ((int)i)));
-    
-}
-
-//return the number of bits necessary to write n in base 2
-unsigned int inline bits(unsigned long long int n){
-    
-    unsigned int s;
-    
-    for(s=0; two_pow(s) <= (unsigned long long int)n; s++){}
-    
-    return s;
-    
-}
 
 #include "main.hpp"
+#include "lib.cpp"
 #include "bits.cpp"
 #include "bitset.cpp"
 #include "int.cpp"
@@ -166,13 +151,15 @@ int main(int argc, char * argv[]) {
     
     
     //some tests for Double class
-    
+    /*
     Double a;
 //    a.SetRandom((int)0);
     a.SetAllVertically(32.42354);
     a.Print();
     a.PrintBase10();
-    
+    */
+    bitwise_print_double(-.3423589247);
+     
     
     return 0;
     
