@@ -229,7 +229,7 @@ inline Bits UnsignedInt::operator < (const UnsignedInt& m){
 }
 
 //I am obliged to put this method definition here, because this method needs the full declaration of the UnsignedInt class before it is declared
-//shift bit-by-bit *this by a number of positions encoded in *e
+//shift bit-by-bit the entries of  b[0] b[1] ... in *this by a number of positions encoded in *e and replace the remaining entries b[] by all zeros
 inline void BitSet::operator >>=(UnsignedInt* e){
     
     unsigned int n;
