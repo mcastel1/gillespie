@@ -112,7 +112,7 @@ int main(int argc, char * argv[]) {
     //    Double a;
     //    a.SetRandom((int)0);
     //    a.Print();
-    //    a.PrintBase10();
+    //    a.PrintBase10_IEEE754();
     //
     
     //     System sys(N, seed);
@@ -145,12 +145,12 @@ int main(int argc, char * argv[]) {
     start = clock();
     for(s=0; s<S; s++){
         
-        A[s].PrintBase10();
-        B[s].PrintBase10();
+        A[s].PrintBase10_IEEE754();
+        B[s].PrintBase10_IEEE754();
         
         A[s]-=(B[s]);
         
-        A[s].PrintBase10();
+        A[s].PrintBase10_IEEE754();
         
     }
     end = clock();
@@ -177,9 +177,9 @@ int main(int argc, char * argv[]) {
     /*
     Double a;
 //    a.SetRandom((int)0);
-    a.SetAllVertically(32.42354);
+    a.SetAllVertically_IEEE754(32.42354);
     a.Print();
-    a.PrintBase10();
+    a.PrintBase10_IEEE754();
     */
 //    bitwise_print_double(-.3423589247);
      

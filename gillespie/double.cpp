@@ -89,8 +89,8 @@ void Double::Print(void){
 
 
 
-//set all entries of *this according to the double x
-inline void Double::SetAllVertically(double x){
+//set all entries of *this according to the double x, where x is written in binary according to the IEEE754 convention
+inline void Double::SetAllVertically_IEEE754(double x){
 //
 //    //set the exponent
 //    //x = (-1)^s * 2^(e-1023) * (1+ ....).
@@ -157,8 +157,8 @@ inline void Double::SetAllVertically(double x){
 
 
 
-//print *this in base 10
-void Double::PrintBase10(void){
+//print *this in base 10 according to the IEEE754 convention 
+void Double::PrintBase10_IEEE754(void){
     
     unsigned int i, p;
     double b_10, e_10/*, A*/;

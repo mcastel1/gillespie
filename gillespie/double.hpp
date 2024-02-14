@@ -21,11 +21,11 @@ public:
     
     Double(void);
     void Clear(void);
-    void SetAllVertically(double);
+    void SetAllVertically_IEEE754(double);
     void SetRandom(gsl_rng*);
     void SetRandom(unsigned int);
     void Print(void);
-    void PrintBase10(void);
+    void PrintBase10_IEEE754(void);
     
     void operator += (Double&);
 
