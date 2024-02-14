@@ -182,7 +182,7 @@ void Double::PrintBase10_IEEE754(void){
 }
 
 
-//print *this in base 10 according to the my convention
+//print *this in base 10 according to the my convention, where the mantissa is \sum_{i=0}^{52-1} b_{52-1-i} 2^{-i}
 void Double::PrintBase10(void){
     
     unsigned int i, p;
