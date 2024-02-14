@@ -5,16 +5,6 @@
 //  Created by Michele on 07/02/2024.
 //
 
-#ifndef int_hpp
-#define int_hpp
-
-#include <stdio.h>
-
-#endif /* int_hpp */
-
-
-
-
 //an int represented in base 2 in b
 class UnsignedInt : public BitSet{
     

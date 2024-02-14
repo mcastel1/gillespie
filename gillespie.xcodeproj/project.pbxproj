@@ -27,8 +27,6 @@
 		D1ADCAFE2B62C1EB007DDD5A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D1ADCB062B63D5B8007DDD5A /* gillespie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gillespie.entitlements; sourceTree = "<group>"; };
 		D1BDABE62B73A44F0099B603 /* gillespie */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gillespie; sourceTree = "<group>"; };
-		D1F170C02B7A794500720046 /* bitset.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = bitset.cpp; path = gillespie/bitset.cpp; sourceTree = "<group>"; };
-		D1F170C12B7A794500720046 /* bitset.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = bitset.hpp; path = gillespie/bitset.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,8 +43,6 @@
 		D1ADCAF22B62C1EB007DDD5A = {
 			isa = PBXGroup;
 			children = (
-				D1F170C02B7A794500720046 /* bitset.cpp */,
-				D1F170C12B7A794500720046 /* bitset.hpp */,
 				D1BDABE62B73A44F0099B603 /* gillespie */,
 				D1ADCAFD2B62C1EB007DDD5A /* gillespie */,
 				D1ADCAFC2B62C1EB007DDD5A /* Products */,
