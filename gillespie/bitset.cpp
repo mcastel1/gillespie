@@ -128,16 +128,3 @@ inline Bits& BitSet::operator [] (const unsigned int& i){
     
 }
 
-
-//shift bit-by-bit *this by a number of positions encoded in e
-inline void BitSet::operator >>=(const UnsignedInt& e){
-    
-    unsigned int n;
-    
-    for(n=0; n<e.GetSize(); n++){
-        
-        
-    }
-    
-    
-}
