@@ -242,7 +242,12 @@ inline void BitSet::operator >>=(UnsignedInt* e){
         for(m=0; m<n_bits_mantissa-two_pow(n); m++){
             //run through the components of this->b and shift them
             
-            b[m].Replace(b[m+two_pow(n)], (*e)[n]);
+            b[m].Replace(
+                         //the element # m+2^n in b
+                         b.data() + (m+two_pow(n)),
+                         //the element #n in e
+                         e->b.data()+n
+                         );
             
         }
     }

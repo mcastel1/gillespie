@@ -107,9 +107,9 @@ Bits Bits::Complement(void){
 
 
 //replace bit-by-bit *this with replacer if check = true, and leave *this unchanged if check = false
-inline void Bits::Replace(const Bits& replacer, const Bits& check){
+inline void Bits::Replace(Bits* replacer,  Bits* check){
     
-    return (((*this) & (~check)) | (replacer & check));
+    (*this) =  (((*this) & (~(*check))) | ((*replacer) & (*check)));
     
 }
 
@@ -156,6 +156,17 @@ inline Bits Bits::operator ^ (const Bits& m){
 }
 
 
+
+//apply a bit-by-bit negation to *this and return the result
+inline Bits Bits::operator ~ (void){
+    
+    return Bits((~n));
+
+    
+}
+
+
+//this is not a method of the Bits class, but an ordinary function which had to be declared in this file because it need to know who the Bits type is
 inline Bits operator ~ (const Bits& m){
     
     return Bits((~(m.n)));

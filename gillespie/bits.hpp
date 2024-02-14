@@ -24,13 +24,13 @@ public:
     void SetRandom(unsigned int);
     void SetRandom(gsl_rng*);
     Bits Complement(void);
-    void Replace(const Bits&, const Bits&);
+    void Replace(Bits*, Bits*);
     void Clear(void);
     void Print(void);
         
     friend class UnsignedInt;
     
-    Bits operator & (const Bits&), operator | (const Bits&), operator ^ (const Bits&);
+    Bits operator & (const Bits&), operator | (const Bits&), operator ^ (const Bits&), operator ~(void);
     
 };
 
