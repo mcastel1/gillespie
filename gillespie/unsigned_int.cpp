@@ -234,22 +234,40 @@ inline void BitSet::operator >>=(UnsignedInt* e){
     
     unsigned int n;
     int m;
+    Bits zero;
+    
+    zero.SetAll(false);
     
     
-    for(n=0; n<e->GetSize(); n++){
+    for(n=0; n<(e->GetSize()); n++){
         //shift by 2^n positions according to e[n]
         
-        for(m=0; m<n_bits_mantissa-two_pow(n); m++){
+        for(m=0; m<(this->GetSize())-gsl_pow_int(2, n); m++){
             //run through the components of this->b and shift them
-            
+                     
             b[m].Replace(
                          //the element # m+2^n in b
-                         b.data() + (m+two_pow(n)),
+                         &(b[m+two_pow(n)]),
                          //the element #n in e
-                         e->b.data()+n
+                         &((e->b)[n])
                          );
+        
             
         }
+        
+        for(m=(this->GetSize())-gsl_pow_int(2, n); m<(this->GetSize()); m++){
+            //run through the components of this->b and shift them
+                     
+            b[m].Replace(
+                         //a Bits filled with zeros
+                         &zero,
+                         //the element #n in e
+                         &((e->b)[n])
+                         );
+        
+            
+        }
+        
     }
     
     

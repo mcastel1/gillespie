@@ -6,7 +6,7 @@
 //
 
 
-// a collection of bits
+// a collection of n_bits bits
 class Bits{
   
 private:

@@ -86,21 +86,23 @@ int main(int argc, char * argv[]) {
         
     }
     
-    Bits a, b, e;
-    a.SetRandom((int)0);
-    b.SetRandom((int)1);
+    BitSet b(n_bits_mantissa);
+    UnsignedInt e(1);
+    b.SetRandom((int)0);
     e.SetRandom((int)2);
     
     cout << "Before" << endl;
-    a.Print();
+    cout << "b:" << endl;
     b.Print();
+    cout << "e:" << endl;
     e.Print();
     
-    a.Replace(&b, &e);
+    b >>= (&e);
     
     cout << "After" << endl;
-    a.Print();
+    cout << "b:" << endl;
     b.Print();
+    cout << "e:" << endl;
     e.Print();
 
     
