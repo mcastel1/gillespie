@@ -127,3 +127,9 @@ inline Bits& BitSet::operator [] (const unsigned int& i){
     return((b[i]));
     
 }
+
+
+inline void BitSet::operator >>=(const Int& e){
+    
+    
+}
