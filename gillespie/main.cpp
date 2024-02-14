@@ -86,8 +86,8 @@ int main(int argc, char * argv[]) {
         
     }
     
-    BitSet b(n_bits_mantissa);
-    UnsignedInt e(1);
+    BitSet b(gsl_pow_int(2, 20));
+    UnsignedInt e(4);
     b.SetRandom((int)0);
     e.SetRandom((int)2);
     
