@@ -229,20 +229,20 @@ inline Bits UnsignedInt::operator < (const UnsignedInt& m){
 }
 
 //I am obliged to put this method definition here, because this method needs the full declaration of the UnsignedInt class before it is declared
-//shift bit-by-bit *this by a number of positions encoded in e
-inline void BitSet::operator >>=(const UnsignedInt& e){
+//shift bit-by-bit *this by a number of positions encoded in *e
+inline void BitSet::operator >>=(UnsignedInt* e){
     
     unsigned int n;
     int m;
     
     
-    for(n=0; n<e.b.size(); n++){
+    for(n=0; n<e->GetSize(); n++){
         //shift by 2^n positions according to e[n]
         
         for(m=0; m<n_bits_mantissa-two_pow(n); m++){
             //run through the components of this->b and shift them
             
-            b[m].replace(b[m+two_pow(n)], e[n]);
+            b[m].Replace(b[m+two_pow(n)], (*e)[n]);
             
         }
     }

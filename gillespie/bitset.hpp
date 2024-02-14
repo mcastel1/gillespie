@@ -28,7 +28,7 @@ public:
     void Print(void);
 
     Bits& operator [] (const unsigned int&);
-    void operator >>= (const UnsignedInt&);
+    void operator >>= (UnsignedInt*);
 
     friend class UnsignedInt;
     friend class Double;

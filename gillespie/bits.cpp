@@ -105,6 +105,15 @@ Bits Bits::Complement(void){
 }
 
 
+
+//replace bit-by-bit *this with replacer if check = true, and leave *this unchanged if check = false
+inline void Bits::Replace(const Bits& replacer, const Bits& check){
+    
+    
+    
+}
+
+
 //set all bits of *this to 0
 void Bits::Clear(void){
     
