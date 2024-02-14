@@ -157,19 +157,16 @@ inline void Double::SetAllVertically_IEEE754(double x){
 
 
 
-//print *this in base 10 according to the IEEE754 convention 
+//print *this in base 10 according to the IEEE754 convention
 void Double::PrintBase10_IEEE754(void){
     
     unsigned int i, p;
     double b_10, e_10/*, A*/;
-//    bool B;
     
     cout << "Double in base 10: {";
     for(p=0; p<n_bits; p++){
         
         for(b_10=1.0, i=0; i<b.GetSize(); i++){
-//            A = gsl_pow_int(2.0, -(i+1));
-//            B = (b[b.size()-1-i].Get(p));
             b_10 += gsl_pow_int(2.0, -(i+1)) * (b[b.GetSize()-1-i].Get(p));
         }
         for(e_10=-1023.0, i=0; i<e.GetSize(); i++){
@@ -184,6 +181,30 @@ void Double::PrintBase10_IEEE754(void){
         
 }
 
+
+//print *this in base 10 according to the my convention
+void Double::PrintBase10(void){
+    
+    unsigned int i, p;
+    double b_10, e_10;
+    
+    cout << "Double in base 10: {";
+    for(p=0; p<n_bits; p++){
+        
+        for(b_10=0.0, i=0; i<b.GetSize(); i++){
+            b_10 += gsl_pow_int(2.0, -i) * (b[b.GetSize()-1-i].Get(p));
+        }
+        for(e_10=-1023.0, i=0; i<e.GetSize(); i++){
+            e_10 += two_pow(i) * (e[i].Get(p));
+        }
+    
+        cout << gsl_pow_int(-1.0, s.Get(p)) * gsl_pow_int(2.0, e_10) * b_10 << " ";
+        
+    }
+    
+    cout << "}\n";
+        
+}
 
 //sum *this to addend and write the result in *this
 inline void Double::operator += (Double& addend){

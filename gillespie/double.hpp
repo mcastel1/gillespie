@@ -26,7 +26,8 @@ public:
     void SetRandom(unsigned int);
     void Print(void);
     void PrintBase10_IEEE754(void);
-    
+    void PrintBase10(void);
+
     void operator += (Double&);
 
 };
