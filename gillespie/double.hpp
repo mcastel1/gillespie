@@ -20,7 +20,7 @@ private:
     //the fraction: b has size 52
     BitSet b;
     //the exponent: e.b has size 11
-    Int e;
+    UnsignedInt e;
     //the sign
     Bits s;
     

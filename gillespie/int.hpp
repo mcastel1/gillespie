@@ -16,7 +16,7 @@
 
 
 //an int represented in base 2 in b
-class Int : public BitSet{
+class UnsignedInt : public BitSet{
     
 private:
     
@@ -24,18 +24,18 @@ private:
     
 public:
     
-    Int(void);
-    Int(unsigned long long int);
+    UnsignedInt(void);
+    UnsignedInt(unsigned long long int);
     
     void ComplementTo(unsigned int);
     void PrintBase10(void);
     void RemoveFirstSignificantBit(void);
 
     //bitwise sum
-    Int operator + (Int&);
-    void operator += (Int&), operator -= (Int&);
+    UnsignedInt operator + (UnsignedInt&);
+    void operator += (UnsignedInt&), operator -= (UnsignedInt&);
     Bits& operator [] (const unsigned int&);
-    Bits operator < (const Int&);
+    Bits operator < (const UnsignedInt&);
 
     friend class Double;
     

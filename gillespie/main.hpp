@@ -18,5 +18,5 @@ const unsigned long long int ullong_0 = 0;
 using namespace std;
 
 
-class Int;
+class UnsignedInt;
 class Bits;

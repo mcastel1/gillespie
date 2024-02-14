@@ -41,7 +41,7 @@
 
 
 /*
- void Int::SetRandom(unsigned long long int seed){
+ void UnsignedInt::SetRandom(unsigned long long int seed){
  
  int i;
  gsl_rng* ran;
@@ -96,14 +96,14 @@ int main(int argc, char * argv[]) {
     
     
     /*
-     //some tests for Int class
+     //some tests for UnsignedInt class
     clock_t start=0, end=0;
     unsigned int s;
     
     
     
     
-    vector<Int> A(S), B(S);
+    vector<UnsignedInt> A(S), B(S);
     vector<unsigned long long int> a(S), b(S);
     gsl_rng* ran;
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
@@ -112,8 +112,8 @@ int main(int argc, char * argv[]) {
     
     
     for(s=0; s<S; s++){
-        A[s] = Int(8);
-        B[s] = Int(4);
+        A[s] = UnsignedInt(8);
+        B[s] = UnsignedInt(4);
         (A[s]).SetRandom(s);
         (B[s]).SetRandom(s+1);
         (A[s]).Resize(A[s].GetSize()+1);

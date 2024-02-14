@@ -121,7 +121,7 @@ inline unsigned long long int BitSet::Get(unsigned int p){
 }
 
 
-//overload of [] operator. IT IS IMPORTANT THAT THIS RETURNS A REFERENCE, NOT AN Int: OTHERWISE THE RETURNED OBJECT, WHEN MODIFIED, WILL NOT CHANGE *this
+//overload of [] operator. IT IS IMPORTANT THAT THIS RETURNS A REFERENCE, NOT AN UnsignedInt: OTHERWISE THE RETURNED OBJECT, WHEN MODIFIED, WILL NOT CHANGE *this
 inline Bits& BitSet::operator [] (const unsigned int& i){
     
     return((b[i]));
@@ -129,7 +129,8 @@ inline Bits& BitSet::operator [] (const unsigned int& i){
 }
 
 
-inline void BitSet::operator >>=(const Int& e){
+//shift bit-by-bit *this by a number of positions encoded in e
+inline void BitSet::operator >>=(const UnsignedInt& e){
     
     
 }

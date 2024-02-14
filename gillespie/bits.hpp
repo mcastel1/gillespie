@@ -33,7 +33,7 @@ public:
     void Clear(void);
     void Print(void);
         
-    friend class Int;
+    friend class UnsignedInt;
     
     Bits operator & (const Bits&), operator | (const Bits&), operator ^ (const Bits&);
     

@@ -10,19 +10,19 @@
 
 
 
-inline Int::Int(void) : BitSet(){
+inline UnsignedInt::UnsignedInt(void) : BitSet(){
         
 }
 
 
-inline Int::Int(unsigned long long int N) : BitSet(N){
+inline UnsignedInt::UnsignedInt(unsigned long long int N) : BitSet(N){
     
     
 }
 
 
 //write the one-complement of *this with respect to a size 'size' of the binary representation and write it into *this
-inline void Int::ComplementTo(unsigned int size){
+inline void UnsignedInt::ComplementTo(unsigned int size){
     
     unsigned int s;
     Bits one;
@@ -46,7 +46,7 @@ inline void Int::ComplementTo(unsigned int size){
 
 
 //set to zero the first bits of *this that is equal to one (stating from the last bit) and leave the others unchanged, write the result in *this
-inline void Int::RemoveFirstSignificantBit(void){
+inline void UnsignedInt::RemoveFirstSignificantBit(void){
     
     int s;
     Bits mask_before, mask_now;
@@ -75,7 +75,7 @@ inline void Int::RemoveFirstSignificantBit(void){
 
 
 
-void Int::PrintBase10(void){
+void UnsignedInt::PrintBase10(void){
     
     unsigned int  p;
     
@@ -95,9 +95,9 @@ void Int::PrintBase10(void){
 
 
 //returns *this + m
-inline Int Int::operator + (Int& addend) {
+inline UnsignedInt UnsignedInt::operator + (UnsignedInt& addend) {
     
-    Int a;
+    UnsignedInt a;
     
     a=(*this);
     a+=addend;
@@ -108,7 +108,7 @@ inline Int Int::operator + (Int& addend) {
 
 
 //add addend to *this and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize() and this->GetSize() to have been reallocated with the one extra bit before the method is called 
-inline void Int::operator += (Int& addend){
+inline void UnsignedInt::operator += (UnsignedInt& addend){
     
     Bits carry, t;
     unsigned int p;
@@ -141,10 +141,10 @@ inline void Int::operator += (Int& addend){
 }
 
 //substract m to *this and write the result in *this. THIS FUNCTION REQUIRES THAT *THIS HAS BEEN ALREADY RESIZED WITH AN EXTRA ADDITIONAL ENTRY.
-inline void Int::operator -= (Int& m) {
+inline void UnsignedInt::operator -= (UnsignedInt& m) {
     
     
-    Int subtrahend, one;
+    UnsignedInt subtrahend, one;
     
     subtrahend = m;
     
@@ -200,8 +200,8 @@ inline void Int::operator -= (Int& m) {
 }
 
 
-//overload of [] operator. IT IS IMPORTANT THAT THIS RETURNS A REFERENCE, NOT AN Int: OTHERWISE THE RETURNED OBJECT, WHEN MODIFIED, WILL NOT CHANGE *this
-inline Bits& Int::operator [] (const unsigned int& i){
+//overload of [] operator. IT IS IMPORTANT THAT THIS RETURNS A REFERENCE, NOT AN UnsignedInt: OTHERWISE THE RETURNED OBJECT, WHEN MODIFIED, WILL NOT CHANGE *this
+inline Bits& UnsignedInt::operator [] (const unsigned int& i){
     
     return((b[i]));
     
@@ -210,7 +210,7 @@ inline Bits& Int::operator [] (const unsigned int& i){
 
 
 //Confronto *this con m e scrivo in changer il risultato. changer è uguale a 1 se *this < m e a 0 altrimenti
-inline Bits Int::operator < (const Int& m){
+inline Bits UnsignedInt::operator < (const UnsignedInt& m){
     
     int s;
     Bits changer, check;
