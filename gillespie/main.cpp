@@ -85,6 +85,27 @@ int main(int argc, char * argv[]) {
         }
         
     }
+    
+    Bits a, b, e;
+    a.SetRandom((int)0);
+    b.SetRandom((int)1);
+    e.SetRandom((int)2);
+    
+    cout << "Before" << endl;
+    a.Print();
+    b.Print();
+    e.Print();
+    
+    a.Replace(&b, &e);
+    
+    cout << "After" << endl;
+    a.Print();
+    b.Print();
+    e.Print();
+
+    
+
+    
     //
     //    Double a;
     //    a.SetRandom((int)0);
@@ -158,7 +179,7 @@ int main(int argc, char * argv[]) {
     a.Print();
     a.PrintBase10();
     */
-    bitwise_print_double(-.3423589247);
+//    bitwise_print_double(-.3423589247);
      
     
     return 0;
