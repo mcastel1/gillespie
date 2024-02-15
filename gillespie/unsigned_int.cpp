@@ -278,7 +278,7 @@ inline void BitSet::operator >>=(UnsignedInt* e){
             
         }
         
-        for(m=(this->GetSize())-gsl_pow_int(2, n); m<(this->GetSize()); m++){
+        for(m = max(((int)(this->GetSize()))-((int)gsl_pow_int(2, n)), 0); (m<(this->GetSize())); m++){
             //run through the components of this->b and shift them
                      
             b[m].Replace(

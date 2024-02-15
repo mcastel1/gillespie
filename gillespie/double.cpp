@@ -249,8 +249,8 @@ inline void Double::operator += (Double& x){
     
     
     cout << "de" << endl;
-    de.SetAll(13);
-//    de.Print();
+//    de.SetAll(13);
+    de.Print();
     de.PrintBase10();
     
     cout << "***** Before: " << endl;
