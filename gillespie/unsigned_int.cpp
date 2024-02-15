@@ -103,15 +103,27 @@ void UnsignedInt::PrintBase10(void){
 
 
 
-
-
-//returns *this + m
+//return *this + m
 inline UnsignedInt UnsignedInt::operator + (UnsignedInt& addend) {
     
     UnsignedInt a;
     
     a=(*this);
     a+=addend;
+
+    return a;
+
+}
+
+
+
+//return *this - m
+inline UnsignedInt UnsignedInt::operator - (UnsignedInt& addend) {
+    
+    UnsignedInt a;
+    
+    a=(*this);
+    a-=addend;
 
     return a;
 

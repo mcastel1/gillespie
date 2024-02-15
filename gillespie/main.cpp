@@ -89,28 +89,24 @@ int main(int argc, char * argv[]) {
     //some tests for Double class
     
     Double a, b;
-    Bits check;
     a.SetRandom((unsigned int)0);
     b.SetRandom((unsigned int)1);
-    check.SetRandom((unsigned int)2);
     
     
-    cout << "check: " << endl;
-    check.Print();
 
-    cout << "Before:" << endl;
-    cout << "a: " << endl;
-    a.Print();
-    cout << "b: " << endl;
-    b.Print();
+//    cout << "Before:" << endl;
+//    cout << "a: " << endl;
+//    a.Print();
+//    cout << "b: " << endl;
+//    b.Print();
  
-    a.Replace(&b, &check);
+    a+=b;
 
-    cout << "After:" << endl;
-    cout << "a: " << endl;
-    a.Print();
-    cout << "b: " << endl;
-    b.Print();
+//    cout << "After:" << endl;
+//    cout << "a: " << endl;
+//    a.Print();
+//    cout << "b: " << endl;
+//    b.Print();
  
     
     

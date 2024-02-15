@@ -232,6 +232,7 @@ inline void Double::operator += (Double& x){
     
     Double augend, addend;
     Bits compare;
+    UnsignedInt de;
     
     
     //set (augend.e) and (addend.e), compare the two bit-by-bit and write the result in compare
@@ -243,6 +244,12 @@ inline void Double::operator += (Double& x){
     augend.Replace(&x, &compare);
     addend.Replace(this, &compare);
     
+    //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
+    de = ((augend.e)-(addend.e));
+    (addend.b) >>= (&de);
+    
   
+    //now augend.e >= addend.e
+    
 
 }

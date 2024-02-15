@@ -22,8 +22,8 @@ public:
     void RemoveFirstSignificantBit(void);
     void Replace(UnsignedInt*, Bits*);
 
-    //bitwise sum
-    UnsignedInt operator + (UnsignedInt&);
+    //bitwise sum and substraction
+    UnsignedInt operator + (UnsignedInt&), operator - (UnsignedInt&);
     void operator += (UnsignedInt&), operator -= (UnsignedInt&);
     Bits& operator [] (const unsigned int&);
     Bits operator < (const UnsignedInt&);
