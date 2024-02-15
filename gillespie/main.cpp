@@ -86,8 +86,33 @@ int main(int argc, char * argv[]) {
         
     }
     
-    //some tests for Double class
+    UnsignedInt a(10), b(10);
+    Bits changer;
+    a.SetRandom((unsigned int)0);
+    b.SetRandom((unsigned int)1);
+    changer.SetRandom((unsigned int)2);
     
+    cout << "Before" << endl;
+    cout << "a: " << endl;
+    a.Print();
+    cout << "b: " << endl;
+    b.Print();
+    cout << "changer: " << endl;
+    changer.Print();
+
+    a.Replace(&b, &changer);
+    
+    cout << "After" << endl;
+    cout << "a: " << endl;
+    a.Print();
+    cout << "b: " << endl;
+    b.Print();
+    cout << "changer: " << endl;
+    changer.Print();
+
+    
+    //some tests for Double class
+    /*
     Double a, b;
     a.SetRandom((int)0);
     b.SetRandom((int)1);
@@ -95,7 +120,7 @@ int main(int argc, char * argv[]) {
     a.Print();
     cout << "b: " << endl;
     b.Print();
-
+*/
      
     
     /*
