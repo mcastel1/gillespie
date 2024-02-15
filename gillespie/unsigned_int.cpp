@@ -209,22 +209,22 @@ inline Bits& UnsignedInt::operator [] (const unsigned int& i){
 
 
 
-//Confronto *this con m e scrivo in changer il risultato. changer è uguale a 1 se *this < m e a 0 altrimenti
+//Confronto *this con m e scrivo in result il risultato. result è uguale a 1 se *this < m e a 0 altrimenti
 inline Bits UnsignedInt::operator < (const UnsignedInt& m){
     
     int s;
-    Bits changer, check;
+    Bits result, check;
     
     
-    changer = (~(b[GetSize() - 1])) & ((m.b)[GetSize() - 1]);
+    result = (~(b[GetSize() - 1])) & ((m.b)[GetSize() - 1]);
     check = ((b[GetSize() - 1]) ^ ((m.b)[GetSize() - 1]));
     
     for(s=GetSize()-2; s >=0; s--){
-        changer = ((check & changer) | ((~check) & ((~(b[s])) & ((m.b)[s]))) );
+        result = ((check & result) | ((~check) & ((~(b[s])) & ((m.b)[s]))) );
         check = (check | ((b[s]) ^ ((m.b)[s])));
     }
     
-    return changer;
+    return result;
     
 }
 
