@@ -62,8 +62,8 @@
             filePath = "gillespie/unsigned_int.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "242"
-            endingLineNumber = "242"
+            startingLineNumber = "253"
+            endingLineNumber = "253"
             landmarkName = "BitSet::operator &gt;&gt;=(e)"
             landmarkType = "7">
          </BreakpointContent>
@@ -78,9 +78,9 @@
             filePath = "gillespie/double.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "213"
-            endingLineNumber = "213"
-            landmarkName = "Double::operator +=(addend)"
+            startingLineNumber = "222"
+            endingLineNumber = "222"
+            landmarkName = "Double::operator +=(x)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

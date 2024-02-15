@@ -68,11 +68,22 @@ inline void UnsignedInt::RemoveFirstSignificantBit(void){
 //    cout << " after the first significant bit is set to 0:";
 //    Print();
     
-    
-    
+
 }
 
 
+//if this->GetSize() == replacer->GetSize(), replace bit-by-bit all bs of *this with the respective bs of *replacer, and leave *this unchanged otherwise
+inline void UnsignedInt::Replace(UnsignedInt* replacer, Bits* check){
+    
+    if((this->GetSize()) == (replacer->GetSize())){
+        
+        for(unsigned int s=0; s<(this->GetSize()); s++){
+            b[s].Replace((replacer->b.data()) + s, check);
+        }
+        
+    }
+    
+}
 
 
 void UnsignedInt::PrintBase10(void){

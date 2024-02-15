@@ -20,6 +20,7 @@ public:
     void ComplementTo(unsigned int);
     void PrintBase10(void);
     void RemoveFirstSignificantBit(void);
+    void Replace(UnsignedInt*, Bits*);
 
     //bitwise sum
     UnsignedInt operator + (UnsignedInt&);

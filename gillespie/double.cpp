@@ -207,8 +207,18 @@ void Double::PrintBase10(void){
 }
 
 //sum *this to addend and write the result in *this
-inline void Double::operator += (Double& addend){
+inline void Double::operator += (Double& x){
+    
+    UnsignedInt e_augend, e_addend;
+    Bits compare;
     
     
+    e_augend = e;
+    e_addend = (x.e);
+    compare = (e_augend < e_addend);
+
     
+    e_augend.Replace(&(x.e), &compare);
+    e_addend.Replace(&e, &compare);
+
 }
