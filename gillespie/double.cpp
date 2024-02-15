@@ -245,6 +245,9 @@ inline void Double::operator += (Double& x){
     augend.Replace(&x, &compare);
     addend.Replace(this, &compare);
     
+    //now augend.e >= addend.e
+
+    
     cout << "Augend: " << endl;
 //    augend.e.SetAll(3);
     augend.e.PrintBase10();
@@ -252,7 +255,7 @@ inline void Double::operator += (Double& x){
 //    addend.e.SetAll(1);
     addend.e.PrintBase10();
     
-    //this resizing is necessary for the - operation 
+    //this resizing is necessary for the - operation
     (augend.e).Resize(augend.e.GetSize()+1);
     de = ((augend.e)-(addend.e));
     
@@ -270,9 +273,8 @@ inline void Double::operator += (Double& x){
     cout << "Mantissa of addend:" << endl;
     addend.b.Print();
  
-    
-  
-    //now augend.e >= addend.e
-    
+
+    //now sum augend.b and addend.b
+//    augend.b += addend.b;
 
 }
