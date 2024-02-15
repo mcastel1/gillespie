@@ -256,25 +256,32 @@ inline void Double::operator += (Double& x){
     addend.e.PrintBase10();
     
     //this resizing is necessary for the - operation
-    (augend.e).Resize(augend.e.GetSize()+1);
+    augend.e.Resize(augend.e.GetSize()+1);
     de = ((augend.e)-(addend.e));
     
     cout << "de" << endl;
     de.PrintBase10();
     
-    cout << "***** Before: " << endl;
-    cout << "Mantissa of addend:" << endl;
-    addend.b.Print();
-    
+      
     //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
     (addend.b) >>= (&de);
     
-    cout << "***** After: " << endl;
-    cout << "Mantissa of addend:" << endl;
-    addend.b.Print();
  
 
+    cout << "***** Before: " << endl;
+    cout << "Mantissa of augend:" << endl;
+    augend.PrintBase10();
+    cout << "Mantissa of addend:" << endl;
+    addend.PrintBase10();
+
     //now sum augend.b and addend.b
-//    augend.b += addend.b;
+    
+    augend.b.Resize(augend.b.GetSize()+1);
+    augend.b += addend.b;
+    
+    cout << "***** After: " << endl;
+    cout << "Mantissa of augend + addend:" << endl;
+    augend.PrintBase10();
+
 
 }
