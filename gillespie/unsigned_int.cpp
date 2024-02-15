@@ -25,31 +25,6 @@ inline UnsignedInt::UnsignedInt(unsigned long long int N) : BitSet(N){
 
 
 
-//set to zero the first bits of *this that is equal to one (stating from the last bit) and leave the others unchanged, write the result in *this
-inline void UnsignedInt::RemoveFirstSignificantBit(void){
-    
-    int s;
-    Bits mask_before, mask_now;
-    
-//    cout << " before the first significant bit is set to 0:";
-//    Print();
-
-    //remove the last significant bit in minuend
-    for(s=(this->GetSize())-1, mask_before.SetAll(0); s>=0; s--){
-        
-        (mask_now.n) = (mask_before.n) | (((*this)[s]).n);
-        
-        (b[s]).n =  (((*this)[s]).n) & (mask_before.n) & (mask_now.n);
-        
-        mask_before = mask_now;
-        
-    }
-    
-//    cout << " after the first significant bit is set to 0:";
-//    Print();
-    
-
-}
 
 
 //if this->GetSize() == replacer->GetSize(), replace bit-by-bit all bs of *this with the respective bs of *replacer, and leave *this unchanged otherwise
