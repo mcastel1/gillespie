@@ -91,10 +91,10 @@ int main(int argc, char * argv[]) {
     Double a, b;
     a.SetRandom((unsigned int)0);
     b.SetRandom((unsigned int)1);
-    cout << "a: " << endl;
-    a.Print();
-    cout << "b: " << endl;
-    b.Print();
+//    cout << "a: " << endl;
+//    a.Print();
+//    cout << "b: " << endl;
+//    b.Print();
     
     a+=b;
 

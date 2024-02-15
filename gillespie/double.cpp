@@ -217,14 +217,25 @@ inline void Double::operator += (Double& x){
     e_addend = (x.e);
     compare = (e_augend < e_addend);
     
+    
+    cout << "Before:" << endl;
     cout << "e_augend:" << endl;
     e_augend.PrintBase10();
     cout << "e_addend:" << endl;
     e_addend.PrintBase10();
+//    cout << "compare:" << endl;
+//    compare.Print();
     
 
     
     e_augend.Replace(&(x.e), &compare);
     e_addend.Replace(&e, &compare);
+    
+    cout << "After:" << endl;
+    cout << "e_augend:" << endl;
+    e_augend.PrintBase10();
+    cout << "e_addend:" << endl;
+    e_addend.PrintBase10();
+  
 
 }
