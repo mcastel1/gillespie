@@ -37,6 +37,27 @@ inline void Double::Clear(){
 }
 
 
+//replace bit-by-bit *this with *replacer if *check=true, and leave *this unchanged otherwise
+inline void Double::Replace(Double* replacer, Bits* check){
+    
+    unsigned int p;
+    
+    //replace the mantisssa
+    for(p=0; p<(b.GetSize()); p++){
+        b[p].Replace((replacer->b.b.data()) + p, check);
+    }
+
+    //replace the exponent
+    for(p=0; p<(e.GetSize()); p++){
+        e[p].Replace((replacer->e.b.data()) + p, check);
+    }
+    
+    //replace the sign
+    s.Replace(&(replacer->s), check);
+
+}
+
+
 //initialize *this randomly with seed seed
 inline void Double::SetRandom(unsigned int seed){
     
@@ -209,18 +230,18 @@ void Double::PrintBase10(void){
 //sum *this to addend and write the result in *this
 inline void Double::operator += (Double& x){
     
-    UnsignedInt e_augend, e_addend;
+    Double augend, addend;
     Bits compare;
     
     
-    //set e_augend and e_addend, compare the two bit-by-bit and write the result in compare
-    e_augend = e;
-    e_addend = (x.e);
-    compare = (e_augend < e_addend);
+    //set (augend.e) and (addend.e), compare the two bit-by-bit and write the result in compare
+    (augend.e) = e;
+    (addend.e) = (x.e);
+    compare = ((augend.e) < (addend.e));
     
-    //swap bit-by-bit e_augend and e_addend in such a way that e_augend >= e_addend
-    e_augend.Replace(&(x.e), &compare);
-    e_addend.Replace(&e, &compare);
+    //swap bit-by-bit (augend.e) and (addend.e) in such a way that (augend.e) >= (addend.e)
+    augend.Replace(&x, &compare);
+    addend.Replace(this, &compare);
     
   
 

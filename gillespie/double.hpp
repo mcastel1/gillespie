@@ -21,6 +21,7 @@ public:
     
     Double(void);
     void Clear(void);
+    void Replace(Double*, Bits*);
     void SetAllVertically_IEEE754(double);
     void SetRandom(gsl_rng*);
     void SetRandom(unsigned int);
