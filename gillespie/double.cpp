@@ -213,29 +213,15 @@ inline void Double::operator += (Double& x){
     Bits compare;
     
     
+    //set e_augend and e_addend, compare the two bit-by-bit and write the result in compare
     e_augend = e;
     e_addend = (x.e);
     compare = (e_augend < e_addend);
     
-    
-    cout << "Before:" << endl;
-    cout << "e_augend:" << endl;
-    e_augend.PrintBase10();
-    cout << "e_addend:" << endl;
-    e_addend.PrintBase10();
-//    cout << "compare:" << endl;
-//    compare.Print();
-    
-
-    
+    //swap bit-by-bit e_augend and e_addend in such a way that e_augend >= e_addend
     e_augend.Replace(&(x.e), &compare);
     e_addend.Replace(&e, &compare);
     
-    cout << "After:" << endl;
-    cout << "e_augend:" << endl;
-    e_augend.PrintBase10();
-    cout << "e_addend:" << endl;
-    e_addend.PrintBase10();
   
 
 }
