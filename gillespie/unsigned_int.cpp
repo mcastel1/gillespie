@@ -223,12 +223,6 @@ inline void UnsignedInt::operator -= (UnsignedInt& m) {
 }
 
 
-//overload of [] operator. IT IS IMPORTANT THAT THIS RETURNS A REFERENCE, NOT AN UnsignedInt: OTHERWISE THE RETURNED OBJECT, WHEN MODIFIED, WILL NOT CHANGE *this
-inline Bits& UnsignedInt::operator [] (const unsigned int& i){
-    
-    return((b[i]));
-    
-}
 
 
 

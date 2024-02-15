@@ -25,7 +25,6 @@ public:
     //bitwise sum and substraction
     UnsignedInt operator + (UnsignedInt&), operator - (UnsignedInt&);
     void operator += (UnsignedInt&), operator -= (UnsignedInt&);
-    Bits& operator [] (const unsigned int&);
     Bits operator < (const UnsignedInt&);
 
     friend class Double;
