@@ -216,6 +216,12 @@ inline void Double::operator += (Double& x){
     e_augend = e;
     e_addend = (x.e);
     compare = (e_augend < e_addend);
+    
+    cout << "e_augend:" << endl;
+    e_augend.PrintBase10();
+    cout << "e_addend:" << endl;
+    e_addend.PrintBase10();
+    
 
     
     e_augend.Replace(&(x.e), &compare);

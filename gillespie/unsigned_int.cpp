@@ -90,14 +90,14 @@ void UnsignedInt::PrintBase10(void){
     
     unsigned int  p;
     
-    cout << "Int in base 10: {";
+    cout << "{";
     for(p=0; p<n_bits; p++){
         
         cout << Get(n_bits-1-p) << " ";
         
     }
     
-    cout << "}\n";
+    cout << "}" << endl;
         
 }
 

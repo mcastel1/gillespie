@@ -86,6 +86,21 @@ int main(int argc, char * argv[]) {
         
     }
     
+    //some tests for Double class
+    
+    Double a, b;
+    a.SetRandom((unsigned int)0);
+    b.SetRandom((unsigned int)1);
+    cout << "a: " << endl;
+    a.Print();
+    cout << "b: " << endl;
+    b.Print();
+    
+    a+=b;
+
+     
+    
+    /*
     UnsignedInt a(10), b(10);
     Bits changer;
     a.SetRandom((unsigned int)0);
@@ -109,19 +124,10 @@ int main(int argc, char * argv[]) {
     b.Print();
     cout << "changer: " << endl;
     changer.Print();
+     */
 
     
-    //some tests for Double class
-    /*
-    Double a, b;
-    a.SetRandom((int)0);
-    b.SetRandom((int)1);
-    cout << "a: " << endl;
-    a.Print();
-    cout << "b: " << endl;
-    b.Print();
-*/
-     
+
     
     /*
     BitSet b(gsl_pow_int(2, 20));
