@@ -245,12 +245,18 @@ inline void Double::operator += (Double& x){
     augend.Replace(&x, &compare);
     addend.Replace(this, &compare);
     
+    cout << "Augend: " << endl;
+//    augend.e.SetAll(3);
+    augend.e.PrintBase10();
+    cout << "Addend: " << endl;
+//    addend.e.SetAll(1);
+    addend.e.PrintBase10();
+    
+    //this resizing is necessary for the - operation 
+    (augend.e).Resize(augend.e.GetSize()+1);
     de = ((augend.e)-(addend.e));
     
-    
     cout << "de" << endl;
-//    de.SetAll(13);
-    de.Print();
     de.PrintBase10();
     
     cout << "***** Before: " << endl;
