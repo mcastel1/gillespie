@@ -159,7 +159,7 @@ inline BitSet BitSet::operator - (BitSet& addend) {
 }
 
 
-//add addend to *this and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize() and this->GetSize() to have been reallocated with the one extra bit before the method is called
+//add addend to *this and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize()
 inline void BitSet::operator += (BitSet& addend){
     
     Bits carry, t;
@@ -176,7 +176,7 @@ inline void BitSet::operator += (BitSet& addend){
         ((b)[p]).n = (t.n);
         
     }
-    for(p=addend.GetSize(); p<GetSize()-1; p++){
+    for(p=addend.GetSize(); p<GetSize(); p++){
         //run over the extra bits of augend
         
         (t.n) = (((b[p]).n) ^ (carry.n));
@@ -185,14 +185,13 @@ inline void BitSet::operator += (BitSet& addend){
         
     }
     
-//    add the last extra bit
-    ((b[p]).n) = (carry.n);
-    
-    
+    //    add the last extra bit
+    //******** THIS MAY BE TIME CONSUMING ********
+    b.push_back(carry);
     
 }
 
-//substract m to *this and write the result in *this. THIS FUNCTION REQUIRES THAT *THIS HAS BEEN ALREADY RESIZED WITH AN EXTRA ADDITIONAL ENTRY.
+//substract m to *this and write the result in *this
 inline void BitSet::operator -= (BitSet& m) {
     
     
@@ -213,7 +212,7 @@ inline void BitSet::operator -= (BitSet& m) {
 //    subtrahend.Print();
     
     //GIVEN THAT *THIS HAS BEEN RESIZED WITH ONE ADDITIONAL ENTRY AND THAT I WANT TO COMPUTE THE COMPLEMENT WITH RESPECT TO THE ACTUAL SIZE OF THIS (WITHOUT THE ADDITIONAL ENTRY) HERE I CALL  ComplementTo with argument (this->GetSize())-1 RATHER THAN WITH ARGUMENT (this->GetSize())
-    subtrahend.ComplementTo((this->GetSize())-1);
+    subtrahend.ComplementTo((this->GetSize()));
     
 //    cout << "subtrahend complement:";
 //    subtrahend.Print();
@@ -223,10 +222,7 @@ inline void BitSet::operator -= (BitSet& m) {
     
 //    cout << "*this + subtrahend complement:";
 //    this->Print();
-
  
-    //THE += operator NEEDS *THIS TO BE RESIZED WITH ONE ADDITIONAL ENTRY EVERY TIME IT IS CALLED -> I RESIZE *this WITH ONE ADDITIONAL ENTRY
-    this->Resize(this->GetSize()+1);
     (*this) += one;
     
 //    cout << "*this + subtrahend complement + 1:";

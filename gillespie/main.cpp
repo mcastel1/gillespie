@@ -88,10 +88,11 @@ int main(int argc, char * argv[]) {
     
     //some tests for Double class
     
+    /*
     Double a, b;
     a.SetRandom((unsigned int)0);
     b.SetRandom((unsigned int)1);
-    
+    */
     
 
 //    cout << "Before:" << endl;
@@ -100,7 +101,7 @@ int main(int argc, char * argv[]) {
 //    cout << "b: " << endl;
 //    b.Print();
  
-    a+=b;
+//    a+=b;
 
 //    cout << "After:" << endl;
 //    cout << "a: " << endl;
@@ -172,7 +173,7 @@ int main(int argc, char * argv[]) {
     //     System sys(N, seed);
     
     
-    /*
+    //
      //some tests for UnsignedInt class
     clock_t start=0, end=0;
     unsigned int s;
@@ -189,27 +190,22 @@ int main(int argc, char * argv[]) {
     
     
     for(s=0; s<S; s++){
-        A[s] = UnsignedInt(8);
-        B[s] = UnsignedInt(4);
+        A[s] = UnsignedInt(23);
+        B[s] = UnsignedInt(9);
         (A[s]).SetRandom(s);
         (B[s]).SetRandom(s+1);
-        (A[s]).Resize(A[s].GetSize()+1);
     }
     
-    start = clock();
     for(s=0; s<S; s++){
         
-        A[s].PrintBase10_IEEE754();
-        B[s].PrintBase10_IEEE754();
+        A[s].PrintBase10();
+        B[s].PrintBase10();
         
         A[s]-=(B[s]);
         
-        A[s].PrintBase10_IEEE754();
+        A[s].PrintBase10();
         
     }
-    end = clock();
-    
-    cout << "Time with bits = " << end - start << "\n";
     
     
     
@@ -223,7 +219,7 @@ int main(int argc, char * argv[]) {
     }
     end = clock();
     cout << "Time without bits = " << end - start << "\n";
-    */
+    //
 
     
     

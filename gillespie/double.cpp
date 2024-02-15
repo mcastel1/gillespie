@@ -255,8 +255,6 @@ inline void Double::operator += (Double& x){
 //    addend.e.SetAll(1);
     addend.e.PrintBase10();
     
-    //this resizing is necessary for the - operation
-    augend.e.Resize(augend.e.GetSize()+1);
     de = ((augend.e)-(addend.e));
     
     cout << "de" << endl;
@@ -276,7 +274,6 @@ inline void Double::operator += (Double& x){
 
     //now sum augend.b and addend.b
     
-    augend.b.Resize(augend.b.GetSize()+1);
     augend.b += addend.b;
     
     cout << "***** After: " << endl;
