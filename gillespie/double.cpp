@@ -235,18 +235,35 @@ inline void Double::operator += (Double& x){
     UnsignedInt de;
     
     
-    //set (augend.e) and (addend.e), compare the two bit-by-bit and write the result in compare
-    (augend.e) = e;
-    (addend.e) = (x.e);
+    //set augend and addend, compare  bit-by-bit  the exponent of augend and the exponent of addend and write the result in compare
+    augend = (*this);
+    addend = x;
     compare = ((augend.e) < (addend.e));
+    
     
     //swap bit-by-bit (augend.e) and (addend.e) in such a way that (augend.e) >= (addend.e)
     augend.Replace(&x, &compare);
     addend.Replace(this, &compare);
     
-    //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
     de = ((augend.e)-(addend.e));
+    
+    
+    cout << "de" << endl;
+    de.SetAll(3);
+    de.Print();
+    de.PrintBase10();
+    
+    cout << "***** Before: " << endl;
+    cout << "Mantissa of addend:" << endl;
+    addend.b.Print();
+    
+    //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
     (addend.b) >>= (&de);
+    
+    cout << "***** After: " << endl;
+    cout << "Mantissa of addend:" << endl;
+    addend.b.Print();
+ 
     
   
     //now augend.e >= addend.e

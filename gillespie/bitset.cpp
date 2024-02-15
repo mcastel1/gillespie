@@ -29,7 +29,7 @@ inline void BitSet::Clear(){
     
 }
 
-inline void BitSet::Resize(unsigned int size){
+inline void BitSet::Resize(unsigned long long int size){
     
     b.resize(size);
     
@@ -64,11 +64,13 @@ inline  void BitSet::SetRandom(unsigned int seed){
     
 }
 
-// set all n_bits entries of *this to the respective bits of i. This method requires b to be properly sized
+//set all n_bits entries of *this to the respective bits of i. This method resizes *this in such a way that *this is just big enough to contain i
 inline void BitSet::SetAll(unsigned long long int i){
     
     Bits m(i);
-        
+      
+    Resize(bits(m.n));
+    
     for(unsigned int s=0; s<bits(m.n); s++){
         (b[s]).SetAll(m.Get(s));
     }
