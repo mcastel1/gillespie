@@ -22,11 +22,15 @@ public:
     unsigned int GetSize(void);
     void SetRandom(unsigned int);
     void SetAll(unsigned long long int);
+    void ComplementTo(unsigned int);
     void ResizeAndSetAll(unsigned long long int);
     void RemoveFirstSignificantBit(void);
     unsigned long long int Get(unsigned int);
     void Print(void);
 
+    //bitwise sum and substraction
+    BitSet operator + (BitSet&), operator - (BitSet&);
+    void operator += (BitSet&), operator -= (BitSet&);
     Bits& operator [] (const unsigned int&);
     void operator >>= (UnsignedInt*);
 
