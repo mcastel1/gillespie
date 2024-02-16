@@ -86,29 +86,21 @@ int main(int argc, char * argv[]) {
         
     }
     
-    //some tests for Double class
+    BitSet a;
+    a.ResizeAndSetAll(331);
+    a.Print();
+    a.SetAll(11);
+    a.Print();
     
-    //
+    
+    /*
+    //some tests for Double class
     Double a, b;
     a.SetRandom((unsigned int)0);
     b.SetRandom((unsigned int)1);
-    //
-    
-    
-    //    cout << "Before:" << endl;
-    //    cout << "a: " << endl;
-    //    a.Print();
-    //    cout << "b: " << endl;
-    //    b.Print();
     
     a+=b;
-    
-    //    cout << "After:" << endl;
-    //    cout << "a: " << endl;
-    //    a.Print();
-    //    cout << "b: " << endl;
-    //    b.Print();
-    
+    */
     
     
     /*

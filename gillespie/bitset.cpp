@@ -64,17 +64,20 @@ inline  void BitSet::SetRandom(unsigned int seed){
     
 }
 
-//set all n_bits entries of *this to the respective bits of i. This method resizes *this in such a way that *this is just big enough to contain i
+//set all n_bits entries of *this to the respective bits of i. This method requires  *this to be properly sized to contain i
 inline void BitSet::SetAll(unsigned long long int i){
     
+    unsigned int s;
     Bits m(i);
-      
-    Resize(bits(m.n));
-    
-    for(unsigned int s=0; s<bits(m.n); s++){
+          
+    //set the first bits(m.n) bits of *this equal to the bits of i
+    for(s=0; s<bits(m.n); s++){
         (b[s]).SetAll(m.Get(s));
     }
-    
+    //set the remaining bits of *this, if any, to false (0)
+    for(s=bits(m.n); s<GetSize(); s++){
+        (b[s]).SetAll(false);
+    }
     
 }
 
@@ -82,17 +85,10 @@ inline void BitSet::SetAll(unsigned long long int i){
 //reize *this in order to contain all bits of i, and set all n_bits entries of *this to the respective bits of i
 inline void BitSet::ResizeAndSetAll(unsigned long long int i){
     
-    Bits m(i);
-    
-    Resize(bits(m.n));
-    
-    for(unsigned int s=0; s<b.size(); s++){
-        (b[s]).SetAll(m.Get(s));
-    }
-    
+    Resize(bits(i));
+    SetAll(i);
     
 }
-
 
 
 void BitSet::Print(void){
