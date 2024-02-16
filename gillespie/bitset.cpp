@@ -95,12 +95,14 @@ void BitSet::Print(void){
     
     unsigned int s;
     
-    cout << "\n";
+    cout << endl;
     for(s=0; s<b.size(); s++){
         cout << "[" << s << "] = ";
+        //extra space to align vertically the output
+        if(s < 10){cout << " ";}
         b[s].Print();
     }
-    cout << "\n";
+    cout << endl;
     
 }
 
@@ -189,14 +191,14 @@ inline void BitSet::operator += (BitSet& addend){
 
 
 //add bit-by-bit addend (which here is either 1 or 0) to *this and store the result in *this. This method requires this->GetSize() to be > 1
-inline void BitSet::operator += (Bits& addend){
+inline void BitSet::operator += (const Bits& addend){
         
     Bits carry, t;
     unsigned int p;
 
     //sum the only bit of addend
-    (t.n) = (((b[0]).n) ^ (addend.n) ^ (carry.n));
-    (carry.n) = ((addend.n) & (((b[0]).n) | (carry.n))) | (((b[0]).n) & (carry.n));
+    (t.n) = (((b[0]).n) ^ (addend.n));
+    (carry.n) = ((addend.n) & ((b[0]).n));
     ((b)[0]).n = (t.n);
     
     for(p=1; p<GetSize(); p++){

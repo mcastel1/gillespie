@@ -91,24 +91,17 @@ inline void Double::SetRandom(gsl_rng* ran){
 
 void Double::Print(void){
     
-    unsigned int i;
-    
-    cout << "\n";
-    for(i=0; i<b.GetSize(); i++){
-        cout << "b[" << i << "] = ";
-        //extra space to align vertically the output
-        if(i < 10){cout << " ";}
-        b[i].Print();
-    }
-    cout << "\n";
-    for(i=0; i<e.GetSize(); i++){
-        cout << "e[" << i << "] = ";
-        //extra space to align vertically the output
-        if(i < 10){cout << " ";}
-        e[i].Print();
-    }
-    cout << "\ns = ";
+
+    cout << "s: " << endl;
     s.Print();
+ 
+    cout << "e:" << endl;
+    e.Print();
+
+    cout << "b: " << endl;
+    b.Print();
+    
+    
     
 }
 
@@ -313,19 +306,25 @@ inline void Double::operator += (Double& x){
     
     
     cout << "***** Before += carry: " << endl;
-    cout << "Augend:" << endl;
-    augend.Print();
-    augend.PrintBase10();
+    cout << "Augend.e:" << endl;
+    augend.e.Print();
+    augend.e.PrintBase10();
 
     
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
     //incoroprate the extra bit into the exponent
+//    Bits temp;
+//    temp = (augend.b.b.back());
+    
+    
     augend.e += augend.b.b.back();
+    //the last entry of augend.e must be zero (unless the sum reaches overflow)
+    augend.e.b.pop_back();
     
     cout << "***** After += carry: " << endl;
-    cout << "Augend:" << endl;
-    augend.Print();
-    augend.PrintBase10();
+    cout << "Augend.e:" << endl;
+    augend.e.Print();
+    augend.e.PrintBase10();
 
     
     

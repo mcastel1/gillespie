@@ -30,7 +30,7 @@ public:
 
     //bitwise sum and substraction
     BitSet operator + (BitSet&), operator - (BitSet&);
-    void operator += (BitSet&), operator += (Bits&), operator -= (BitSet&);
+    void operator += (BitSet&), operator += (const Bits&), operator -= (BitSet&);
     Bits& operator [] (const unsigned int&);
     void operator >>= (UnsignedInt*), operator >>= (Bits*);
 
