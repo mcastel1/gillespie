@@ -31,6 +31,7 @@ public:
     friend class UnsignedInt;
     
     Bits operator & (const Bits&), operator | (const Bits&), operator ^ (const Bits&), operator ~(void);
+    void operator = (const Bits&);
     
 };
 

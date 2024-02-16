@@ -131,6 +131,13 @@ void Bits::Print(void){
     
 }
 
+inline void Bits::operator = (const Bits& m){
+    
+    n = (m.n);
+    
+    
+}
+
 
 //return (this->n) | (m.n) (bitwise OR)
 inline Bits Bits::operator | (const Bits& m){

@@ -328,8 +328,17 @@ inline void Double::operator += (Double& x){
 
     
     
+    cout << "Before >> :" << endl;
+    cout << "Augend.b: " << endl;
+    augend.b.Print();
+    
     //shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise
-    augend.b >>= &(augend.b.b.back());
+    augend.b >>= (augend.b.b.back());
     augend.b.b.pop_back();
+    
+    cout << "After >> :" << endl;
+    cout << "Augend.b: " << endl;
+    augend.b.Print();
+
 
 }
