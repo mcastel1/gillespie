@@ -306,6 +306,8 @@ inline void Double::operator += (Double& x){
     augend.Print();
     augend.PrintBase10();
     
+//    augend.e += augend.b.b.back();
+    
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
 
 
