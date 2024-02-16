@@ -23,7 +23,7 @@ public:
     void Clear(void);
     void Replace(Double*, Bits*);
     void SetAllVertically_IEEE754(double);
-    void SetAllVertically(bool, unsigned int, Bits&);
+    void SetAllVertically(bool, unsigned long long int, double);
     void SetRandom(gsl_rng*);
     void SetRandom(unsigned int);
     void Print(void);
