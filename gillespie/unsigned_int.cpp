@@ -41,6 +41,9 @@ inline void UnsignedInt::Replace(UnsignedInt* replacer, Bits* check){
 }
 
 
+
+
+
 void UnsignedInt::PrintBase10(void){
     
     unsigned int  p;

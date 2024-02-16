@@ -181,8 +181,8 @@ inline void Double::SetAllVertically_IEEE754(double x){
 inline void Double::SetAllVertically(bool sign, unsigned long long int exponent, double mantissa){
     
     s.SetAll(sign);
-    e.SetAllVertically(exponent);
-    b.SetAllVertically(mantissa);
+    e.SetAll(exponent);
+//    b.SetAllVertically(mantissa);
     
 }
 
