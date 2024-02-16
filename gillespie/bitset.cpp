@@ -82,6 +82,15 @@ inline void BitSet::SetAll(unsigned long long int i){
 }
 
 
+//set all n_bits entries of *this equal to the entries stored (in IEEE754 format) in the mantissa of x
+inline void BitSet::SetAll(double x){
+    
+
+    
+}
+
+
+
 //reize *this in order to contain all bits of i, and set all n_bits entries of *this to the respective bits of i
 inline void BitSet::ResizeAndSetAll(unsigned long long int i){
     

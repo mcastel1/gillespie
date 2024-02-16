@@ -22,6 +22,7 @@ public:
     unsigned int GetSize(void);
     void SetRandom(unsigned int);
     void SetAll(unsigned long long int);
+    void SetAll(double);
     void ComplementTo(unsigned int);
     void ResizeAndSetAll(unsigned long long int);
     void RemoveFirstSignificantBit(void);

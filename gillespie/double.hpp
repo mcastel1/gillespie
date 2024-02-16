@@ -24,6 +24,7 @@ public:
     void Replace(Double*, Bits*);
     void SetAll_IEEE754(double);
     void SetAll(bool, unsigned long long int, BitSet&);
+    void SetAll(bool, unsigned long long int, double);
     void SetRandom(gsl_rng*);
     void SetRandom(unsigned int);
     void Print(void);

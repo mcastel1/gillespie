@@ -108,7 +108,7 @@ void Double::Print(void){
 
 
 //set all entries of *this according to the double x, where x is written in binary according to the IEEE754 convention
-inline void Double::SetAll_IEEE754(double x){  
+inline void Double::SetAll_IEEE754(double x){
     
     uint8_t *bytePointer = (uint8_t *)&x;
     size_t index;
@@ -180,6 +180,23 @@ inline void Double::SetAll(bool sign, unsigned long long int exponent,  BitSet& 
     
 }
 
+
+//set all the n_bits entries s equal to sign, all n_bits entries of e equal to exponent, and all n_bits entries of b from the IEEE754 entries of mantissa
+inline void Double::SetAll(bool sign, unsigned long long int exponent,  double mantissa){
+    
+    if(exponent < two_pow(n_bits_exponent+1)){
+        
+        s.SetAll(sign);
+        e.SetAll(exponent);
+        b = mantissa;
+        
+    }else{
+        
+        cout << "Double::SetAll error: exponent does not have the right range!!" << endl;
+        
+    }
+    
+}
 
 
 //print *this in base 10 according to the IEEE754 convention
