@@ -111,7 +111,7 @@ void Double::Print(void){
 
 
 //set all entries of *this according to the double x, where x is written in binary according to the IEEE754 convention
-inline void Double::SetAllVertically_IEEE754(double x){
+inline void Double::SetAll_IEEE754(double x){
 //
 //    //set the exponent
 //    //x = (-1)^s * 2^(e-1023) * (1+ ....).
@@ -178,7 +178,7 @@ inline void Double::SetAllVertically_IEEE754(double x){
 
 
 //set all the n_bits entries of *this equal to the double given by (-1)^sign * 2^{exponent - 1023} * (mantissa[0] 2^0 + mantissa[1] 2^{-1} + ... )
-inline void Double::SetAllVertically(bool sign, unsigned long long int exponent, double mantissa){
+inline void Double::SetAll(bool sign, unsigned long long int exponent, double mantissa){
     
     s.SetAll(sign);
     e.SetAll(exponent);
