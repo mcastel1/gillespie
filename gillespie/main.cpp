@@ -87,51 +87,51 @@ int main(int argc, char * argv[]) {
     }
     
     
-//    BitSet i(10);
-//    Bits j;
-//    i.SetAll(7);
-//    j.SetRandom((unsigned int)1);
-//    cout << "Before +=" << endl;
-//    cout << "i : ";
-//    i.Print();
-//    cout << "j : ";
-//    j.Print();
-//    i+=j;
-//    
-//    cout << "After +=" << endl;
-//    cout << "i:";
-//    i.Print();
+    BitSet i(10);
+    Bits j;
+    i.SetAll(7);
+    j.SetRandom((unsigned int)1);
+    cout << "Before >>" << endl;
+    cout << "i : ";
+    i.Print();
+    cout << "j : ";
+    j.Print();
+    i >>= (&j);
+
+    cout << "After >>" << endl;
+    cout << "i:";
+    i.Print();
     
 
     
     
     //some tests for Double class
-    
-    Double a, b;
-    BitSet mantissa;
-    
-    mantissa.Resize(n_bits_mantissa);
-    
-    mantissa.SetRandom((unsigned int)0);
-    a.SetAll(false, 1023, mantissa);
-    
-    mantissa.SetRandom((unsigned int)1);
-    b.SetAll(false, 1023, mantissa);
-
-//    cout << "a : " << endl;
-//    a.Print();
-//    a.PrintBase10();
+//    
+//    Double a, b;
+//    BitSet mantissa;
+//    
+//    mantissa.Resize(n_bits_mantissa);
+//    
+//    mantissa.SetRandom((unsigned int)0);
+//    a.SetAll(false, 1023, mantissa);
+//    
+//    mantissa.SetRandom((unsigned int)1);
+//    b.SetAll(false, 1023, mantissa);
 //
-//    cout << "b : " << endl;
-//    b.Print();
-//    b.PrintBase10();
-
-    /*
-    a.SetRandom((unsigned int)0);
-    b.SetRandom((unsigned int)1);
-    
-    */
-    a+=b;
+////    cout << "a : " << endl;
+////    a.Print();
+////    a.PrintBase10();
+////
+////    cout << "b : " << endl;
+////    b.Print();
+////    b.PrintBase10();
+//
+//    /*
+//    a.SetRandom((unsigned int)0);
+//    b.SetRandom((unsigned int)1);
+//    
+//    */
+//    a+=b;
 
     
     

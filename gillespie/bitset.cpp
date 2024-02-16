@@ -316,3 +316,38 @@ inline void BitSet::RemoveFirstSignificantBit(void){
     
 
 }
+
+
+
+//shift bit-by-bit the entries of  b[0] b[1] ... in *this by *e (thus by either one position or one position) and replace the remaining entries b[] by all zeros
+inline void BitSet::operator >>=(Bits* e){
+    
+    int m;
+    Bits zero;
+    
+    zero.SetAll(false);
+    
+    
+    //run through the components of this->b and shift them
+    //in this first loop, I run over the first chunk of entries of b: m = 0, ..., b.size() - 2^n-1 and I replace the m-th component of b with the m+2^n-th compoennt if e[n]=true, and do nothing otherwise
+    for(m=0; m<(this->GetSize())-1; m++){
+        
+        b[m].Replace(
+                     //the element # m+1 in b
+                     (b.data()) + (m+1),
+                     e
+                     );
+        
+    }
+    
+    //I consider the last entry of b: I can no longer replace it with b[m+1] as in the loop above, becuase b[m+1] does not exist in b -> I replace it with zero
+    b.back().Replace(
+                     //a Bits filled with zeros
+                     &zero,
+                     e
+                     );
+    
+}
+
+
+
