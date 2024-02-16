@@ -88,80 +88,80 @@ int main(int argc, char * argv[]) {
     
     //some tests for Double class
     
-    /*
+    //
     Double a, b;
     a.SetRandom((unsigned int)0);
     b.SetRandom((unsigned int)1);
-    */
+    //
     
-
-//    cout << "Before:" << endl;
-//    cout << "a: " << endl;
-//    a.Print();
-//    cout << "b: " << endl;
-//    b.Print();
- 
-//    a+=b;
-
-//    cout << "After:" << endl;
-//    cout << "a: " << endl;
-//    a.Print();
-//    cout << "b: " << endl;
-//    b.Print();
- 
+    
+    //    cout << "Before:" << endl;
+    //    cout << "a: " << endl;
+    //    a.Print();
+    //    cout << "b: " << endl;
+    //    b.Print();
+    
+    a+=b;
+    
+    //    cout << "After:" << endl;
+    //    cout << "a: " << endl;
+    //    a.Print();
+    //    cout << "b: " << endl;
+    //    b.Print();
+    
     
     
     /*
-    UnsignedInt a(10), b(10);
-    Bits changer;
-    a.SetRandom((unsigned int)0);
-    b.SetRandom((unsigned int)1);
-    changer.SetRandom((unsigned int)2);
-    
-    cout << "Before" << endl;
-    cout << "a: " << endl;
-    a.Print();
-    cout << "b: " << endl;
-    b.Print();
-    cout << "changer: " << endl;
-    changer.Print();
-
-    a.Replace(&b, &changer);
-    
-    cout << "After" << endl;
-    cout << "a: " << endl;
-    a.Print();
-    cout << "b: " << endl;
-    b.Print();
-    cout << "changer: " << endl;
-    changer.Print();
+     UnsignedInt a(10), b(10);
+     Bits changer;
+     a.SetRandom((unsigned int)0);
+     b.SetRandom((unsigned int)1);
+     changer.SetRandom((unsigned int)2);
+     
+     cout << "Before" << endl;
+     cout << "a: " << endl;
+     a.Print();
+     cout << "b: " << endl;
+     b.Print();
+     cout << "changer: " << endl;
+     changer.Print();
+     
+     a.Replace(&b, &changer);
+     
+     cout << "After" << endl;
+     cout << "a: " << endl;
+     a.Print();
+     cout << "b: " << endl;
+     b.Print();
+     cout << "changer: " << endl;
+     changer.Print();
      */
-
     
-
+    
+    
     
     /*
-    BitSet b(gsl_pow_int(2, 20));
-    UnsignedInt e(4);
-    b.SetRandom((int)0);
-    e.SetRandom((int)2);
+     BitSet b(gsl_pow_int(2, 20));
+     UnsignedInt e(4);
+     b.SetRandom((int)0);
+     e.SetRandom((int)2);
+     
+     cout << "Before" << endl;
+     cout << "b:" << endl;
+     b.Print();
+     cout << "e:" << endl;
+     e.Print();
+     
+     b >>= (&e);
+     
+     cout << "After" << endl;
+     cout << "b:" << endl;
+     b.Print();
+     cout << "e:" << endl;
+     e.Print();
+     */
     
-    cout << "Before" << endl;
-    cout << "b:" << endl;
-    b.Print();
-    cout << "e:" << endl;
-    e.Print();
     
-    b >>= (&e);
-    
-    cout << "After" << endl;
-    cout << "b:" << endl;
-    b.Print();
-    cout << "e:" << endl;
-    e.Print();
-*/
-    
-
     
     //
     //    Double a;
@@ -173,57 +173,57 @@ int main(int argc, char * argv[]) {
     //     System sys(N, seed);
     
     
-    //
+    /*
      //some tests for UnsignedInt class
-    clock_t start=0, end=0;
-    unsigned int s;
+     clock_t start=0, end=0;
+     unsigned int s;
+     
+     
+     
+     
+     vector<UnsignedInt> A(S), B(S);
+     vector<unsigned long long int> a(S), b(S);
+     gsl_rng* ran;
+     ran = gsl_rng_alloc(gsl_rng_gfsr4);
+     gsl_rng_set(ran, seed);
+     
+     
+     
+     for(s=0; s<S; s++){
+     A[s] = UnsignedInt(23);
+     B[s] = UnsignedInt(9);
+     (A[s]).SetRandom(s);
+     (B[s]).SetRandom(s+1);
+     }
+     
+     for(s=0; s<S; s++){
+     
+     A[s].PrintBase10();
+     B[s].PrintBase10();
+     
+     A[s]-=(B[s]);
+     
+     A[s].PrintBase10();
+     
+     }
+     
+     
+     
+     for(s=0; s<S; s++){
+     a[s] = gsl_rng_uniform_int(ran, 9);
+     b[s] = gsl_rng_uniform_int(ran, 9);
+     }
+     start = clock();
+     for(s=0; s<S; s++){
+     a[s]+=b[s];
+     }
+     end = clock();
+     cout << "Time without bits = " << end - start << "\n";
+     */
     
     
     
     
-    vector<UnsignedInt> A(S), B(S);
-    vector<unsigned long long int> a(S), b(S);
-    gsl_rng* ran;
-    ran = gsl_rng_alloc(gsl_rng_gfsr4);
-    gsl_rng_set(ran, seed);
-    
-    
-    
-    for(s=0; s<S; s++){
-        A[s] = UnsignedInt(23);
-        B[s] = UnsignedInt(9);
-        (A[s]).SetRandom(s);
-        (B[s]).SetRandom(s+1);
-    }
-    
-    for(s=0; s<S; s++){
-        
-        A[s].PrintBase10();
-        B[s].PrintBase10();
-        
-        A[s]-=(B[s]);
-        
-        A[s].PrintBase10();
-        
-    }
-    
-    
-    
-    for(s=0; s<S; s++){
-        a[s] = gsl_rng_uniform_int(ran, 9);
-        b[s] = gsl_rng_uniform_int(ran, 9);
-    }
-    start = clock();
-    for(s=0; s<S; s++){
-        a[s]+=b[s];
-    }
-    end = clock();
-    cout << "Time without bits = " << end - start << "\n";
-    //
-
-    
-    
-
     
     return 0;
     

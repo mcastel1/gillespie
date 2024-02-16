@@ -248,16 +248,16 @@ inline void Double::operator += (Double& x){
     //now augend.e >= addend.e
 
     
-    cout << "Augend: " << endl;
+    cout << "Augend.e: " << endl;
 //    augend.e.SetAll(3);
     augend.e.PrintBase10();
-    cout << "Addend: " << endl;
+    cout << "Addend.e: " << endl;
 //    addend.e.SetAll(1);
     addend.e.PrintBase10();
     
     de = ((augend.e)-(addend.e));
     
-    cout << "de" << endl;
+    cout << "de :" << endl;
     de.PrintBase10();
     
       
