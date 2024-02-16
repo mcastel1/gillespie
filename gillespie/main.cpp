@@ -105,7 +105,7 @@ int main(int argc, char * argv[]) {
 
     
     
-//    some tests for Double class
+//    some tests for Double class 
     
     Double a, b;
     BitSet mantissa;
@@ -116,15 +116,16 @@ int main(int argc, char * argv[]) {
     a.SetAll(false, 1023, mantissa);
     
     mantissa.SetRandom((unsigned int)1);
-    b.SetAll(false, 1023, mantissa);
+    b.SetAll(false, 1021, mantissa);
 
-//    cout << "a : " << endl;
-//    a.Print();
-//    a.PrintBase10();
-//
-//    cout << "b : " << endl;
-//    b.Print();
-//    b.PrintBase10();
+    cout << "----------- Before -----------" << endl;
+    cout << "a : " << endl;
+    a.Print();
+    a.PrintBase10();
+
+    cout << "b : " << endl;
+    b.Print();
+    b.PrintBase10();
 
     /*
     a.SetRandom((unsigned int)0);
@@ -132,6 +133,11 @@ int main(int argc, char * argv[]) {
     
     */
     a+=b;
+
+    cout << "----------- After -----------" << endl;
+    cout << "a+b: " << endl;
+    a.Print();
+    a.PrintBase10();
 
     
     

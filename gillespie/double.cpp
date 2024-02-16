@@ -263,52 +263,52 @@ inline void Double::operator += (Double& x){
     //now augend.e >= addend.e
 
     
-    cout << "Augend: " << endl;
-    augend.Print();
-    augend.PrintBase10();
-    cout << "Addend: " << endl;
-    addend.Print();
-    addend.PrintBase10();
+//    cout << "Augend: " << endl;
+//    augend.Print();
+//    augend.PrintBase10();
+//    cout << "Addend: " << endl;
+//    addend.Print();
+//    addend.PrintBase10();
     
     de = ((augend.e)-(addend.e));
     
     cout << "de :" << endl;
     de.PrintBase10();
     
-       
-    cout << "Addend.b before shift: "<< endl;
-    addend.Print();
+//       
+//    cout << "Addend.b before shift: "<< endl;
+//    addend.Print();
     
     //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
     (addend.b) >>= (&de);
     
-    cout << "Addend.b after shift: "<< endl;
-    addend.Print();
+//    cout << "Addend.b after shift: "<< endl;
+//    addend.Print();
  
 
-    cout << "***** Before +=: " << endl;
-    cout << "Augend:" << endl;
-    augend.Print();
-    augend.PrintBase10();
-    cout << "Addend:" << endl;
-    addend.Print();
-    addend.PrintBase10();
+//    cout << "***** Before +=: " << endl;
+//    cout << "Augend:" << endl;
+//    augend.Print();
+//    augend.PrintBase10();
+//    cout << "Addend:" << endl;
+//    addend.Print();
+//    addend.PrintBase10();
 
     //now sum augend.b and addend.b
     
     augend.b += addend.b;
     
-    cout << "***** After += : " << endl;
-    cout << "Augend:" << endl;
-    augend.Print();
-    augend.PrintBase10();
+//    cout << "***** After += : " << endl;
+//    cout << "Augend:" << endl;
+//    augend.Print();
+//    augend.PrintBase10();
     
     
-    
-    cout << "***** Before += carry: " << endl;
-    cout << "Augend.e:" << endl;
-    augend.e.Print();
-    augend.e.PrintBase10();
+  
+//    cout << "***** Before += carry: " << endl;
+//    cout << "Augend.e:" << endl;
+//    augend.e.Print();
+//    augend.e.PrintBase10();
 
     
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
@@ -321,24 +321,26 @@ inline void Double::operator += (Double& x){
     //the last entry of augend.e must be zero (unless the sum reaches overflow)
     augend.e.b.pop_back();
     
-    cout << "***** After += carry: " << endl;
-    cout << "Augend.e:" << endl;
-    augend.e.Print();
-    augend.e.PrintBase10();
+//    cout << "***** After += carry: " << endl;
+//    cout << "Augend.e:" << endl;
+//    augend.e.Print();
+//    augend.e.PrintBase10();
 
     
     
-    cout << "Before >> :" << endl;
-    cout << "Augend.b: " << endl;
-    augend.b.Print();
+//    cout << "Before >> :" << endl;
+//    cout << "Augend.b: " << endl;
+//    augend.b.Print();
     
     //shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise
     augend.b <<= ~(augend.b.b.back());
     augend.b.b.erase(augend.b.b.begin());
     
-    cout << "After >> :" << endl;
-    cout << "Augend.b: " << endl;
-    augend.b.Print();
+//    cout << "After >> :" << endl;
+//    cout << "Augend.b: " << endl;
+//    augend.b.Print();
+    
+    (*this) = augend;
 
 
 }
