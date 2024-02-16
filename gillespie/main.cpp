@@ -102,21 +102,21 @@ int main(int argc, char * argv[]) {
     mantissa.SetRandom((unsigned int)1);
     b.SetAll(false, 1023, mantissa);
 
-    cout << "a : " << endl;
-    a.Print();
-    a.PrintBase10();
-
-    cout << "b : " << endl;
-    b.Print();
-    b.PrintBase10();
+//    cout << "a : " << endl;
+//    a.Print();
+//    a.PrintBase10();
+//
+//    cout << "b : " << endl;
+//    b.Print();
+//    b.PrintBase10();
 
     /*
     a.SetRandom((unsigned int)0);
     b.SetRandom((unsigned int)1);
     
-    a+=b;
     */
-    
+    a+=b;
+
     
     
     

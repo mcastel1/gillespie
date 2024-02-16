@@ -227,17 +227,17 @@ void Double::PrintBase10(void){
     unsigned int i, p;
     double b_10, e_10;
     
-    cout << "{";
+    cout << "Base 10: {";
     for(p=0; p<n_bits; p++){
         
         for(b_10=0.0, i=0; i<b.GetSize(); i++){
-            b_10 += gsl_pow_int(2.0, -i) * (b[b.GetSize()-1-i].Get(p));
+            b_10 += gsl_pow_int(2.0, -i) * (b[b.GetSize()-1-i].Get(n_bits-1-p));
         }
         for(e_10=-1023.0, i=0; i<e.GetSize(); i++){
-            e_10 += two_pow(i) * (e[i].Get(p));
+            e_10 += two_pow(i) * (e[i].Get(n_bits-1-p));
         }
     
-        cout << gsl_pow_int(-1.0, s.Get(p)) * gsl_pow_int(2.0, e_10) * b_10 << " ";
+        cout << gsl_pow_int(-1.0, s.Get(n_bits-1-p)) * gsl_pow_int(2.0, e_10) * b_10 << " ";
         
     }
     
@@ -266,12 +266,12 @@ inline void Double::operator += (Double& x){
     //now augend.e >= addend.e
 
     
-    cout << "Augend.e: " << endl;
-//    augend.e.SetAll(3);
-    augend.e.PrintBase10();
-    cout << "Addend.e: " << endl;
-//    addend.e.SetAll(1);
-    addend.e.PrintBase10();
+    cout << "Augend: " << endl;
+    augend.Print();
+    augend.PrintBase10();
+    cout << "Addend: " << endl;
+    addend.Print();
+    addend.PrintBase10();
     
     de = ((augend.e)-(addend.e));
     
@@ -280,19 +280,21 @@ inline void Double::operator += (Double& x){
     
        
     cout << "Addend.b before shift: "<< endl;
-    addend.b.Print();
+    addend.Print();
     
     //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
     (addend.b) >>= (&de);
     
     cout << "Addend.b after shift: "<< endl;
-    addend.b.Print();
+    addend.Print();
  
 
     cout << "***** Before: " << endl;
-    cout << "Mantissa of augend:" << endl;
+    cout << "Augend:" << endl;
+    augend.Print();
     augend.PrintBase10();
-    cout << "Mantissa of addend:" << endl;
+    cout << "Addend:" << endl;
+    addend.Print();
     addend.PrintBase10();
 
     //now sum augend.b and addend.b
@@ -300,8 +302,8 @@ inline void Double::operator += (Double& x){
     augend.b += addend.b;
     
     cout << "***** After: " << endl;
-    cout << "Mantissa of augend + addend:" << endl;
-    augend.PrintBase10();
+    cout << "Augend + addend:" << endl;
+    augend.Print();
 
 
 }
