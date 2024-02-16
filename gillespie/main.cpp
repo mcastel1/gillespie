@@ -94,10 +94,8 @@ int main(int argc, char * argv[]) {
     UnsignedInt n;
     n.Resize(n_bits_mantissa);
     n.SetRandom((unsigned int)0);
-    n.SetFromDouble(0, 0.1467);
-    n.SetFromDouble(2, 0.94637);
-//    n.Set(0, 12);
-//    n.Set(2, 29);
+    n.SetAllFromDouble(0.15349687467);
+//    n.SetFromDouble(2, 0.94637);
     n.Print();
     
 
