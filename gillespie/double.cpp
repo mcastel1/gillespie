@@ -108,18 +108,7 @@ void Double::Print(void){
 
 
 //set all entries of *this according to the double x, where x is written in binary according to the IEEE754 convention
-inline void Double::SetAll_IEEE754(double x){
-//
-//    //set the exponent
-//    //x = (-1)^s * 2^(e-1023) * (1+ ....).
-//    //log_2|x| = e-1023 + log(1+...)
-//    //integer_part(log_2|x|) = e-1023
-//    e.SetAll(floor(gsl_sf_log_abs(x)/gsl_sf_log(2.0)) + 1023);
-//    
-//    //set the sign
-//    s.SetAll((x >= 0.0 ? false : true));
-//    
-    
+inline void Double::SetAll_IEEE754(double x){  
     
     uint8_t *bytePointer = (uint8_t *)&x;
     size_t index;

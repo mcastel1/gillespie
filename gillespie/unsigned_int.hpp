@@ -20,6 +20,7 @@ public:
     void PrintBase10(void);
     void RemoveFirstSignificantBit(void);
     void Replace(UnsignedInt*, Bits*);
+    void Set(unsigned int, unsigned long long int);
 
     Bits operator < (const UnsignedInt&);
     void operator = (BitSet);

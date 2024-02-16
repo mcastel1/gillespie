@@ -41,6 +41,17 @@ inline void UnsignedInt::Replace(UnsignedInt* replacer, Bits* check){
 }
 
 
+//set the s-th bit of *this equal to i. This requires b to be sized properly
+inline void UnsignedInt::Set(unsigned int s, unsigned long long int i){
+    
+    unsigned int p;
+    Bits n(i);
+    
+    for(p=0; p<b.size(); p++){
+        b[p].Set(s, ((bool)(n.Get(p))));
+    }
+    
+}
 
 
 

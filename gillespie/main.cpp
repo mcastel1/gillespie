@@ -89,26 +89,19 @@ int main(int argc, char * argv[]) {
 //    }
 //    
 //    
-//    BitSet i(40);
-//    Bits j;
-//    i.SetRandom((unsigned int)0);
-//    j.SetRandom((unsigned int)1);
-//    cout << "Before >>" << endl;
-//    cout << "i : " << endl;
-//    i.Print();
-//    cout << "j : " << endl;
-//    j.Print();
-//    i >>= j;
-//
-//    cout << "After <<" << endl;
-//    cout << "i:" << endl;
-//    i.Print();
+
+    
+    UnsignedInt n(100);
+    n.SetAll(76);
+    n.Set(0, 12);
+    n.Set(2, 29);
+    n.Print();
     
 
     
     
 //    some tests for Double class
-    
+    /*
     Double a, b;
     double error;
     vector<double> v_a, v_b, v_a_plus_b;
@@ -134,13 +127,8 @@ int main(int argc, char * argv[]) {
     b.Print();
     b.PrintBase10();
 
-    /*
-    a.SetRandom((unsigned int)0);
-    b.SetRandom((unsigned int)1);
-    
-    */
     a+=b;
-
+    
     cout << "----------- After -----------" << endl;
     cout << "a+b: " << endl;
     a.Print();
@@ -153,7 +141,7 @@ int main(int argc, char * argv[]) {
         cout << v_a[i]+v_b[i] << "\t" << v_a_plus_b[i] << "\t\t\t" << fabs(((v_a[i]+v_b[i])-v_a_plus_b[i])/v_a_plus_b[i]) << endl;
     }
     cout << "Maximum relative error = " << error << endl;
-
+*/
     
     
     cout << endl;
