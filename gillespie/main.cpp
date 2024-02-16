@@ -62,30 +62,30 @@
 
 int main(int argc, char * argv[]) {
     
-    int options;
-    unsigned int seed=0, N=0, S=0;
+//    int options;
+//    unsigned int seed=0, N=0, S=0;
     
-    while ((options = getopt(argc, argv, ":N:s:S:")) != -1) {
-        
-        switch (options) {
-                
-            case 'N':
-                N = ((unsigned int)atoi(optarg));
-                break;
-                
-            case 's':
-                seed = ((unsigned int)atoi(optarg));
-                break;
-                
-            case 'S':
-                S = ((unsigned int)atoi(optarg));
-                break;
-                
-                
-        }
-        
-    }
-    
+//    while ((options = getopt(argc, argv, ":N:s:S:")) != -1) {
+//        
+//        switch (options) {
+//                
+//            case 'N':
+//                N = ((unsigned int)atoi(optarg));
+//                break;
+//                
+//            case 's':
+//                seed = ((unsigned int)atoi(optarg));
+//                break;
+//
+//            case 'S':
+//                S = ((unsigned int)atoi(optarg));
+//                break;
+//                
+//                
+//        }
+//        
+//    }
+//    
 //    
 //    BitSet i(10);
 //    Bits j;
