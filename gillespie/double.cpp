@@ -289,7 +289,7 @@ inline void Double::operator += (Double& x){
     addend.Print();
  
 
-    cout << "***** Before: " << endl;
+    cout << "***** Before sum: " << endl;
     cout << "Augend:" << endl;
     augend.Print();
     augend.PrintBase10();
@@ -304,6 +304,7 @@ inline void Double::operator += (Double& x){
     cout << "***** After: " << endl;
     cout << "Augend + addend:" << endl;
     augend.Print();
+    augend.PrintBase10();
 
 
 }
