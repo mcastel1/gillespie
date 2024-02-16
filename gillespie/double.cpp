@@ -181,7 +181,7 @@ inline void Double::SetAll(bool sign, unsigned long long int exponent,  BitSet& 
 }
 
 
-//set all the n_bits entries s equal to sign, all n_bits entries of e equal to exponent, and all n_bits entries of b from the IEEE754 entries of mantissa
+//set all the n_bits entries of s equal to sign, all n_bits entries of e equal to exponent, and all n_bits entries of b from the IEEE754 entries of mantissa
 inline void Double::SetAll(bool sign, unsigned long long int exponent,  double mantissa){
     
     if(exponent < two_pow(n_bits_exponent+1)){
@@ -197,6 +197,25 @@ inline void Double::SetAll(bool sign, unsigned long long int exponent,  double m
     }
     
 }
+
+
+//set the p-th bit entry of s equal to sign, the p-th entry of e equal to exponent, and the p-th entry of b from the IEEE754 entries of mantissa
+inline void Double::Set(unsigned int p, bool sign, unsigned long long int exponent,  double x){
+    
+    if(exponent < two_pow(n_bits_exponent+1)){
+        
+        s.Set(p, sign);
+        e.Set(p, exponent);
+        b.SetFromDouble(p, x);
+        
+    }else{
+        
+        cout << "Double::SetAll error: exponent does not have the right range!!" << endl;
+        
+    }
+    
+}
+
 
 
 //print *this in base 10 according to the IEEE754 convention

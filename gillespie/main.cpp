@@ -112,7 +112,9 @@ int main(int argc, char * argv[]) {
     mantissa.Resize(n_bits_mantissa);
     
     mantissa.SetRandom((unsigned int)0);
-    a.SetAll(false, 2030, 0.5280897);
+    a.Set(0, true, 2030, 0.5280897);
+    a.Set(2, false, 2010, 0.80897);
+    a.Print();
     mantissa.SetRandom((unsigned int)1);
     b.SetAll(false, 2019, 0.21854298);
     
