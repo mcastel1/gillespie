@@ -305,6 +305,8 @@ inline void Double::operator += (Double& x){
     cout << "Augend + addend:" << endl;
     augend.Print();
     augend.PrintBase10();
+    
+    //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
 
 
 }
