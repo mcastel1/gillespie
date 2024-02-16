@@ -188,7 +188,7 @@ inline void Double::SetAll(bool sign, unsigned long long int exponent,  double m
         
         s.SetAll(sign);
         e.SetAll(exponent);
-        b = mantissa;
+        b.SetAllFromDouble(mantissa);
         
     }else{
         

@@ -64,45 +64,45 @@ int main(int argc, char * argv[]) {
     
     cout.precision(cout_precision);
     
-//    int options;
-//    unsigned int seed=0, N=0, S=0;
+    //    int options;
+    //    unsigned int seed=0, N=0, S=0;
     
-//    while ((options = getopt(argc, argv, ":N:s:S:")) != -1) {
-//        
-//        switch (options) {
-//                
-//            case 'N':
-//                N = ((unsigned int)atoi(optarg));
-//                break;
-//                
-//            case 's':
-//                seed = ((unsigned int)atoi(optarg));
-//                break;
-//
-//            case 'S':
-//                S = ((unsigned int)atoi(optarg));
-//                break;
-//                
-//                
-//        }
-//        
-//    }
-//    
-//    
-
+    //    while ((options = getopt(argc, argv, ":N:s:S:")) != -1) {
+    //
+    //        switch (options) {
+    //
+    //            case 'N':
+    //                N = ((unsigned int)atoi(optarg));
+    //                break;
+    //
+    //            case 's':
+    //                seed = ((unsigned int)atoi(optarg));
+    //                break;
+    //
+    //            case 'S':
+    //                S = ((unsigned int)atoi(optarg));
+    //                break;
+    //
+    //
+    //        }
+    //
+    //    }
+    //
+    //
     
-    UnsignedInt n;
-    n.Resize(n_bits_mantissa);
-    n.SetRandom((unsigned int)0);
-    n.SetAllFromDouble(0.15349687467);
-//    n.SetFromDouble(2, 0.94637);
-    n.Print();
+    //
+    //    UnsignedInt n;
+    //    n.Resize(n_bits_mantissa);
+    //    n.SetRandom((unsigned int)0);
+    //    n.SetAllFromDouble(0.15349687467);
+    ////    n.SetFromDouble(2, 0.94637);
+    //    n.Print();
+    //
     
-
     
     
-//    some tests for Double class
-    /*
+    //    some tests for Double class
+    //
     Double a, b;
     double error;
     vector<double> v_a, v_b, v_a_plus_b;
@@ -112,9 +112,9 @@ int main(int argc, char * argv[]) {
     mantissa.Resize(n_bits_mantissa);
     
     mantissa.SetRandom((unsigned int)0);
-    a.SetAll(false, 2030, mantissa);
+    a.SetAll(false, 2030, 0.5280897);
     mantissa.SetRandom((unsigned int)1);
-    b.SetAll(false, 2019, mantissa);
+    b.SetAll(false, 2019, 0.21854298);
     
     a.GetBase10(v_a);
     b.GetBase10(v_b);
@@ -123,11 +123,11 @@ int main(int argc, char * argv[]) {
     cout << "a : " << endl;
     a.Print();
     a.PrintBase10();
-
+    
     cout << "b : " << endl;
     b.Print();
     b.PrintBase10();
-
+    
     a+=b;
     
     cout << "----------- After -----------" << endl;
@@ -142,7 +142,7 @@ int main(int argc, char * argv[]) {
         cout << v_a[i]+v_b[i] << "\t" << v_a_plus_b[i] << "\t\t\t" << fabs(((v_a[i]+v_b[i])-v_a_plus_b[i])/v_a_plus_b[i]) << endl;
     }
     cout << "Maximum relative error = " << error << endl;
-*/
+    //
     
     
     cout << endl;
