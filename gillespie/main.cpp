@@ -87,6 +87,22 @@ int main(int argc, char * argv[]) {
     }
     
     
+//    BitSet i(10);
+//    Bits j;
+//    i.SetAll(7);
+//    j.SetRandom((unsigned int)1);
+//    cout << "Before +=" << endl;
+//    cout << "i : ";
+//    i.Print();
+//    cout << "j : ";
+//    j.Print();
+//    i+=j;
+//    
+//    cout << "After +=" << endl;
+//    cout << "i:";
+//    i.Print();
+    
+
     
     
     //some tests for Double class
