@@ -187,19 +187,19 @@ inline void BitSet::operator += (BitSet& addend){
     
 }
 
+
 //add bit-by-bit addend (which here is either 1 or 0) to *this and store the result in *this. This method requires this->GetSize() to be > 1
 inline void BitSet::operator += (Bits& addend){
         
     Bits carry, t;
+    unsigned int p;
 
-    //sum the single bit of addend
+    //sum the only bit of addend
+    (t.n) = (((b[0]).n) ^ (addend.n) ^ (carry.n));
+    (carry.n) = ((addend.n) & (((b[0]).n) | (carry.n))) | (((b[0]).n) & (carry.n));
+    ((b)[0]).n = (t.n);
     
-    (t.n) = (((b[p]).n) ^ (((addend.b)[p]).n) ^ (carry.n));
-    (carry.n) = ((((addend.b)[p]).n) & (((b[p]).n) | (carry.n))) | (((b[p]).n) & (carry.n));
-    ((b)[p]).n = (t.n);
-    
-    
-    for(p=addend.GetSize(); p<GetSize(); p++){
+    for(p=1; p<GetSize(); p++){
         //run over the extra bits of augend
         
         (t.n) = (((b[p]).n) ^ (carry.n));
@@ -211,7 +211,6 @@ inline void BitSet::operator += (Bits& addend){
     //    add the last extra bit
     //******** THIS MAY BE TIME CONSUMING ********
     b.push_back(carry);
-    
     
 }
 
