@@ -193,20 +193,18 @@ inline void BitSet::operator += (BitSet& addend){
 //add bit-by-bit addend (which here is either 1 or 0) to *this and store the result in *this. This method requires this->GetSize() to be > 1
 inline void BitSet::operator += (const Bits& addend){
         
-    Bits carry, t;
+    Bits carry;
     unsigned int p;
 
     //sum the only bit of addend
-    (t.n) = (((b[0]).n) ^ (addend.n));
     (carry.n) = ((addend.n) & ((b[0]).n));
-    ((b)[0]).n = (t.n);
+    ((b)[0]).n = (((b[0]).n) ^ (addend.n));
     
     for(p=1; p<GetSize(); p++){
         //run over the extra bits of augend
         
-        (t.n) = (((b[p]).n) ^ (carry.n));
         (carry.n) = (((b[p]).n) & (carry.n));
-        (b[p].n) = (t.n);
+        (b[p].n) = (((b[p]).n) ^ (carry.n));
         
     }
     
