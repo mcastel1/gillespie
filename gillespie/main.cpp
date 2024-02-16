@@ -87,21 +87,21 @@ int main(int argc, char * argv[]) {
 //    }
 //    
 //    
-//    BitSet i(10);
+//    BitSet i(40);
 //    Bits j;
 //    i.SetRandom((unsigned int)0);
 //    j.SetRandom((unsigned int)1);
 //    cout << "Before >>" << endl;
-//    cout << "i : ";
+//    cout << "i : " << endl;
 //    i.Print();
-//    cout << "j : ";
+//    cout << "j : " << endl;
 //    j.Print();
-//    i >>= (&j);
+//    i >>= j;
 //
 //    cout << "After >>" << endl;
-//    cout << "i:";
+//    cout << "i:" << endl;
 //    i.Print();
-//    
+    
 
     
     
