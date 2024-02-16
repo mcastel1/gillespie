@@ -107,15 +107,12 @@ int main(int argc, char * argv[]) {
     double error;
     vector<double> v_a, v_b, v_a_plus_b;
     unsigned int i;
-    BitSet mantissa;
     
-    mantissa.Resize(n_bits_mantissa);
     
-    mantissa.SetRandom((unsigned int)0);
-    a.Set(0, true, 2030, 0.5280897);
+    a.SetAll(false, 2011, 0.21854298);
+    a.Set(0, false, 2009, 0.5280897);
     a.Set(2, false, 2010, 0.80897);
     a.Print();
-    mantissa.SetRandom((unsigned int)1);
     b.SetAll(false, 2019, 0.21854298);
     
     a.GetBase10(v_a);
