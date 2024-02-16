@@ -110,16 +110,20 @@ int main(int argc, char * argv[]) {
 //    some tests for Double class
     
     Double a, b;
+    vector<double> v_a, v_b, v_a_plus_b;
+    unsigned int i;
     BitSet mantissa;
     
     mantissa.Resize(n_bits_mantissa);
     
     mantissa.SetRandom((unsigned int)0);
-    a.SetAll(false, 1023, mantissa);
-    
+    a.SetAll(false, 2030, mantissa);
     mantissa.SetRandom((unsigned int)1);
-    b.SetAll(false, 1021, mantissa);
-
+    b.SetAll(false, 2019, mantissa);
+    
+    a.GetBase10(v_a);
+    b.GetBase10(v_b);
+    
     cout << "----------- Before -----------" << endl;
     cout << "a : " << endl;
     a.Print();
@@ -140,6 +144,13 @@ int main(int argc, char * argv[]) {
     cout << "a+b: " << endl;
     a.Print();
     a.PrintBase10();
+    a.GetBase10(v_a_plus_b);
+    
+    cout << "Check of the result:" << endl;
+    for(i=0; i<n_bits; ++i){
+        cout << v_a[i]+v_b[i] << "\t" << v_a_plus_b[i] << "\t\t\t" << fabs(((v_a[i]+v_b[i])-v_a_plus_b[i])/v_a_plus_b[i]) << endl;
+        
+    }
 
     
     
