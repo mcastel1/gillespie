@@ -62,6 +62,8 @@
 
 int main(int argc, char * argv[]) {
     
+    cout.precision(cout_precision);
+    
 //    int options;
 //    unsigned int seed=0, N=0, S=0;
     
@@ -105,7 +107,7 @@ int main(int argc, char * argv[]) {
 
     
     
-//    some tests for Double class 
+//    some tests for Double class
     
     Double a, b;
     BitSet mantissa;

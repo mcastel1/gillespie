@@ -92,7 +92,7 @@ inline void Double::SetRandom(gsl_rng* ran){
 void Double::Print(void){
     
 
-    cout << "s: " << endl;
+    cout << "s: " << endl << "       ";
     s.Print();
  
     cout << "e:" << endl;
