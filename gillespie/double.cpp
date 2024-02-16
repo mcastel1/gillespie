@@ -220,12 +220,30 @@ void Double::PrintBase10_IEEE754(void){
 
 //print *this in base 10 according to the my convention, where the mantissa is \sum_{i=0}^{52-1} b_{52-1-i} 2^{-i}
 void Double::PrintBase10(void){
+        
+    unsigned int p;
+    vector<double> v;
+    
+    cout << "Base 10: {";
+    for(GetBase10(v), p=0; p<n_bits; p++){
+        
+        cout << v[p] << " ";
+        
+    }
+    
+    cout << "}" << endl;
+        
+}
+
+
+//convert bit-by-bit *this in base 10 and write the result in v, which is resized
+void Double::GetBase10(vector<double>& v){
     
     unsigned int i, p;
     double b_10, e_10;
+
     
-    cout << "Base 10: {";
-    for(p=0; p<n_bits; p++){
+    for(v.resize(n_bits), p=0; p<n_bits; p++){
         
         for(b_10=0.0, i=0; i<b.GetSize(); i++){
             b_10 += gsl_pow_int(2.0, -i) * (b[b.GetSize()-1-i].Get(n_bits-1-p));
@@ -234,13 +252,12 @@ void Double::PrintBase10(void){
             e_10 += two_pow(i) * (e[i].Get(n_bits-1-p));
         }
     
-        cout << gsl_pow_int(-1.0, s.Get(n_bits-1-p)) * gsl_pow_int(2.0, e_10) * b_10 << " ";
+        v[p] = gsl_pow_int(-1.0, s.Get(n_bits-1-p)) * gsl_pow_int(2.0, e_10) * b_10;
         
     }
-    
-    cout << "}" << endl;
         
 }
+
 
 //sum *this to addend and write the result in *this
 inline void Double::operator += (Double& x){

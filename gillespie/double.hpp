@@ -29,6 +29,7 @@ public:
     void Print(void);
     void PrintBase10_IEEE754(void);
     void PrintBase10(void);
+    void GetBase10(vector<double>&);
 
     void operator += (Double&);
 
