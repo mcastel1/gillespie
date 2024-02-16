@@ -96,11 +96,15 @@ void Double::Print(void){
     cout << "\n";
     for(i=0; i<b.GetSize(); i++){
         cout << "b[" << i << "] = ";
+        //extra space to align vertically the output
+        if(i < 10){cout << " ";}
         b[i].Print();
     }
     cout << "\n";
     for(i=0; i<e.GetSize(); i++){
         cout << "e[" << i << "] = ";
+        //extra space to align vertically the output
+        if(i < 10){cout << " ";}
         e[i].Print();
     }
     cout << "\ns = ";
@@ -289,7 +293,7 @@ inline void Double::operator += (Double& x){
     addend.Print();
  
 
-    cout << "***** Before sum: " << endl;
+    cout << "***** Before +=: " << endl;
     cout << "Augend:" << endl;
     augend.Print();
     augend.PrintBase10();
@@ -301,15 +305,32 @@ inline void Double::operator += (Double& x){
     
     augend.b += addend.b;
     
-    cout << "***** After: " << endl;
-    cout << "Augend + addend:" << endl;
+    cout << "***** After += : " << endl;
+    cout << "Augend:" << endl;
     augend.Print();
     augend.PrintBase10();
     
-//    augend.e += augend.b.b.back();
+    
+    
+    cout << "***** Before += carry: " << endl;
+    cout << "Augend:" << endl;
+    augend.Print();
+    augend.PrintBase10();
+
     
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
     //incoroprate the extra bit into the exponent
     augend.e += augend.b.b.back();
+    
+    cout << "***** After += carry: " << endl;
+    cout << "Augend:" << endl;
+    augend.Print();
+    augend.PrintBase10();
+
+    
+    
+    //shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise
+    augend.b >>= &(augend.b.b.back());
+    augend.b.b.pop_back();
 
 }

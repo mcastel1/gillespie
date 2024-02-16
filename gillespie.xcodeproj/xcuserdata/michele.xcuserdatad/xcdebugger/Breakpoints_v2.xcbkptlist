@@ -14,8 +14,8 @@
             filePath = "gillespie/double.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "314"
-            endingLineNumber = "314"
+            startingLineNumber = "335"
+            endingLineNumber = "335"
             landmarkName = "Double::operator +=(x)"
             landmarkType = "7">
          </BreakpointContent>
@@ -65,71 +65,22 @@
                   endingLineNumber = "139"
                   offsetFromSymbolStart = "492">
                </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "65F283BE-5ED4-4915-803C-E41FA52E3035"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "gillespie/double.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "302"
-            endingLineNumber = "302"
-            landmarkName = "Double::operator +=(x)"
-            landmarkType = "7">
-            <Locations>
                <Location
-                  uuid = "65F283BE-5ED4-4915-803C-E41FA52E3035 - ceef5f4a57ec10cc"
+                  uuid = "FF2C93C1-CE03-44DF-8C52-9619A00C6C7D - 40e678f257759de5"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Double::operator+=(Double&amp;)"
+                  symbolName = "main"
                   moduleName = "gillespie"
                   usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/double.cpp"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "302"
-                  endingLineNumber = "302"
-                  offsetFromSymbolStart = "740">
-               </Location>
-               <Location
-                  uuid = "65F283BE-5ED4-4915-803C-E41FA52E3035 - ceef5f4a57ec10cc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Double::operator+=(Double&amp;)"
-                  moduleName = "gillespie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/double.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "302"
-                  endingLineNumber = "302"
-                  offsetFromSymbolStart = "760">
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "364">
                </Location>
             </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "A61A645A-BEF9-4B7D-8DD2-DA70A090F7A7"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "gillespie/double.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "276"
-            endingLineNumber = "276"
-            landmarkName = "Double::operator +=(x)"
-            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -145,6 +96,38 @@
             startingLineNumber = "333"
             endingLineNumber = "333"
             landmarkName = "BitSet::operator &gt;&gt;=(e)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "101458F7-4B1B-4135-9D2F-3D7ECF2E2208"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gillespie/double.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "333"
+            endingLineNumber = "333"
+            landmarkName = "Double::operator +=(x)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B97045B5-496F-4F5E-A7E3-C20130FD07E4"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gillespie/double.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
+            landmarkName = "Double::operator +=(x)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
