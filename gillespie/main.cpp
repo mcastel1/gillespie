@@ -89,7 +89,7 @@ int main(int argc, char * argv[]) {
     
     BitSet i(10);
     Bits j;
-    i.SetAll(7);
+    i.SetRandom((unsigned int)0);
     j.SetRandom((unsigned int)1);
     cout << "Before >>" << endl;
     cout << "i : ";
@@ -136,6 +136,6 @@ int main(int argc, char * argv[]) {
     
     
     
-    return 0;
+ =    return 0;
     
 }
