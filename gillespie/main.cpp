@@ -110,6 +110,7 @@ int main(int argc, char * argv[]) {
 //    some tests for Double class
     
     Double a, b;
+    double error;
     vector<double> v_a, v_b, v_a_plus_b;
     unsigned int i;
     BitSet mantissa;
@@ -147,14 +148,15 @@ int main(int argc, char * argv[]) {
     a.GetBase10(v_a_plus_b);
     
     cout << "Check of the result:" << endl;
-    for(i=0; i<n_bits; ++i){
+    for(error = 0.0, i=0; i<n_bits; ++i){
+        if(fabs(((v_a[i]+v_b[i])-v_a_plus_b[i])/v_a_plus_b[i]) > error){error = fabs(((v_a[i]+v_b[i])-v_a_plus_b[i])/v_a_plus_b[i]);}
         cout << v_a[i]+v_b[i] << "\t" << v_a_plus_b[i] << "\t\t\t" << fabs(((v_a[i]+v_b[i])-v_a_plus_b[i])/v_a_plus_b[i]) << endl;
-        
     }
+    cout << "Maximum relative error = " << error << endl;
 
     
     
-    
+    cout << endl;
     return 0;
     
 }
