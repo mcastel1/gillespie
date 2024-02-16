@@ -86,21 +86,16 @@ int main(int argc, char * argv[]) {
         
     }
     
-    BitSet a;
-    a.ResizeAndSetAll(331);
-    a.Print();
-    a.SetAll(11);
-    a.Print();
     
     
-    /*
+    
     //some tests for Double class
     Double a, b;
     a.SetRandom((unsigned int)0);
     b.SetRandom((unsigned int)1);
     
     a+=b;
-    */
+    
     
     
     /*

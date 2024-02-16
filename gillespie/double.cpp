@@ -180,6 +180,7 @@ inline void Double::SetAllVertically_IEEE754(double x){
 //set all the n_bits entries of *this equal to the double given by (-1)^sign * 2^{exponent - 1023} * (mantissa[0] 2^0 + mantissa[1] 2^{-1} + ... )
 inline void Double::SetAllVertically(bool sign, unsigned int exponent, Bits& mantissa){
     
+    s.SetAll(sign);
     
     
 }
