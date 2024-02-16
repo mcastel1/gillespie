@@ -177,12 +177,20 @@ inline void Double::SetAll_IEEE754(double x){
 }
 
 
-//set all the n_bits entries of *this equal to the double given by (-1)^sign * 2^{exponent - 1023} * (mantissa[0] 2^0 + mantissa[1] 2^{-1} + ... )
-inline void Double::SetAll(bool sign, unsigned long long int exponent, double mantissa){
+//set all the n_bits entries of *this equal to the double given by (-1)^sign * 2^{exponent - 1023} * (mantissa[0] 2^0 + mantissa[1] 2^{-1} + ... ). Here exponent must be
+inline void Double::SetAll(bool sign, unsigned long long int exponent,  BitSet& mantissa){
     
-    s.SetAll(sign);
-    e.SetAll(exponent);
-//    b.SetAllVertically(mantissa);
+    if((exponent < two_pow(n_bits_exponent+1)) && (mantissa.GetSize() == n_bits_mantissa)){
+        
+        s.SetAll(sign);
+        e.SetAll(exponent);
+        b = mantissa;
+        
+    }else{
+        
+        cout << "Double::SetAll error: exponent and mantissa do not have the right range/size!!" << endl;
+        
+    }
     
 }
 
@@ -219,7 +227,7 @@ void Double::PrintBase10(void){
     unsigned int i, p;
     double b_10, e_10;
     
-    cout << "Double in base 10: {";
+    cout << "{";
     for(p=0; p<n_bits; p++){
         
         for(b_10=0.0, i=0; i<b.GetSize(); i++){
@@ -233,7 +241,7 @@ void Double::PrintBase10(void){
         
     }
     
-    cout << "}\n";
+    cout << "}" << endl;
         
 }
 
