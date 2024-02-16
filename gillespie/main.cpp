@@ -91,10 +91,11 @@ int main(int argc, char * argv[]) {
 //    
 
     
-    UnsignedInt n(100);
-    n.SetAll(76);
-    n.Set(0, 12);
-    n.Set(2, 29);
+    UnsignedInt n;
+    n.Resize(n_bits_mantissa);
+    n.SetAll(0.94637);
+//    n.Set(0, 12);
+//    n.Set(2, 29);
     n.Print();
     
 
