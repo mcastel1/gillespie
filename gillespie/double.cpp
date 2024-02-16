@@ -260,10 +260,15 @@ inline void Double::operator += (Double& x){
     cout << "de :" << endl;
     de.PrintBase10();
     
-      
+       
+    cout << "Addend.b before shift: "<< endl;
+    addend.b.Print();
+    
     //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
     (addend.b) >>= (&de);
     
+    cout << "Addend.b after shift: "<< endl;
+    addend.b.Print();
  
 
     cout << "***** Before: " << endl;
