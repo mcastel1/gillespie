@@ -14,8 +14,8 @@
             filePath = "gillespie/bitset.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "268"
-            endingLineNumber = "268"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
             landmarkName = "BitSet::operator -=(m)"
             landmarkType = "7">
          </BreakpointContent>
@@ -30,8 +30,8 @@
             filePath = "gillespie/bitset.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "117"
-            endingLineNumber = "117"
+            startingLineNumber = "148"
+            endingLineNumber = "148"
             landmarkName = "unknown"
             landmarkType = "0">
          </BreakpointContent>

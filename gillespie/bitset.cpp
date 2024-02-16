@@ -82,8 +82,8 @@ inline void BitSet::SetAll(unsigned long long int i){
 }
 
 
-//set all n_bits entries of *this equal to the entries stored (in IEEE754 format) in the mantissa of x
-inline void BitSet::SetAll(double x){
+//set all n_bits entries of *this equal to the entries stored (in IEEE754 format) in the mantissa of x. This requires b to be properly sized
+inline void BitSet::SetAllFromDouble(double x){
     
     uint8_t *bytePointer = (uint8_t*)&x;
     size_t index;
@@ -100,6 +100,37 @@ inline void BitSet::SetAll(double x){
             
             if(p < (this->GetSize())){
                 b[p].SetAll(((bool)(byte & 1)));
+            }else{
+                break;
+                break;
+            }
+            
+            byte >>= 1;
+            
+        }
+        
+    }
+    
+}
+
+
+//set the s-th bit entry of *this equal to the entries stored (in IEEE754 format) in the mantissa of x. This requires b to be properly sized
+inline void BitSet::SetFromDouble(unsigned int s, double x){
+    
+    uint8_t *bytePointer = (uint8_t*)&x;
+    size_t index;
+    uint8_t byte;
+    int bit;
+    unsigned int p;
+    
+    for(index=0, p=0; index<sizeof(double); index++){
+        
+        byte = bytePointer[index];
+        
+        for(bit=0; bit<8; bit++, p++){
+            
+            if(p < (this->GetSize())){
+                b[p].Set(s, ((bool)(byte & 1)));
             }else{
                 break;
                 break;
