@@ -251,8 +251,8 @@ void Double::PrintBase10(void){
     
     cout << "Base 10: {";
     for(GetBase10(v), p=0; p<n_bits; p++){
-        
-        cout << v[p] << " ";
+
+        cout << v[n_bits-1-p] << " ";
         
     }
     
@@ -271,13 +271,13 @@ void Double::GetBase10(vector<double>& v){
     for(v.resize(n_bits), p=0; p<n_bits; p++){
         
         for(b_10=0.0, i=0; i<b.GetSize(); i++){
-            b_10 += gsl_pow_int(2.0, -i) * (b[b.GetSize()-1-i].Get(n_bits-1-p));
+            b_10 += gsl_pow_int(2.0, -i) * (b[b.GetSize()-1-i].Get(p));
         }
         for(e_10=-1023.0, i=0; i<e.GetSize(); i++){
-            e_10 += two_pow(i) * (e[i].Get(n_bits-1-p));
+            e_10 += two_pow(i) * (e[i].Get(p));
         }
     
-        v[p] = gsl_pow_int(-1.0, s.Get(n_bits-1-p)) * gsl_pow_int(2.0, e_10) * b_10;
+        v[p] = gsl_pow_int(-1.0, s.Get(p)) * gsl_pow_int(2.0, e_10) * b_10;
         
     }
         
