@@ -128,6 +128,36 @@
                   endingLineNumber = "144"
                   offsetFromSymbolStart = "612">
                </Location>
+               <Location
+                  uuid = "0049AE63-BDF2-4CAE-AA7B-9267538A66D4 - 40e678f257759de5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "776">
+               </Location>
+               <Location
+                  uuid = "0049AE63-BDF2-4CAE-AA7B-9267538A66D4 - 40e678f257759de5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "134"
+                  endingLineNumber = "134"
+                  offsetFromSymbolStart = "596">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -175,6 +205,36 @@
                   startingLineNumber = "325"
                   endingLineNumber = "325"
                   offsetFromSymbolStart = "460">
+               </Location>
+               <Location
+                  uuid = "F2820F7B-D6E8-40C9-B19F-9A4430743C83 - ceef5f4a57ec1dc5"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Double::operator+=(Double&amp;)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/double.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "325"
+                  endingLineNumber = "325"
+                  offsetFromSymbolStart = "476">
+               </Location>
+               <Location
+                  uuid = "F2820F7B-D6E8-40C9-B19F-9A4430743C83 - ceef5f4a57ec1d59"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Double::operator+=(Double&amp;)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/double.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "321"
+                  endingLineNumber = "321"
+                  offsetFromSymbolStart = "464">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -238,6 +298,36 @@
                   startingLineNumber = "331"
                   endingLineNumber = "331"
                   offsetFromSymbolStart = "536">
+               </Location>
+               <Location
+                  uuid = "811F68F7-C397-4BE2-AACB-6DFE22D81C60 - ceef5f4a57ec1c0f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Double::operator+=(Double&amp;)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/double.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "331"
+                  endingLineNumber = "331"
+                  offsetFromSymbolStart = "552">
+               </Location>
+               <Location
+                  uuid = "811F68F7-C397-4BE2-AACB-6DFE22D81C60 - ceef5f4a57ec1c0f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Double::operator+=(Double&amp;)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/double.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "331"
+                  endingLineNumber = "331"
+                  offsetFromSymbolStart = "592">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -317,6 +407,36 @@
                   endingLineNumber = "350"
                   offsetFromSymbolStart = "752">
                </Location>
+               <Location
+                  uuid = "C36811C3-1C79-4F30-93E5-9E564878CD98 - ceef5f4a57ec1a9c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Double::operator+=(Double&amp;)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/double.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "350"
+                  endingLineNumber = "350"
+                  offsetFromSymbolStart = "768">
+               </Location>
+               <Location
+                  uuid = "C36811C3-1C79-4F30-93E5-9E564878CD98 - ceef5f4a57ec1a9c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Double::operator+=(Double&amp;)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/double.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "350"
+                  endingLineNumber = "350"
+                  offsetFromSymbolStart = "808">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -380,6 +500,21 @@
                   endingLineNumber = "381"
                   offsetFromSymbolStart = "984">
                </Location>
+               <Location
+                  uuid = "BAA83318-F2C6-44AE-9231-498507EE6C5B - ceef5f4a57ec069d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Double::operator+=(Double&amp;)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/double.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "381"
+                  endingLineNumber = "381"
+                  offsetFromSymbolStart = "1040">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -397,6 +532,53 @@
             endingLineNumber = "362"
             landmarkName = "Double::operator +=(x)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F7BF4519-FCBA-4B36-9330-A6F68B009363 - ceef5f4a57ec1800"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Double::operator+=(Double&amp;)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/double.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "362"
+                  endingLineNumber = "362"
+                  offsetFromSymbolStart = "852">
+               </Location>
+               <Location
+                  uuid = "F7BF4519-FCBA-4B36-9330-A6F68B009363 - ceef5f4a57ec1800"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Double::operator+=(Double&amp;)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/double.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "362"
+                  endingLineNumber = "362"
+                  offsetFromSymbolStart = "868">
+               </Location>
+               <Location
+                  uuid = "F7BF4519-FCBA-4B36-9330-A6F68B009363 - ceef5f4a57ec1800"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Double::operator+=(Double&amp;)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/double.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "362"
+                  endingLineNumber = "362"
+                  offsetFromSymbolStart = "908">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -493,6 +675,38 @@
             endingLineNumber = "256"
             landmarkName = "BitSet::operator +=(addend)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5097CFC9-BA8D-41B4-BBA2-DBFBD77071CB - 41bb108c6c5d751b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BitSet::operator+=(Bits const&amp;)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/bitset.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "257"
+                  endingLineNumber = "257"
+                  offsetFromSymbolStart = "340">
+               </Location>
+               <Location
+                  uuid = "5097CFC9-BA8D-41B4-BBA2-DBFBD77071CB - 41bb108c6c5d7578"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BitSet::operator+=(Bits const&amp;)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/bitset.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "256"
+                  endingLineNumber = "256"
+                  offsetFromSymbolStart = "340">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -540,7 +754,53 @@
                   endingLineNumber = "381"
                   offsetFromSymbolStart = "984">
                </Location>
+               <Location
+                  uuid = "3C5EE609-F787-44B2-85B7-91DE5A9BA5B5 - ceef5f4a57ec069d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Double::operator+=(Double&amp;)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/double.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "381"
+                  endingLineNumber = "381"
+                  offsetFromSymbolStart = "1000">
+               </Location>
+               <Location
+                  uuid = "3C5EE609-F787-44B2-85B7-91DE5A9BA5B5 - ceef5f4a57ec069d"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Double::operator+=(Double&amp;)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/double.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "381"
+                  endingLineNumber = "381"
+                  offsetFromSymbolStart = "1040">
+               </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "87C4D69E-673A-41F5-8F17-F27CF9E43C76"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gillespie/double.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "329"
+            endingLineNumber = "329"
+            landmarkName = "Double::operator +=(x)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

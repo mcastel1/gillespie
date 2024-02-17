@@ -119,24 +119,24 @@ int main(int argc, char * argv[]) {
     }
         
 
-    cout << "----------- Before += -----------" << endl;
-    cout << "a : " << endl;
-    a.Print();
-    a.PrintBase10();
+//    cout << "----------- Before += -----------" << endl;
+//    cout << "a : " << endl;
+//    a.Print();
+//    a.PrintBase10();
 
-    cout << "b : " << endl;
-    b.Print();
-    b.PrintBase10();
+//    cout << "b : " << endl;
+//    b.Print();
+//    b.PrintBase10();
     
     a.GetBase10(v_a);
     b.GetBase10(v_b);
 
     a+=b;
     
-    cout << "----------- After += -----------" << endl;
-    cout << "a+b: " << endl;
-    a.Print();
-    a.PrintBase10();
+//    cout << "----------- After += -----------" << endl;
+//    cout << "a+b: " << endl;
+//    a.Print();
+//    a.PrintBase10();
     
     a.GetBase10(v_a_plus_b);
     
