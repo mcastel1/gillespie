@@ -110,27 +110,29 @@ int main(int argc, char * argv[]) {
     
     
     a.SetAll(false, 1020, 0.21854298);
-    a.Set(0, false, 1020, 0.5280897);
-    a.Set(2, false, 1020, 0.80897);
-    b.SetAll(false, 1019, 0.21854298);
-    
+    a.Set(0, false, 1023, 0.5280897);
+    a.Set(1, false, 1008, 0.325892347698347);
+    a.Set(2, false, 1021, 0.80897);
+    b.SetAll(false, 1017, 0.21854298);
+    b.Set(0, false, 1020, 0.280897);
+
     a.GetBase10(v_a);
     b.GetBase10(v_b);
     
     cout << "----------- Before -----------" << endl;
     cout << "a : " << endl;
-    a.Print();
+//    a.Print();
     a.PrintBase10();
     
     cout << "b : " << endl;
-    b.Print();
+//    b.Print();
     b.PrintBase10();
     
     a+=b;
     
     cout << "----------- After -----------" << endl;
     cout << "a+b: " << endl;
-    a.Print();
+//    a.Print();
     a.PrintBase10();
     a.GetBase10(v_a_plus_b);
     
