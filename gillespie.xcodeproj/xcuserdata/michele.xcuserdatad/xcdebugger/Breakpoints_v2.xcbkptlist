@@ -14,8 +14,8 @@
             filePath = "gillespie/bitset.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "276"
+            endingLineNumber = "276"
             landmarkName = "BitSet::operator -=(m)"
             landmarkType = "7">
          </BreakpointContent>
@@ -482,22 +482,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "589B819D-1103-4F1E-86F4-0592A10BCC1D"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "gillespie/bitset.cpp"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "255"
-            endingLineNumber = "255"
-            landmarkName = "BitSet::operator +=(addend)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "5097CFC9-BA8D-41B4-BBA2-DBFBD77071CB"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
@@ -505,8 +489,8 @@
             filePath = "gillespie/bitset.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "257"
-            endingLineNumber = "257"
+            startingLineNumber = "256"
+            endingLineNumber = "256"
             landmarkName = "BitSet::operator +=(addend)"
             landmarkType = "7">
          </BreakpointContent>

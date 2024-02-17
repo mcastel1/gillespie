@@ -251,7 +251,6 @@ inline void BitSet::operator += (const Bits& addend){
     }
     
     //    add the last extra bit to b. This assumes that there cannot be overflow in this operation
-    //******** THIS MAY BE TIME CONSUMING ********
     (b.back().n) ^= (carry.n);
     
 }
