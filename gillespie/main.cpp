@@ -109,11 +109,10 @@ int main(int argc, char * argv[]) {
     unsigned int i;
     
     
-    a.SetAll(false, 2011, 0.21854298);
-    a.Set(0, false, 2009, 0.5280897);
-    a.Set(2, false, 2010, 0.80897);
-    a.Print();
-    b.SetAll(false, 2019, 0.21854298);
+    a.SetAll(false, 1020, 0.21854298);
+    a.Set(0, false, 1020, 0.5280897);
+    a.Set(2, false, 1020, 0.80897);
+    b.SetAll(false, 1019, 0.21854298);
     
     a.GetBase10(v_a);
     b.GetBase10(v_b);
