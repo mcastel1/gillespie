@@ -232,7 +232,7 @@ inline void BitSet::operator += (BitSet& addend){
 }
 
 
-//add bit-by-bit addend (which here is either 1 or 0) to *this and store the result in *this. This method requires this->GetSize() to be > 1
+//add bit-by-bit addend (which here is either 1 or 0) to *this and store the result in *this. This method requires this->GetSize() to be > 1 and assumes that *this and addend are such that there is no overflow while doing this operation
 inline void BitSet::operator += (const Bits& addend){
         
     Bits carry;
@@ -240,9 +240,9 @@ inline void BitSet::operator += (const Bits& addend){
 
     //sum the only bit of addend
     (carry.n) = ((addend.n) & ((b[0]).n));
-    ((b)[0]).n = (((b[0]).n) ^ (addend.n));
+    (b[0]).n = (((b[0]).n) ^ (addend.n));
     
-    for(p=1; p<GetSize(); p++){
+    for(p=1; p<GetSize()-1; p++){
         //run over the extra bits of augend
         
         (carry.n) = (((b[p]).n) & (carry.n));
@@ -250,9 +250,9 @@ inline void BitSet::operator += (const Bits& addend){
         
     }
     
-    //    add the last extra bit
+    //    add the last extra bit to b. This assumes that there cannot be overflow in this operation
     //******** THIS MAY BE TIME CONSUMING ********
-    b.push_back(carry);
+    (b.back().n) ^= (carry.n);
     
 }
 

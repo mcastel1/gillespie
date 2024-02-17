@@ -64,29 +64,29 @@ int main(int argc, char * argv[]) {
     
     cout.precision(cout_precision);
     
-    //    int options;
-    //    unsigned int seed=0, N=0, S=0;
+        int options;
+        unsigned int seed=0/*, N=0, S=0*/;
     
-    //    while ((options = getopt(argc, argv, ":N:s:S:")) != -1) {
-    //
-    //        switch (options) {
-    //
-    //            case 'N':
-    //                N = ((unsigned int)atoi(optarg));
-    //                break;
-    //
-    //            case 's':
-    //                seed = ((unsigned int)atoi(optarg));
-    //                break;
-    //
-    //            case 'S':
-    //                S = ((unsigned int)atoi(optarg));
-    //                break;
-    //
-    //
-    //        }
-    //
-    //    }
+        while ((options = getopt(argc, argv, ":s:")) != -1) {
+    
+            switch (options) {
+    
+//                case 'N':
+//                    N = ((unsigned int)atoi(optarg));
+//                    break;
+    
+                case 's':
+                    seed = ((unsigned int)atoi(optarg));
+                    break;
+    
+//                case 'S':
+//                    S = ((unsigned int)atoi(optarg));
+//                    break;
+    
+    
+            }
+    
+        }
     //
     //
     
@@ -107,47 +107,44 @@ int main(int argc, char * argv[]) {
     double error;
     vector<double> v_a, v_b, v_a_plus_b;
     unsigned int i;
+    gsl_rng* ran;
     
-    
-    a.SetAll(false, 1020, 0.21854298);
-    /*
-    a.Set(0, false, 1023, 0.5280897);
-    a.Set(1, false, 1008, 0.325892347698347);
-    a.Set(2, false, 1021, 0.80897);
-     */
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+
+        
     for(i=0; i<n_bits; i++){
-        a.Set(i, false, 1023, 0.5280897);
+        a.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+        b.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
     }
-    
-    b.SetAll(false, 1017, 0.21854298);
-    b.Set(0, false, 1020, 0.280897);
-    b.Set(10, false, 1024, 0.0897);
-    b.Set(12, false, 1026, 0.230897);
+        
+
+    cout << "----------- Before += -----------" << endl;
+    cout << "a : " << endl;
+    a.Print();
+    a.PrintBase10();
+
+    cout << "b : " << endl;
+    b.Print();
+    b.PrintBase10();
     
     a.GetBase10(v_a);
     b.GetBase10(v_b);
-    
-    cout << "----------- Before -----------" << endl;
-    cout << "a : " << endl;
-//    a.Print();
-    a.PrintBase10();
-    
-    cout << "b : " << endl;
-//    b.Print();
-    b.PrintBase10();
-    
+
     a+=b;
     
-    cout << "----------- After -----------" << endl;
+    cout << "----------- After += -----------" << endl;
     cout << "a+b: " << endl;
-//    a.Print();
+    a.Print();
     a.PrintBase10();
+    
     a.GetBase10(v_a_plus_b);
     
     cout << "Check of the result:" << endl;
     for(error = 0.0, i=0; i<n_bits; ++i){
-        if(fabs(((v_a[i]+v_b[i])-v_a_plus_b[i])/v_a_plus_b[i]) > error){error = fabs(((v_a[i]+v_b[i])-v_a_plus_b[i])/v_a_plus_b[i]);}
-        cout << v_a[i]+v_b[i] << "\t" << v_a_plus_b[i] << "\t\t\t" << fabs(((v_a[i]+v_b[i])-v_a_plus_b[i])/v_a_plus_b[i]) << endl;
+        if(fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]) > error){error = fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]);}
+        
+        cout << "[" << n_bits-1-i << "]:\t\t\t" << v_a[n_bits-1-i]+v_b[n_bits-1-i] << "\t\t\t" << v_a_plus_b[n_bits-1-i] << "\t\t\t" << fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]) << endl;
     }
     cout << "Maximum relative error = " << error << endl;
     //
