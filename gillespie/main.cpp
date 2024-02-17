@@ -110,12 +110,20 @@ int main(int argc, char * argv[]) {
     
     
     a.SetAll(false, 1020, 0.21854298);
+    /*
     a.Set(0, false, 1023, 0.5280897);
     a.Set(1, false, 1008, 0.325892347698347);
     a.Set(2, false, 1021, 0.80897);
+     */
+    for(i=0; i<n_bits; i++){
+        a.Set(i, false, 1023, 0.5280897);
+    }
+    
     b.SetAll(false, 1017, 0.21854298);
     b.Set(0, false, 1020, 0.280897);
-
+    b.Set(10, false, 1024, 0.0897);
+    b.Set(12, false, 1026, 0.230897);
+    
     a.GetBase10(v_a);
     b.GetBase10(v_b);
     
