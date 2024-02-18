@@ -284,7 +284,7 @@ void Double::GetBase10(vector<double>& v){
 }
 
 
-//sum *this to addend and write the result in *this
+//sum *this to addend and write the result in *this. For the time being, this method assumes that this->s 0 = all_0 and x.s = all_0 (*this and x contain all non-negative numbers)
 inline void Double::operator += (Double& x){
     
     Double augend, addend;
