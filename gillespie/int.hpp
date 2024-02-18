@@ -15,5 +15,6 @@ class Int: public BitSet{
 private:
     Int(void);
     Int(long long int);
+    void SetAll(long long int);
     
 };
