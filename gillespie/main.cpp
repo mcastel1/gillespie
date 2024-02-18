@@ -35,6 +35,7 @@
 #include "lib.cpp"
 #include "bits.cpp"
 #include "bitset.cpp"
+#include "int.cpp"
 #include "unsigned_int.cpp"
 #include "double.cpp"
 #include "system.cpp"

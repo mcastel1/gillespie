@@ -9,15 +9,9 @@
 
 
 //default constructor
-inline Int::Int(void){
-        
-}
+inline Int::Int(void): BitSet(){}
 
 //constructor that resizes m in order to host N
-inline Int::Int(unsigned long long int N){
-    
-    m.resize(bits(N));
-    
-}
+inline Int::Int(unsigned long long int N): BitSet(N){}
 
 

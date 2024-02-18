@@ -6,18 +6,14 @@
 //
 
 
-// a (collection of n_bits) signed interger(s) represented in base 2
-class Int{
+// a (collection of n_bits) signed interger(s) represented in base 2. The magnitude is stored in the BitSet
+class Int: public BitSet{
     
     //the sign
     Bits s;
     
-    //the magnitude
-    BitSet m;
-
-    
 private:
     Int(void);
-    
+    Int(unsigned long long int);
     
 };
