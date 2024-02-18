@@ -23,6 +23,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D10E23782B827A4300C042AE /* int.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = int.cpp; path = gillespie/int.cpp; sourceTree = "<group>"; };
+		D10E23792B827A4300C042AE /* int.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; name = int.hpp; path = gillespie/int.hpp; sourceTree = "<group>"; };
 		D1ADCAFB2B62C1EB007DDD5A /* gillespie */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gillespie; sourceTree = BUILT_PRODUCTS_DIR; };
 		D1ADCAFE2B62C1EB007DDD5A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		D1ADCB062B63D5B8007DDD5A /* gillespie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gillespie.entitlements; sourceTree = "<group>"; };
@@ -43,6 +45,8 @@
 		D1ADCAF22B62C1EB007DDD5A = {
 			isa = PBXGroup;
 			children = (
+				D10E23782B827A4300C042AE /* int.cpp */,
+				D10E23792B827A4300C042AE /* int.hpp */,
 				D1BDABE62B73A44F0099B603 /* gillespie */,
 				D1ADCAFD2B62C1EB007DDD5A /* gillespie */,
 				D1ADCAFC2B62C1EB007DDD5A /* Products */,
