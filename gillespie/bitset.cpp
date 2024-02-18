@@ -333,23 +333,24 @@ inline void BitSet::ComplementTo(unsigned int size){
 }
 
 
-//set to zero the first bits of *this that is equal to one (stating from the last bit) and leave the others unchanged, write the result in *this
+
+//set to zero the first bits of *this that is equal to one (starting from the last bit) and leave the others unchanged, write the result in *this
 inline void BitSet::RemoveFirstSignificantBit(void){
     
     int s;
-    Bits mask_before, mask_now;
+    Bits check_old, check_new;
     
 //    cout << " before the first significant bit is set to 0:";
 //    Print();
 
     //remove the last significant bit in minuend
-    for(s=(this->GetSize())-1, mask_before.SetAll(0); s>=0; s--){
+    for(s=(this->GetSize())-1, check_old.SetAll(0); s>=0; s--){
         
-        (mask_now.n) = (mask_before.n) | (((*this)[s]).n);
+        (check_new.n) = (check_old.n) | (((*this)[s]).n);
         
-        (b[s]).n =  (((*this)[s]).n) & (mask_before.n) & (mask_now.n);
+        (b[s]).n =  (((*this)[s]).n) & (check_old.n) & (check_new.n);
         
-        mask_before = mask_now;
+        check_old = check_new;
         
     }
     

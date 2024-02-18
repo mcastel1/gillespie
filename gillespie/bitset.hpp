@@ -26,6 +26,7 @@ public:
     void SetFromDouble(unsigned int, double);
     void ComplementTo(unsigned int);
     void ResizeAndSetAll(unsigned long long int);
+    UnsignedInt PositionOfFirstSignificantBit(void);
     void RemoveFirstSignificantBit(void);
     unsigned long long int Get(unsigned int);
     void Print(void);

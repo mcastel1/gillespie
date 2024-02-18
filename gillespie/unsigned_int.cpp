@@ -21,12 +21,6 @@ inline UnsignedInt::UnsignedInt(unsigned long long int N) : BitSet(N){
 }
 
 
-
-
-
-
-
-
 //if this->GetSize() == replacer->GetSize(), replace bit-by-bit all bs of *this with the respective bs of *replacer, and leave *this unchanged otherwise
 inline void UnsignedInt::Replace(UnsignedInt* replacer, Bits* check){
     
@@ -148,3 +142,23 @@ inline void BitSet::operator >>=(UnsignedInt* e){
 }
 
 
+//return the position of the first signigificant bit in *this, starting from the last element of  b[]
+inline UnsignedInt BitSet::PositionOfFirstSignificantBit(void){
+    
+    int s;
+    Bits check_old, check_new;
+    UnsignedInt result;
+    
+    for(s=GetSize()-1, check_old.SetAll(0), result.SetAll(0); s>=0; s--){
+        
+        check_new = check_old | ((*this)[s]);
+        result += (check_new ^ check_old);
+        
+        check_old = check_new;
+        
+    }
+    
+    return result;
+
+    
+}
