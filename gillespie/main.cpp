@@ -92,8 +92,9 @@ int main(int argc, char * argv[]) {
     
     //
     UnsignedInt n;
-    n.Resize(10);
-    n.SetRandom((unsigned int)0);
+    n.Resize(30);
+//    n.SetRandom((unsigned int)0);
+    n.SetAll(17);
     cout << "n:" << endl;
     n.Print();
     cout << "first significant bit:" << endl;
