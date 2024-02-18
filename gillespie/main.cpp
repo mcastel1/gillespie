@@ -92,14 +92,11 @@ int main(int argc, char * argv[]) {
     //
     
     //
-    UnsignedInt n;
-    n.Resize(30);
+    Int n(-40);
 //    n.SetRandom((unsigned int)0);
-    n.SetAll(17);
+    n.SetAll(-12);
     cout << "n:" << endl;
     n.Print();
-    cout << "first significant bit:" << endl;
-    n.PositionOfFirstSignificantBit().Print();
     //
     
     
