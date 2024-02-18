@@ -147,7 +147,8 @@ inline UnsignedInt BitSet::PositionOfFirstSignificantBit(void){
     
     int s;
     Bits check_old, check_new;
-    UnsignedInt result;
+    //result must be big enough to host an unsigned int equal to this->GetSize()
+    UnsignedInt result(GetSize());
     
     for(s=GetSize()-1, check_old.SetAll(0), result.SetAll(0); s>=0; s--){
         

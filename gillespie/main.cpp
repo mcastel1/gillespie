@@ -91,18 +91,19 @@ int main(int argc, char * argv[]) {
     //
     
     //
-    //    UnsignedInt n;
-    //    n.Resize(n_bits_mantissa);
-    //    n.SetRandom((unsigned int)0);
-    //    n.SetAllFromDouble(0.15349687467);
-    ////    n.SetFromDouble(2, 0.94637);
-    //    n.Print();
+    UnsignedInt n;
+    n.Resize(10);
+    n.SetRandom((unsigned int)0);
+    cout << "n:" << endl;
+    n.Print();
+    cout << "first significant bit:" << endl;
+    n.PositionOfFirstSignificantBit().Print();
     //
     
     
     
     //    some tests for Double class
-    //
+    /*
     Double a, b;
     double error;
     vector<double> v_a, v_b, v_a_plus_b;
@@ -153,7 +154,9 @@ int main(int argc, char * argv[]) {
     }
     
     cout << "Maximum relative error = " << error << endl;
-
+*/
+    
+    
     cout << endl;
     return 0;
     
