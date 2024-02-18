@@ -389,3 +389,10 @@ inline void Double::operator += (Double& x){
 
 
 }
+
+
+//return (bit-by-bit) 1 if *this < x, 0 otherwise
+inline bool Double::operator<(Double& x){
+    
+    
+}
