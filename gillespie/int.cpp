@@ -11,7 +11,7 @@
 //default constructor
 inline Int::Int(void): BitSet(){}
 
-//constructor that resizes m in order to host N
-inline Int::Int(unsigned long long int N): BitSet(N){}
+//constructor that resizes *this in order to host N
+inline Int::Int(long long int N): BitSet(fabs(N)){}
 
 

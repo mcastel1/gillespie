@@ -9,16 +9,11 @@
 
 
 
+//default constructor
+inline UnsignedInt::UnsignedInt(void) : BitSet(){}
 
-inline UnsignedInt::UnsignedInt(void) : BitSet(){
-        
-}
-
-
-inline UnsignedInt::UnsignedInt(unsigned long long int N) : BitSet(N){
-    
-    
-}
+//constructor taht resizes *this in ordert to host N
+inline UnsignedInt::UnsignedInt(unsigned long long int N) : BitSet(N){}
 
 
 //if this->GetSize() == replacer->GetSize(), replace bit-by-bit all bs of *this with the respective bs of *replacer, and leave *this unchanged otherwise

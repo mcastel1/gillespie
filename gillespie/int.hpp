@@ -14,6 +14,6 @@ class Int: public BitSet{
     
 private:
     Int(void);
-    Int(unsigned long long int);
+    Int(long long int);
     
 };
