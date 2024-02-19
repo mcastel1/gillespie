@@ -183,7 +183,7 @@ inline Bits operator ~ (const Bits& m){
 //return (bit-by-bit) true if *this == m, false otherwise
 inline Bits Bits::operator == (Bits& m){
     
-    return(Bits(n & (m.n)));
+    return(Bits(~(n ^ (m.n))));
     
 }
 
