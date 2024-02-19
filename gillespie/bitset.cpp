@@ -199,7 +199,7 @@ inline BitSet BitSet::operator - (BitSet* addend) {
 }
 
 
-//add addend to *this and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize()
+//add addend to *this, Normalize() the result and store it in *this. This method requires this->GetSize() to be >= addend.GetSize()
 inline void BitSet::operator += (BitSet* addend){
     
     Bits carry, t;
@@ -238,7 +238,7 @@ inline void BitSet::Normalize(void){
     
     int p;
     
-    for(p=GetSize(); p>=0; p--){
+    for(p=GetSize()-1; p>=0; p--){
         
         if((b[p]).n == 0){
             b.pop_back();

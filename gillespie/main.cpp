@@ -110,7 +110,7 @@ int main(int argc, char * argv[]) {
     */
     
     
-    //
+    /*
     //test for Double::Normalize
     Double x;
     x.SetRandom((unsigned int)0);
@@ -120,6 +120,31 @@ int main(int argc, char * argv[]) {
     x.Normalize();
     cout << "x after noramlize:";
     x.PrintBase10();
+    */
+    
+    
+    //
+    //test for UnsignedInt::Normalize
+    UnsignedInt x(10), one(1);
+    
+
+  //test for BitSet::+=
+    /*
+    x.SetRandom((unsigned int)0);
+    one.SetAll(1);
+    
+    cout << "x before +=:";
+    x.Print();
+    x.PrintBase10();
+    
+    x += &one;
+    x += &one;
+
+    cout << "x after +=:";
+    x.Print();
+    x.PrintBase10();
+    */
+    
  
     //
     
