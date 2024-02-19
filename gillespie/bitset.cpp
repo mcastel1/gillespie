@@ -156,10 +156,11 @@ inline Bits BitSet::operator ==(BitSet& m){
     
     for(p=0, result.SetAll(true); p<GetSize(); p++){
         
-        result &= b[p] == (m.b)[p]
-        
+        result &= (b[p] == (m.b)[p]);
         
     }
+    
+    return result;
     
 }
 

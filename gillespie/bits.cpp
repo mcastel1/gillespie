@@ -179,3 +179,9 @@ inline Bits operator ~ (const Bits& m){
     return Bits((~(m.n)));
     
 }
+
+inline Bits Bits::operator == (Bits& m){
+    
+    return(Bits(n & (m.n)));
+    
+}
