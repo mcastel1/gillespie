@@ -7,79 +7,33 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "37066CCD-6227-4C5C-A158-2E4325C8D73A"
+            uuid = "EC933C95-3A87-48B0-9DFE-F96E388620A8"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "gillespie/main.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "105"
+            endingLineNumber = "105"
             landmarkName = "main(argc, argv)"
             landmarkType = "9">
-            <Locations>
-               <Location
-                  uuid = "37066CCD-6227-4C5C-A158-2E4325C8D73A - 40e678f257759eaa"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "main"
-                  moduleName = "gillespie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "159"
-                  endingLineNumber = "159"
-                  offsetFromSymbolStart = "252">
-               </Location>
-               <Location
-                  uuid = "37066CCD-6227-4C5C-A158-2E4325C8D73A - 40e678f257758666"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "main"
-                  moduleName = "gillespie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "99"
-                  endingLineNumber = "99"
-                  offsetFromSymbolStart = "232">
-               </Location>
-               <Location
-                  uuid = "37066CCD-6227-4C5C-A158-2E4325C8D73A - 40e678f257758666"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "main"
-                  moduleName = "gillespie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "99"
-                  endingLineNumber = "99"
-                  offsetFromSymbolStart = "236">
-               </Location>
-               <Location
-                  uuid = "37066CCD-6227-4C5C-A158-2E4325C8D73A - 40e678f257758181"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "main"
-                  moduleName = "gillespie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "106"
-                  endingLineNumber = "106"
-                  offsetFromSymbolStart = "160">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5956C867-FBA2-4E54-959B-72A8355DCB25"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gillespie/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
+            landmarkName = "main(argc, argv)"
+            landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
