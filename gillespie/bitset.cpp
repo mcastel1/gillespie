@@ -148,15 +148,26 @@ void BitSet::Print(void){
     
 }
 
-//return (bit-by-bit) true if *this == m, and false otherwise
+//return (bit-by-bit) true if *this == m, and false otherwise. This method requires *this and m to have the same size
 inline Bits BitSet::operator ==(BitSet& m){
     
     unsigned int p;
     Bits result;
     
-    for(p=0, result.SetAll(true); p<GetSize(); p++){
+    if(GetSize() == m.GetSize()){
+        //*this and m have the same size -> check if they are equal
         
-        result &= (b[p] == (m.b)[p]);
+        //run through all entries b[p], as soon as there is an entry of *this that is different form the corresponding entry of m, set result to false
+        for(p=0, result.SetAll(true); p<GetSize(); p++){
+            
+            result &= (b[p] == (m.b)[p]);
+            
+        }
+        
+    }else{
+        //*this and m have different sizes -> set the result equal to false
+        
+        result.SetAll(false);
         
     }
     
