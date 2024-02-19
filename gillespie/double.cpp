@@ -399,3 +399,12 @@ inline void Double::operator += (Double& x){
 //inline bool Double::operator<(Double& x){
 //    
 //}
+
+
+//normalize *this by shifting the mantissa in such a way that its first bit is nonzero, and re-incorporrating the shift in e
+inline void Normalize(void){
+    
+    
+    
+    
+}
