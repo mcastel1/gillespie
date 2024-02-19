@@ -389,6 +389,7 @@ inline void Double::operator += (Double& x){
 //    cout << "Augend.b: " << endl;
 //    augend.b.Print();
     
+    augend.Normalize();
     (*this) = augend;
 
 
