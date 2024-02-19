@@ -73,6 +73,9 @@ inline void Double::SetRandom(unsigned int seed){
 }
 
 
+
+
+
 //initialize *this randomly with the (already initialized) random generator *ran
 inline void Double::SetRandom(gsl_rng* ran){
     

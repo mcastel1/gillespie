@@ -173,12 +173,12 @@ inline Bits& BitSet::operator [] (const unsigned int& i){
 
 
 //return *this + m
-inline BitSet BitSet::operator + (BitSet& addend) {
+inline BitSet BitSet::operator + (BitSet* addend) {
     
     BitSet a;
     
-    a=(*this);
-    a+=addend;
+    a = (*this);
+    a += addend;
 
     return a;
 
@@ -187,12 +187,12 @@ inline BitSet BitSet::operator + (BitSet& addend) {
 
 
 //return *this - m
-inline BitSet BitSet::operator - (BitSet& addend) {
+inline BitSet BitSet::operator - (BitSet* addend) {
     
     BitSet a;
     
-    a=(*this);
-    a-=addend;
+    a = (*this);
+    a -= addend;
 
     return a;
 
@@ -200,23 +200,23 @@ inline BitSet BitSet::operator - (BitSet& addend) {
 
 
 //add addend to *this and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize()
-inline void BitSet::operator += (BitSet& addend){
+inline void BitSet::operator += (BitSet* addend){
     
     Bits carry, t;
     unsigned int p;
 
     
     for(p=0, carry.Clear();
-        p<addend.GetSize();
+        p<addend->GetSize();
         p++){
         //run over  bits of addend
         
-        (t.n) = (((b[p]).n) ^ (((addend.b)[p]).n) ^ (carry.n));
-        (carry.n) = ((((addend.b)[p]).n) & (((b[p]).n) | (carry.n))) | (((b[p]).n) & (carry.n));
+        (t.n) = (((b[p]).n) ^ (((addend->b)[p]).n) ^ (carry.n));
+        (carry.n) = ((((addend->b)[p]).n) & (((b[p]).n) | (carry.n))) | (((b[p]).n) & (carry.n));
         ((b)[p]).n = (t.n);
         
     }
-    for(p=addend.GetSize(); p<GetSize(); p++){
+    for(p=addend->GetSize(); p<GetSize(); p++){
         //run over the extra bits of augend
         
         (t.n) = (((b[p]).n) ^ (carry.n));
@@ -233,14 +233,14 @@ inline void BitSet::operator += (BitSet& addend){
 
 
 //add bit-by-bit addend (which here is either 1 or 0) to *this and store the result in *this. This method requires this->GetSize() to be > 1 and assumes that *this and addend are such that there is no overflow while doing this operation
-inline void BitSet::operator += (const Bits& addend){
+inline void BitSet::operator += (const Bits* addend){
         
     Bits carry, t;
     unsigned int p;
 
     //sum the only bit of addend
-    (carry.n) = ((addend.n) & ((b[0]).n));
-    (b[0]).n = (((b[0]).n) ^ (addend.n));
+    (carry.n) = ((addend->n) & ((b[0]).n));
+    (b[0]).n = (((b[0]).n) ^ (addend->n));
     
     for(p=1; p<GetSize()-1; p++){
         //run over the extra bits of augend
@@ -257,12 +257,12 @@ inline void BitSet::operator += (const Bits& addend){
 }
 
 //substract m to *this and write the result in *this
-inline void BitSet::operator -= (BitSet& m) {
+inline void BitSet::operator -= (BitSet* m) {
     
     
     BitSet subtrahend, one;
     
-    subtrahend = m;
+    subtrahend = (*m);
     
 //    cout << "one : ";
 //    one.Print();
@@ -283,12 +283,12 @@ inline void BitSet::operator -= (BitSet& m) {
 //    subtrahend.Print();
 
     
-    (*this) += subtrahend;
+    (*this) += (&subtrahend);
     
 //    cout << "*this + subtrahend complement:";
 //    this->Print();
  
-    (*this) += one;
+    (*this) += (&one);
     
 //    cout << "*this + subtrahend complement + 1:";
 //    this->Print();
@@ -363,13 +363,13 @@ inline void BitSet::RemoveFirstSignificantBit(void){
 
 
 //shift bit-by-bit to the right the entries of  b[0] b[1] ... in *this by *e (thus by either one position or one position) and replace the remaining entries b[] by all zeros
-inline void BitSet::operator >>=(const Bits& e){
+inline void BitSet::operator >>=(const Bits* e){
     
     int m;
     Bits zero, e_saved;
     
     zero.SetAll(false);
-    e_saved = e;
+    e_saved = (*e);
     
     //run through the components of this->b and shift them
     //in this first loop, I run over the first chunk of entries of b: m = 0, ..., b.size() - 2^n-1 and I replace the m-th component of b with the m+2^n-th compoennt if e[n]=true, and do nothing otherwise
@@ -395,13 +395,13 @@ inline void BitSet::operator >>=(const Bits& e){
 
 
 //shift bit-by-bit to the left the entries of  b[0] b[1] ... in *this by *e (thus by either one position or one position) and replace the remaining entries b[] by all zeros
-inline void BitSet::operator <<=(const Bits& e){
+inline void BitSet::operator <<=(const Bits* e){
     
     int m;
     Bits zero, e_saved;
     
     zero.SetAll(false);
-    e_saved = e;
+    e_saved = (*e);
     
     //run through the components of this->b and shift them
     //in this first loop, I run over the first chunk of entries of b:  and I replace  if e=true, and do nothing otherwise

@@ -32,10 +32,10 @@ public:
     void Print(void);
 
     //bitwise sum and substraction
-    BitSet operator + (BitSet&), operator - (BitSet&);
-    void operator += (BitSet&), operator += (const Bits&), operator -= (BitSet&);
+    BitSet operator + (BitSet*), operator - (BitSet*);
+    void operator += (BitSet*), operator += (const Bits*), operator -= (BitSet*);
     Bits& operator [] (const unsigned int&);
-    void operator >>= (UnsignedInt*), operator >>= (const Bits&), operator <<= (const Bits&);
+    void operator >>= (UnsignedInt*), operator >>= (const Bits*), operator <<= (const Bits*);
 
     friend class UnsignedInt;
     friend class Double;
