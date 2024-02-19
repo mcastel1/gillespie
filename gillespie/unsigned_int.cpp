@@ -141,7 +141,7 @@ inline void BitSet::operator >>=(UnsignedInt* e){
 inline UnsignedInt BitSet::PositionOfFirstSignificantBit(void){
     
     int s;
-    Bits check_old, check_new;
+    Bits check_old, check_new, t;
     //result must be big enough to host an unsigned int equal to this->GetSize()
     UnsignedInt result(GetSize());
     
@@ -151,7 +151,8 @@ inline UnsignedInt BitSet::PositionOfFirstSignificantBit(void){
     for(s=GetSize()-1; s>=0; s--){
         
         check_new = check_old | ((*this)[s]);
-        result += (~check_new);
+        t = (~check_new);
+        result += (&t);
         
         check_old = check_new;
         

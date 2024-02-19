@@ -291,7 +291,7 @@ void Double::GetBase10(vector<double>& v){
 inline void Double::operator += (Double& x){
     
     Double augend, addend;
-    Bits compare;
+    Bits compare, t;
     UnsignedInt de;
     
     
@@ -315,7 +315,7 @@ inline void Double::operator += (Double& x){
 //    addend.Print();
 //    addend.PrintBase10();
     
-    de = ((augend.e)-(addend.e));
+    de = ((augend.e)-(&(addend.e)));
     
 //    cout << "de :" << endl;
 //    de.PrintBase10();
@@ -341,7 +341,7 @@ inline void Double::operator += (Double& x){
 
     //now sum augend.b and addend.b
     
-    augend.b += addend.b;
+    augend.b += (&(addend.b));
     
 //    cout << "***** After += : " << endl;
 //    cout << "Augend:" << endl;
@@ -362,7 +362,7 @@ inline void Double::operator += (Double& x){
 //    temp = (augend.b.b.back());
     
     
-    augend.e += augend.b.b.back();
+    augend.e += (&(augend.b.b.back()));
 
 //    cout << "***** After augend.e+= carry: " << endl;
 //    cout << "Augend.e:" << endl;
@@ -381,7 +381,8 @@ inline void Double::operator += (Double& x){
 //    augend.b.Print();
     
     //shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise
-    augend.b <<= ~(augend.b.b.back());
+    t = (~(augend.b.b.back()));
+    augend.b <<= (&t);
     augend.b.b.erase(augend.b.b.begin());
     
 //    cout << "After << :" << endl;
