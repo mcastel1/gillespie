@@ -19,6 +19,7 @@ public:
     
     void Clear(void);
     void Normalize(void);
+    void Normalize(unsigned int);
     void Resize(unsigned long long int);
     unsigned int GetSize(void);
     void SetRandom(unsigned int);

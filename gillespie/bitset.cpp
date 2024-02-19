@@ -233,7 +233,7 @@ inline void BitSet::operator += (BitSet* addend){
     
 }
 
-
+//remove useless bits on the tail of *this that contain all 0s
 inline void BitSet::Normalize(void){
     
     int p;
@@ -241,6 +241,23 @@ inline void BitSet::Normalize(void){
     for(p=GetSize()-1; p>=0; p--){
         
         if((b[p]).n == 0){
+            b.pop_back();
+        }else{
+            break;
+        }
+        
+    }
+    
+}
+
+//remove useless bits on the tail of *this that contain all 0s, as long as this deletion does not make the size of *this < than n
+inline void BitSet::Normalize(unsigned int n){
+    
+    int p;
+    
+    for(p=GetSize()-1; p>=0; p--){
+        
+        if(((b[p]).n == 0) && (GetSize() >= n)){
             b.pop_back();
         }else{
             break;

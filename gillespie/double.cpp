@@ -408,7 +408,11 @@ inline void Double::Normalize(void){
     UnsignedInt n;
     
     n = b.PositionOfFirstSignificantBit();
+    
+    //subtract n from e: this subtraction may have increased the size of e with some additional entries containing all 0s -> Normalize e in order to delete these entries and  bring the size of e back to its standard value n_bits_exponent
     e -= &n;
+    e.Normalize(n_bits_exponent);
+    
     b <<= &n;
     
 }
