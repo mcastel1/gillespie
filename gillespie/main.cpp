@@ -92,19 +92,19 @@ int main(int argc, char * argv[]) {
     //
     
     //
-    BitSet n(40);
-    UnsignedInt shift(4);
+    BitSet n(80);
+    UnsignedInt shift(12);
     n.SetRandom((unsigned int)0);
     shift.SetRandom((unsigned int)0);
      cout << "shift:" << endl;
     shift.PrintBase10();
     
-    cout << "n before <<= :" << endl;
+    cout << "n before >>= :" << endl;
     n.Print();
     
-    n <<= &shift;
+    n >>= &shift;
     
-    cout << "n after <<= :" << endl;
+    cout << "n after >>= :" << endl;
     n.Print();
 
     
