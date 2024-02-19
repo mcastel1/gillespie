@@ -148,6 +148,13 @@ void BitSet::Print(void){
     
 }
 
+
+inline Bits BitSet::operator ==(Bits& m){
+    
+    
+    
+}
+
 //return the unsigned long long int written in the p-th bit of *this
 inline unsigned long long int BitSet::Get(unsigned int p){
     
