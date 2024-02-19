@@ -110,8 +110,20 @@ int main(int argc, char * argv[]) {
     */
     
     
+    //
+    //test for Double::Normalize
+    Double x;
+    x.SetRandom((unsigned int)0);
+    cout << "x before noramlize:";
+//    x.Print();
+    x.PrintBase10();
+    x.Normalize();
+    cout << "x after noramlize:";
+    x.PrintBase10();
+ 
+    //
     
-    //    some tests for Double class
+    //test for    Double +=
     /*
     Double a, b;
     double error;
