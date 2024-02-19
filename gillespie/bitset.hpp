@@ -18,6 +18,7 @@ public:
     BitSet(unsigned long long int);
     
     void Clear(void);
+    void Normalize(void);
     void Resize(unsigned long long int);
     unsigned int GetSize(void);
     void SetRandom(unsigned int);

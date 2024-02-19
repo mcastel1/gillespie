@@ -229,8 +229,26 @@ inline void BitSet::operator += (BitSet* addend){
     //******** THIS MAY BE TIME CONSUMING ********
     b.push_back(carry);
     
+    Normalize();
+    
 }
 
+
+inline void BitSet::Normalize(void){
+    
+    int p;
+    
+    for(p=GetSize(); p>=0; p--){
+        
+        if((b[p]).n == 0){
+            b.pop_back();
+        }else{
+            break;
+        }
+        
+    }
+    
+}
 
 //add bit-by-bit addend (which here is either 1 or 0) to *this and store the result in *this. This method requires this->GetSize() to be > 1 and assumes that *this and addend are such that there is no overflow while doing this operation
 inline void BitSet::operator += (const Bits* addend){
@@ -253,6 +271,8 @@ inline void BitSet::operator += (const Bits* addend){
     
     //    add the last extra bit to b. This assumes that there cannot be overflow in this operation
     (b.back().n) ^= (carry.n);
+    
+    Normalize();
     
 }
 
