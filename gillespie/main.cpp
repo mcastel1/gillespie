@@ -91,7 +91,8 @@ int main(int argc, char * argv[]) {
     //
     //
     
-    //
+    //test for <<= and >>=
+    /*
     BitSet n(80);
     UnsignedInt shift(12);
     n.SetRandom((unsigned int)0);
@@ -106,9 +107,7 @@ int main(int argc, char * argv[]) {
     
     cout << "n after >>= :" << endl;
     n.Print();
-
-    
-    //
+    */
     
     
     
