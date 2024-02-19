@@ -199,7 +199,7 @@ inline BitSet BitSet::operator - (BitSet* addend) {
 }
 
 
-//add addend to *this, Normalize() the result and store it in *this. This method requires this->GetSize() to be >= addend.GetSize()
+//add addend to *this,  and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize()
 inline void BitSet::operator += (BitSet* addend){
     
     Bits carry, t;
@@ -229,7 +229,7 @@ inline void BitSet::operator += (BitSet* addend){
     //******** THIS MAY BE TIME CONSUMING ********
     b.push_back(carry);
     
-    Normalize();
+//    Normalize();
     
 }
 
@@ -272,7 +272,7 @@ inline void BitSet::operator += (const Bits* addend){
     //    add the last extra bit to b. This assumes that there cannot be overflow in this operation
     (b.back().n) ^= (carry.n);
     
-    Normalize();
+//    Normalize();
     
 }
 

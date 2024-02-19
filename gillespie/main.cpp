@@ -149,7 +149,7 @@ int main(int argc, char * argv[]) {
     //
     
     //test for    Double +=
-    /*
+    //
     Double a, b;
     double error;
     vector<double> v_a, v_b, v_a_plus_b;
@@ -160,7 +160,7 @@ int main(int argc, char * argv[]) {
     gsl_rng_set(ran, seed);
     
     
-    for(error = 0.0, s=0; s<1000; ++s){
+    for(error = 0.0, s=0; s<2; ++s){
         
         for(i=0; i<n_bits; i++){
             a.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
@@ -200,7 +200,7 @@ int main(int argc, char * argv[]) {
     }
     
     cout << "Maximum relative error = " << error << endl;
-*/
+//
     
     
     cout << endl;
