@@ -148,10 +148,18 @@ void BitSet::Print(void){
     
 }
 
-
-inline Bits BitSet::operator ==(Bits& m){
+//return (bit-by-bit) true if *this == m, and false otherwise
+inline Bits BitSet::operator ==(BitSet& m){
     
+    unsigned int p;
+    Bits result;
     
+    for(p=0, result.SetAll(true); p<GetSize(); p++){
+        
+        result &= b[p] == (m.b)[p]
+        
+        
+    }
     
 }
 
