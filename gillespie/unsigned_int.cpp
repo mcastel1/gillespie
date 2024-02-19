@@ -152,12 +152,12 @@ inline void BitSet::operator <<=(UnsignedInt* e){
         
         //run through the components of this->b and shift them
         
-        //in this first loop, I run over the first chunk of entries of b: m = 0, ..., b.size() - 2^n-1 and I replace the m-th component of b with the m+2^n-th compoennt if e[n]=true, and do nothing otherwise
-        for(m=0; m<(this->GetSize())-gsl_pow_int(2, n); m++){
+        //in this first loop, I run over the first chunk of entries of b: m = b.size()-1, ..., 2^n and I replace the m-th component of b with the m-2^n-th compoennt if e[n]=true, and do nothing otherwise
+        for(m=GetSize()-1; m>=gsl_pow_int(2, n); m--){
 
             b[m].Replace(
                          //the element # m+2^n in b
-                         &(b[m+two_pow(n)]),
+                         &(b[m-gsl_pow_int(2, n)]),
                          //the element #n in e
                          &((e->b)[n])
                          );
@@ -165,8 +165,8 @@ inline void BitSet::operator <<=(UnsignedInt* e){
             
         }
         
-        //in this loop, I run over the second chunk of entries of b: m =b.size() - 2^n , ..., b.size(). I can no longer replace b[m] with b[m+2^n] as in the loop above, becuase b[m+2^n] does not exist in b -> I replace it with zero. Note that if 2^n > b.size(), this second loop must cover the entire vector b -> I set as starting value of m  max(((int)(this->GetSize()))-((int)gsl_pow_int(2, n)), 0)
-        for(m = max(((int)(this->GetSize()))-((int)gsl_pow_int(2, n)), 0); (m<(this->GetSize())); m++){
+        //in this loop, I run over the second chunk of entries of b: m =2^n-1 , ..., 0. I can no longer replace b[m] with b[m-2^n] as in the loop above, becuase b[m-2^n] does not exist in b -> I replace it with zero. Note that if 2^n > b.size(), this second loop must cover the entire vector b -> I set as starting value of m  max(((int)(this->GetSize()))-((int)gsl_pow_int(2, n)), 0)
+        for(m = min(((int)GetSize())-1, (((int)gsl_pow_int(2, n))-1)); m>=0; m--){
                      
             b[m].Replace(
                          //a Bits filled with zeros
@@ -179,7 +179,6 @@ inline void BitSet::operator <<=(UnsignedInt* e){
         }
         
     }
-    
     
 }
 
