@@ -448,7 +448,7 @@ inline void BitSet::RemoveFirstSignificantBit(void){
 
 
 
-//shift bit-by-bit to the right the entries of  b[0] b[1] ... in *this by *e (thus by either one position or one position) and replace the remaining entries b[] by all zeros
+//shift bit-by-bit to the right the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *e (thus by either one position or one position) and replace the remaining entries b[] by all zeros
 inline void BitSet::operator >>=(const Bits* e){
     
     int m;
@@ -480,7 +480,7 @@ inline void BitSet::operator >>=(const Bits* e){
 
 
 
-//shift bit-by-bit to the left the entries of  b[0] b[1] ... in *this by *e (thus by either one position or one position) and replace the remaining entries b[] by all zeros
+//shift bit-by-bit to the left the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *e (thus by either one position or one position) and replace the remaining entries b[] by all zeros
 inline void BitSet::operator <<=(const Bits* e){
     
     int m;
@@ -512,3 +512,9 @@ inline void BitSet::operator <<=(const Bits* e){
 
 
 
+
+//multiply *this by addend,  and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize()
+inline void BitSet::operator *= (BitSet* addend){
+    
+    
+}
