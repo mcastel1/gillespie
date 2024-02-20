@@ -519,26 +519,46 @@ inline void BitSet::operator <<= (const Bits* e){
 }
 
 
+//perform (bit-by-bit) an & between b[s] and *m and write the result in b[s] for all s = 0 ... GetSize()
+inline void BitSet::operator &= (Bits* m){
+    
+    for(unsigned int s=0; s<GetSize(); s++){
+        
+        b[s] &= m;
+        
+    }
+    
+}
+
 
 
 //multiply *this by addend (as if they were two UnsignedInts)  and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize()
 inline void BitSet::operator *= (BitSet* multiplicand){
     
     unsigned int s;
+    Bits one;
+    BitSet result, t, u;
+    
+    one.SetAll(true);
 
     //THIS MAY SLOW DOWN THE CODE
     Resize(GetSize() + (multiplicand->GetSize()));
+    result.Resize(GetSize());
     //THIS MAY SLOW DOWN THE CODE
-    //set to zero all the newly allocated entries of *this
-    for(s=GetSize()-(multiplicand->GetSize()); s<GetSize(); s++){
-        b[s].SetAll(false);
-    }
+    
 
-    for(s=0; s<multiplicand->GetSize(); s++){
+    for(s=0, result.SetAll(0), t = *this; s<multiplicand->GetSize(); s++){
         
-        (*this) <<= &((multiplicand->b)[s]);
+        u = t;
+        u &= &((*multiplicand)[s]);
+        
+        result += &u;
+        
+        t <<= &one;
+
         
     }
     
+    (*this) = result;
     
 }

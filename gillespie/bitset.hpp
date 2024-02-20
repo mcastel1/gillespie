@@ -38,7 +38,7 @@ public:
     void operator += (BitSet*), operator += (const Bits*), operator -= (BitSet*), operator *= (BitSet*);
     Bits& operator [] (const unsigned int&);
     Bits operator == (BitSet&), operator < (const BitSet&);
-    void operator >>= (UnsignedInt*), operator <<= (UnsignedInt*), operator >>= (const Bits*), operator <<= (const Bits*);
+    void operator >>= (UnsignedInt*), operator <<= (UnsignedInt*), operator >>= (const Bits*), operator <<= (const Bits*), operator &= (Bits*);
 
     friend class UnsignedInt;
     friend class Double;
