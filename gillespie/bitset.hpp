@@ -34,7 +34,7 @@ public:
     void Print(void);
 
     //bitwise sum and substraction
-    BitSet operator + (BitSet*), operator - (BitSet*);
+    BitSet operator + (BitSet*), operator - (BitSet*), operator << (Bits*);
     void operator += (BitSet*), operator += (const Bits*), operator -= (BitSet*), operator *= (BitSet*);
     Bits& operator [] (const unsigned int&);
     Bits operator == (BitSet&), operator < (const BitSet&);

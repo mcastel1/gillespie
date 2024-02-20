@@ -149,7 +149,7 @@ void BitSet::Print(void){
 }
 
 //return (bit-by-bit) true if *this == m, and false otherwise. This method requires *this and m to have the same size
-inline Bits BitSet::operator ==(BitSet& m){
+inline Bits BitSet::operator == (BitSet& m){
     
     unsigned int p;
     Bits result;
@@ -195,6 +195,14 @@ inline Bits BitSet::operator < (const BitSet& m){
 }
 
 
+//shift bit-by-bit to the left the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *m (thus by either one position or zero positions), replace the remaining entries b[] by all zeros and write the result in *this
+inline BitSet BitSet::operator << (Bits* m){
+    
+    BitSet t = (*this);
+    t <<= m;
+    return t;
+    
+}
 
 
 //return the unsigned long long int written in the p-th bit of *this
@@ -448,8 +456,8 @@ inline void BitSet::RemoveFirstSignificantBit(void){
 
 
 
-//shift bit-by-bit to the right the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *e (thus by either one position or one position) and replace the remaining entries b[] by all zeros
-inline void BitSet::operator >>=(const Bits* e){
+//shift bit-by-bit to the right the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *e (thus by either one position or zero positions) and replace the remaining entries b[] by all zeros
+inline void BitSet::operator >>= (const Bits* e){
     
     int m;
     Bits zero, e_saved;
@@ -480,8 +488,8 @@ inline void BitSet::operator >>=(const Bits* e){
 
 
 
-//shift bit-by-bit to the left the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *e (thus by either one position or one position) and replace the remaining entries b[] by all zeros
-inline void BitSet::operator <<=(const Bits* e){
+//shift bit-by-bit to the left the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *e (thus by either one position or zero positions), replace the remaining entries b[] by all zeros and write the result on *this
+inline void BitSet::operator <<= (const Bits* e){
     
     int m;
     Bits zero, e_saved;
@@ -516,5 +524,16 @@ inline void BitSet::operator <<=(const Bits* e){
 //multiply *this by addend,  and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize()
 inline void BitSet::operator *= (BitSet* addend){
     
+    unsigned int s;
+    BitSet result, t;
+    
+    for(s=0, result.SetAll(0); s<addend->GetSize(); s++){
+        
+        t = ((*this) << ((addend->b.data())+s));
+        result += &t;
+        
+    }
+    
+    (*this) = result;
     
 }
