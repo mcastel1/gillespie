@@ -47,11 +47,12 @@ inline void UnsignedInt::Set(unsigned int s, unsigned long long int i){
 void UnsignedInt::PrintBase10(string title){
     
     unsigned int  p;
+    vector<unsigned long long int> v;
     
     cout << title << ": {";
-    for(p=0; p<n_bits; p++){
+    for(p=0, GetBase10(v); p<n_bits; p++){
         
-        cout << Get(n_bits-1-p) << " ";
+        cout << v[n_bits-1-p] << " ";
         
     }
     
@@ -59,6 +60,17 @@ void UnsignedInt::PrintBase10(string title){
         
 }
 
+
+void UnsignedInt::GetBase10(vector<unsigned long long int>& v){
+    
+    unsigned int p;
+    for(p=0, v.resize(n_bits); p<n_bits; p++){
+        
+         v[p] = Get(p);
+        
+    }
+    
+}
 
 
 void UnsignedInt::operator = (BitSet m){

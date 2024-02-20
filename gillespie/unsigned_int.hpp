@@ -18,6 +18,7 @@ public:
     UnsignedInt(unsigned long long int);
     
     void PrintBase10(string);
+    void GetBase10(vector<unsigned long long int>&);
     void RemoveFirstSignificantBit(void);
     void Replace(UnsignedInt*, Bits*);
     void Set(unsigned int, unsigned long long int);
