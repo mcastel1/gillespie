@@ -521,12 +521,17 @@ inline void BitSet::operator <<= (const Bits* e){
 
 
 
-//multiply *this by addend,  and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize()
+//multiply *this by addend (as if they were two UnsignedInts)  and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize()
 inline void BitSet::operator *= (BitSet* addend){
     
     unsigned int s;
     BitSet result, t;
-    
+
+    //THIS MAY SLOW DOWN THE CODE
+    result.Resize(GetSize() + (addend->GetSize()));
+    t.Resize(GetSize() + (addend->GetSize()));
+    //THIS MAY SLOW DOWN THE CODE
+
     for(s=0, result.SetAll(0); s<addend->GetSize(); s++){
         
         t = ((*this) << ((addend->b.data())+s));

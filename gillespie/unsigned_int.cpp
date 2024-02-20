@@ -44,11 +44,11 @@ inline void UnsignedInt::Set(unsigned int s, unsigned long long int i){
 
 
 
-void UnsignedInt::PrintBase10(void){
+void UnsignedInt::PrintBase10(string title){
     
     unsigned int  p;
     
-    cout << "{";
+    cout << title << ": {";
     for(p=0; p<n_bits; p++){
         
         cout << Get(n_bits-1-p) << " ";

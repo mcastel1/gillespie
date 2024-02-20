@@ -89,7 +89,17 @@ int main(int argc, char * argv[]) {
         
     }
     
+    //test for BitSet::operator *=
+    //
+    UnsignedInt a(10), b(10);
+    a.SetRandom((unsigned int)0);
+    b.SetRandom((unsigned int)1);
     
+    a.PrintBase10("a before *");
+    b.PrintBase10("b");
+    a *= &b;
+    a.PrintBase10("a after *");
+    //
     
     //test for Double::operator <
     /*

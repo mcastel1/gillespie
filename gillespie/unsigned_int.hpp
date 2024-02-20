@@ -17,7 +17,7 @@ public:
     UnsignedInt(void);
     UnsignedInt(unsigned long long int);
     
-    void PrintBase10(void);
+    void PrintBase10(string);
     void RemoveFirstSignificantBit(void);
     void Replace(UnsignedInt*, Bits*);
     void Set(unsigned int, unsigned long long int);
