@@ -90,8 +90,39 @@ int main(int argc, char * argv[]) {
     }
     
     
-    //test for    Double *=
+    
+    //test for Double *=
     //
+    Double a, b;
+    gsl_rng* ran;
+    unsigned int i;
+    vector<double> v_a, v_b, v_a_x_b;
+    
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    for(i=0; i<n_bits; i++){
+        a.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+        b.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+    }
+    
+    a.PrintBase10("a");
+    b.PrintBase10("b");
+    a.GetBase10(v_a);
+    b.GetBase10(v_b);
+    
+    a *= b;
+
+    a.PrintBase10("a x b");
+    a.GetBase10(v_a_x_b);
+    //
+    
+    
+    
+    
+    //test for    UnsignedInt *=
+    /*
     unsigned long long int max =1000;
     UnsignedInt a(max), b(max);
     double it_works;
@@ -153,7 +184,7 @@ int main(int argc, char * argv[]) {
     }
     
     cout << "It works  = " << it_works << "." << endl;
-    //
+    */
     
     //test for Double::operator <
     /*
