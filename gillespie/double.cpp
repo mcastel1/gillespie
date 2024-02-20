@@ -402,8 +402,11 @@ inline void Double::operator *= (Double& x){
     //multiply the sign of *this by the sign of x
     s ^= (&(x.s));
     
-    //multiply the exponent part 
+    //multiply the exponent part
     e += (&(x.e));
+    //the += above may have increased the size of e -> bring it back to the correct value for the exponent of a Double
+    e.Normalize(n_bits_exponent);
+
     
 }
 
