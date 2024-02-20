@@ -103,7 +103,7 @@ int main(int argc, char * argv[]) {
     gsl_rng_set(ran, seed);
     
     
-    for(it_works = true, s=0; s<100; ++s){
+    for(it_works = true, s=0; s<1000; ++s){
         
         a.Resize(0);
         b.Resize(0);
