@@ -525,19 +525,20 @@ inline void BitSet::operator <<= (const Bits* e){
 inline void BitSet::operator *= (BitSet* multiplicand){
     
     unsigned int s;
-    BitSet result, t;
 
     //THIS MAY SLOW DOWN THE CODE
-    result.Resize(GetSize() + (multiplicand->GetSize()));
+    Resize(GetSize() + (multiplicand->GetSize()));
     //THIS MAY SLOW DOWN THE CODE
+    //set to zero all the newly allocated entries of *this
+    for(s=GetSize()-(multiplicand->GetSize()); s<GetSize(); s++){
+        b[s].SetAll(false);
+    }
 
-    for(s=0, result.SetAll(0); s<multiplicand->GetSize(); s++){
+    for(s=0; s<multiplicand->GetSize(); s++){
         
-        t = ((*this) << ((multiplicand->b.data())+s));
-        result += &t;
+        (*this) <<= &((multiplicand->b)[s]);
         
     }
     
-    (*this) = result;
     
 }
