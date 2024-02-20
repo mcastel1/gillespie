@@ -399,6 +399,10 @@ inline void Double::operator += (Double& x){
 //multiply *this by x and store the result in *this 
 inline void Double::operator *= (Double& x){
     
+    //multiply the sign of *this by the sign of x
+    s ^= (&(x.s));
+    
+    
     
 }
 

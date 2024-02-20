@@ -32,7 +32,7 @@ public:
     
     Bits operator & (const Bits&), operator | (const Bits&), operator ^ (const Bits&), operator ~(void);
     Bits operator == (Bits&);
-    void operator = (const Bits&), operator &= (const Bits&), operator &= (Bits*);
+    void operator = (const Bits&), operator &= (const Bits&), operator &= (Bits*), operator ^= (Bits*);
     
 };
 

@@ -200,3 +200,9 @@ inline void Bits::operator &= (Bits* m){
     n &= (m->n);
     
 }
+
+inline void Bits::operator ^= (Bits* m){
+    
+    n ^= (m->n);
+    
+}
