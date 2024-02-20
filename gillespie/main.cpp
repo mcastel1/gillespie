@@ -88,8 +88,63 @@ int main(int argc, char * argv[]) {
         }
         
     }
+    
+    
+    
+    //test for Double::operator <
+    /*
+    Double a, b;
+    unsigned int s, i;
+    gsl_rng* ran;
+    Bits smaller;
+    vector<double> v_a, v_b;
+    bool it_works;
+
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    
+    for(it_works=true, s=0; s<1000; ++s){
+        
+        for(i=0; i<n_bits; i++){
+            a.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+            b.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+        }
+        
+        a.GetBase10(v_a);
+        b.GetBase10(v_b);
+
+        cout << "a : " << endl;
+    //    a.Print();
+        a.PrintBase10();
+        cout << "b : " << endl;
+    //    b.Print();
+        b.PrintBase10();
+        smaller  = (a < b);
+        cout << "a<b : " << endl;
+        smaller.Print();
+        
+        
+        
+        for(i=0; i<n_bits; ++i){
+            cout << "\t" << (v_a[i] < v_b[i]) << "\t" << smaller.Get(i) << endl;
+            if((v_a[i] < v_b[i]) != smaller.Get(i)){it_works = false; break;}
+        }
+        
+    }
+
+ 
+    cout << "Check of the result:" << it_works << endl;
+    */
+    
+
+    
+    
     //
     
+    //test for == for Unsigned Ints
+    /*
     UnsignedInt a(10), b(10);
     Bits check;
     a.SetRandom((unsigned int)0);
@@ -105,6 +160,7 @@ int main(int argc, char * argv[]) {
     int x;
     x=0;
     cout <<  x;
+    */
     
     
     //test for <<= and >>=
