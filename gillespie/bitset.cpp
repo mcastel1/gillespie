@@ -175,6 +175,28 @@ inline Bits BitSet::operator ==(BitSet& m){
     
 }
 
+//Confronto *this con m e scrivo in result il risultato. result è uguale a 1 se *this < m e a 0 altrimenti
+inline Bits BitSet::operator < (const BitSet& m){
+    
+    int s;
+    Bits result, check;
+    
+    
+    result = (~(b[GetSize() - 1])) & ((m.b)[GetSize() - 1]);
+    check = ((b[GetSize() - 1]) ^ ((m.b)[GetSize() - 1]));
+    
+    for(s=GetSize()-2; s >=0; s--){
+        result = ((check & result) | ((~check) & ((~(b[s])) & ((m.b)[s]))) );
+        check = (check | ((b[s]) ^ ((m.b)[s])));
+    }
+    
+    return result;
+    
+}
+
+
+
+
 //return the unsigned long long int written in the p-th bit of *this
 inline unsigned long long int BitSet::Get(unsigned int p){
     

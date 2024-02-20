@@ -396,18 +396,17 @@ inline void Double::operator += (Double& x){
 }
 
 
-////return (bit-by-bit) 1 if *this < x, 0 otherwise
-//inline bool Double::operator<(Double& x){
-//    
-//    Normalize();
-//    x.Normalize();
-//    
-//    e < x.e;
-//    ;
-//    
-//    return true;
-//    
-//}
+//return (bit-by-bit) 1 if *this < x, 0 otherwise
+inline Bits Double::operator<(Double& x){
+    
+   
+    //normalize the two Double(s) to make sure that the mantisa is of the form 1+....
+    Normalize();
+    x.Normalize();
+    
+    return((/*this is to compare the mantissa of *this and the mantissa of x, by treating them as if they were two unsigned ints*/(b < x.b) & (e == x.e)) | (e < x.e));
+    
+}
 
 
 //normalize *this by shifting the mantissa in such a way that its first bit is nonzero, and re-incorporrating the shift in e

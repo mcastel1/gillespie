@@ -37,7 +37,7 @@ public:
     BitSet operator + (BitSet*), operator - (BitSet*);
     void operator += (BitSet*), operator += (const Bits*), operator -= (BitSet*);
     Bits& operator [] (const unsigned int&);
-    Bits operator == (BitSet&);
+    Bits operator == (BitSet&), operator < (const BitSet&);
     void operator >>= (UnsignedInt*), operator <<= (UnsignedInt*), operator >>= (const Bits*), operator <<= (const Bits*);
 
     friend class UnsignedInt;

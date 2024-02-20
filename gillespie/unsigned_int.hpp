@@ -22,7 +22,6 @@ public:
     void Replace(UnsignedInt*, Bits*);
     void Set(unsigned int, unsigned long long int);
 
-    Bits operator < (const UnsignedInt&);
     void operator = (BitSet);
     
     friend class Double;

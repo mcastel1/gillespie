@@ -68,27 +68,6 @@ void UnsignedInt::operator = (BitSet m){
 }
 
 
-
-
-//Confronto *this con m e scrivo in result il risultato. result è uguale a 1 se *this < m e a 0 altrimenti
-inline Bits UnsignedInt::operator < (const UnsignedInt& m){
-    
-    int s;
-    Bits result, check;
-    
-    
-    result = (~(b[GetSize() - 1])) & ((m.b)[GetSize() - 1]);
-    check = ((b[GetSize() - 1]) ^ ((m.b)[GetSize() - 1]));
-    
-    for(s=GetSize()-2; s >=0; s--){
-        result = ((check & result) | ((~check) & ((~(b[s])) & ((m.b)[s]))) );
-        check = (check | ((b[s]) ^ ((m.b)[s])));
-    }
-    
-    return result;
-    
-}
-
 //I am obliged to put this method definition here, because this method needs the full declaration of the UnsignedInt class before it is declared
 //shift bit-by-bit the entries of  b[51] b[50] ... in *this by a number of positions to the right (>>) encoded in *e and replace the remaining entries b[] by all zeros
 inline void BitSet::operator >>=(UnsignedInt* e){

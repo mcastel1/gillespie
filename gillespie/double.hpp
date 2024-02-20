@@ -35,6 +35,6 @@ public:
     void GetBase10(vector<double>&);
 
     void operator += (Double&);
-    bool operator <(Double&);
+    Bits operator <(Double&);
 
 };
