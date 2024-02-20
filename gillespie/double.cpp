@@ -396,23 +396,12 @@ inline void Double::operator += (Double& x){
 }
 
 
-//return (bit-by-bit) 1 if *this < x, 0 otherwise
+//return (bit-by-bit) 1 if *this < x, 0 otherwise. This method assumes that this->s = x.s = 0
 inline Bits Double::operator < (Double& x){
     
-   
     //normalize the two Double(s) to make sure that the mantisa is of the form 1+....
     Normalize();
     x.Normalize();
-    
-//    cout << "e : " << endl;
-//    e.PrintBase10();
-//    cout << "ep : " << endl;
-//    x.e.PrintBase10();
-    
-    Bits b_smaller_bp = (b < x.b), e_smaller_ep = (e < x.e), e_equal_ep = (e == x.e);
-    
-    
-    
     
     return((/*this is to compare the mantissa of *this and the mantissa of x, by treating them as if they were two unsigned ints*/(b < x.b) & (e == x.e)) | (e < x.e));
     
