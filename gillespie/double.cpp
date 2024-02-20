@@ -402,7 +402,8 @@ inline void Double::operator *= (Double& x){
     //multiply the sign of *this by the sign of x
     s ^= (&(x.s));
     
-    
+    //multiply the exponent part 
+    e += (&(x.e));
     
 }
 
