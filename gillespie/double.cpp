@@ -396,6 +396,13 @@ inline void Double::operator += (Double& x){
 }
 
 
+//multiply *this by x and store the result in *this 
+inline void Double::operator *= (Double& x){
+    
+    
+}
+
+
 //return (bit-by-bit) 1 if *this < x, 0 otherwise. This method assumes that this->s = x.s = 0
 inline Bits Double::operator < (Double& x){
     
