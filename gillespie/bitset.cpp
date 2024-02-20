@@ -544,6 +544,9 @@ inline void BitSet::operator *= (BitSet* multiplicand){
     //THIS MAY SLOW DOWN THE CODE
     //resize *this and result in order to be large enough to host the result
     Resize(GetSize() + (multiplicand->GetSize()));
+    for(s=GetSize()-(multiplicand->GetSize()); s<GetSize(); s++){
+        b[s].SetAll(false);
+    }
     result.Resize(GetSize());
     //THIS MAY SLOW DOWN THE CODE
     

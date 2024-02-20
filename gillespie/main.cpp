@@ -105,6 +105,16 @@ int main(int argc, char * argv[]) {
     
     for(it_works = true, s=0; s<100; ++s){
         
+        a.Resize(0);
+        b.Resize(0);
+        
+        a.Resize(bits(max));
+        b.Resize(bits(max));
+        
+        a.Clear();
+        b.Clear();
+
+        
         for(i=0; i<n_bits; i++){
             a.Set(i, gsl_rng_uniform_int(ran, max));
             b.Set(i, gsl_rng_uniform_int(ran, max));
@@ -142,7 +152,7 @@ int main(int argc, char * argv[]) {
         
     }
     
-    cout << "Maximum relative error = " << it_works << endl;
+    cout << "It works  = " << it_works << "." << endl;
     //
     
     //test for Double::operator <
