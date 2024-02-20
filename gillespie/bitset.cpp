@@ -537,28 +537,34 @@ inline void BitSet::operator *= (BitSet* multiplicand){
     
     unsigned int s;
     Bits one;
-    BitSet result, t, u;
+    BitSet result, t;
     
     one.SetAll(true);
 
     //THIS MAY SLOW DOWN THE CODE
+    //resize *this and result in order to be large enough to host the result
     Resize(GetSize() + (multiplicand->GetSize()));
     result.Resize(GetSize());
     //THIS MAY SLOW DOWN THE CODE
     
 
-    for(s=0, result.SetAll(0), t = *this; s<multiplicand->GetSize(); s++){
+    for(s=0, result.SetAll(0); s<multiplicand->GetSize(); s++){
+        //multiply by the s-th element of multiplicand: at each step of this loop *this is shifted by one unit to the left
         
-        u = t;
-        u &= &((*multiplicand)[s]);
+        //the temporarly variable t is set equal to the original value of *this multiplyed by 2^s
+        t = (*this);
+        //I perform this & to multiply by the s-th bit of the multiplicand
+        t &= &((*multiplicand)[s]);
         
-        result += &u;
+        //add the partial sum to the result
+        result += &t;
         
-        t <<= &one;
+        //shift this
+        (*this) <<= &one;
 
-        
     }
     
+    //result now is complete: set *this equal to result
     (*this) = result;
     
 }
