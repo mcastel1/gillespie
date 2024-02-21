@@ -437,6 +437,16 @@ inline void BitSet::ComplementTo(unsigned int size){
 }
 
 
+//write the one-complement of *this  and write it into *this
+inline void BitSet::ComplementTo(void){
+    
+    for(unsigned int s=0; s<GetSize(); s++){
+        b[s] = (b[s]).Complement();
+    }
+    
+}
+
+
 
 //set to zero the first bits of *this that is equal to one (starting from the last bit) and leave the others unchanged, write the result in *this
 inline void BitSet::RemoveFirstSignificantBit(void){

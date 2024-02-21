@@ -26,6 +26,7 @@ public:
     void SetAll(unsigned long long int);
     void SetAllFromDouble(double);
     void SetFromDouble(unsigned int, double);
+    void ComplementTo(void);
     void ComplementTo(unsigned int);
     void ResizeAndSetAll(unsigned long long int);
     UnsignedInt PositionOfFirstSignificantBit(void);
