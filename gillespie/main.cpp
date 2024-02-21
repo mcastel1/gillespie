@@ -103,23 +103,28 @@ int main(int argc, char * argv[]) {
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     gsl_rng_set(ran, seed);
     
-    for(i=0; i<n_bits; i++){
-        a.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
-        b.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
-    }
-    
-    a.PrintBase10("a");
-    b.PrintBase10("b");
-    a.GetBase10(v_a);
-    b.GetBase10(v_b);
-    
-    a *= b;
-
-    a.PrintBase10("a x b");
-    a.GetBase10(v_a_x_b);
+  
     
     cout << "Check of the result:" << endl;
     for(s=0, error=0.0; s<100; ++s){
+        
+        a.Clear();
+        b.Clear();
+        
+        for(i=0; i<n_bits; i++){
+            a.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+            b.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+        }
+        
+        a.PrintBase10("a");
+        b.PrintBase10("b");
+        a.GetBase10(v_a);
+        b.GetBase10(v_b);
+        
+        a *= b;
+
+        a.PrintBase10("a x b");
+        a.GetBase10(v_a_x_b);
         
         for(i=0; i<n_bits; ++i){
             if(fabs(((v_a[n_bits-1-i]*v_b[n_bits-1-i])-v_a_x_b[n_bits-1-i])/v_a_x_b[n_bits-1-i]) > error){error = fabs(((v_a[n_bits-1-i]*v_b[n_bits-1-i])-v_a_x_b[n_bits-1-i])/v_a_x_b[n_bits-1-i]);}
