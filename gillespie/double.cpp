@@ -399,9 +399,9 @@ inline void Double::operator += (Double& x){
 //multiply *this by x and store the result in *this 
 inline void Double::operator *= (Double& x){
     
-    UnsignedInt t(1023);
+    UnsignedInt t(1022);
     
-    t.SetAll(1023);
+    t.SetAll(1022);
     
     //multiply the sign of *this by the sign of x
     s ^= (&(x.s));

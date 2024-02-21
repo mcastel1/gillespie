@@ -532,7 +532,7 @@ inline void BitSet::operator &= (Bits* m){
 
 
 
-//multiply *this by addend (as if they were two UnsignedInts)  and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize()
+//multiply *this by addend (as if they were two UnsignedInts)  and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize(). once this method is called, *this has size [size of *this before the method is called] + multiplicand.GetSize()
 inline void BitSet::operator *= (BitSet* multiplicand){
     
     unsigned int s;
