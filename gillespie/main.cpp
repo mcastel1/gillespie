@@ -66,7 +66,7 @@ int main(int argc, char * argv[]) {
     cout.precision(cout_precision);
     
     int options;
-    unsigned int seed=0/*, N=0*/, S=0;
+    unsigned long long int seed=0/*, N=0*/, S=0;
     
     while ((options = getopt(argc, argv, ":S:s:")) != -1) {
         
@@ -81,7 +81,7 @@ int main(int argc, char * argv[]) {
                 break;
                 
             case 'S':
-                S = ((unsigned int)atoi(optarg));
+                S = ((unsigned int)gsl_pow_int(10, atoi(optarg)));
                 break;
                 
                 
@@ -95,7 +95,8 @@ int main(int argc, char * argv[]) {
     //
     clock_t start=0, end=0;
     gsl_rng* ran;
-    unsigned int i, s;
+    unsigned long long int i, s;
+    
     vector<Double> A(S);
     Double B;
     vector<double> a(S);
@@ -116,7 +117,7 @@ int main(int argc, char * argv[]) {
             A[s].Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
         }
         
-        A[s].PrintBase10("A");
+//        A[s].PrintBase10("A");
     }
     
     
@@ -133,12 +134,45 @@ int main(int argc, char * argv[]) {
     }
     end = clock();
     
-    cout << "Time with bits = " << end - start << "\n";
+    cout << endl << endl << "Time with bits = " << end - start << endl << endl;
 
     
+    
+    
+    b = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
+    cout << "b: " << b << endl;
+    for(s=0; s<S; ++s){
+        a[s] = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
+//                cout << "a[]: " << a[s] << endl;
+    }
+    
+    
+    
+    
+    start = clock();
+    for(s=0; s<S; s++){
+        
+//        A[s].PrintBase10();
+//        B[s].PrintBase10();
+        
+        (a[s]) += b;
+        
+//        A[s].PrintBase10();
+        
+    }
+    end = clock();
+    
+    cout << endl << endl << "Time without bits = " << end - start << endl << endl;
+
+    
+    
     //without this the for loop will not be exectued with -O3
-    A.back().Print();
+    A.back().PrintBase10("dummy print");
+    cout << " " << b << endl;
     //
+    
+    
+    
     
     
     
