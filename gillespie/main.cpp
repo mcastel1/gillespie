@@ -98,74 +98,74 @@ int main(int argc, char * argv[]) {
     
     
     ////test for speed
-    //
-    clock_t start=0, end=0;
-    gsl_rng* ran;
-    unsigned long long int i, s;
-    
-    vector<Double> A(S);
-    Double B;
-    vector<double> a(S);
-    double b;
-    
-    
-    ran = gsl_rng_alloc(gsl_rng_gfsr4);
-    gsl_rng_set(ran, seed);
-
-    
-    
-    //****************** calculatio without bits ******************
-    b = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
-    cout << "b: " << b << endl;
-    for(s=0; s<S; ++s){
-        a[s] = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
-//                cout << "a[]: " << a[s] << endl;
-    }
-    
-    start = clock();
-    for(s=0; s<S; s++){
-                
-        (a[s]) += b;
-        
-    }
-    end = clock();
-    cout << endl << endl  << "Time without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl << endl;
-
-    
-    //****************** calculatio with bits ******************
-    for(i=0; i<n_bits; i++){
-        B.Set((unsigned int)i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
-    }
-    B.PrintBase10("B");
-    for(s=0; s<S; ++s){
-                
-        for(i=0; i<n_bits; i++){
-            A[s].Set((unsigned int)i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
-        }
-        
-//        A[s].PrintBase10("A");
-    }
-    
-    
-    start = clock();
-    for(s=0; s<S; s++){
-        
-//        A[s].PrintBase10("A");
-//        B.PrintBase10("B");
-        
-        (A[s]) += (&B);
-        
-//        A[s].PrintBase10("A");
-        
-    }
-    end = clock();
-    
-    cout << endl << endl << "Time with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
-
-    
-    //without this the for loop will not be exectued with -O3
-    A.back().PrintBase10("dummy print");
-    cout << "last element of a = " << a[S-1] << " " << b << endl;
+//    //
+//    clock_t start=0, end=0;
+//    gsl_rng* ran;
+//    unsigned long long int i, s;
+//    
+//    vector<Double> A(S);
+//    Double B;
+//    vector<double> a(S);
+//    double b;
+//    
+//    
+//    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+//    gsl_rng_set(ran, seed);
+//
+//    
+//    
+//    //****************** calculatio without bits ******************
+//    b = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
+//    cout << "b: " << b << endl;
+//    for(s=0; s<S; ++s){
+//        a[s] = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
+////                cout << "a[]: " << a[s] << endl;
+//    }
+//    
+//    start = clock();
+//    for(s=0; s<S; s++){
+//                
+//        (a[s]) += b;
+//        
+//    }
+//    end = clock();
+//    cout << endl << endl  << "Time without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl << endl;
+//
+//    
+//    //****************** calculatio with bits ******************
+//    for(i=0; i<n_bits; i++){
+//        B.Set((unsigned int)i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+//    }
+//    B.PrintBase10("B");
+//    for(s=0; s<S; ++s){
+//                
+//        for(i=0; i<n_bits; i++){
+//            A[s].Set((unsigned int)i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+//        }
+//        
+////        A[s].PrintBase10("A");
+//    }
+//    
+//    
+//    start = clock();
+//    for(s=0; s<S; s++){
+//        
+////        A[s].PrintBase10("A");
+////        B.PrintBase10("B");
+//        
+//        (A[s]) += (&B);
+//        
+////        A[s].PrintBase10("A");
+//        
+//    }
+//    end = clock();
+//    
+//    cout << endl << endl << "Time with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+//
+//    
+//    //without this the for loop will not be exectued with -O3
+//    A.back().PrintBase10("dummy print");
+//    cout << "last element of a = " << a[S-1] << " " << b << endl;
     //
     
  
@@ -205,7 +205,7 @@ int main(int argc, char * argv[]) {
 //         a.GetBase10(v_a);
 //         b.GetBase10(v_b);
 //         
-//         a+=b;
+//         a+= &b;
 //         
 //         //    cout << "----------- After += -----------" << endl;
 //         //    cout << "a+b: " << endl;
