@@ -99,35 +99,103 @@ int main(int argc, char * argv[]) {
     
     
     ////speed test for BitSet::operator -=
+    //    //
+    //    vector<UnsignedInt> a(S);
+    //    UnsignedInt b(16);
+    //    unsigned int s;
+    //    clock_t start=0, end=0;
+    //    Bits borrow;
     //
-    vector<UnsignedInt> a(S);
-    UnsignedInt b(16);
-    unsigned int s;
-    clock_t start=0, end=0;
+    //    b.SetRandom((unsigned int)0);
+    //    for(s=0; s<S; ++s){
+    //
+    //
+    //        a[s].Resize(16);
+    //        a[s].SetRandom(s);
+    //
+    //        //        a[s].PrintBase10("a");
+    //        //        b.PrintBase10("b");
+    //
+    //        //        a[s].PrintBase10("a+b");
+    //    }
+    //
+    //    start = clock();
+    //    for(s=0; s<S; ++s){
+    //        a[s].SubstractToNoResize(&b, &borrow);
+    ////                a[s] -= (&b);
+    //    }
+    //    end = clock();
+    //    cout << endl << endl  << "Time with bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl << endl;
+    //
+    //    a.back().PrintBase10("dummy");
+    
+    
+    //     //test for BitSet::SubstractToNoResize
+    //
+    UnsignedInt a, b;
+    vector<unsigned long long int> v_a, v_b, v_a_minus_b;
+    unsigned int i, s;
+    unsigned long long int r, max = 1024;
+    gsl_rng* ran;
     Bits borrow;
+    bool it_works;
     
-    b.SetRandom((unsigned int)0);
-    for(s=0; s<S; ++s){
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    a.Resize(10);
+    b.Resize(10);
+    
+    
+    for(it_works = true, s=0; s<S; ++s){
         
         
-        a[s].Resize(16);
-        a[s].SetRandom(s);
+        for(i=0; i<n_bits; i++){
+            
+            r = gsl_rng_uniform_int(ran, max);
+            a.Set(i, r);
+            b.Set(i, r-1-gsl_rng_uniform_int(ran, r));
+            
+        }
         
-        //        a[s].PrintBase10("a");
-        //        b.PrintBase10("b");
         
-        //        a[s].PrintBase10("a+b");
+        //    cout << "----------- Before += -----------" << endl;
+        //    cout << "a : " << endl;
+        //    a.Print();
+        //    a.PrintBase10();
+        
+        //    cout << "b : " << endl;
+        //    b.Print();
+        //    b.PrintBase10();
+        
+        a.GetBase10(v_a);
+        b.GetBase10(v_b);
+        
+        a.SubstractToNoResize(&b, &borrow);
+        
+        //    cout << "----------- After += -----------" << endl;
+        //    cout << "a+b: " << endl;
+        //    a.Print();
+        //    a.PrintBase10();
+        
+        a.GetBase10(v_a_minus_b);
+        
+        for(i=0; i<n_bits; ++i){
+            if( v_a[i]-v_b[i] !=  v_a_minus_b[i] ){
+                it_works = false;
+                break;
+            }
+            
+            cout << "[" << i << "]:\t\t\t" << v_a[i]-v_b[i] << "\t\t\t" << v_a_minus_b[i] << endl;
+        }
+        //
+        
     }
     
-    start = clock();
-    for(s=0; s<S; ++s){
-        a[s].SubstractToNoResize(&b, &borrow);
-//                a[s] -= (&b);
-    }
-    end = clock();
-    cout << endl << endl  << "Time with bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl << endl;
+    cout << "It works = " << it_works << "." <<  endl;
     
-    a.back().PrintBase10("dummy");
+    
+    
     
     
     ////test for speed
