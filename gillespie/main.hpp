@@ -20,7 +20,8 @@ class UnsignedInt;
 #include "bits.hpp"
 #include "bitset.hpp"
 
-
+//fill all the entries of BitSet_one and of Bits_one with 1 
 BitSet BitSet_one;
+Bits Bits_one;
 
 

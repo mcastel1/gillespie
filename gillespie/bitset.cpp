@@ -405,9 +405,7 @@ inline void BitSet::operator -= (BitSet* subtrahend) {
 inline void BitSet::ComplementTo(unsigned int size){
     
     unsigned int s;
-    Bits one;
     
-    one.SetAll(true);
     this->Resize(size);
     
     //set the first bits common to *this
@@ -415,7 +413,7 @@ inline void BitSet::ComplementTo(unsigned int size){
         b[s] = (b[s]).Complement();
     }
     for(s=GetSize(); s<this->GetSize(); s++){
-        b[s] = one;
+        b[s] = Bits_one;
     }
     
 }
