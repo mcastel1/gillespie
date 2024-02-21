@@ -412,16 +412,32 @@ inline void BitSet::operator -= (BitSet* subtrahend) {
 }
 
 
-//do the same as BitSet::operator -= but without resizing operations. This method assumes that *this >= *subtrahend and that *this and *subtrahend have the same size
-inline void BitSet::SubstractToNoResize (BitSet* subtrahend) {
+//do the same as BitSet::operator -= but without resizing operations. This method requires this->GetSize() to be >= addend.GetSize()
+inline void BitSet::SubstractToNoResize(BitSet* subtrahend, Bits* borrow) {
     
-//    BitSet subtrahend_t;
-//    
-//    subtrahend_t = (*subtrahend);
-//    subtrahend_t.ComplementTo();
-//    PlusEqualWithoutResizing(&subtrahend_t);
-//    PlusEqualWithoutResizing(&BitSet_one);
-//    RemoveFirstSignificantBit();
+    unsigned int p;
+    Bits t;
+    
+    for(p=0, borrow->Clear();
+        p<subtrahend->GetSize();
+        p++){
+        //run over  bits of subtrahend
+        
+        (t.n) = (((b[p]).n) ^ (((subtrahend->b)[p]).n) ^ (borrow->n));
+        //        (borrow && (! minuend || subtrahend)) || (! minuend && subtrahend)
+        (borrow->n) = ((borrow->n) & ((~((b[p]).n)) | (((*subtrahend)[p]).n))) | ((~((b[p]).n)) & (((*subtrahend)[p]).n));
+        (b[p]).n = (t.n);
+        
+    }
+
+    for(p=subtrahend->GetSize(); p<GetSize(); p++){
+        //run over the extra bits of minuend
+        
+        (t.n) = (((b[p]).n) ^ (borrow->n));
+        (borrow->n) = ((~((b[p]).n)) & (borrow->n));
+        (b[p].n) = (t.n);
+        
+    }
     
 }
 

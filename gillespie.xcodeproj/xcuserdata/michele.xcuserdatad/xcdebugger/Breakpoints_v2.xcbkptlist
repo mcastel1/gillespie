@@ -125,8 +125,8 @@
             filePath = "gillespie/bitset.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "454"
-            endingLineNumber = "454"
+            startingLineNumber = "470"
+            endingLineNumber = "470"
             landmarkName = "BitSet::ComplementTo()"
             landmarkType = "7">
          </BreakpointContent>
@@ -141,8 +141,8 @@
             filePath = "gillespie/bitset.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "455"
-            endingLineNumber = "455"
+            startingLineNumber = "471"
+            endingLineNumber = "471"
             landmarkName = "BitSet::ComplementTo()"
             landmarkType = "7">
          </BreakpointContent>

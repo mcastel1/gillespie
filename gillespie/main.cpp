@@ -104,6 +104,7 @@ int main(int argc, char * argv[]) {
     UnsignedInt b(16);
     unsigned int s;
     clock_t start=0, end=0;
+    Bits borrow;
     
     b.SetRandom((unsigned int)0);
     for(s=0; s<S; ++s){
@@ -120,7 +121,7 @@ int main(int argc, char * argv[]) {
     
     start = clock();
     for(s=0; s<S; ++s){
-        a[s].SubstractToNoResize(&b);
+        a[s].SubstractToNoResize(&b, &borrow);
 //                a[s] -= (&b);
     }
     end = clock();
