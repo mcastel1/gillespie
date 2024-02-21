@@ -451,7 +451,7 @@ inline void BitSet::ComplementTo(unsigned int size){
 inline void BitSet::ComplementTo(void){
     
     for(unsigned int s=0; s<GetSize(); s++){
-        b[s] = (b[s]).Complement();
+        (b[s]).ComplementTo();
     }
     
 }
