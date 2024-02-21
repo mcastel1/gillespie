@@ -142,7 +142,7 @@ void BitSet::Print(string title){
         cout << "[" << s << "] = ";
         //extra space to align vertically the output
         if(s < 10){cout << " ";}
-        b[s].Print();
+        b[s].Print("");
     }
     cout << endl;
     

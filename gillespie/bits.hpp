@@ -26,7 +26,7 @@ public:
     Bits Complement(void);
     void Replace(Bits*, Bits*);
     void Clear(void);
-    void Print(void);
+    void Print(string);
         
     friend class UnsignedInt;
     

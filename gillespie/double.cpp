@@ -95,9 +95,7 @@ inline void Double::SetRandom(gsl_rng* ran){
 void Double::Print(void){
     
 
-    cout << "s: " << endl << "       ";
-    s.Print();
- 
+    s.Print("s");
     e.Print("e");
     b.Print("b");
     
@@ -313,7 +311,7 @@ inline void Double::operator += (Double* addend){
 //    addend.Print();
 //    addend.PrintBase10();
     
-    de = e-(&(addend_t.e));
+    de = e - (&(addend_t.e));
     
 //    cout << "de :" << endl;
 //    de.PrintBase10();
