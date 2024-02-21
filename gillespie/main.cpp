@@ -98,34 +98,38 @@ int main(int argc, char * argv[]) {
     
     
     
-    vector<UnsignedInt> a(S);
-    UnsignedInt b(16);
-    unsigned int s;
-    clock_t start=0, end=0;
     
-    b.SetRandom((unsigned int)0);
-    for(s=0; s<S; ++s){
-        
-        
-        a[s].Resize(16);
-        a[s].SetRandom(s);
-
-//        a[s].PrintBase10("a");
-//        b.PrintBase10("b");
-        
-//        a[s].PrintBase10("a+b");
-    }
     
-    start = clock();
-    for(s=0; s<S; ++s){
-//        a[s].PlusEqualWithoutResizing(&b);
-        a[s] += (&b);
-    }
-    end = clock();
-    cout << endl << endl  << "Time with bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl << endl;
-    
-    a.back().PrintBase10("dummy");
-
+//    ////speed test for BitSet::operator +=
+//    //
+//    vector<UnsignedInt> a(S);
+//    UnsignedInt b(16);
+//    unsigned int s;
+//    clock_t start=0, end=0;
+//    
+//    b.SetRandom((unsigned int)0);
+//    for(s=0; s<S; ++s){
+//        
+//        
+//        a[s].Resize(16);
+//        a[s].SetRandom(s);
+//
+////        a[s].PrintBase10("a");
+////        b.PrintBase10("b");
+//        
+////        a[s].PrintBase10("a+b");
+//    }
+//    
+//    start = clock();
+//    for(s=0; s<S; ++s){
+////        a[s].PlusEqualWithoutResizing(&b);
+//        a[s] += (&b);
+//    }
+//    end = clock();
+//    cout << endl << endl  << "Time with bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl << endl;
+//    
+//    a.back().PrintBase10("dummy");
+////
     
     ////test for speed
 //    //
