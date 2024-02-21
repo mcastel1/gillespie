@@ -351,12 +351,12 @@ inline void BitSet::operator += (const Bits* addend){
 }
 
 //substract m to *this and write the result in *this
-inline void BitSet::operator -= (BitSet* m) {
+inline void BitSet::operator -= (BitSet* subtrahend) {
     
     
-    BitSet subtrahend;
+    BitSet subtrahend_t;
     
-    subtrahend = (*m);
+    subtrahend_t = (*subtrahend);
     
 //    cout << "this:";
 //    this->Print();
@@ -365,13 +365,13 @@ inline void BitSet::operator -= (BitSet* m) {
 //    subtrahend.Print();
     
     //GIVEN THAT *THIS HAS BEEN RESIZED WITH ONE ADDITIONAL ENTRY AND THAT I WANT TO COMPUTE THE COMPLEMENT WITH RESPECT TO THE ACTUAL SIZE OF THIS (WITHOUT THE ADDITIONAL ENTRY) HERE I CALL  ComplementTo with argument (this->GetSize())-1 RATHER THAN WITH ARGUMENT (this->GetSize())
-    subtrahend.ComplementTo((this->GetSize()));
+    subtrahend_t.ComplementTo((this->GetSize()));
     
 //    cout << "subtrahend complement:";
 //    subtrahend.Print();
 
     
-    (*this) += (&subtrahend);
+    (*this) += (&subtrahend_t);
     
 //    cout << "*this + subtrahend complement:";
 //    this->Print();
