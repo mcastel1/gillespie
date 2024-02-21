@@ -92,15 +92,9 @@ void Bits::SetRandom(gsl_rng* ran){
 
 
 //return the one's complement of *this 
-Bits Bits::Complement(void){
+inline Bits Bits::Complement(void){
     
-    Bits result;
-    
-    for(unsigned int s=0; s<n_bits; s++){
-        result.Set(s, 1-(this->Get(s)));
-    }
-    
-    return result;
+    return(~(*this));
     
 }
 
