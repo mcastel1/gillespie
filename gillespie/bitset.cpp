@@ -350,6 +350,9 @@ inline void BitSet::operator += (const Bits* addend){
     
 }
 
+
+
+
 //substract m to *this and write the result in *this
 inline void BitSet::operator -= (BitSet* subtrahend) {
     
@@ -397,6 +400,18 @@ inline void BitSet::operator -= (BitSet* subtrahend) {
 //    cout << "(minuend + ~subtrahend + 1 ).remove first digit";
 //    minuend.Print();
  
+    
+}
+
+
+//do the same as BitSet::operator -= but without resizing operations. This method assumes that *this and *subtrahend have the same size
+inline void BitSet::MinusEqualWithoutResizing (BitSet* subtrahend) {
+    
+    BitSet subtrahend_t;
+    
+    subtrahend_t = (*subtrahend);
+  
+    
     
 }
 
