@@ -17,5 +17,10 @@ using namespace std;
 
 
 class UnsignedInt;
-class Bits;
-class BitSet;
+#include "bits.hpp"
+#include "bitset.hpp"
+
+
+BitSet BitSet_one;
+
+

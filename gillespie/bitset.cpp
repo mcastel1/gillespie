@@ -5,7 +5,7 @@
 //  Created by Michele on 12/02/2024.
 //
 
-#include "bitset.hpp"
+//#include "bitset.hpp"
 
 
 inline BitSet::BitSet(void){
@@ -354,16 +354,10 @@ inline void BitSet::operator += (const Bits* addend){
 inline void BitSet::operator -= (BitSet* m) {
     
     
-    BitSet subtrahend, one;
+    BitSet subtrahend;
     
     subtrahend = (*m);
     
-//    cout << "one : ";
-//    one.Print();
-    one.ResizeAndSetAll(1);
-//    cout << "one : ";
-//    one.Print();
-
 //    cout << "this:";
 //    this->Print();
 //
@@ -382,7 +376,7 @@ inline void BitSet::operator -= (BitSet* m) {
 //    cout << "*this + subtrahend complement:";
 //    this->Print();
  
-    (*this) += (&one);
+    (*this) += (&BitSet_one);
     
 //    cout << "*this + subtrahend complement + 1:";
 //    this->Print();

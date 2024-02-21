@@ -31,17 +31,19 @@
  */
 
 
+
 #include "main.hpp"
 #include "lib.cpp"
 #include "bits.cpp"
 #include "bitset.cpp"
+
+
 #include "int.cpp"
 #include "unsigned_int.cpp"
 #include "double.cpp"
 #include "system.cpp"
 
 //all entries of BitSet_one are equal to 1
-BitSet BitSet_one;
 
 
 /*
@@ -122,13 +124,8 @@ int main(int argc, char * argv[]) {
     
     start = clock();
     for(s=0; s<S; s++){
-        
-//        A[s].PrintBase10();
-//        B[s].PrintBase10();
-        
+                
         (a[s]) += b;
-        
-//        A[s].PrintBase10();
         
     }
     end = clock();
@@ -153,12 +150,12 @@ int main(int argc, char * argv[]) {
     start = clock();
     for(s=0; s<S; s++){
         
-//        A[s].PrintBase10();
-//        B[s].PrintBase10();
+        A[s].PrintBase10("A");
+        B.PrintBase10("B");
         
         (A[s]) += B;
         
-//        A[s].PrintBase10();
+        A[s].PrintBase10("A");
         
     }
     end = clock();
