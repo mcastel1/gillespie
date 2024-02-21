@@ -416,6 +416,8 @@ inline void Double::operator *= (Double& x){
     //multiply the mantissas
     b *= (&(x.b));
     
+    b.b.erase(b.b.begin(), b.b.begin() + n_bits_mantissa);
+
 }
 
 

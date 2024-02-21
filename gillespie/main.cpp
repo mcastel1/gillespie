@@ -92,7 +92,7 @@ int main(int argc, char * argv[]) {
     
     
     //test for Double *=
-    //
+    /*
     Double a, b;
     gsl_rng* ran;
     unsigned int i;
@@ -116,7 +116,7 @@ int main(int argc, char * argv[]) {
 
     a.PrintBase10("a x b");
     a.GetBase10(v_a_x_b);
-    //
+    */
     
     
     

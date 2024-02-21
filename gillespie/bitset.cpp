@@ -567,6 +567,8 @@ inline void BitSet::operator *= (BitSet* multiplicand){
 
     }
     
+    //during the for loop above, the line result += &t has uselessly increased the size of result -> THIS MAY SLOW DOWN THE CODE -> I resize result to the maximum size it can have after the multiplication 
+    result.Resize(GetSize()+(multiplicand->GetSize()));
     //result now is complete: set *this equal to result
     (*this) = result;
     
