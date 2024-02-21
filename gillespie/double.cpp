@@ -290,20 +290,21 @@ void Double::GetBase10(vector<double>& v){
 //sum *this to addend and write the result in *this. For the time being, this method assumes that this->s 0 = all_0 and x.s = all_0 (*this and x contain all non-negative numbers)
 inline void Double::operator += (Double& x){
     
-    Double augend, addend;
+    Double augend_t, addend;
     Bits compare, t;
     UnsignedInt de;
     
     
     //set augend and addend, compare  bit-by-bit  the exponent of augend and the exponent of addend and write the result in compare
-    augend = (*this);
+//    augend = (*this);
     addend = x;
-    compare = ((augend.e) < (addend.e));
+    compare = (e < (addend.e));
     
     
     //swap bit-by-bit (augend.e) and (addend.e) in such a way that (augend.e) >= (addend.e)
-    augend.Replace(&x, &compare);
-    addend.Replace(this, &compare);
+    augend_t = (*this);
+    this->Replace(&x, &compare);
+    addend.Replace(&augend_t, &compare);
     
     //now augend.e >= addend.e
 
@@ -315,7 +316,7 @@ inline void Double::operator += (Double& x){
 //    addend.Print();
 //    addend.PrintBase10();
     
-    de = ((augend.e)-(&(addend.e)));
+    de = e-(&(addend.e));
     
 //    cout << "de :" << endl;
 //    de.PrintBase10();
@@ -341,7 +342,7 @@ inline void Double::operator += (Double& x){
 
     //now sum augend.b and addend.b
     
-    augend.b += (&(addend.b));
+    b += (&(addend.b));
     
 //    cout << "***** After += : " << endl;
 //    cout << "Augend:" << endl;
@@ -362,7 +363,7 @@ inline void Double::operator += (Double& x){
 //    temp = (augend.b.b.back());
     
     
-    augend.e += (&(augend.b.b.back()));
+    e += (&(b.b.back()));
 
 //    cout << "***** After augend.e+= carry: " << endl;
 //    cout << "Augend.e:" << endl;
@@ -381,16 +382,16 @@ inline void Double::operator += (Double& x){
 //    augend.b.Print();
     
     //shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise
-    t = (~(augend.b.b.back()));
-    augend.b <<= (&t);
-    augend.b.b.erase(augend.b.b.begin());
+    t = (~(b.b.back()));
+    b <<= (&t);
+    b.b.erase(b.b.begin());
     
 //    cout << "After << :" << endl;
 //    cout << "Augend.b: " << endl;
 //    augend.b.Print();
     
-    augend.Normalize();
-    (*this) = augend;
+    Normalize();
+//    (*this) = augend;
 
 
 }
