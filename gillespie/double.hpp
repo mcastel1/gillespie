@@ -34,7 +34,7 @@ public:
     void PrintBase10(string);
     void GetBase10(vector<double>&);
 
-    void operator += (Double&), operator *= (Double&);
+    void operator += (Double*), operator *= (Double&);
     Bits operator <(Double&);
 
 };

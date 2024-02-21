@@ -153,7 +153,7 @@ int main(int argc, char * argv[]) {
 //        A[s].PrintBase10("A");
 //        B.PrintBase10("B");
         
-        (A[s]) += B;
+        (A[s]) += (&B);
         
 //        A[s].PrintBase10("A");
         

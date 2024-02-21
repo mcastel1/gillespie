@@ -288,7 +288,7 @@ void Double::GetBase10(vector<double>& v){
 
 
 //sum *this to addend and write the result in *this. For the time being, this method assumes that this->s 0 = all_0 and x.s = all_0 (*this and x contain all non-negative numbers)
-inline void Double::operator += (Double& x){
+inline void Double::operator += (Double* x){
     
     Double augend_t, addend;
     Bits compare, t;
@@ -297,13 +297,13 @@ inline void Double::operator += (Double& x){
     
     //set augend and addend, compare  bit-by-bit  the exponent of augend and the exponent of addend and write the result in compare
 //    augend = (*this);
-    addend = x;
+    addend = (*x);
     compare = (e < (addend.e));
     
     
     //swap bit-by-bit (augend.e) and (addend.e) in such a way that (augend.e) >= (addend.e)
     augend_t = (*this);
-    this->Replace(&x, &compare);
+    this->Replace(x, &compare);
     addend.Replace(&augend_t, &compare);
     
     //now augend.e >= addend.e
