@@ -40,6 +40,9 @@
 #include "double.cpp"
 #include "system.cpp"
 
+//all entries of BitSet_one are equal to 1
+BitSet BitSet_one;
+
 
 /*
  void UnsignedInt::SetRandom(unsigned long long int seed){
@@ -64,6 +67,7 @@
 int main(int argc, char * argv[]) {
     
     cout.precision(cout_precision);
+    BitSet_one.ResizeAndSetAll(1);
     
     int options;
     unsigned long long int seed=0/*, N=0*/, S=0;
