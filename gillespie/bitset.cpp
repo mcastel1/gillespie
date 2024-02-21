@@ -406,13 +406,16 @@ inline void BitSet::ComplementTo(unsigned int size){
     
     unsigned int s;
     
-    this->Resize(size);
     
     //set the first bits common to *this
     for(s=0; s<GetSize(); s++){
         b[s] = (b[s]).Complement();
     }
-    for(s=GetSize(); s<this->GetSize(); s++){
+    
+    Resize(size);
+
+    //set the remaining bits equal to one 
+    for(; s<GetSize(); s++){
         b[s] = Bits_one;
     }
     

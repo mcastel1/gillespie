@@ -98,6 +98,13 @@ int main(int argc, char * argv[]) {
     
     
     
+//    BitSet a(12);
+//    a.SetRandom((unsigned int)12);
+//    a.Print();
+//    a.ComplementTo(a.GetSize()+ 4);
+//    a.Print();
+
+    
     ////test for speed
 //    //
 //    clock_t start=0, end=0;
@@ -174,7 +181,7 @@ int main(int argc, char * argv[]) {
     
     
      
-//          test for Double::operator +=
+     //     //test for Double::operator +=
      //
      Double a, b;
      double error;
@@ -226,7 +233,7 @@ int main(int argc, char * argv[]) {
      }
      
      cout << "Maximum relative error = " << error << endl;
-     //
+     
     
     
   
