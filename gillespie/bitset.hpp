@@ -32,7 +32,7 @@ public:
     UnsignedInt PositionOfFirstSignificantBit(void);
     void RemoveFirstSignificantBit(void);
     unsigned long long int Get(unsigned int);
-    void Print(void);
+    void Print(string);
 
     //bitwise sum and substraction
     void MinusEqualWithoutResizing(BitSet*), PlusEqualWithoutResizing(BitSet*);

@@ -98,11 +98,8 @@ void Double::Print(void){
     cout << "s: " << endl << "       ";
     s.Print();
  
-    cout << "e:" << endl;
-    e.Print();
-
-    cout << "b: " << endl;
-    b.Print();
+    e.Print("e");
+    b.Print("b");
     
     
     

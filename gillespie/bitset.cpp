@@ -133,11 +133,11 @@ inline void BitSet::ResizeAndSetAll(unsigned long long int i){
 }
 
 
-void BitSet::Print(void){
+void BitSet::Print(string title){
     
     unsigned int s;
     
-    cout << endl;
+    cout << title << endl;
     for(s=0; s<b.size(); s++){
         cout << "[" << s << "] = ";
         //extra space to align vertically the output

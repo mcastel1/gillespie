@@ -98,11 +98,15 @@ int main(int argc, char * argv[]) {
     
     
     
-//    BitSet a(12);
-//    a.SetRandom((unsigned int)12);
-//    a.Print();
-//    a.ComplementTo(a.GetSize()+ 4);
-//    a.Print();
+    UnsignedInt a(16), b(8);
+    a.SetRandom((unsigned int)0);
+    b.SetRandom((unsigned int)1);
+    a.PrintBase10("a");
+    b.PrintBase10("b");
+    
+    a.PlusEqualWithoutResizing(&b);
+    
+    a.PrintBase10("a+b");
 
     
     ////test for speed
