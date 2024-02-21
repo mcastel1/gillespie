@@ -261,7 +261,7 @@ inline void BitSet::operator += (BitSet* addend){
     
     Bits carry, t;
     
-    PlusEqualWithoutResizing(addend, &carry);
+    AddToNoResize(addend, &carry);
     
     //    add the last extra bit
     //******** THIS MAY BE TIME CONSUMING ********
@@ -271,7 +271,7 @@ inline void BitSet::operator += (BitSet* addend){
 
 
 //same as BitSet::operator +=  but the last bit is not pushed back into b, but written into *carry
-inline void BitSet::PlusEqualWithoutResizing(BitSet* addend, Bits* carry){
+inline void BitSet::AddToNoResize(BitSet* addend, Bits* carry){
     
     Bits t;
     unsigned int p;
@@ -413,7 +413,7 @@ inline void BitSet::operator -= (BitSet* subtrahend) {
 
 
 //do the same as BitSet::operator -= but without resizing operations. This method assumes that *this >= *subtrahend and that *this and *subtrahend have the same size
-inline void BitSet::MinusEqualWithoutResizing (BitSet* subtrahend) {
+inline void BitSet::SubstractToNoResize (BitSet* subtrahend) {
     
 //    BitSet subtrahend_t;
 //    
