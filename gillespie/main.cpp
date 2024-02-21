@@ -101,7 +101,8 @@ int main(int argc, char * argv[]) {
     Bits a;
     a.SetRandom((unsigned int)0);
     a.Print("a");
-    a.Complement().Print("~a");
+    a.ComplementTo();
+    a.Print("~a");
     
     
 //    ////speed test for BitSet::operator +=

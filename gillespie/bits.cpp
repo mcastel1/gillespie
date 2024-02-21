@@ -99,6 +99,13 @@ inline Bits Bits::Complement(void){
 }
 
 
+//compute the one's complement of *this and write it into *this
+inline void Bits::ComplementTo(void){
+    
+    (*this) = (~(*this));
+    
+}
+
 
 //replace bit-by-bit *this with replacer if check = true, and leave *this unchanged if check = false
 inline void Bits::Replace(Bits* replacer,  Bits* check){

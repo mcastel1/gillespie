@@ -24,6 +24,7 @@ public:
     void SetRandom(unsigned int);
     void SetRandom(gsl_rng*);
     Bits Complement(void);
+    void ComplementTo(void);
     void Replace(Bits*, Bits*);
     void Clear(void);
     void Print(string);
