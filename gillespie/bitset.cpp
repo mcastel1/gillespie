@@ -410,7 +410,8 @@ inline void BitSet::MinusEqualWithoutResizing (BitSet* subtrahend) {
     BitSet subtrahend_t;
     
     subtrahend_t = (*subtrahend);
-  
+    subtrahend_t.ComplementTo();
+
     
     
 }
