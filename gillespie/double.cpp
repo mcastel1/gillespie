@@ -288,23 +288,23 @@ void Double::GetBase10(vector<double>& v){
 
 
 //sum *this to addend and write the result in *this. For the time being, this method assumes that this->s 0 = all_0 and x.s = all_0 (*this and x contain all non-negative numbers)
-inline void Double::operator += (Double* x){
+inline void Double::operator += (Double* addend){
     
-    Double augend_t, addend;
+    Double augend_t, addend_t;
     Bits compare, t;
     UnsignedInt de;
     
     
     //set augend and addend, compare  bit-by-bit  the exponent of augend and the exponent of addend and write the result in compare
 //    augend = (*this);
-    addend = (*x);
-    compare = (e < (addend.e));
+    addend_t = (*addend);
+    compare = (e < (addend_t.e));
     
     
     //swap bit-by-bit (augend.e) and (addend.e) in such a way that (augend.e) >= (addend.e)
     augend_t = (*this);
-    this->Replace(x, &compare);
-    addend.Replace(&augend_t, &compare);
+    this->Replace(addend, &compare);
+    addend_t.Replace(&augend_t, &compare);
     
     //now augend.e >= addend.e
 
@@ -316,7 +316,7 @@ inline void Double::operator += (Double* x){
 //    addend.Print();
 //    addend.PrintBase10();
     
-    de = e-(&(addend.e));
+    de = e-(&(addend_t.e));
     
 //    cout << "de :" << endl;
 //    de.PrintBase10();
@@ -326,7 +326,7 @@ inline void Double::operator += (Double* x){
 //    addend.Print();
     
     //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
-    (addend.b) >>= (&de);
+    (addend_t.b) >>= (&de);
     
 //    cout << "Addend.b after shift: "<< endl;
 //    addend.Print();
@@ -342,7 +342,7 @@ inline void Double::operator += (Double* x){
 
     //now sum augend.b and addend.b
     
-    b += (&(addend.b));
+    b += (&(addend_t.b));
     
 //    cout << "***** After += : " << endl;
 //    cout << "Augend:" << endl;
