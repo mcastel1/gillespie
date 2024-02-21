@@ -290,6 +290,35 @@ inline void BitSet::operator += (BitSet* addend){
     
 }
 
+
+//same as BitSet::operator +=  but the last bit is not pushed back into b
+inline void BitSet::PlusEqualWithoutResizing(BitSet* addend){
+    
+    Bits carry, t;
+    unsigned int p;
+
+    
+    for(p=0, carry.Clear();
+        p<addend->GetSize();
+        p++){
+        //run over  bits of addend
+        
+        (t.n) = (((b[p]).n) ^ (((addend->b)[p]).n) ^ (carry.n));
+        (carry.n) = ((((addend->b)[p]).n) & (((b[p]).n) | (carry.n))) | (((b[p]).n) & (carry.n));
+        ((b)[p]).n = (t.n);
+        
+    }
+    for(p=addend->GetSize(); p<GetSize(); p++){
+        //run over the extra bits of augend
+        
+        (t.n) = (((b[p]).n) ^ (carry.n));
+        (carry.n) = (((b[p]).n) & (carry.n));
+        (b[p].n) = (t.n);
+        
+    }
+    
+}
+
 //remove useless bits on the tail of *this that contain all 0s
 inline void BitSet::Normalize(void){
     
