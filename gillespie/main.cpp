@@ -96,7 +96,7 @@ int main(int argc, char * argv[]) {
     Double a, b;
     double error;
     gsl_rng* ran;
-    unsigned int i;
+    unsigned int i, s;
     vector<double> v_a, v_b, v_a_x_b;
     
     
@@ -119,12 +119,16 @@ int main(int argc, char * argv[]) {
     a.GetBase10(v_a_x_b);
     
     cout << "Check of the result:" << endl;
-    for(i=0, error = 0.0; i<n_bits; ++i){
-    if(fabs(((v_a[n_bits-1-i]*v_b[n_bits-1-i])-v_a_x_b[n_bits-1-i])/v_a_x_b[n_bits-1-i]) > error){error = fabs(((v_a[n_bits-1-i]*v_b[n_bits-1-i])-v_a_x_b[n_bits-1-i])/v_a_x_b[n_bits-1-i]);}
-    
-    cout << "[" << n_bits-1-i << "]:\t\t\t" << v_a[n_bits-1-i]*v_b[n_bits-1-i] << "\t\t\t" << v_a_x_b[n_bits-1-i] << "\t\t\t" << fabs(((v_a[n_bits-1-i]*v_b[n_bits-1-i])-v_a_x_b[n_bits-1-i])/v_a_x_b[n_bits-1-i]) << endl;
+    for(s=0, error=0.0; s<100; ++s){
+        
+        for(i=0; i<n_bits; ++i){
+            if(fabs(((v_a[n_bits-1-i]*v_b[n_bits-1-i])-v_a_x_b[n_bits-1-i])/v_a_x_b[n_bits-1-i]) > error){error = fabs(((v_a[n_bits-1-i]*v_b[n_bits-1-i])-v_a_x_b[n_bits-1-i])/v_a_x_b[n_bits-1-i]);}
+            
+            cout << "[" << n_bits-1-i << "]:\t\t\t" << v_a[n_bits-1-i]*v_b[n_bits-1-i] << "\t\t\t" << v_a_x_b[n_bits-1-i] << "\t\t\t" << fabs(((v_a[n_bits-1-i]*v_b[n_bits-1-i])-v_a_x_b[n_bits-1-i])/v_a_x_b[n_bits-1-i]) << endl;
+        }
+        
     }
-
+    cout << "Maximum relative error = " << error << endl;
     //
     
     
