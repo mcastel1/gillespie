@@ -433,15 +433,16 @@ inline void BitSet::operator -= (BitSet* subtrahend) {
 }
 
 
-//do the same as BitSet::operator -= but without resizing operations. This method assumes that *this and *subtrahend have the same size
+//do the same as BitSet::operator -= but without resizing operations. This method assumes that *this >= *subtrahend and that *this and *subtrahend have the same size
 inline void BitSet::MinusEqualWithoutResizing (BitSet* subtrahend) {
     
-    BitSet subtrahend_t;
-    
-    subtrahend_t = (*subtrahend);
-    subtrahend_t.ComplementTo();
-
-    
+//    BitSet subtrahend_t;
+//    
+//    subtrahend_t = (*subtrahend);
+//    subtrahend_t.ComplementTo();
+//    PlusEqualWithoutResizing(&subtrahend_t);
+//    PlusEqualWithoutResizing(&BitSet_one);
+//    RemoveFirstSignificantBit();
     
 }
 
