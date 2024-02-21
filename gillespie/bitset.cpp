@@ -260,59 +260,38 @@ inline BitSet BitSet::operator - (BitSet* addend) {
 inline void BitSet::operator += (BitSet* addend){
     
     Bits carry, t;
-    unsigned int p;
-
     
-    for(p=0, carry.Clear();
-        p<addend->GetSize();
-        p++){
-        //run over  bits of addend
-        
-        (t.n) = (((b[p]).n) ^ (((addend->b)[p]).n) ^ (carry.n));
-        (carry.n) = ((((addend->b)[p]).n) & (((b[p]).n) | (carry.n))) | (((b[p]).n) & (carry.n));
-        ((b)[p]).n = (t.n);
-        
-    }
-    for(p=addend->GetSize(); p<GetSize(); p++){
-        //run over the extra bits of augend
-        
-        (t.n) = (((b[p]).n) ^ (carry.n));
-        (carry.n) = (((b[p]).n) & (carry.n));
-        (b[p].n) = (t.n);
-        
-    }
+    PlusEqualWithoutResizing(addend, &carry);
     
     //    add the last extra bit
     //******** THIS MAY BE TIME CONSUMING ********
     b.push_back(carry);
     
-//    Normalize();
-    
 }
 
 
-//same as BitSet::operator +=  but the last bit is not pushed back into b
-inline void BitSet::PlusEqualWithoutResizing(BitSet* addend){
+//same as BitSet::operator +=  but the last bit is not pushed back into b, but written into *carry
+inline void BitSet::PlusEqualWithoutResizing(BitSet* addend, Bits* carry){
     
-    Bits carry, t;
+    Bits t;
     unsigned int p;
 
     
-    for(p=0, carry.Clear();
+    for(p=0, carry->Clear();
         p<addend->GetSize();
         p++){
         //run over  bits of addend
         
-        (t.n) = (((b[p]).n) ^ (((addend->b)[p]).n) ^ (carry.n));
-        (carry.n) = ((((addend->b)[p]).n) & (((b[p]).n) | (carry.n))) | (((b[p]).n) & (carry.n));
+        (t.n) = (((b[p]).n) ^ (((addend->b)[p]).n) ^ (carry->n));
+        (carry->n) = ((((addend->b)[p]).n) & (((b[p]).n) | (carry->n))) | (((b[p]).n) & (carry->n));
         ((b)[p]).n = (t.n);
         
     }
     for(p=addend->GetSize(); p<GetSize(); p++){
         //run over the extra bits of augend
         
-        (t.n) = (((b[p]).n) ^ (carry.n));
-        (carry.n) = (((b[p]).n) & (carry.n));
+        (t.n) = (((b[p]).n) ^ (carry->n));
+        (carry->n) = (((b[p]).n) & (carry->n));
         (b[p].n) = (t.n);
         
     }
