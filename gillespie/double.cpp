@@ -399,11 +399,16 @@ inline void Double::operator += (Double& x){
 //multiply *this by x and store the result in *this 
 inline void Double::operator *= (Double& x){
     
+    UnsignedInt t(1023);
+    
+    t.SetAll(1023);
+    
     //multiply the sign of *this by the sign of x
     s ^= (&(x.s));
     
     //multiply the exponent parts
     e += (&(x.e));
+    e -= (&t);
     //the += above may have increased the size of e -> bring it back to the correct value for the exponent of a Double
     e.Normalize(n_bits_exponent);
 
