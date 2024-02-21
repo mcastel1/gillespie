@@ -128,18 +128,18 @@ int main(int argc, char * argv[]) {
         
     }
     end = clock();
-    cout << endl << endl << "Time without bits = " << end - start << endl << endl;
+    cout << endl << endl  << "Time without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl << endl;
 
     
     //****************** calculatio with bits ******************
     for(i=0; i<n_bits; i++){
-        B.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+        B.Set((unsigned int)i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
     }
     B.PrintBase10("B");
     for(s=0; s<S; ++s){
                 
         for(i=0; i<n_bits; i++){
-            A[s].Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+            A[s].Set((unsigned int)i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
         }
         
 //        A[s].PrintBase10("A");
@@ -159,7 +159,7 @@ int main(int argc, char * argv[]) {
     }
     end = clock();
     
-    cout << endl << endl << "Time with bits = " << end - start << endl << endl;
+    cout << endl << endl << "Time with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
 
     
     //without this the for loop will not be exectued with -O3
