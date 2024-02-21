@@ -107,6 +107,31 @@ int main(int argc, char * argv[]) {
     gsl_rng_set(ran, seed);
 
     
+    
+    //****************** calculatio without bits ******************
+    b = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
+    cout << "b: " << b << endl;
+    for(s=0; s<S; ++s){
+        a[s] = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
+//                cout << "a[]: " << a[s] << endl;
+    }
+    
+    start = clock();
+    for(s=0; s<S; s++){
+        
+//        A[s].PrintBase10();
+//        B[s].PrintBase10();
+        
+        (a[s]) += b;
+        
+//        A[s].PrintBase10();
+        
+    }
+    end = clock();
+    cout << endl << endl << "Time without bits = " << end - start << endl << endl;
+
+    
+    //****************** calculatio with bits ******************
     for(i=0; i<n_bits; i++){
         B.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
     }
@@ -137,40 +162,12 @@ int main(int argc, char * argv[]) {
     cout << endl << endl << "Time with bits = " << end - start << endl << endl;
 
     
-    
-    
-    b = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
-    cout << "b: " << b << endl;
-    for(s=0; s<S; ++s){
-        a[s] = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
-//                cout << "a[]: " << a[s] << endl;
-    }
-    
-    
-    
-    
-    start = clock();
-    for(s=0; s<S; s++){
-        
-//        A[s].PrintBase10();
-//        B[s].PrintBase10();
-        
-        (a[s]) += b;
-        
-//        A[s].PrintBase10();
-        
-    }
-    end = clock();
-    
-    cout << endl << endl << "Time without bits = " << end - start << endl << endl;
-
-    
-    
     //without this the for loop will not be exectued with -O3
     A.back().PrintBase10("dummy print");
-    cout << " " << b << endl;
+    cout << "last element of a = " << a[S-1] << " " << b << endl;
     //
     
+ 
     
     
     
