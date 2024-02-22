@@ -14,8 +14,8 @@
             filePath = "gillespie/bitset.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "545"
-            endingLineNumber = "545"
+            startingLineNumber = "542"
+            endingLineNumber = "542"
             landmarkName = "BitSet::operator &gt;&gt;=(l)"
             landmarkType = "7">
             <Locations>
