@@ -178,7 +178,7 @@ inline void BitSet::operator <<=(UnsignedInt* e){
 inline UnsignedInt BitSet::PositionOfFirstSignificantBit(void){
     
     int s;
-    Bits check_old, check_new, t;
+    Bits check_old, check_new, t, carry;
     //result must be big enough to host an unsigned int equal to this->GetSize()
     UnsignedInt result(GetSize());
     
@@ -189,7 +189,7 @@ inline UnsignedInt BitSet::PositionOfFirstSignificantBit(void){
         
         check_new = check_old | ((*this)[s]);
         t = (~check_new);
-        result += (&t);
+        result.AddTo(&t, &carry);
         
         check_old = check_new;
         

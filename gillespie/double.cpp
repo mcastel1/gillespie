@@ -286,7 +286,7 @@ void Double::GetBase10(vector<double>& v){
 inline void Double::operator += (Double* addend){
     
     Double augend_t, addend_t;
-    Bits compare, t;
+    Bits compare, t, carry;
     UnsignedInt de;
     
     
@@ -357,8 +357,8 @@ inline void Double::operator += (Double* addend){
 //    Bits temp;
 //    temp = (augend.b.b.back());
     
-    
-    e += (&(b.b.back()));
+    e.AddTo(&(b.b.back()), &carry);
+//    e += (&(b.b.back()));
 
 //    cout << "***** After augend.e+= carry: " << endl;
 //    cout << "Augend.e:" << endl;
@@ -395,7 +395,7 @@ inline void Double::operator += (Double* addend){
 inline void Double::AddTo(Double* addend){
     
     Double augend_t, addend_t;
-    Bits compare, t, borrow, carry;
+    Bits compare, t, borrow, carry_b, carry_e;
     UnsignedInt de;
     
     
@@ -418,14 +418,15 @@ inline void Double::AddTo(Double* addend){
     
 
     //now sum augend.b and addend.b
-    b.AddTo(&(addend_t.b), &carry);
+    b.AddTo(&(addend_t.b), &carry_b);
 //    b += (&(addend_t.b));
         
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
     //incoroprate the extra bit into the exponent
     //THIS CAN BE SPEEDED UP A LOT BY USING CARRY INSTEAD OF b.b.back()
     
-    e += (&(b.b.back()));
+    e.AddTo(&(b.b.back()), &carry_e);
+//    e += (&(b.b.back()));
 
     //the last entry of augend.e must be zero (unless the sum reaches overflow)
 
