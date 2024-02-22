@@ -528,14 +528,13 @@ inline void BitSet::RemoveFirstSignificantBit(void){
 
 
 
-//shift bit-by-bit to the right the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *e (thus by either one position or zero positions) and replace the remaining entries b[] by all zeros
-inline void BitSet::operator >>= (const Bits* e){
+//shift bit-by-bit to the right the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *l (thus by either one position or zero positions) and replace the remaining entries b[] by all zeros
+inline void BitSet::operator >>= (Bits* l){
     
     int m;
-    Bits zero, e_saved;
+    Bits zero;
     
     zero.SetAll(false);
-    e_saved = (*e);
     
     //run through the components of this->b and shift them
     //in this first loop, I run over the first chunk of entries of b: m = 0, ..., b.size() - 2^n-1 and I replace the m-th component of b with the m+2^n-th compoennt if e[n]=true, and do nothing otherwise
@@ -544,7 +543,7 @@ inline void BitSet::operator >>= (const Bits* e){
         b[m].Replace(
                      //the element # m+1 in b
                      (b.data()) + (m+1),
-                     &e_saved
+                     l
                      );
         
     }
@@ -553,7 +552,7 @@ inline void BitSet::operator >>= (const Bits* e){
     b.back().Replace(
                      //a Bits filled with zeros
                      &zero,
-                     &e_saved
+                     l
                      );
     
 }
