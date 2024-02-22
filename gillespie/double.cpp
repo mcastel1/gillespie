@@ -407,7 +407,7 @@ inline void Double::AddTo(Double* addend){
     
     //swap bit-by-bit (augend.e) and (addend.e) in such a way that (augend.e) >= (addend.e)
     augend_t = (*this);
-    this->Replace(addend, &compare);
+    Replace(addend, &compare);
     addend_t.Replace(&augend_t, &compare);
 
     
