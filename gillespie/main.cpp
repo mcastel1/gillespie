@@ -97,108 +97,108 @@ int main(int argc, char * argv[]) {
     }
     
     
-    //test for speed for UnsignedInt +=
-    //
-    clock_t start=0, end=0;
-    gsl_rng* ran;
-    unsigned int i;
-    unsigned long long int s, r, MAX = 1024;
-    Bits carry;
-    
-    vector<UnsignedInt> A(S), B(S);
-    vector<unsigned int> a(S), b(S);
-    
-    
-    ran = gsl_rng_alloc(gsl_rng_gfsr4);
-    gsl_rng_set(ran, seed);
-    
-    
-    
-    //****************** calculatio without bits ******************
-    start = clock();
-    for(s=0; s<S; s++){
-        for(i=0; i<n_bits; i++){
-            
-            r = gsl_rng_uniform_int(ran, MAX);
-            a[s] = (unsigned int)r;
-            if(r!=0){
-                b[s] = (unsigned int)(r-1-gsl_rng_uniform_int(ran, r));
-            }else{
-                b[s] = 0;
-            }
-            
-        }
-    }
-    end = clock();
-    cout << endl << endl  << "Time for random numbers without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
-
-    
-    start = clock();
-    for(s=0; s<S; s++){
-        
-        //        (a[s]) += b[s];
-        (a[s]) -= b[s];
-        
-    }
-    end = clock();
-    cout << endl << endl  << "Time for operation without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
-    
-    
-    //****************** calculation with bits ******************
-    for(s=0; s<S; s++){
- 
-        A[s] = UnsignedInt(MAX);
-        B[s] = UnsignedInt(MAX);
- 
-    }
-
-    start = clock();
-    for(s=0; s<S; s++){
-        
-       
-        for(i=0; i<n_bits; i++){
-            
-            r = gsl_rng_uniform_int(ran, MAX);
-            A[s].Set(i, r);
-            if(r!=0){
-                B[s].Set(i, r-1-gsl_rng_uniform_int(ran, r));
-            }else{
-                B[s].Set(i, 0);
-            }
-            
-        }
-    }
-    end = clock();
-    cout << endl << endl  << "[*** normalized ****] Time for random numbers with bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC/n_bits << " s" << endl;
-
-    
-    
-    start = clock();
-    for(s=0; s<S; s++){
-        
-        //        A[s].PrintBase10("A");
-        //        B.PrintBase10("B");
-        
-        //        (A[s]) += (&B[s]);
-        //        (A[s]).AddTo(&(B[s]), &carry);
-
-        //                (A[s]) -= (&B[s]);
-        (A[s]).SubstractTo(&(B[s]), &carry);
-        
-        
-        
-        
-        //        A[s].PrintBase10("A");
-        
-    }
-    end = clock();
-    
-    cout << endl << endl << "Time for operation with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
-    
-    
-    //without this the for loop will not be exectued with -O3
-    A.back().PrintBase10("dummy print");
-    cout << "dummy print: a = " << a[S-1] << " " << b[S-1] << endl;
+//    //test for speed for UnsignedInt +=
+//    //
+//    clock_t start=0, end=0;
+//    gsl_rng* ran;
+//    unsigned int i;
+//    unsigned long long int s, r, MAX = 1024;
+//    Bits carry;
+//    
+//    vector<UnsignedInt> A(S), B(S);
+//    vector<unsigned int> a(S), b(S);
+//    
+//    
+//    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+//    gsl_rng_set(ran, seed);
+//    
+//    
+//    
+//    //****************** calculatio without bits ******************
+//    start = clock();
+//    for(s=0; s<S; s++){
+//        for(i=0; i<n_bits; i++){
+//            
+//            r = gsl_rng_uniform_int(ran, MAX);
+//            a[s] = (unsigned int)r;
+//            if(r!=0){
+//                b[s] = (unsigned int)(r-1-gsl_rng_uniform_int(ran, r));
+//            }else{
+//                b[s] = 0;
+//            }
+//            
+//        }
+//    }
+//    end = clock();
+//    cout << endl << endl  << "Time for random numbers without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
+//
+//    
+//    start = clock();
+//    for(s=0; s<S; s++){
+//        
+//        //        (a[s]) += b[s];
+//        (a[s]) -= b[s];
+//        
+//    }
+//    end = clock();
+//    cout << endl << endl  << "Time for operation without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
+//    
+//    
+//    //****************** calculation with bits ******************
+//    for(s=0; s<S; s++){
+// 
+//        A[s] = UnsignedInt(MAX);
+//        B[s] = UnsignedInt(MAX);
+// 
+//    }
+//
+//    start = clock();
+//    for(s=0; s<S; s++){
+//        
+//       
+//        for(i=0; i<n_bits; i++){
+//            
+//            r = gsl_rng_uniform_int(ran, MAX);
+//            A[s].Set(i, r);
+//            if(r!=0){
+//                B[s].Set(i, r-1-gsl_rng_uniform_int(ran, r));
+//            }else{
+//                B[s].Set(i, 0);
+//            }
+//            
+//        }
+//    }
+//    end = clock();
+//    cout << endl << endl  << "[*** normalized ****] Time for random numbers with bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC/n_bits << " s" << endl;
+//
+//    
+//    
+//    start = clock();
+//    for(s=0; s<S; s++){
+//        
+//        //        A[s].PrintBase10("A");
+//        //        B.PrintBase10("B");
+//        
+//        //        (A[s]) += (&B[s]);
+//        //        (A[s]).AddTo(&(B[s]), &carry);
+//
+//        //                (A[s]) -= (&B[s]);
+//        (A[s]).SubstractTo(&(B[s]), &carry);
+//        
+//        
+//        
+//        
+//        //        A[s].PrintBase10("A");
+//        
+//    }
+//    end = clock();
+//    
+//    cout << endl << endl << "Time for operation with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+//    
+//    
+//    //without this the for loop will not be exectued with -O3
+//    A.back().PrintBase10("dummy print");
+//    cout << "dummy print: a = " << a[S-1] << " " << b[S-1] << endl;
     
     
     
@@ -375,59 +375,59 @@ int main(int argc, char * argv[]) {
     
     
     
-    //     //     //test for Double::operator +=
-    //     //
-    //     Double a, b;
-    //     double error;
-    //     vector<double> v_a, v_b, v_a_plus_b;
-    //     unsigned int i, s;
-    //     gsl_rng* ran;
+    //     //test for Double::operator +=
     //
-    //     ran = gsl_rng_alloc(gsl_rng_gfsr4);
-    //     gsl_rng_set(ran, seed);
-    //
-    //
-    //     for(error = 0.0, s=0; s<1000; ++s){
-    //
-    //         for(i=0; i<n_bits; i++){
-    //             a.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
-    //             b.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
-    //         }
-    //
-    //
-    //         //    cout << "----------- Before += -----------" << endl;
-    //         //    cout << "a : " << endl;
-    //         //    a.Print();
-    //         //    a.PrintBase10();
-    //
-    //         //    cout << "b : " << endl;
-    //         //    b.Print();
-    //         //    b.PrintBase10();
-    //
-    //         a.GetBase10(v_a);
-    //         b.GetBase10(v_b);
-    //
-    //         a+= &b;
-    //
-    //         //    cout << "----------- After += -----------" << endl;
-    //         //    cout << "a+b: " << endl;
-    //         //    a.Print();
-    //         //    a.PrintBase10();
-    //
-    //         a.GetBase10(v_a_plus_b);
-    //
-    //         cout << "Check of the result:" << endl;
-    //         for( i=0; i<n_bits; ++i){
-    //             if(fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]) > error){error = fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]);}
-    //
-    //             cout << "[" << n_bits-1-i << "]:\t\t\t" << v_a[n_bits-1-i]+v_b[n_bits-1-i] << "\t\t\t" << v_a_plus_b[n_bits-1-i] << "\t\t\t" << fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]) << endl;
-    //         }
-    //         //
-    //
-    //     }
-    //
-    //     cout << "Maximum relative error = " << error << endl;
-    //
+    Double a, b;
+    double error;
+    vector<double> v_a, v_b, v_a_plus_b;
+    unsigned int i, s;
+    gsl_rng* ran;
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    
+    for(error = 0.0, s=0; s<1000; ++s){
+        
+        for(i=0; i<n_bits; i++){
+            a.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+            b.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+        }
+        
+        
+        //    cout << "----------- Before += -----------" << endl;
+        //    cout << "a : " << endl;
+        //    a.Print();
+        //    a.PrintBase10();
+        
+        //    cout << "b : " << endl;
+        //    b.Print();
+        //    b.PrintBase10();
+        
+        a.GetBase10(v_a);
+        b.GetBase10(v_b);
+        
+        a+= &b;
+        
+        //    cout << "----------- After += -----------" << endl;
+        //    cout << "a+b: " << endl;
+        //    a.Print();
+        //    a.PrintBase10();
+        
+        a.GetBase10(v_a_plus_b);
+        
+        cout << "Check of the result:" << endl;
+        for( i=0; i<n_bits; ++i){
+            if(fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]) > error){error = fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]);}
+            
+            cout << "[" << n_bits-1-i << "]:\t\t\t" << v_a[n_bits-1-i]+v_b[n_bits-1-i] << "\t\t\t" << v_a_plus_b[n_bits-1-i] << "\t\t\t" << fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]) << endl;
+        }
+        //
+        
+    }
+    
+    cout << "Maximum relative error = " << error << endl;
+    
     
     
     
