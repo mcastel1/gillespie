@@ -115,6 +115,7 @@ int main(int argc, char * argv[]) {
     
     
     //****************** calculatio without bits ******************
+    start = clock();
     for(s=0; s<S; s++){
         for(i=0; i<n_bits; i++){
             
@@ -128,6 +129,9 @@ int main(int argc, char * argv[]) {
             
         }
     }
+    end = clock();
+    cout << endl << endl  << "Time for random numbers without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
+
     
     start = clock();
     for(s=0; s<S; s++){
@@ -137,15 +141,21 @@ int main(int argc, char * argv[]) {
         
     }
     end = clock();
-    cout << endl << endl  << "Time without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl << endl;
+    cout << endl << endl  << "Time for operation without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
     
     
-    //****************** calculatio with bits ******************
+    //****************** calculation with bits ******************
     for(s=0; s<S; s++){
-        
+ 
         A[s] = UnsignedInt(MAX);
         B[s] = UnsignedInt(MAX);
+ 
+    }
+
+    start = clock();
+    for(s=0; s<S; s++){
         
+       
         for(i=0; i<n_bits; i++){
             
             r = gsl_rng_uniform_int(ran, MAX);
@@ -158,6 +168,9 @@ int main(int argc, char * argv[]) {
             
         }
     }
+    end = clock();
+    cout << endl << endl  << "[*** normalized ****] Time for random numbers with bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC/n_bits << " s" << endl;
+
     
     
     start = clock();
@@ -180,7 +193,7 @@ int main(int argc, char * argv[]) {
     }
     end = clock();
     
-    cout << endl << endl << "Time with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+    cout << endl << endl << "Time for operation with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
     
     
     //without this the for loop will not be exectued with -O3
