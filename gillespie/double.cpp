@@ -411,10 +411,10 @@ inline void Double::AddTo(Double* addend){
     Replace(addend, &compare);
     addend_t.Replace(&augend_t, &compare);
 
-    e.PrintBase10("e");
+//    e.PrintBase10("e");
     addend_t.e.PrintBase10("addend_t.e");
     de = e.Substract(&addend_t.e, &borrow);
-    de.PrintBase10("de");
+//    de.PrintBase10("de");
     
     //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
     (addend_t.b) >>= (&de);
@@ -426,18 +426,18 @@ inline void Double::AddTo(Double* addend){
         
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
     //incoroprate the extra bit into the exponent
-    e.PrintBase10("e before");
+//    e.PrintBase10("e before");
     e.AddTo(&carry_b, &carry_e);
-    e.PrintBase10("e after");
+//    e.PrintBase10("e after");
 //    e.PrintBase10("e");
     
     //the last entry of augend.e must be zero (unless the sum reaches overflow)
-    b.Print("b");
+//    b.Print("b");
 
     //shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise
     t = (~(carry_b));
-    //THIS MAY SLOW DOWN THINGS A LOT
     //add the extra bit to b.b and write the carry_b in it
+    //THIS MAY SLOW DOWN THINGS A LOT
     b.b.push_back(carry_b);
     //THIS MAY SLOW DOWN THINGS A LOT
     b <<= (&t);
