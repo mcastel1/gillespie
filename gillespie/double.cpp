@@ -374,11 +374,13 @@ inline void Double::operator += (Double* addend){
 //    cout << "Before << :" << endl;
 //    cout << "Augend.b: " << endl;
 //    augend.b.Print();
-    
+    b.Print("b");
+
     //shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise
     t = (~(b.b.back()));
     b <<= (&t);
     b.b.erase(b.b.begin());
+
     
 //    cout << "After << :" << endl;
 //    cout << "Augend.b: " << endl;
@@ -424,19 +426,23 @@ inline void Double::AddTo(Double* addend){
         
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
     //incoroprate the extra bit into the exponent
+    e.PrintBase10("e before");
     e.AddTo(&carry_b, &carry_e);
+    e.PrintBase10("e after");
 //    e.PrintBase10("e");
     
     //the last entry of augend.e must be zero (unless the sum reaches overflow)
+    b.Print("b");
 
     //shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise
     t = (~(carry_b));
     //THIS MAY SLOW DOWN THINGS A LOT
-    b.Resize(b.GetSize()+1);
+    //add the extra bit to b.b and write the carry_b in it
+    b.b.push_back(carry_b);
     //THIS MAY SLOW DOWN THINGS A LOT
     b <<= (&t);
     b.b.erase(b.b.begin());
-        
+
     Normalize();
     
 }
