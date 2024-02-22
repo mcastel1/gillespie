@@ -132,7 +132,8 @@ int main(int argc, char * argv[]) {
     start = clock();
     for(s=0; s<S; s++){
         
-        (a[s]) += b[s];
+        //        (a[s]) += b[s];
+        (a[s]) -= b[s];
         
     }
     end = clock();
@@ -165,12 +166,13 @@ int main(int argc, char * argv[]) {
         //        A[s].PrintBase10("A");
         //        B.PrintBase10("B");
         
-        //        (A[s]) -= (&B[s]);
-        //        (A[s]).SubstractToNoResize(&(B[s]), &carry);
+        //        (A[s]) += (&B[s]);
+        //        (A[s]).AddToNoResize(&(B[s]), &carry);
+
+        //                (A[s]) -= (&B[s]);
+        (A[s]).SubstractToNoResize(&(B[s]), &carry);
         
         
-        (A[s]) += (&B[s]);
-//        (A[s]).AddToNoResize(&(B[s]), &carry);
         
         
         //        A[s].PrintBase10("A");
