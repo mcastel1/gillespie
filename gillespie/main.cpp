@@ -97,6 +97,90 @@ int main(int argc, char * argv[]) {
     }
     
     
+    //test for speed for UnsignedInt +=
+    //
+    clock_t start=0, end=0;
+    gsl_rng* ran;
+    unsigned int i;
+    unsigned long long int s, r, MAX = 1024;
+    
+    vector<UnsignedInt> A(S), B(S);
+    vector<unsigned int> a(S), b(S);
+    
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    
+    
+    //****************** calculatio without bits ******************
+    for(s=0; s<S; s++){
+        for(i=0; i<n_bits; i++){
+            
+            r = gsl_rng_uniform_int(ran, MAX);
+            a[s] = (unsigned int)r;
+            if(r!=0){
+                b[s] = (unsigned int)(r-1-gsl_rng_uniform_int(ran, r));
+            }else{
+                b[s] = 0;
+            }
+            
+        }
+    }
+    
+    start = clock();
+    for(s=0; s<S; s++){
+        
+        (a[s]) -= b[s];
+        
+    }
+    end = clock();
+    cout << endl << endl  << "Time without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl << endl;
+    
+    
+    //****************** calculatio with bits ******************
+    for(s=0; s<S; s++){
+        
+        A[s] = UnsignedInt(MAX);
+        B[s] = UnsignedInt(MAX);
+        
+        for(i=0; i<n_bits; i++){
+            
+            r = gsl_rng_uniform_int(ran, MAX);
+            A[s].Set(i, r);
+            if(r!=0){
+                B[s].Set(i, r-1-gsl_rng_uniform_int(ran, r));
+            }else{
+                B[s].Set(i, 0);
+            }
+            
+        }
+    }
+    
+    
+    start = clock();
+    for(s=0; s<S; s++){
+        
+        //        A[s].PrintBase10("A");
+        //        B.PrintBase10("B");
+        
+        (A[s]) -= (&B[s]);
+        
+        //        A[s].PrintBase10("A");
+        
+    }
+    end = clock();
+    
+    cout << endl << endl << "Time with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+    
+    
+    //without this the for loop will not be exectued with -O3
+    A.back().PrintBase10("dummy print");
+    cout << "last element of a = " << a[S-1] << " " << b[S-1] << endl;
+    
+    
+    
+    
     
     ////speed test for BitSet::operator -=
     //    //
@@ -132,62 +216,62 @@ int main(int argc, char * argv[]) {
     
     //     //test for BitSet::SubstractToNoResize
     //
-//    UnsignedInt a, b;
-//    vector<unsigned long long int> v_a, v_b, v_a_minus_b;
-//    unsigned int i, s;
-//    unsigned long long int r, MAX = 1024;
-//    gsl_rng* ran;
-//    Bits borrow;
-//    bool it_works;
-//    
-//    ran = gsl_rng_alloc(gsl_rng_gfsr4);
-//    gsl_rng_set(ran, seed);
-//    
-//    a.Resize(10);
-//    b.Resize(10);
-//    
-//    
-//    for(it_works = true, s=0; s<S; ++s){
-//        
-//        
-//        for(i=0; i<n_bits; i++){
-//            
-//            r = gsl_rng_uniform_int(ran, MAX);
-//            a.Set(i, r);
-//            if(r!=0){
-//                b.Set(i, r-1-gsl_rng_uniform_int(ran, r));
-//            }else{
-//                b.Set(i, 0);
-//            }
-//            
-//        }
-//        
-//        
-////        a.PrintBase10("a");
-////        b.PrintBase10("b");
-//
-//        a.GetBase10(v_a);
-//        b.GetBase10(v_b);
-//        
-//        a.SubstractToNoResize(&b, &borrow);
-//        
-////            a.PrintBase10("a-b");
-//        
-//        a.GetBase10(v_a_minus_b);
-//        
-//        for(i=0; i<n_bits; ++i){
-//            if( v_a[i]-v_b[i] !=  v_a_minus_b[i] ){
-//                it_works = false;
-//                break;
-//            }
-//            
-//            cout << "[" << i << "]:\t\t\t" << v_a[i]-v_b[i] << "\t\t\t" << v_a_minus_b[i] << endl;
-//        }
-//        //
-//        
-//    }
-//    
-//    cout << "It works = " << it_works << "." <<  endl;
+    //    UnsignedInt a, b;
+    //    vector<unsigned long long int> v_a, v_b, v_a_minus_b;
+    //    unsigned int i, s;
+    //    unsigned long long int r, MAX = 1024;
+    //    gsl_rng* ran;
+    //    Bits borrow;
+    //    bool it_works;
+    //
+    //    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    //    gsl_rng_set(ran, seed);
+    //
+    //    a.Resize(10);
+    //    b.Resize(10);
+    //
+    //
+    //    for(it_works = true, s=0; s<S; ++s){
+    //
+    //
+    //        for(i=0; i<n_bits; i++){
+    //
+    //            r = gsl_rng_uniform_int(ran, MAX);
+    //            a.Set(i, r);
+    //            if(r!=0){
+    //                b.Set(i, r-1-gsl_rng_uniform_int(ran, r));
+    //            }else{
+    //                b.Set(i, 0);
+    //            }
+    //
+    //        }
+    //
+    //
+    ////        a.PrintBase10("a");
+    ////        b.PrintBase10("b");
+    //
+    //        a.GetBase10(v_a);
+    //        b.GetBase10(v_b);
+    //
+    //        a.SubstractToNoResize(&b, &borrow);
+    //
+    ////            a.PrintBase10("a-b");
+    //
+    //        a.GetBase10(v_a_minus_b);
+    //
+    //        for(i=0; i<n_bits; ++i){
+    //            if( v_a[i]-v_b[i] !=  v_a_minus_b[i] ){
+    //                it_works = false;
+    //                break;
+    //            }
+    //
+    //            cout << "[" << i << "]:\t\t\t" << v_a[i]-v_b[i] << "\t\t\t" << v_a_minus_b[i] << endl;
+    //        }
+    //        //
+    //
+    //    }
+    //
+    //    cout << "It works = " << it_works << "." <<  endl;
     
     
     
