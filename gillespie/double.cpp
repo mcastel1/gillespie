@@ -357,7 +357,6 @@ inline void Double::operator += (Double* addend){
     //    temp = (augend.b.b.back());
     
     e.AddTo(&(b.b.back()), &carry);
-    e.PrintBase10("e");
     
     //    cout << "***** After augend.e+= carry: " << endl;
     //    cout << "Augend.e:" << endl;
@@ -374,7 +373,6 @@ inline void Double::operator += (Double* addend){
     //    cout << "Before << :" << endl;
     //    cout << "Augend.b: " << endl;
     //    augend.b.Print();
-    b.Print("b");
     
     //shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise
     t = (~(b.b.back()));
