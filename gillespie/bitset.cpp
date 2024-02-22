@@ -556,13 +556,11 @@ inline void BitSet::operator >>= (Bits* l){
 
 
 
-//shift bit-by-bit to the left the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *e (thus by either one position or zero positions), replace the remaining entries b[] by all zeros and write the result on *this
-inline void BitSet::operator <<= (const Bits* e){
+//shift bit-by-bit to the left the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *l (thus by either one position or zero positions), replace the remaining entries b[] by all zeros and write the result on *this
+inline void BitSet::operator <<= (Bits* l){
     
     int m;
-    Bits e_saved;
     
-    e_saved = (*e);
     
     //run through the components of this->b and shift them
     //in this first loop, I run over the first chunk of entries of b:  and I replace  if e=true, and do nothing otherwise
@@ -571,7 +569,7 @@ inline void BitSet::operator <<= (const Bits* e){
         b[m].Replace(
                      //the element # m+1 in b
                      (b.data()) + (m-1),
-                     &e_saved
+                     l
                      );
         
     }
@@ -580,7 +578,7 @@ inline void BitSet::operator <<= (const Bits* e){
     b.front().Replace(
                      //a Bits filled with zeros
                      &Bits_zero,
-                     &e_saved
+                     l
                      );
     
 }
