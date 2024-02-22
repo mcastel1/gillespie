@@ -394,7 +394,47 @@ inline void Double::operator += (Double* addend){
 //sum *this to addend and write the result in *this. For the time being, this method assumes that this->s 0 = all_0 and x.s = all_0 (*this and x contain all non-negative numbers)
 inline void Double::AddTo(Double* addend){
     
+    Double augend_t, addend_t;
+    Bits compare, t, borrow;
+    UnsignedInt de;
     
+    
+    //set augend and addend, compare  bit-by-bit  the exponent of augend and the exponent of addend and write the result in compare
+//    augend = (*this);
+    addend_t = (*addend);
+    compare = (e < (addend_t.e));
+    
+    
+    //swap bit-by-bit (augend.e) and (addend.e) in such a way that (augend.e) >= (addend.e)
+    augend_t = (*this);
+    this->Replace(addend, &compare);
+    addend_t.Replace(&augend_t, &compare);
+
+    
+    de = e.Substract(&addend_t.e, &borrow);
+        
+    //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
+    (addend_t.b) >>= (&de);
+    
+
+    //now sum augend.b and addend.b
+    
+    b += (&(addend_t.b));
+        
+    //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
+    //incoroprate the extra bit into the exponent
+    
+    
+    e += (&(b.b.back()));
+
+    //the last entry of augend.e must be zero (unless the sum reaches overflow)
+
+    //shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise
+    t = (~(b.b.back()));
+    b <<= (&t);
+    b.b.erase(b.b.begin());
+        
+    Normalize();
     
 }
 
