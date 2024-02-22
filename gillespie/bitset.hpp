@@ -36,7 +36,7 @@ public:
 
     //bitwise sum and substraction
     void SubstractTo(BitSet*, Bits*), AddTo(BitSet*, Bits*);
-    BitSet operator + (BitSet*), operator - (BitSet*), operator << (Bits*);
+    BitSet operator + (BitSet*), operator - (BitSet*), operator << (Bits*), Add(BitSet*, Bits*), Substract(BitSet*, Bits*);
     void operator += (BitSet*), operator += (const Bits*), operator -= (BitSet*), operator *= (BitSet*);
     Bits& operator [] (const unsigned int&);
     Bits operator == (BitSet&), operator < (const BitSet&);

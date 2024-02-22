@@ -229,7 +229,7 @@ inline Bits& BitSet::operator [] (const unsigned int& i){
 
 
 
-//return *this + m
+//return *this + *addend
 inline BitSet BitSet::operator + (BitSet* addend) {
     
     BitSet a;
@@ -242,16 +242,42 @@ inline BitSet BitSet::operator + (BitSet* addend) {
 }
 
 
-
 //return *this - m
 inline BitSet BitSet::operator - (BitSet* addend) {
+    
+    BitSet t;
+    
+    t = (*this);
+    t -= addend;
+
+    return t;
+
+}
+
+
+//return *this + *addend and write the carry in *carry
+inline BitSet BitSet::Add(BitSet* addend, Bits* carry) {
     
     BitSet a;
     
     a = (*this);
-    a -= addend;
+    a.AddTo(addend, carry);
 
     return a;
+
+}
+
+
+
+//return *this + *subrahend and write the borrow in *borrow
+inline BitSet BitSet::Substract(BitSet* subtrahend, Bits* borrow) {
+    
+    BitSet t;
+    
+    t = (*this);
+    t.SubstractTo(subtrahend, borrow);
+
+    return t;
 
 }
 
