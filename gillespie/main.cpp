@@ -408,7 +408,8 @@ int main(int argc, char * argv[]) {
         a.GetBase10(v_a);
         b.GetBase10(v_b);
         
-        a+= &b;
+//        a+= &b;
+        a.AddTo(&b);
         
         //    cout << "----------- After += -----------" << endl;
         //    cout << "a+b: " << endl;

@@ -313,8 +313,7 @@ inline void Double::operator += (Double* addend){
     
     de = e - (&(addend_t.e));
     
-//    cout << "de :" << endl;
-//    de.PrintBase10();
+//    de.PrintBase10("de");
     
        
 //    cout << "Addend.b before shift: "<< endl;
@@ -358,7 +357,7 @@ inline void Double::operator += (Double* addend){
 //    temp = (augend.b.b.back());
     
     e.AddTo(&(b.b.back()), &carry);
-//    e += (&(b.b.back()));
+    e.PrintBase10("e");
 
 //    cout << "***** After augend.e+= carry: " << endl;
 //    cout << "Augend.e:" << endl;
@@ -412,7 +411,8 @@ inline void Double::AddTo(Double* addend){
 
     
     de = e.Substract(&addend_t.e, &borrow);
-        
+//    de.PrintBase10("de");
+    
     //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
     (addend_t.b) >>= (&de);
     
@@ -424,14 +424,17 @@ inline void Double::AddTo(Double* addend){
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
     //incoroprate the extra bit into the exponent
     e.AddTo(&carry_b, &carry_e);
-//    e += (&(b.b.back()));
-
+//    e.PrintBase10("e");
+    
     //the last entry of augend.e must be zero (unless the sum reaches overflow)
 
     //shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise
     t = (~(carry_b));
+    //THIS MAY SLOW DOWN THINGS A LOT
+    b.Resize(b.GetSize()+1);
+    //THIS MAY SLOW DOWN THINGS A LOT
     b <<= (&t);
-//    b.b.erase(b.b.begin());
+    b.b.erase(b.b.begin());
         
     Normalize();
     
