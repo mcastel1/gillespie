@@ -359,7 +359,7 @@ inline void BitSet::Normalize(unsigned int n){
 }
 
 //add bit-by-bit addend (which here is either 1 or 0) to *this and store the result in *this. This method requires this->GetSize() to be > 1 and assumes that *this and addend are such that there is no overflow while doing this operation
-inline void BitSet::operator += (const Bits* addend){
+inline void BitSet::AddTo(Bits* addend){
         
     Bits carry, t;
     unsigned int p;
