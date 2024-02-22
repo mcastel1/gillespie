@@ -129,7 +129,7 @@ int main(int argc, char * argv[]) {
     
         }
         end = clock();
-        cout << endl << endl  << "Time for random numbers without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
+        cout << endl << endl  << "Time to generate S random numbers without bits = "  << std::scientific << ((double)(end - start))/2.0/CLOCKS_PER_SEC << " s" << endl;
     
     
         start = clock();
@@ -140,7 +140,7 @@ int main(int argc, char * argv[]) {
     
         }
         end = clock();
-        cout << endl << endl  << "Time for operation without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
+        cout << endl << endl  << "Time for S operation without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
     
     
         //****************** calculation with bits ******************
@@ -188,7 +188,7 @@ int main(int argc, char * argv[]) {
         }
         end = clock();
     
-        cout << endl << endl << "Time for operation with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+        cout << endl << endl << "Time for S operations with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
     
     
         //without this the for loop will not be exectued with -O3
