@@ -388,7 +388,7 @@ int main(int argc, char * argv[]) {
     gsl_rng_set(ran, seed);
     
     
-    for(error = 0.0, s=0; s<1000; ++s){
+    for(error = 0.0, s=0; s<S; ++s){
         
         for(i=0; i<n_bits; i++){
             a.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));

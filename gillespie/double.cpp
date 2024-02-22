@@ -423,19 +423,15 @@ inline void Double::AddTo(Double* addend){
         
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
     //incoroprate the extra bit into the exponent
-    //THIS CAN BE SPEEDED UP A LOT BY USING CARRY INSTEAD OF b.b.back()
-    
-    e.AddTo(&(b.b.back()), &carry_e);
+    e.AddTo(&carry_b, &carry_e);
 //    e += (&(b.b.back()));
 
     //the last entry of augend.e must be zero (unless the sum reaches overflow)
 
     //shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise
-    t = (~(b.b.back()));
+    t = (~(carry_b));
     b <<= (&t);
-    b.b.erase(b.b.begin());
-    //THIS CAN BE SPEEDED UP A LOT BY USING CARRY INSTEAD OF b.b.back()
-
+//    b.b.erase(b.b.begin());
         
     Normalize();
     
