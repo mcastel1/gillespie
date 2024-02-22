@@ -415,8 +415,10 @@ inline void Double::AddTo(Double* addend){
     //    de.PrintBase10("de");
     
     //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
+    //THIS IS A BOTTLENECK
     (addend_t.b) >>= (&de);
-    
+    //THIS IS A BOTTLENECK
+
     
     //now sum augend.b and addend.b
     b.AddTo(&(addend_t.b), &carry_b);
@@ -440,9 +442,10 @@ inline void Double::AddTo(Double* addend){
     b >>= (&carry_b);
     b.b.back().Replace(&carry_b, &carry_b);
     
-    
+    //THIS IS A BOTTLENECK
     Normalize();
-    
+    //THIS IS A BOTTLENECK
+
 }
 
 
