@@ -180,10 +180,10 @@ int main(int argc, char * argv[]) {
         //        B.PrintBase10("B");
         
         //        (A[s]) += (&B[s]);
-        //        (A[s]).AddToNoResize(&(B[s]), &carry);
+        //        (A[s]).AddTo(&(B[s]), &carry);
 
         //                (A[s]) -= (&B[s]);
-        (A[s]).SubstractToNoResize(&(B[s]), &carry);
+        (A[s]).SubstractTo(&(B[s]), &carry);
         
         
         
@@ -227,7 +227,7 @@ int main(int argc, char * argv[]) {
     //
     //    start = clock();
     //    for(s=0; s<S; ++s){
-    //        a[s].SubstractToNoResize(&b, &borrow);
+    //        a[s].SubstractTo(&b, &borrow);
     ////                a[s] -= (&b);
     //    }
     //    end = clock();
@@ -236,7 +236,7 @@ int main(int argc, char * argv[]) {
     //    a.back().PrintBase10("dummy");
     
     
-    //     //test for BitSet::SubstractToNoResize
+    //     //test for BitSet::SubstractTo
     //
     //    UnsignedInt a, b;
     //    vector<unsigned long long int> v_a, v_b, v_a_minus_b;
@@ -275,7 +275,7 @@ int main(int argc, char * argv[]) {
     //        a.GetBase10(v_a);
     //        b.GetBase10(v_b);
     //
-    //        a.SubstractToNoResize(&b, &borrow);
+    //        a.SubstractTo(&b, &borrow);
     //
     ////            a.PrintBase10("a-b");
     //
