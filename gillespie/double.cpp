@@ -395,7 +395,7 @@ inline void Double::operator += (Double* addend){
 inline void Double::AddTo(Double* addend){
     
     Double augend_t, addend_t;
-    Bits compare, t, borrow;
+    Bits compare, t, borrow, carry;
     UnsignedInt de;
     
     
@@ -418,12 +418,12 @@ inline void Double::AddTo(Double* addend){
     
 
     //now sum augend.b and addend.b
-    
-    b += (&(addend_t.b));
+    b.AddTo(&(addend_t.b), &carry);
+//    b += (&(addend_t.b));
         
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
     //incoroprate the extra bit into the exponent
-    
+    //THIS CAN BE SPEEDED UP A LOT BY USING CARRY INSTEAD OF b.b.back()
     
     e += (&(b.b.back()));
 
@@ -433,6 +433,8 @@ inline void Double::AddTo(Double* addend){
     t = (~(b.b.back()));
     b <<= (&t);
     b.b.erase(b.b.begin());
+    //THIS CAN BE SPEEDED UP A LOT BY USING CARRY INSTEAD OF b.b.back()
+
         
     Normalize();
     
