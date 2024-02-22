@@ -46,7 +46,7 @@ inline void Double::Replace(Double* replacer, Bits* check){
     for(p=0; p<(b.GetSize()); p++){
         b[p].Replace((replacer->b.b.data()) + p, check);
     }
-
+    
     //replace the exponent
     for(p=0; p<(e.GetSize()); p++){
         e[p].Replace((replacer->e.b.data()) + p, check);
@@ -54,7 +54,7 @@ inline void Double::Replace(Double* replacer, Bits* check){
     
     //replace the sign
     s.Replace(&(replacer->s), check);
-
+    
 }
 
 
@@ -69,7 +69,7 @@ inline void Double::SetRandom(unsigned int seed){
     SetRandom(ran);
     
     gsl_rng_free(ran);
-
+    
 }
 
 
@@ -94,7 +94,7 @@ inline void Double::SetRandom(gsl_rng* ran){
 
 void Double::Print(void){
     
-
+    
     s.Print("s");
     e.Print("e");
     b.Print("b");
@@ -116,11 +116,11 @@ inline void Double::SetAll_IEEE754(double x){
     
     for(index=0, p=0; index < sizeof(double); index++){
         
-         byte = bytePointer[index];
-
+        byte = bytePointer[index];
+        
         for(bit = 0; bit < 8; bit++, p++){
             
-//            printf("%d", byte & 1);
+            //            printf("%d", byte & 1);
             
             if(p < b.GetSize()){
                 
@@ -130,24 +130,24 @@ inline void Double::SetAll_IEEE754(double x){
                 
                 if(p < b.GetSize()+e.GetSize()){
                     
-//                    int temp;
-//                    bool bb;
+                    //                    int temp;
+                    //                    bool bb;
                     
-//                    temp = p-(b.size());
-//                    bb = ((bool)(byte & 1));
+                    //                    temp = p-(b.size());
+                    //                    bb = ((bool)(byte & 1));
                     
-//                    cout << "\nbefore";
-//                    e[temp].Print();
+                    //                    cout << "\nbefore";
+                    //                    e[temp].Print();
                     
                     e[p-(b.GetSize())].SetAll(((bool)(byte & 1)));
-//                    e[temp].SetAll(true);
-//                    cout << "\nafter";
-//                    e[temp].Print();
-
+                    //                    e[temp].SetAll(true);
+                    //                    cout << "\nafter";
+                    //                    e[temp].Print();
+                    
                 }else{
                     
                     s.SetAll(((bool)(byte & 1)));
-
+                    
                     
                 }
                 
@@ -231,31 +231,31 @@ void Double::PrintBase10_IEEE754(void){
         for(e_10=-1023.0, i=0; i<e.GetSize(); i++){
             e_10 += two_pow(i) * (e[i].Get(p));
         }
-    
+        
         cout << gsl_pow_int(-1.0, s.Get(p)) * gsl_pow_int(2.0, e_10) * b_10 << " ";
         
     }
     
     cout << "}\n";
-        
+    
 }
 
 
 //print *this in base 10 according to the my convention, where the mantissa is \sum_{i=0}^{52-1} b_{52-1-i} 2^{-i}
 void Double::PrintBase10(string title){
-        
+    
     unsigned int p;
     vector<double> v;
     
     cout << title << ": {";
     for(GetBase10(v), p=0; p<n_bits; p++){
-
+        
         cout << v[n_bits-1-p] << " ";
         
     }
     
     cout << "}" << endl;
-        
+    
 }
 
 
@@ -264,7 +264,7 @@ void Double::GetBase10(vector<double>& v){
     
     unsigned int i, p;
     double b_10, e_10;
-
+    
     
     for(v.resize(n_bits), p=0; p<n_bits; p++){
         
@@ -274,11 +274,11 @@ void Double::GetBase10(vector<double>& v){
         for(e_10=-1023.0, i=0; i<e.GetSize(); i++){
             e_10 += two_pow(i) * (e[i].Get(p));
         }
-    
+        
         v[p] = gsl_pow_int(-1.0, s.Get(p)) * gsl_pow_int(2.0, e_10) * b_10;
         
     }
-        
+    
 }
 
 
@@ -291,7 +291,7 @@ inline void Double::operator += (Double* addend){
     
     
     //set augend and addend, compare  bit-by-bit  the exponent of augend and the exponent of addend and write the result in compare
-//    augend = (*this);
+    //    augend = (*this);
     addend_t = (*addend);
     compare = (e < (addend_t.e));
     
@@ -302,106 +302,106 @@ inline void Double::operator += (Double* addend){
     addend_t.Replace(&augend_t, &compare);
     
     //now augend.e >= addend.e
-
     
-//    cout << "Augend: " << endl;
-//    augend.Print();
-//    augend.PrintBase10();
-//    cout << "Addend: " << endl;
-//    addend.Print();
-//    addend.PrintBase10();
+    
+    //    cout << "Augend: " << endl;
+    //    augend.Print();
+    //    augend.PrintBase10();
+    //    cout << "Addend: " << endl;
+    //    addend.Print();
+    //    addend.PrintBase10();
     
     de = e - (&(addend_t.e));
     
-//    de.PrintBase10("de");
+    //    de.PrintBase10("de");
     
-       
-//    cout << "Addend.b before shift: "<< endl;
-//    addend.Print();
+    
+    //    cout << "Addend.b before shift: "<< endl;
+    //    addend.Print();
     
     //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
     (addend_t.b) >>= (&de);
     
-//    cout << "Addend.b after shift: "<< endl;
-//    addend.Print();
- 
-
-//    cout << "***** Before +=: " << endl;
-//    cout << "Augend:" << endl;
-//    augend.Print();
-//    augend.PrintBase10();
-//    cout << "Addend:" << endl;
-//    addend.Print();
-//    addend.PrintBase10();
-
+    //    cout << "Addend.b after shift: "<< endl;
+    //    addend.Print();
+    
+    
+    //    cout << "***** Before +=: " << endl;
+    //    cout << "Augend:" << endl;
+    //    augend.Print();
+    //    augend.PrintBase10();
+    //    cout << "Addend:" << endl;
+    //    addend.Print();
+    //    addend.PrintBase10();
+    
     //now sum augend.b and addend.b
     
     b += (&(addend_t.b));
     
-//    cout << "***** After += : " << endl;
-//    cout << "Augend:" << endl;
-//    augend.Print();
-//    augend.PrintBase10();
+    //    cout << "***** After += : " << endl;
+    //    cout << "Augend:" << endl;
+    //    augend.Print();
+    //    augend.PrintBase10();
     
     
-  
-//    cout << "***** Before augend.e+= carry: " << endl;
-//    cout << "Augend.e:" << endl;
-//    augend.e.Print();
-//    augend.e.PrintBase10();
-
+    
+    //    cout << "***** Before augend.e+= carry: " << endl;
+    //    cout << "Augend.e:" << endl;
+    //    augend.e.Print();
+    //    augend.e.PrintBase10();
+    
     
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
     //incoroprate the extra bit into the exponent
-//    Bits temp;
-//    temp = (augend.b.b.back());
+    //    Bits temp;
+    //    temp = (augend.b.b.back());
     
     e.AddTo(&(b.b.back()), &carry);
     e.PrintBase10("e");
-
-//    cout << "***** After augend.e+= carry: " << endl;
-//    cout << "Augend.e:" << endl;
-//    augend.e.Print();
-
+    
+    //    cout << "***** After augend.e+= carry: " << endl;
+    //    cout << "Augend.e:" << endl;
+    //    augend.e.Print();
+    
     //the last entry of augend.e must be zero (unless the sum reaches overflow)
-//    augend.e.b.pop_back();
-    
-
-//    augend.e.PrintBase10();
-
+    //    augend.e.b.pop_back();
     
     
-//    cout << "Before << :" << endl;
-//    cout << "Augend.b: " << endl;
-//    augend.b.Print();
+    //    augend.e.PrintBase10();
+    
+    
+    
+    //    cout << "Before << :" << endl;
+    //    cout << "Augend.b: " << endl;
+    //    augend.b.Print();
     b.Print("b");
-
+    
     //shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise
     t = (~(b.b.back()));
     b <<= (&t);
     b.b.erase(b.b.begin());
-
     
-//    cout << "After << :" << endl;
-//    cout << "Augend.b: " << endl;
-//    augend.b.Print();
+    
+    //    cout << "After << :" << endl;
+    //    cout << "Augend.b: " << endl;
+    //    augend.b.Print();
     
     Normalize();
-//    (*this) = augend;
-
-
+    //    (*this) = augend;
+    
+    
 }
 
 //sum *this to addend and write the result in *this. For the time being, this method assumes that this->s 0 = all_0 and x.s = all_0 (*this and x contain all non-negative numbers)
 inline void Double::AddTo(Double* addend){
     
     Double augend_t, addend_t;
-    Bits compare, t, borrow, carry_b, carry_e;
+    Bits compare, borrow, carry_b, carry_e;
     UnsignedInt de;
     
     
     //set augend and addend, compare  bit-by-bit  the exponent of augend and the exponent of addend and write the result in compare
-//    augend = (*this);
+    //    augend = (*this);
     addend_t = (*addend);
     compare = (e < (addend_t.e));
     
@@ -410,45 +410,45 @@ inline void Double::AddTo(Double* addend){
     augend_t = (*this);
     Replace(addend, &compare);
     addend_t.Replace(&augend_t, &compare);
-
-//    e.PrintBase10("e");
+    
+    //    e.PrintBase10("e");
     addend_t.e.PrintBase10("addend_t.e");
     de = e.Substract(&addend_t.e, &borrow);
-//    de.PrintBase10("de");
+    //    de.PrintBase10("de");
     
     //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
     (addend_t.b) >>= (&de);
     
-
+    
     //now sum augend.b and addend.b
     b.AddTo(&(addend_t.b), &carry_b);
-//    b += (&(addend_t.b));
-        
+    //    b += (&(addend_t.b));
+    
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
     //incoroprate the extra bit into the exponent
-//    e.PrintBase10("e before");
+    //    e.PrintBase10("e before");
     e.AddTo(&carry_b, &carry_e);
-//    e.PrintBase10("e after");
-//    e.PrintBase10("e");
+    //    e.PrintBase10("e after");
+    //    e.PrintBase10("e");
     
     //the last entry of augend.e must be zero (unless the sum reaches overflow)
-//    b.Print("b");
-
-    //shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise
-    t = (~(carry_b));
-    //add the extra bit to b.b and write the carry_b in it
-    //THIS MAY SLOW DOWN THINGS A LOT
-    b.b.push_back(carry_b);
-    //THIS MAY SLOW DOWN THINGS A LOT
-    b <<= (&t);
-    b.b.erase(b.b.begin());
-
+    //    b.Print("b");
+    
+    /*
+     shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise.
+     To achieve this, the (bit-by-bit) desired result for b is : 1) If carry_b = true: b = {carry_b, b[51], ..., b[1]}, 2) If carry_b = false : b = {b[51], ..., b[0]}.
+    I obtain this result for b with the two folloing lines, which avoid a (very slow) Resize() of b
+     */
+    b >>= (&carry_b);
+    b.b.back().Replace(&carry_b, &carry_b);
+    
+    
     Normalize();
     
 }
 
 
-//multiply *this by x and store the result in *this 
+//multiply *this by x and store the result in *this
 inline void Double::operator *= (Double& x){
     
     UnsignedInt t(1022);
@@ -463,13 +463,13 @@ inline void Double::operator *= (Double& x){
     e -= (&t);
     //the += above may have increased the size of e -> bring it back to the correct value for the exponent of a Double
     e.Normalize(n_bits_exponent);
-
+    
     
     //multiply the mantissas
     b *= (&(x.b));
     
     b.b.erase(b.b.begin(), b.b.begin() + n_bits_mantissa);
-
+    
 }
 
 
