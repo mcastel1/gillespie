@@ -71,7 +71,8 @@ int main(int argc, char * argv[]) {
     cout.precision(cout_precision);
     BitSet_one.ResizeAndSetAll(1);
     Bits_one.SetAll(true);
-    
+    Bits_zero.SetAll(false);
+
     int options;
     unsigned long long int seed=0/*, N=0*/, S=0;
     
