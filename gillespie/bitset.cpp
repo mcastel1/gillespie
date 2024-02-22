@@ -601,10 +601,8 @@ inline void BitSet::operator &= (Bits* m){
 inline void BitSet::operator *= (BitSet* multiplicand){
     
     unsigned int s;
-    Bits one;
     BitSet result, t;
     
-    one.SetAll(true);
 
     //THIS MAY SLOW DOWN THE CODE
     //resize *this and result in order to be large enough to host the result
@@ -628,7 +626,7 @@ inline void BitSet::operator *= (BitSet* multiplicand){
         result += &t;
         
         //shift this
-        (*this) <<= &one;
+        (*this) <<= &Bits_one;
 
     }
     
