@@ -409,9 +409,10 @@ inline void Double::AddTo(Double* addend){
     Replace(addend, &compare);
     addend_t.Replace(&augend_t, &compare);
 
-    
+    e.PrintBase10("e");
+    addend_t.e.PrintBase10("addend_t.e");
     de = e.Substract(&addend_t.e, &borrow);
-//    de.PrintBase10("de");
+    de.PrintBase10("de");
     
     //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
     (addend_t.b) >>= (&de);
