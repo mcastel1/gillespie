@@ -403,7 +403,7 @@ inline void Double::operator += (Double* addend){
 }
 
 //sum *this to addend and write the result in *result, which need to be already allocated. For the time being, this method assumes that this->s 0 = all_0 and x.s = all_0 (*this and x contain all non-negative numbers). THIS METHOD ALTERS THE CONTENT OF *ADDEND
-//I wrote the time taken by each line when running the program with  ./main.o -s 0 -S 4
+//I wrote the time taken by each line when running the program with  ./main.o -s 0 -S 5
 inline void Double::AddTo(Double* addend){
     
     Bits compare, borrow, carry_b, t;
@@ -411,31 +411,30 @@ inline void Double::AddTo(Double* addend){
     
     
     //set augend and addend, compare  bit-by-bit  the exponent of augend and the exponent of addend and write the result in compare
-//    addend_t = (*addend);
-    //~
+    //~ 1e-3 s
     compare = (e < (addend->e));
     
     
     //swap bit-by-bit (*this) and (addend) in such a way that (this->e) >= (addend->e)
-    //~
+    //~ 1e-3 s
     Swap(addend, compare, &t);
 
-    //~
+    //~ 1e-3 s
     de = e.Substract(&(addend->e), &borrow);
     
     //shift the mantissa of addend->b by the different between the two exponents in order to cast *addend in a form in which is can be easily added to *this = augend
     //BOTTLENECK #1: 2.49751000e-01s
-//        (addend->b) >>= (&de);
+    (addend->b) >>= (&de);
     //BOTTLENECK #1:
 
     
     //now sum augend.b and addend.b
-    //~
+    //~ 4e-3 s
     b.AddTo(&(addend->b), &carry_b);
     
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
     //incoroprate the extra bit into the exponent
-    //~
+    //~ 0 s
     e.AddTo(&carry_b, &t);
     
     //the last entry of augend.e must be zero (unless the sum reaches overflow)
@@ -445,11 +444,10 @@ inline void Double::AddTo(Double* addend){
      To achieve this, the (bit-by-bit) desired result for b is : 1) If carry_b = true: b = {carry_b, b[51], ..., b[1]}, 2) If carry_b = false : b = {b[51], ..., b[0]}.
     I obtain this result for b with the two folloing lines, which avoid a (very slow) Resize() of b
      */
-    //~
+    //~ 0 s
     b >>= (&carry_b);
-    //~
+    //~ 0 s
     b.b.back().Replace(&carry_b, &carry_b);
-    
   
 }
 
