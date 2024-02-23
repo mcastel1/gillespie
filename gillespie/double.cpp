@@ -406,10 +406,12 @@ inline void Double::Add(Double* addend, Double* result){
     
     
     //swap bit-by-bit (augend.e) and (addend.e) in such a way that (augend.e) >= (addend.e)
+    //HERE CREATE A SWAP METHOD THAT AVOIDS THIS COMPLEX SETTING TO SAVE TEMP VALUES OF VARIABLES
     (*result) = (*this);
     Replace(addend, &compare);
     addend_t.Replace(result, &compare);
-    
+    //HERE CREATE A SWAP METHOD THAT AVOIDS THIS COMPLEX SETTING TO SAVE TEMP VALUES OF VARIABLES
+
     de = e.Substract(&addend_t.e, &borrow);
     
     //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
