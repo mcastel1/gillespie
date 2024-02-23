@@ -405,9 +405,6 @@ inline void Double::operator += (Double* addend){
 //sum *this to addend and write the result in *result, which need to be already allocated. For the time being, this method assumes that this->s 0 = all_0 and x.s = all_0 (*this and x contain all non-negative numbers). THIS METHOD ALTERS THE CONTENT OF *ADDEND
 inline void Double::AddTo(Double* addend){
     
-    //THIS IS A BOTTLENECK
-//    Double addend_t;
-    //THIS IS A BOTTLENECK
     Bits compare, borrow, carry_b, t;
     UnsignedInt de;
     
@@ -418,14 +415,7 @@ inline void Double::AddTo(Double* addend){
     
     
     //swap bit-by-bit (*this) and (addend) in such a way that (this->e) >= (addend->e)
-    //HERE CREATE A SWAP METHOD THAT AVOIDS THIS COMPLEX SETTING TO SAVE TEMP VALUES OF VARIABLES
-    /*
-    (*result) = (*this);
-    Replace(addend, &compare);
-    addend_t.Replace(result, &compare);
-     */
     Swap(addend, compare, &t);
-    //HERE CREATE A SWAP METHOD THAT AVOIDS THIS COMPLEX SETTING TO SAVE TEMP VALUES OF VARIABLES
 
     de = e.Substract(&(addend->e), &borrow);
     

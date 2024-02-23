@@ -99,12 +99,12 @@ int main(int argc, char * argv[]) {
     
     
     
-
     
     
     
     
-        SpeedTestDoubleAddTo(S, seed);
+    
+            SpeedTestDoubleAddTo(S, seed);
     //    SpeedTestUnsignedIntAddto(S, seed);
     
     
@@ -214,58 +214,58 @@ int main(int argc, char * argv[]) {
     
     //     //test for Double::operator +=
     /*
-     Double a, b;
-     double error;
-     vector<double> v_a, v_b, v_a_plus_b;
-     unsigned int i, s;
-     gsl_rng* ran;
-     
-     ran = gsl_rng_alloc(gsl_rng_gfsr4);
-     gsl_rng_set(ran, seed);
-     
-     
-     for(error = 0.0, s=0; s<S; ++s){
-     
-     for(i=0; i<n_bits; i++){
-     a.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
-     b.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
-     }
-     
-     
-     //    cout << "----------- Before += -----------" << endl;
-     //    cout << "a : " << endl;
-     //    a.Print();
-     //    a.PrintBase10();
-     
-     //    cout << "b : " << endl;
-     //    b.Print();
-     //    b.PrintBase10();
-     
-     a.GetBase10(v_a);
-     b.GetBase10(v_b);
-     
-     //        a+= &b;
-     a.AddTo(&b);
-     
-     //    cout << "----------- After += -----------" << endl;
-     //    cout << "a+b: " << endl;
-     //    a.Print();
-     //    a.PrintBase10();
-     
-     a.GetBase10(v_a_plus_b);
-     
-     cout << "Check of the result:" << endl;
-     for( i=0; i<n_bits; ++i){
-     if(fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]) > error){error = fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]);}
-     
-     cout << "[" << n_bits-1-i << "]:\t\t\t" << v_a[n_bits-1-i]+v_b[n_bits-1-i] << "\t\t\t" << v_a_plus_b[n_bits-1-i] << "\t\t\t" << fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]) << endl;
-     }
-     //
-     
-     }
-     
-     cout << "Maximum relative error = " << error << endl;
-     */
+    Double A, B;
+    double error;
+    vector<double> v_a, v_b, v_a_plus_b;
+    unsigned int i, s;
+    gsl_rng* ran;
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    
+    for(error = 0.0, s=0; s<S; ++s){
+        
+        for(i=0; i<n_bits; i++){
+            A.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+            B.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+        }
+        
+        
+        //    cout << "----------- Before += -----------" << endl;
+        //    cout << "a : " << endl;
+        //    a.Print();
+        //    a.PrintBase10();
+        
+        //    cout << "b : " << endl;
+        //    b.Print();
+        //    b.PrintBase10();
+        
+        A.GetBase10(v_a);
+        B.GetBase10(v_b);
+        
+        //        a+= &b;
+        A.AddTo(&B);
+        
+        //    cout << "----------- After += -----------" << endl;
+        //    cout << "a+b: " << endl;
+        //    a.Print();
+        //    a.PrintBase10();
+        
+        A.GetBase10(v_a_plus_b);
+        
+        cout << "Check of the result:" << endl;
+        for( i=0; i<n_bits; ++i){
+            if(fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]) > error){error = fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]);}
+            
+            cout << "[" << n_bits-1-i << "]:\t\t\t" << v_a[n_bits-1-i]+v_b[n_bits-1-i] << "\t\t\t" << v_a_plus_b[n_bits-1-i] << "\t\t\t" << fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]) << endl;
+        }
+        //
+        
+    }
+    
+    cout << "Maximum relative error = " << error << endl;
+    */
     
     
     
@@ -553,12 +553,12 @@ int main(int argc, char * argv[]) {
      
      a.Print("a");
      b.Print("b");
-
+     
      */
-
+    
     
     //test for Double::Swap
-/*
+    /*
      Double a, b;
      Bits check, w;
      a.SetRandom((unsigned int)0);
@@ -572,10 +572,10 @@ int main(int argc, char * argv[]) {
      a.Swap(&b, check, &w);
      
      
-    a.PrintBase10("a");
-    b.PrintBase10("b");
- */
-
+     a.PrintBase10("a");
+     b.PrintBase10("b");
+     */
+    
     
     cout << endl;
     return 0;
