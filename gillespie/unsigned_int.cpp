@@ -211,6 +211,7 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
     
     clock_t start=0, end=0;
     gsl_rng* ran;
+    double dummy;
     unsigned int i;
     unsigned long long int s, r, MAX = 1024;
     Bits carry;
@@ -223,9 +224,17 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
     gsl_rng_set(ran, seed);
 
 
-
     //****************** calculation without bits ******************
     start = clock();
+    for(s=0; s<S; ++s){
+        dummy = gsl_rng_uniform(ran);
+    }
+    end = clock();
+    cout << "Time to draw S random numbers without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
+
+    
+
+    //****************** calculation without bits ******************
     for(s=0; s<S; s++){
 
             r = gsl_rng_uniform_int(ran, MAX);
@@ -237,9 +246,7 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
             }
 
     }
-    end = clock();
-    cout  << "Time to generate S random numbers without bits = "  << std::scientific << ((double)(end - start))/2.0/CLOCKS_PER_SEC << " s" << endl;
-
+ 
 
     start = clock();
     for(s=0; s<S; s++){
@@ -303,6 +310,6 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
     //without this the for loop will not be exectued with -O3
     cout << endl;
     A.back().PrintBase10("dummy print");
-    cout << "dummy print: a = " << a[S-1] << " " << b[S-1] << endl;
+    cout << "dummy print: a = " << a[S-1] << " " << b[S-1] << dummy << endl;
     
 }

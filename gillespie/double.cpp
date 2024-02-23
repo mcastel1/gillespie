@@ -526,15 +526,21 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     
     
     //****************** calculation without bits ******************
-    b = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
-//    cout << "b: " << b << endl;
     start = clock();
+    for(s=0; s<S; ++s){
+        b = gsl_rng_uniform(ran);
+    }
+    end = clock();
+    cout << "Time to draw S random numbers without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
+
+    
+    
+    b = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
+    //    cout << "b: " << b << endl;
     for(s=0; s<S; ++s){
         a[s] = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
         //                cout << "a[]: " << a[s] << endl;
     }
-    end = clock();
-    cout << "Time to draw S random numbers  without bits = "  << std::scientific << ((double)(end - start))/2.0/CLOCKS_PER_SEC << " s" << endl;
 
     start = clock();
     for(s=0; s<S; s++){
