@@ -412,30 +412,30 @@ inline void Double::AddTo(Double* addend){
     
     //set augend and addend, compare  bit-by-bit  the exponent of augend and the exponent of addend and write the result in compare
 //    addend_t = (*addend);
-    //~ 2e-04 s
+    //~
     compare = (e < (addend->e));
     
     
     //swap bit-by-bit (*this) and (addend) in such a way that (this->e) >= (addend->e)
-    //~ 5e-04 s
+    //~
     Swap(addend, compare, &t);
 
-    //~ 5e-04 s
+    //~
     de = e.Substract(&(addend->e), &borrow);
     
     //shift the mantissa of addend->b by the different between the two exponents in order to cast *addend in a form in which is can be easily added to *this = augend
-    //BOTTLENECK #2: 2.46630000e-02 s
-    (addend->b) >>= (&de);
-    //BOTTLENECK #2: 2.46630000e-02 s
+    //BOTTLENECK #1: 2.49751000e-01s
+//        (addend->b) >>= (&de);
+    //BOTTLENECK #1:
 
     
     //now sum augend.b and addend.b
-    //~ 5e-4 s
+    //~
     b.AddTo(&(addend->b), &carry_b);
     
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
     //incoroprate the extra bit into the exponent
-    //~ 2e-4 s
+    //~
     e.AddTo(&carry_b, &t);
     
     //the last entry of augend.e must be zero (unless the sum reaches overflow)
@@ -445,9 +445,9 @@ inline void Double::AddTo(Double* addend){
      To achieve this, the (bit-by-bit) desired result for b is : 1) If carry_b = true: b = {carry_b, b[51], ..., b[1]}, 2) If carry_b = false : b = {b[51], ..., b[0]}.
     I obtain this result for b with the two folloing lines, which avoid a (very slow) Resize() of b
      */
-    //~ 2e-4 s
+    //~
     b >>= (&carry_b);
-    //~ 2e-4 s
+    //~
     b.b.back().Replace(&carry_b, &carry_b);
     
   

@@ -103,8 +103,8 @@ int main(int argc, char * argv[]) {
     
     
     
-    CorrectnessTestDoubleAddTo(S, seed);
-//            SpeedTestDoubleAddTo(S, seed);
+    //    CorrectnessTestDoubleAddTo(S, seed);
+    SpeedTestDoubleAddTo(S, seed);
     //    SpeedTestUnsignedIntAddto(S, seed);
     
     
@@ -212,7 +212,7 @@ int main(int argc, char * argv[]) {
     
     
     
- 
+    
     
     
     
