@@ -97,6 +97,8 @@ int main(int argc, char * argv[]) {
         
     }
     
+    SpeedTestDoubleAddTo(S, seed);
+    
     
     //        //test for speed for UnsignedInt +=
     //        //
@@ -290,83 +292,6 @@ int main(int argc, char * argv[]) {
     //
     //    cout << "It works = " << it_works << "." <<  endl;
     
-    
-    
-    
-    
-    //speed test  for Double::AddTo
-    clock_t start=0, end=0;
-    gsl_rng* ran;
-    unsigned long long int i, s;
-    
-    vector<Double> A(S);
-    Double B;
-    vector<double> a(S);
-    double b;
-    
-    
-    ran = gsl_rng_alloc(gsl_rng_gfsr4);
-    gsl_rng_set(ran, seed);
-    
-    
-    
-    //****************** calculation without bits ******************
-    b = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
-    cout << "b: " << b << endl;
-    start = clock();
-    for(s=0; s<S; ++s){
-        a[s] = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
-        //                cout << "a[]: " << a[s] << endl;
-    }
-    end = clock();
-    cout << "Time to draw S random numbers  without bits = "  << std::scientific << ((double)(end - start))/2.0/CLOCKS_PER_SEC << " s" << endl;
-
-    start = clock();
-    for(s=0; s<S; s++){
-        
-        (a[s]) += b;
-        
-    }
-    end = clock();
-    cout << "Time for S operations without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
-    
-    
-    //****************** calculation with bits ******************
-    for(i=0; i<n_bits; i++){
-        B.Set((unsigned int)i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
-    }
-//    B.PrintBase10("B");
-    for(s=0; s<S; ++s){
-        
-        for(i=0; i<n_bits; i++){
-            A[s].Set((unsigned int)i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
-        }
-        
-        //        A[s].PrintBase10("A");
-    }
-    
-    
-    start = clock();
-    for(s=0; s<S; s++){
-        
-        //        A[s].PrintBase10("A");
-        //        B.PrintBase10("B");
-        
-        //        (A[s]) += (&B);
-        (A[s]).AddTo(&B);
-        
-        //        A[s].PrintBase10("A");
-        
-    }
-    end = clock();
-    
-    cout << "Time for S operations with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" << endl;
-    
-    
-    //without this the for loop will not be exectued with -O3
-    cout << endl;
-    A.back().PrintBase10("dummy print");
-    cout << "dummy print a = " << a[S-1] << " " << b << endl;
     
     
     
