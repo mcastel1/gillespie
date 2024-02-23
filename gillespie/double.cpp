@@ -390,11 +390,11 @@ inline void Double::operator += (Double* addend){
     
 }
 
-//sum *this to addend and write the result in *this. For the time being, this method assumes that this->s 0 = all_0 and x.s = all_0 (*this and x contain all non-negative numbers)
-inline void Double::AddTo(Double* addend){
+//sum *this to addend and write the result in *result, which need to be already allocated. For the time being, this method assumes that this->s 0 = all_0 and x.s = all_0 (*this and x contain all non-negative numbers)
+inline void Double::Add(Double* addend, Double* result){
     
     //THIS IS A BOTTLENECK
-    Double augend_t, addend_t;
+    Double addend_t;
     //THIS IS A BOTTLENECK
     Bits compare, borrow, carry_b, carry_e;
     UnsignedInt de;
@@ -406,9 +406,9 @@ inline void Double::AddTo(Double* addend){
     
     
     //swap bit-by-bit (augend.e) and (addend.e) in such a way that (augend.e) >= (addend.e)
-    augend_t = (*this);
+    (*result) = (*this);
     Replace(addend, &compare);
-    addend_t.Replace(&augend_t, &compare);
+    addend_t.Replace(result, &compare);
     
     de = e.Substract(&addend_t.e, &borrow);
     
@@ -505,7 +505,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     unsigned long long int i, s;
     
     vector<Double> A(S);
-    Double B;
+    Double B, C;
     vector<double> a(S);
     double b;
     
@@ -564,7 +564,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
         //        B.PrintBase10("B");
         
         //        (A[s]) += (&B);
-        (A[s]).AddTo(&B);
+        (A[s]).Add(&B, &C);
         
         //        A[s].PrintBase10("A");
         
