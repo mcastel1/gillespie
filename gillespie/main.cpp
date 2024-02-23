@@ -364,6 +364,7 @@ int main(int argc, char * argv[]) {
     
     
     //without this the for loop will not be exectued with -O3
+    cout << endl;
     A.back().PrintBase10("dummy print");
     cout << "dummy print a = " << a[S-1] << " " << b << endl;
     

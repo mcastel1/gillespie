@@ -443,7 +443,7 @@ inline void Double::AddTo(Double* addend){
     b.b.back().Replace(&carry_b, &carry_b);
     
     //THIS IS A BOTTLENECK
-    Normalize();
+    //    Normalize();
     //THIS IS A BOTTLENECK
 
 }
