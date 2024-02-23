@@ -97,14 +97,18 @@ int main(int argc, char * argv[]) {
         
     }
     
-
- 
-    
-//    SpeedTestDoubleAddTo(S, seed);
-//    SpeedTestUnsignedIntAddto(S, seed);
     
     
- 
+    
+    
+    
+    
+    
+    //    SpeedTestDoubleAddTo(S, seed);
+    //    SpeedTestUnsignedIntAddto(S, seed);
+    
+    
+    
     
     
     
@@ -514,24 +518,42 @@ int main(int argc, char * argv[]) {
      
      cout << "Maximum relative error = " << error << endl;
      */
-
+    
     /*
      //test for Bits::Swap
-    Bits a, b, check, w;
-    a.SetRandom((unsigned int)0);
-    b.SetRandom((unsigned int)1);
-    check.SetRandom((unsigned int)2);
+     Bits a, b, check, w;
+     a.SetRandom((unsigned int)0);
+     b.SetRandom((unsigned int)1);
+     check.SetRandom((unsigned int)2);
+     
+     a.Print("a");
+     b.Print("b");
+     check.Print("c");
+     a.Swap(&b, check, &w);
+     
+     
+     a.Print("a");
+     b.Print("b");
+     */
     
-    a.Print("a");
-    b.Print("b");
-    check.Print("c");
-    a.Swap(&b, check, &w);
-    
- 
-    a.Print("a");
-    b.Print("b");
-    */
-    
+    //test for BitSet::Swap
+    /*
+     BitSet a(4), b(4);
+     Bits check, w;
+     a.SetRandom((unsigned int)0);
+     b.SetRandom((unsigned int)1);
+     check.SetRandom((unsigned int)2);
+     
+     a.Print("a");
+     b.Print("b");
+     check.Print("      c");
+     
+     a.Swap(&b, check, &w);
+     
+     
+     a.Print("a");
+     b.Print("b");
+     */
     
     cout << endl;
     return 0;

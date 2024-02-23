@@ -30,7 +30,7 @@ inline void BitSet::Clear(){
 }
 
 
-//swap bit-by-bit the pair {*this, *a} if *check = true and write the result in {*this, *a}, and leave *this and *a unchanged if *check = false, where *work_space is a temporary variable needed to store stuff. This method requires *a and *work_space to be allocated
+//swap bit-by-bit the pair {*this, *a} if *check = true and write the result in {*this, *a}, and leave *this and *a unchanged if *check = false, where *work_space is a temporary variable needed to store stuff. This method requires *a and *work_space to be allocated and *this and *a to have the same size
 inline void BitSet::Swap(BitSet* a, Bits& check, Bits* work_space){
     
     for(unsigned int s=0; s<GetSize(); s++){

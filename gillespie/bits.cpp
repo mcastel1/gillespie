@@ -138,7 +138,7 @@ void Bits::Clear(void){
 
 void Bits::Print(string title){
     
-    cout << title << ": { ";
+    cout << title << "{ ";
     for(unsigned int s=0; s<n_bits; s++){
         cout << this->Get(n_bits-1-s);
     }
