@@ -30,7 +30,7 @@ public:
     void SetAll(bool, unsigned long long int, BitSet&);
     void SetRandom(gsl_rng*);
     void SetRandom(unsigned int);
-    void Print(void);
+    void Print(string);
     void PrintBase10_IEEE754(void);
     void PrintBase10(string);
     void GetBase10(vector<double>&);

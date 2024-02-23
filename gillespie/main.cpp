@@ -99,7 +99,24 @@ int main(int argc, char * argv[]) {
     
     
     
+    //test for Double::Swap
     
+     Double a, b;
+     Bits check, w;
+     a.SetRandom((unsigned int)0);
+     b.SetRandom((unsigned int)1);
+     check.SetRandom((unsigned int)2);
+     
+     a.PrintBase10("a");
+     b.PrintBase10("b");
+     check.Print("      c");
+     
+     a.Swap(&b, check, &w);
+     
+     
+    a.PrintBase10("a");
+    b.PrintBase10("b");
+
     
     
     

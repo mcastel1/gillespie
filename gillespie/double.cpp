@@ -104,9 +104,9 @@ inline void Double::SetRandom(gsl_rng* ran){
 }
 
 
-void Double::Print(void){
+void Double::Print(string title){
     
-    
+    cout << title << " :" << endl;
     s.Print("s");
     e.Print("e");
     b.Print("b");
