@@ -406,38 +406,41 @@ inline void Double::operator += (Double* addend){
 inline void Double::Add(Double* addend, Double* result){
     
     //THIS IS A BOTTLENECK
-    Double addend_t;
+//    Double addend_t;
     //THIS IS A BOTTLENECK
-    Bits compare, borrow, carry_b, carry_e;
+    Bits compare, borrow, carry_b, t;
     UnsignedInt de;
     
     
     //set augend and addend, compare  bit-by-bit  the exponent of augend and the exponent of addend and write the result in compare
-    addend_t = (*addend);
-    compare = (e < (addend_t.e));
+//    addend_t = (*addend);
+    compare = (e < (addend->e));
     
     
-    //swap bit-by-bit (augend.e) and (addend.e) in such a way that (augend.e) >= (addend.e)
+    //swap bit-by-bit (*this) and (addend) in such a way that (this->e) >= (addend->e)
     //HERE CREATE A SWAP METHOD THAT AVOIDS THIS COMPLEX SETTING TO SAVE TEMP VALUES OF VARIABLES
+    /*
     (*result) = (*this);
     Replace(addend, &compare);
     addend_t.Replace(result, &compare);
+     */
+    Swap(addend, compare, &t);
     //HERE CREATE A SWAP METHOD THAT AVOIDS THIS COMPLEX SETTING TO SAVE TEMP VALUES OF VARIABLES
 
-    de = e.Substract(&addend_t.e, &borrow);
+    de = e.Substract(&(addend->e), &borrow);
     
-    //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
+    //shift the mantissa of addend->b by the different between the two exponents in order to cast *addend in a form in which is can be easily added to *this = augend
     //BOTTLENECK #2
-    (addend_t.b) >>= (&de);
+    (addend->b) >>= (&de);
     //BOTTLENECK #2
 
     
     //now sum augend.b and addend.b
-    b.AddTo(&(addend_t.b), &carry_b);
+    b.AddTo(&(addend->b), &carry_b);
     
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
     //incoroprate the extra bit into the exponent
-    e.AddTo(&carry_b, &carry_e);
+    e.AddTo(&carry_b, &t);
     
     //the last entry of augend.e must be zero (unless the sum reaches overflow)
     
