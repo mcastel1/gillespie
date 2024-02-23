@@ -402,8 +402,8 @@ inline void Double::operator += (Double* addend){
     
 }
 
-//sum *this to addend and write the result in *result, which need to be already allocated. For the time being, this method assumes that this->s 0 = all_0 and x.s = all_0 (*this and x contain all non-negative numbers)
-inline void Double::Add(Double* addend, Double* result){
+//sum *this to addend and write the result in *result, which need to be already allocated. For the time being, this method assumes that this->s 0 = all_0 and x.s = all_0 (*this and x contain all non-negative numbers). THIS METHOD ALTERS THE CONTENT OF *ADDEND
+inline void Double::AddTo(Double* addend){
     
     //THIS IS A BOTTLENECK
 //    Double addend_t;
@@ -522,7 +522,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     unsigned long long int i, s;
     
     vector<Double> A(S);
-    Double B, C;
+    Double B;
     vector<double> a(S);
     double b;
     
@@ -581,7 +581,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
         //        B.PrintBase10("B");
         
         //        (A[s]) += (&B);
-        (A[s]).Add(&B, &C);
+        (A[s]).AddTo(&B);
         
         //        A[s].PrintBase10("A");
         
