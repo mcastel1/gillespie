@@ -58,6 +58,13 @@ inline void Double::Replace(Double* replacer, Bits* check){
 }
 
 
+//swap bit-by-bit *this with *x if *check=true, and leave *this and *x unchanged otherwise
+inline void Double::Swap(Double* x, Bits* check){
+    
+//    (a && ! check) || (b && check)
+    
+}
+
 //initialize *this randomly with seed seed
 inline void Double::SetRandom(unsigned int seed){
     

@@ -23,6 +23,7 @@ public:
     void Clear(void);
     void Normalize(void);
     void Replace(Double*, Bits*);
+    void Swap(Double*, Bits*);
     void SetAll_IEEE754(double);
     void SetAll(bool, unsigned long long int, double);
     void Set(unsigned int, bool, unsigned long long int, double);

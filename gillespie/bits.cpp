@@ -115,6 +115,20 @@ inline void Bits::Replace(Bits* replacer,  Bits* check){
 }
 
 
+//swap bit-by-bit the pair {*this, *a} if *check = true and write the result in {*this, *a}, and leave *this and *a unchanged if *check = false, where *work is a temporary variable needed to store stuff. This method requires *a and *work to be allocated
+inline void Bits::Swap(Bits* a, Bits* check, Bits* work_space){
+
+    //store temporarily *this in *work
+    (*work_space) = (*this);
+    
+    //swap *this with *a according to *check and write the result in *this
+    (*this) = ((*this) & (~(*check))) | ((*a) & (*check));
+    //swap *a with *this according to *check and write the result in *a
+    (*a) = ((*a) & (~(*check))) | ((*work_space) & (*check));
+    
+}
+
+
 //set all bits of *this to 0
 void Bits::Clear(void){
     
