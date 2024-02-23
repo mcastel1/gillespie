@@ -57,7 +57,7 @@ void UnsignedInt::PrintBase10(string title){
     }
     
     cout << "}" << endl;
-        
+    
 }
 
 
@@ -66,7 +66,7 @@ void UnsignedInt::GetBase10(vector<unsigned long long int>& v){
     unsigned int p;
     for(p=0, v.resize(n_bits); p<n_bits; p++){
         
-         v[p] = Get(p);
+        v[p] = Get(p);
         
     }
     
@@ -98,27 +98,27 @@ inline void BitSet::operator >>=(UnsignedInt* e){
         
         //in this first loop, I run over the first chunk of entries of b: m = 0, ..., b.size() - 2^n-1 and I replace the m-th component of b with the m+2^n-th compoennt if e[n]=true, and do nothing otherwise
         for(m=0; m<GetSize()-gsl_pow_int(2, n); m++){
-
+            
             b[m].Replace(
                          //the element # m+2^n in b
                          &(b[m+gsl_pow_int(2, n)]),
                          //the element #n in e
                          &((e->b)[n])
                          );
-        
+            
             
         }
         
         //in this loop, I run over the second chunk of entries of b: m =b.size() - 2^n , ..., b.size(). I can no longer replace b[m] with b[m+2^n] as in the loop above, becuase b[m+2^n] does not exist in b -> I replace it with zero. Note that if 2^n > b.size(), this second loop must cover the entire vector b -> I set as starting value of m  max(((int)GetSize())-((int)gsl_pow_int(2, n)), 0)
         for(m = max(((int)GetSize())-((int)gsl_pow_int(2, n)), 0); (m<GetSize()); m++){
-                     
+            
             b[m].Replace(
                          //a Bits filled with zeros
                          &zero,
                          //the element #n in e
                          &((e->b)[n])
                          );
-        
+            
             
         }
         
@@ -145,27 +145,27 @@ inline void BitSet::operator <<=(UnsignedInt* e){
         
         //in this first loop, I run over the first chunk of entries of b: m = b.size()-1, ..., 2^n and I replace the m-th component of b with the m-2^n-th compoennt if e[n]=true, and do nothing otherwise
         for(m=GetSize()-1; m>=gsl_pow_int(2, n); m--){
-
+            
             b[m].Replace(
                          //the element # m+2^n in b
                          &(b[m-gsl_pow_int(2, n)]),
                          //the element #n in e
                          &((e->b)[n])
                          );
-        
+            
             
         }
         
         //in this loop, I run over the second chunk of entries of b: m =2^n-1 , ..., 0. I can no longer replace b[m] with b[m-2^n] as in the loop above, becuase b[m-2^n] does not exist in b -> I replace it with zero. Note that if 2^n > b.size(), this second loop must cover the entire vector b -> I set as starting value of m  max(((int)(this->GetSize()))-((int)gsl_pow_int(2, n)), 0)
         for(m = min(((int)GetSize())-1, (((int)gsl_pow_int(2, n))-1)); m>=0; m--){
-                     
+            
             b[m].Replace(
                          //a Bits filled with zeros
                          &zero,
                          //the element #n in e
                          &((e->b)[n])
                          );
-        
+            
             
         }
         
@@ -196,7 +196,7 @@ inline UnsignedInt BitSet::PositionOfFirstSignificantBit(void){
     }
     
     return result;
-
+    
     
 }
 
@@ -215,15 +215,15 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
     unsigned int i;
     unsigned long long int s, r, MAX = 1024;
     Bits carry;
-
+    
     vector<UnsignedInt> A(S), B(S);
     vector<unsigned int> a(S), b(S);
-
-
+    
+    
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     gsl_rng_set(ran, seed);
-
-
+    
+    
     //****************** calculation without bits ******************
     start = clock();
     for(s=0; s<S; ++s){
@@ -231,46 +231,46 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
     }
     end = clock();
     cout << "Time to draw S random numbers without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
-
     
-
+    
+    
     //****************** calculation without bits ******************
     for(s=0; s<S; s++){
-
-            r = gsl_rng_uniform_int(ran, MAX);
-            a[s] = (unsigned int)r;
-            if(r!=0){
-                b[s] = (unsigned int)(r-1-gsl_rng_uniform_int(ran, r));
-            }else{
-                b[s] = 0;
-            }
-
+        
+        r = gsl_rng_uniform_int(ran, MAX);
+        a[s] = (unsigned int)r;
+        if(r!=0){
+            b[s] = (unsigned int)(r-1-gsl_rng_uniform_int(ran, r));
+        }else{
+            b[s] = 0;
+        }
+        
     }
- 
-
+    
+    
     start = clock();
     for(s=0; s<S; s++){
-
+        
         //        (a[s]) += b[s];
         (a[s]) -= b[s];
-
+        
     }
     end = clock();
     cout  << "Time for S operation without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
-
-
+    
+    
     //****************** calculation with bits ******************
     for(s=0; s<S; s++){
-
+        
         A[s] = UnsignedInt(MAX);
         B[s] = UnsignedInt(MAX);
-
+        
     }
-
+    
     for(s=0; s<S; s++){
-
+        
         for(i=0; i<n_bits; i++){
-
+            
             r = gsl_rng_uniform_int(ran, MAX);
             A[s].Set(i, r);
             if(r!=0){
@@ -278,38 +278,102 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
             }else{
                 B[s].Set(i, 0);
             }
-
+            
         }
-
+        
     }
-
-
+    
+    
     start = clock();
     for(s=0; s<S; s++){
-
+        
         //        A[s].PrintBase10("A");
         //        B.PrintBase10("B");
-
+        
         //        (A[s]) += (&B[s]);
         //        (A[s]).AddTo(&(B[s]), &carry);
-
+        
         //                (A[s]) -= (&B[s]);
         (A[s]).SubstractTo(&(B[s]), &carry);
-
-
-
-
+        
+        
+        
+        
         //        A[s].PrintBase10("A");
-
+        
     }
     end = clock();
-
+    
     cout << "Time for S operations with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
-
-
+    
+    
     //without this the for loop will not be exectued with -O3
     cout << endl;
     A.back().PrintBase10("dummy print");
     cout << "dummy print: a = " << a[S-1] << " " << b[S-1] << dummy << endl;
+    
+}
+
+
+//test for BitSet::AddTo/SubstractTo
+inline void CorrectnessTestUnsignedIntAddTo(unsigned long long int S, unsigned long long int seed){
+    
+    UnsignedInt a, b;
+    vector<unsigned long long int> v_a, v_b, v_a_minus_b;
+    unsigned int i, s;
+    unsigned long long int r, MAX = 1024;
+    gsl_rng* ran;
+    Bits borrow;
+    bool it_works;
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    a.Resize(10);
+    b.Resize(10);
+    
+    
+    for(it_works = true, s=0; s<S; ++s){
+        
+        
+        for(i=0; i<n_bits; i++){
+            
+            r = gsl_rng_uniform_int(ran, MAX);
+            a.Set(i, r);
+            if(r!=0){
+                b.Set(i, r-1-gsl_rng_uniform_int(ran, r));
+            }else{
+                b.Set(i, 0);
+            }
+            
+        }
+        
+        
+        //        a.PrintBase10("a");
+        //        b.PrintBase10("b");
+        
+        a.GetBase10(v_a);
+        b.GetBase10(v_b);
+        
+        a.SubstractTo(&b, &borrow);
+        
+        //            a.PrintBase10("a-b");
+        
+        a.GetBase10(v_a_minus_b);
+        
+        for(i=0; i<n_bits; ++i){
+            if( v_a[i]-v_b[i] !=  v_a_minus_b[i] ){
+                it_works = false;
+                break;
+            }
+            
+            cout << "[" << i << "]:\t\t\t" << v_a[i]-v_b[i] << "\t\t\t" << v_a_minus_b[i] << endl;
+        }
+        //
+        
+    }
+    
+    cout << "It works = " << it_works << "." <<  endl;
+    
     
 }
