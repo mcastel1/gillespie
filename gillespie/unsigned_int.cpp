@@ -377,3 +377,78 @@ inline void CorrectnessTestUnsignedIntAddTo(unsigned long long int S, unsigned l
     
     
 }
+
+
+
+
+//test for    UnsignedInt *=
+inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned long long int seed){
+    
+    //the maximum unsigned int that I will draw
+    unsigned long long int max =1000;
+    UnsignedInt a(max), b(max);
+    bool it_works;
+    vector<unsigned long long int> v_a, v_b, v_a_times_b;
+    unsigned int i, s;
+    gsl_rng* ran;
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    
+    for(it_works = true, s=0; (s<S) & it_works; ++s){
+        
+        a.Resize(0);
+        b.Resize(0);
+        
+        a.Resize(bits(max));
+        b.Resize(bits(max));
+        
+        a.Clear();
+        b.Clear();
+        
+        
+        for(i=0; i<n_bits; i++){
+            a.Set(i, gsl_rng_uniform_int(ran, max));
+            b.Set(i, gsl_rng_uniform_int(ran, max));
+        }
+        
+        
+        //    cout << "----------- Before += -----------" << endl;
+        //    cout << "a : " << endl;
+        //    a.Print();
+        //    a.PrintBase10();
+        
+        //    cout << "b : " << endl;
+        //    b.Print();
+        //    b.PrintBase10();
+        
+        a.GetBase10(v_a);
+        b.GetBase10(v_b);
+        
+        a *= &b;
+        
+        //    cout << "----------- After += -----------" << endl;
+        //    cout << "a+b: " << endl;
+        //    a.Print();
+        //    a.PrintBase10();
+        
+        a.GetBase10(v_a_times_b);
+        
+        cout << "Check of the result:" << endl;
+        for( i=0; i<n_bits; ++i){
+            if(v_a[n_bits-1-i]*v_b[n_bits-1-i] != v_a_times_b[n_bits-1-i]){
+                it_works = false;
+                break;
+            }
+            
+            cout << "[" << n_bits-1-i << "]:\t\t\t" << v_a[n_bits-1-i]*v_b[n_bits-1-i] << "\t\t\t" << v_a_times_b[n_bits-1-i] << endl;
+        }
+        //
+        
+    }
+    
+    cout << "It works  = " << it_works << "." << endl;
+    
+    
+}
