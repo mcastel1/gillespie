@@ -506,7 +506,8 @@ inline void Double::Normalize(void){
 inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long int seed){
     
     
-    
+    cout << " ***************************** Speed test for Double::AddTo *****************************" << endl;
+
     
     //speed test  for Double::AddTo
     clock_t start=0, end=0;
@@ -526,7 +527,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     
     //****************** calculation without bits ******************
     b = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
-    cout << "b: " << b << endl;
+//    cout << "b: " << b << endl;
     start = clock();
     for(s=0; s<S; ++s){
         a[s] = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);

@@ -199,3 +199,110 @@ inline UnsignedInt BitSet::PositionOfFirstSignificantBit(void){
 
     
 }
+
+
+//speed test of UnsignedInt::AddTo method, with S samples and seed seed
+inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long long int seed){
+    
+    //test for speed for UnsignedInt +=
+    
+    
+    cout << " ***************************** Speed test for UnsignedInt::AddTo *****************************" << endl;
+    
+    clock_t start=0, end=0;
+    gsl_rng* ran;
+    unsigned int i;
+    unsigned long long int s, r, MAX = 1024;
+    Bits carry;
+
+    vector<UnsignedInt> A(S), B(S);
+    vector<unsigned int> a(S), b(S);
+
+
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+
+
+
+    //****************** calculation without bits ******************
+    start = clock();
+    for(s=0; s<S; s++){
+
+            r = gsl_rng_uniform_int(ran, MAX);
+            a[s] = (unsigned int)r;
+            if(r!=0){
+                b[s] = (unsigned int)(r-1-gsl_rng_uniform_int(ran, r));
+            }else{
+                b[s] = 0;
+            }
+
+    }
+    end = clock();
+    cout  << "Time to generate S random numbers without bits = "  << std::scientific << ((double)(end - start))/2.0/CLOCKS_PER_SEC << " s" << endl;
+
+
+    start = clock();
+    for(s=0; s<S; s++){
+
+        //        (a[s]) += b[s];
+        (a[s]) -= b[s];
+
+    }
+    end = clock();
+    cout  << "Time for S operation without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
+
+
+    //****************** calculation with bits ******************
+    for(s=0; s<S; s++){
+
+        A[s] = UnsignedInt(MAX);
+        B[s] = UnsignedInt(MAX);
+
+    }
+
+    for(s=0; s<S; s++){
+
+        for(i=0; i<n_bits; i++){
+
+            r = gsl_rng_uniform_int(ran, MAX);
+            A[s].Set(i, r);
+            if(r!=0){
+                B[s].Set(i, r-1-gsl_rng_uniform_int(ran, r));
+            }else{
+                B[s].Set(i, 0);
+            }
+
+        }
+
+    }
+
+
+    start = clock();
+    for(s=0; s<S; s++){
+
+        //        A[s].PrintBase10("A");
+        //        B.PrintBase10("B");
+
+        //        (A[s]) += (&B[s]);
+        //        (A[s]).AddTo(&(B[s]), &carry);
+
+        //                (A[s]) -= (&B[s]);
+        (A[s]).SubstractTo(&(B[s]), &carry);
+
+
+
+
+        //        A[s].PrintBase10("A");
+
+    }
+    end = clock();
+
+    cout << "Time for S operations with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+
+
+    //without this the for loop will not be exectued with -O3
+    cout << endl;
+    A.back().PrintBase10("dummy print");
+    cout << "dummy print: a = " << a[S-1] << " " << b[S-1] << endl;
+    
+}
