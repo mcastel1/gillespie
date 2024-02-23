@@ -399,7 +399,6 @@ inline void Double::AddTo(Double* addend){
     
     
     //set augend and addend, compare  bit-by-bit  the exponent of augend and the exponent of addend and write the result in compare
-    //    augend = (*this);
     addend_t = (*addend);
     compare = (e < (addend_t.e));
     
@@ -409,10 +408,7 @@ inline void Double::AddTo(Double* addend){
     Replace(addend, &compare);
     addend_t.Replace(&augend_t, &compare);
     
-    //    e.PrintBase10("e");
-//    addend_t.e.PrintBase10("addend_t.e");
     de = e.Substract(&addend_t.e, &borrow);
-    //    de.PrintBase10("de");
     
     //shift the mantissa of b by the different between the two exponents in order to cast addend in a form in which is can be easily added to augend
     //BOTTLENECK #2
@@ -422,17 +418,12 @@ inline void Double::AddTo(Double* addend){
     
     //now sum augend.b and addend.b
     b.AddTo(&(addend_t.b), &carry_b);
-    //    b += (&(addend_t.b));
     
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
     //incoroprate the extra bit into the exponent
-    //    e.PrintBase10("e before");
     e.AddTo(&carry_b, &carry_e);
-    //    e.PrintBase10("e after");
-    //    e.PrintBase10("e");
     
     //the last entry of augend.e must be zero (unless the sum reaches overflow)
-    //    b.Print("b");
     
     /*
      shift the mantissa of the augend if the carry is nonzero, and leave it unchanged otherwise.
@@ -442,10 +433,7 @@ inline void Double::AddTo(Double* addend){
     b >>= (&carry_b);
     b.b.back().Replace(&carry_b, &carry_b);
     
-    //BOTTLENECK #1
-    //    Normalize();
-    //BOTTLENECK #1
-
+  
 }
 
 
