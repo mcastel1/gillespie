@@ -335,7 +335,7 @@ int main(int argc, char * argv[]) {
     for(i=0; i<n_bits; i++){
         B.Set((unsigned int)i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
     }
-    B.PrintBase10("B");
+//    B.PrintBase10("B");
     for(s=0; s<S; ++s){
         
         for(i=0; i<n_bits; i++){
