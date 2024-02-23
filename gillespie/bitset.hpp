@@ -18,6 +18,7 @@ public:
     BitSet(unsigned long long int);
     
     void Clear(void);
+    void Swap(BitSet*, Bits&, Bits*);
     void Normalize(void);
     void Normalize(unsigned int);
     void Resize(unsigned long long int);
