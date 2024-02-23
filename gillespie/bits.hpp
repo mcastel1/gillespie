@@ -26,7 +26,7 @@ public:
     Bits Complement(void);
     void ComplementTo(void);
     void Replace(Bits*, Bits*);
-    void Swap(Bits*, Bits*, Bits*);
+    void Swap(Bits*, Bits&, Bits*);
     void Clear(void);
     void Print(string);
         
