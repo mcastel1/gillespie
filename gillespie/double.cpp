@@ -403,6 +403,7 @@ inline void Double::operator += (Double* addend){
 }
 
 //sum *this to addend and write the result in *result, which need to be already allocated. For the time being, this method assumes that this->s 0 = all_0 and x.s = all_0 (*this and x contain all non-negative numbers). THIS METHOD ALTERS THE CONTENT OF *ADDEND
+//I wrote the time taken by each line when running the program with  ./main.o -s 0 -S 4
 inline void Double::AddTo(Double* addend){
     
     Bits compare, borrow, carry_b, t;
@@ -411,25 +412,30 @@ inline void Double::AddTo(Double* addend){
     
     //set augend and addend, compare  bit-by-bit  the exponent of augend and the exponent of addend and write the result in compare
 //    addend_t = (*addend);
+    //~ 2e-04 s
     compare = (e < (addend->e));
     
     
     //swap bit-by-bit (*this) and (addend) in such a way that (this->e) >= (addend->e)
+    //~ 5e-04 s
     Swap(addend, compare, &t);
 
+    //~ 5e-04 s
     de = e.Substract(&(addend->e), &borrow);
     
     //shift the mantissa of addend->b by the different between the two exponents in order to cast *addend in a form in which is can be easily added to *this = augend
-    //BOTTLENECK #2
+    //BOTTLENECK #2: 2.46630000e-02 s
     (addend->b) >>= (&de);
-    //BOTTLENECK #2
+    //BOTTLENECK #2: 2.46630000e-02 s
 
     
     //now sum augend.b and addend.b
+    //~ 5e-4 s
     b.AddTo(&(addend->b), &carry_b);
     
     //the operation augend.b += addend.b adds an extra bit to augend.b (the carry) -> this extra bit must be removed and re-incorporated into augend.e
     //incoroprate the extra bit into the exponent
+    //~ 2e-4 s
     e.AddTo(&carry_b, &t);
     
     //the last entry of augend.e must be zero (unless the sum reaches overflow)
@@ -439,7 +445,9 @@ inline void Double::AddTo(Double* addend){
      To achieve this, the (bit-by-bit) desired result for b is : 1) If carry_b = true: b = {carry_b, b[51], ..., b[1]}, 2) If carry_b = false : b = {b[51], ..., b[0]}.
     I obtain this result for b with the two folloing lines, which avoid a (very slow) Resize() of b
      */
+    //~ 2e-4 s
     b >>= (&carry_b);
+    //~ 2e-4 s
     b.b.back().Replace(&carry_b, &carry_b);
     
   
@@ -588,5 +596,64 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     cout << "dummy print a = " << a[S-1] << " " << b << endl;
     
     
+    
+}
+
+//test for Double::operator +=
+inline void CorrectnessTestDoubleAddTo(unsigned long long int S, unsigned long long int seed){
+    
+    
+    Double A, B;
+    double error;
+    vector<double> v_a, v_b, v_a_plus_b;
+    unsigned int i, s;
+    gsl_rng* ran;
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    
+    for(error = 0.0, s=0; s<S; ++s){
+        
+        for(i=0; i<n_bits; i++){
+            A.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+            B.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+        }
+        
+        
+        //    cout << "----------- Before += -----------" << endl;
+        //    cout << "a : " << endl;
+        //    a.Print();
+        //    a.PrintBase10();
+        
+        //    cout << "b : " << endl;
+        //    b.Print();
+        //    b.PrintBase10();
+        
+        A.GetBase10(v_a);
+        B.GetBase10(v_b);
+        
+        //        a+= &b;
+        A.AddTo(&B);
+        
+        //    cout << "----------- After += -----------" << endl;
+        //    cout << "a+b: " << endl;
+        //    a.Print();
+        //    a.PrintBase10();
+        
+        A.GetBase10(v_a_plus_b);
+        
+        cout << "Check of the result:" << endl;
+        for( i=0; i<n_bits; ++i){
+            if(fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]) > error){error = fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]);}
+            
+            cout << "[" << n_bits-1-i << "]:\t\t\t" << v_a[n_bits-1-i]+v_b[n_bits-1-i] << "\t\t\t" << v_a_plus_b[n_bits-1-i] << "\t\t\t" << fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]) << endl;
+        }
+        //
+        
+    }
+    
+    cout << "Maximum relative error = " << error << endl;
+
     
 }
