@@ -521,8 +521,8 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     gsl_rng* ran;
     unsigned long long int i, s;
     
-    vector<Double> A(S);
-    Double B;
+    vector<Double> A(S), /*I need to declare B as a vector rather than as a single Double because each AddTo(&B) will alter the content of B and thus lead to potential overflows/unerflows as many AddTo(s) are executed*/B(S);
+    Double C;
     vector<double> a(S);
     double b;
     
@@ -561,7 +561,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     
     //****************** calculation with bits ******************
     for(i=0; i<n_bits; i++){
-        B.Set((unsigned int)i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+        C.Set((unsigned int)i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
     }
 //    B.PrintBase10("B");
     for(s=0; s<S; ++s){
@@ -569,6 +569,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
         for(i=0; i<n_bits; i++){
             A[s].Set((unsigned int)i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
         }
+        B[s] = C;
         
         //        A[s].PrintBase10("A");
     }
@@ -581,7 +582,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
         //        B.PrintBase10("B");
         
         //        (A[s]) += (&B);
-        (A[s]).AddTo(&B);
+        (A[s]).AddTo(&(B[s]));
         
         //        A[s].PrintBase10("A");
         
