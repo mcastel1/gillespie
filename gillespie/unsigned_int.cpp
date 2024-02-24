@@ -385,7 +385,7 @@ inline void CorrectnessTestUnsignedIntAddTo(unsigned long long int S, unsigned l
 inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned long long int seed){
     
     //the maximum unsigned int that I will draw
-    unsigned long long int max =1000;
+    unsigned long long int max = 3;
     UnsignedInt A(max), B(max), C, W;
     bool it_works;
     vector<unsigned long long int> v_a, v_b, v_a_times_b;

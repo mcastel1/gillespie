@@ -677,18 +677,37 @@ inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_
     for(s=0, result->SetAll(0); s<multiplicand->GetSize(); s++){
         //multiply by the s-th element of multiplicand: at each step of this loop *this is shifted by one unit to the left
         
+        multiplicand->Print("multiplicand");
+        
         //the temporarly variable work_space is set equal to the original value of *this multiplyed by 2^s
         (*work_space) = (*this);
+        
+        work_space->Print("work space before &=");
+        
         //I perform this '&' to multiply by *work_space the s-th bit of the multiplicand
         (*work_space) &= &((*multiplicand)[s]);
+        
+        work_space->Print("work_space after &=");
+
+        
+        result->Print("result before AddTo");
         
         //add the partial sum to the result
 //        result += &t;
         result->AddTo(work_space, &carry);
         
+        result->Print("result after AddTo");
+
+        
+        
+        Print("this before <<");
+        
         //shift this
         (*this) <<= &Bits_one;
 
+        Print("this after <<");
+
+        
     }
     
     //during the for loop above, the line result += &t has uselessly increased the size of result -> THIS MAY SLOW DOWN THE CODE -> I resize result to the maximum size it can have after the multiplication
