@@ -648,9 +648,46 @@ inline void BitSet::operator *= (BitSet* multiplicand){
 
 
 
-//multiply *this by *multiplicand and write the result in *this.
+//multiply *this by *multiplicand and write the result in *this. This method reqires *this to be large enough to host the result
 inline void BitSet::MultiplyTo(BitSet* multiplicand){
     
+    unsigned int s;
+    BitSet result, t;
+    Bits carry;
+    
+//    //THIS MAY SLOW DOWN THE CODE
+//    //resize *this and result in order to be large enough to host the result
+//    Resize(GetSize() + (multiplicand->GetSize()));
+//    for(s=GetSize()-(multiplicand->GetSize()); s<GetSize(); s++){
+//        b[s].SetAll(false);
+//    }
+//    result.Resize(GetSize());
+//    //THIS MAY SLOW DOWN THE CODE
+    
+
+    for(s=0, result.SetAll(0); s<multiplicand->GetSize(); s++){
+        //multiply by the s-th element of multiplicand: at each step of this loop *this is shifted by one unit to the left
+        
+        //the temporarly variable t is set equal to the original value of *this multiplyed by 2^s
+        t = (*this);
+        //I perform this & to multiply by the s-th bit of the multiplicand
+        t &= &((*multiplicand)[s]);
+        
+        //add the partial sum to the result
+//        result += &t;
+        result.AddTo(&t, &carry);
+        
+        //shift this
+        (*this) <<= &Bits_one;
+
+    }
+    
+    //during the for loop above, the line result += &t has uselessly increased the size of result -> THIS MAY SLOW DOWN THE CODE -> I resize result to the maximum size it can have after the multiplication
+    result.Resize(GetSize());
+    //result now is complete: set *this equal to result
+    (*this) = result;
+    
+
     
     
 }

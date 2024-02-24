@@ -427,6 +427,7 @@ inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned
         b.GetBase10(v_b);
         
         a *= &b;
+        //        a.MultiplyTo(&b);
         
         //    cout << "----------- After += -----------" << endl;
         //    cout << "a+b: " << endl;
