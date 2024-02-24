@@ -47,12 +47,11 @@ void Bits::Set(unsigned int s, bool bit){
 
 
 
-//set all n_bits entries of *this equal to *bit
+//set all n_bits entries of *this equal to bit
 inline void Bits::SetAll(bool bit){
     
-    for(unsigned int s=0; s<n_bits; s++){
-        this->Set(s, bit);
-    }
+    if(bit){(*this) = Bits_one;}
+    else{(*this) = Bits_zero;}
     
 }
 

@@ -475,7 +475,7 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
     vector<UnsignedInt> A(S);
     UnsignedInt B, C, W_a, W_b;
     vector<unsigned int> a(S);
-    unsigned int b, c;
+    unsigned int b, c=0;
     
     for(s=0; s<A.size(); ++s){
         A[s].Resize(bits(MAX));
