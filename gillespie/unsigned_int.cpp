@@ -386,7 +386,7 @@ inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned
     
     //the maximum unsigned int that I will draw
     unsigned long long int max =1000;
-    UnsignedInt a(max), b(max);
+    UnsignedInt A(max), B(max), C, W;
     bool it_works;
     vector<unsigned long long int> v_a, v_b, v_a_times_b;
     unsigned int i, s;
@@ -398,19 +398,20 @@ inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned
     
     for(it_works = true, s=0; (s<S) & it_works; ++s){
         
-        a.Resize(0);
-        b.Resize(0);
+        A.Resize(0);
+        B.Resize(0);
         
-        a.Resize(bits(max));
-        b.Resize(bits(max));
+        A.Resize(bits(max));
+        B.Resize(bits(max));
+        C.Resize(A.GetSize()+B.GetSize()-1);
         
-        a.Clear();
-        b.Clear();
+        A.Clear();
+        B.Clear();
         
         
         for(i=0; i<n_bits; i++){
-            a.Set(i, gsl_rng_uniform_int(ran, max));
-            b.Set(i, gsl_rng_uniform_int(ran, max));
+            A.Set(i, gsl_rng_uniform_int(ran, max));
+            B.Set(i, gsl_rng_uniform_int(ran, max));
         }
         
         
@@ -423,18 +424,18 @@ inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned
         //    b.Print();
         //    b.PrintBase10();
         
-        a.GetBase10(v_a);
-        b.GetBase10(v_b);
+        A.GetBase10(v_a);
+        B.GetBase10(v_b);
         
-        a *= &b;
-        //        a.MultiplyTo(&b);
+//        A *= &B;
+        A.Multiply(&B, &C, &W);
         
         //    cout << "----------- After += -----------" << endl;
         //    cout << "a+b: " << endl;
         //    a.Print();
         //    a.PrintBase10();
         
-        a.GetBase10(v_a_times_b);
+        C.GetBase10(v_a_times_b);
         
         cout << "Check of the result:" << endl;
         for( i=0; i<n_bits; ++i){
