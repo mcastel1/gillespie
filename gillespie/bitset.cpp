@@ -593,17 +593,30 @@ inline void BitSet::operator <<= (Bits* l){
 }
 
 
-//perform (bit-by-bit) an & between b[s] and *m and write the result in b[s] for all s = 0 ... GetSize()
+//perform (bit-by-bit) an & between  b[s] and *m ,and write the result in b[s] for all s = 0 ... GetSize()
 inline void BitSet::operator &= (Bits* m){
     
-    for(unsigned int s=0; s<GetSize(); s++){
+//    for(unsigned int s=0; s<GetSize(); s++){
+//
+//        b[s] &= m;
+//
+//    }
+  
+    AndTo(m, GetSize());
+    
+}
+
+
+//perform (bit-by-bit) an & between  b[s] and *m ,and write the result in b[s] for all s = 0, ..., n-1
+inline void BitSet::AndTo(Bits* m, unsigned int n){
+    
+    for(unsigned int s=0; s<n; s++){
         
         b[s] &= m;
         
     }
     
 }
-
 
 
 //multiply *this by addend (as if they were two UnsignedInts)  and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize(). once this method is called, *this has size [size of *this before the method is called] + multiplicand.GetSize()
