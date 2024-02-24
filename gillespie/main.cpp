@@ -107,7 +107,7 @@ int main(int argc, char * argv[]) {
     
     
 //    CorrectnessTestUnsignedIntTimesTo(S, seed);
-    SpeedTestUnsignedIntMultiply(S, seed);
+//    SpeedTestUnsignedIntMultiply(S, seed);
     //    CorrectnessTestUnsignedIntAddTo(S, seed);
     //    CorrectnessTestDoubleAddTo(S, seed);
     //    SpeedTestDoubleAddTo(S, seed);

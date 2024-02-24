@@ -91,7 +91,7 @@ inline void Bits::SetRandom(gsl_rng* ran){
 
 
 //return the one's complement of *this 
-inline inline Bits Bits::Complement(void){
+inline Bits Bits::Complement(void){
     
     return(~(*this));
     

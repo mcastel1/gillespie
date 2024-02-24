@@ -602,15 +602,15 @@ inline void BitSet::operator &= (Bits* m){
 //
 //    }
   
-    AndTo(m, GetSize());
+    AndTo(m, 0, GetSize());
     
 }
 
 
-//perform (bit-by-bit) an & between  b[s] and *m ,and write the result in b[s] for all s = 0, ..., n-1
-inline void BitSet::AndTo(Bits* m, unsigned int n){
+//perform (bit-by-bit) an & between  b[s] and *m ,and write the result in b[s] for all s = start, ..., end-1
+inline void BitSet::AndTo(Bits* m, unsigned int start, unsigned int end){
     
-    for(unsigned int s=0; s<n; s++){
+    for(unsigned int s=start; s<end; s++){
         
         b[s] &= m;
         
@@ -685,7 +685,7 @@ inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_
     for(s=0; s<GetSize(); s++){
         (work_space_b->b)[s] = b[s];
     }
-
+    
     for(s=0, result->SetAll(0); s<multiplicand->GetSize(); s++){
         //multiply by the s-th element of multiplicand: at each step of this loop *this is shifted by one unit to the left
         
@@ -697,8 +697,9 @@ inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_
         
         //I perform this '&' to multiply by *work_space the s-th bit of the multiplicand
         //1.5 e-2 s
-        (*work_space_a) &= &((*multiplicand)[s]);
-                
+        //        (*work_space_a) &= &((*multiplicand)[s]);
+        work_space_a->AndTo(&((*multiplicand)[s]), s, s+(multiplicand->GetSize()));
+        
         //add the partial sum to the result
         //2.4e-2 s
         result->AddTo(work_space_a, &carry);
