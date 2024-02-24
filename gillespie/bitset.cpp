@@ -323,7 +323,7 @@ inline void BitSet::AddTo(BitSet* addend, Bits* carry){
         
         (t.n) = (((b[p]).n) ^ (((addend->b)[p]).n) ^ (carry->n));
         (carry->n) = ((((addend->b)[p]).n) & (((b[p]).n) | (carry->n))) | (((b[p]).n) & (carry->n));
-        ((b)[p]).n = (t.n);
+        (b[p]).n = (t.n);
         
     }
     for(p=addend->GetSize(); p<GetSize(); p++){
@@ -675,8 +675,8 @@ inline void BitSet::operator *= (BitSet* multiplicand){
  */
 inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_space_a, BitSet* work_space_b){
     
-    unsigned int s;
-    Bits carry;
+    unsigned int s, p;
+    Bits carry, t, u;
         
     //set work_space_b equal to *this
     //1.2 e-2 s
@@ -692,21 +692,33 @@ inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_
         
         //the temporarly variable work_space is set equal to the original value of *this multiplyed by 2^s
         //1.8e-2 s
-        (*work_space_a) = (*work_space_b);
+//        (*work_space_a) = (*work_space_b);
         
         
         //I perform this '&' to multiply by *work_space the s-th bit of the multiplicand
         //1.5 e-2 s
-        (*work_space_a) &= &((*multiplicand)[s]);
+//        (*work_space_a) &= &((*multiplicand)[s]);
 //        work_space_a->AndTo(&((*multiplicand)[s]), s, s+(multiplicand->GetSize()));
+        
+        for(p=0, carry.Clear(); p<GetSize(); p++){
+            
+            (u.n) = ((((*multiplicand)[s]).n) & ((b[p]).n));
+            (t.n) = ((((result->b)[p+s]).n) ^ (u.n) ^ (carry.n));
+            
+            (carry.n) = ((u.n) & ((((result->b)[p+s]).n) | (carry.n))) | ((((result->b)[p+s]).n) & (carry.n));
+            ((result->b)[p+s]).n = (t.n);
+            
+        }
+        ((result->b)[p+s]).n = (carry.n);
+
         
         //add the partial sum to the result
         //2.4e-2 s
-        result->AddTo(work_space_a, &carry);
+//        result->AddTo(work_space_a, &carry);
         
         //shift *this = *work_space_b
         //2.2 e-2 s
-        (*work_space_b) <<= &Bits_one;
+//        (*work_space_b) <<= &Bits_one;
 
     }
     
