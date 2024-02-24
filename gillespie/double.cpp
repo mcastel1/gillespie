@@ -229,7 +229,7 @@ inline void Double::Set(unsigned int p, bool sign, unsigned long long int expone
 
 
 //print *this in base 10 according to the IEEE754 convention
-void Double::PrintBase10_IEEE754(void){
+inline void Double::PrintBase10_IEEE754(void){
     
     unsigned int i, p;
     double b_10, e_10/*, A*/;
@@ -254,7 +254,7 @@ void Double::PrintBase10_IEEE754(void){
 
 
 //print *this in base 10 according to the my convention, where the mantissa is \sum_{i=0}^{52-1} b_{52-1-i} 2^{-i}
-void Double::PrintBase10(string title){
+inline void Double::PrintBase10(string title){
     
     unsigned int p;
     vector<double> v;
@@ -272,7 +272,7 @@ void Double::PrintBase10(string title){
 
 
 //convert bit-by-bit *this in base 10 and write the result in v, which is resized
-void Double::GetBase10(vector<double>& v){
+inline void Double::GetBase10(vector<double>& v){
     
     unsigned int i, p;
     double b_10, e_10;

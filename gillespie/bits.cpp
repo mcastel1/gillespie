@@ -48,7 +48,7 @@ void Bits::Set(unsigned int s, bool bit){
 
 
 //set all n_bits entries of *this equal to *bit
-void Bits::SetAll(bool bit){
+inline void Bits::SetAll(bool bit){
     
     for(unsigned int s=0; s<n_bits; s++){
         this->Set(s, bit);
@@ -58,7 +58,7 @@ void Bits::SetAll(bool bit){
 
 
 //return the s-th bit ofinput
-bool Bits::Get(unsigned int s){
+inline bool Bits::Get(unsigned int s){
     
     return ((n >> s) & ullong_1);
     
@@ -66,7 +66,7 @@ bool Bits::Get(unsigned int s){
 
 
 //set *this randomly with seed seed
-void Bits::SetRandom(unsigned int seed){
+inline void Bits::SetRandom(unsigned int seed){
     
     gsl_rng* ran;
     
@@ -80,7 +80,7 @@ void Bits::SetRandom(unsigned int seed){
 }
 
 //set *this randomly with random number generator ran
-void Bits::SetRandom(gsl_rng* ran){
+inline void Bits::SetRandom(gsl_rng* ran){
     
     unsigned int s;
     
@@ -92,7 +92,7 @@ void Bits::SetRandom(gsl_rng* ran){
 
 
 //return the one's complement of *this 
-inline Bits Bits::Complement(void){
+inline inline Bits Bits::Complement(void){
     
     return(~(*this));
     
@@ -130,13 +130,13 @@ inline void Bits::Swap(Bits* a, Bits& check, Bits* work_space){
 
 
 //set all bits of *this to 0
-void Bits::Clear(void){
+inline void Bits::Clear(void){
     
     n = 0;
     
 }
 
-void Bits::Print(string title){
+inline void Bits::Print(string title){
     
     cout << title << "{ ";
     for(unsigned int s=0; s<n_bits; s++){

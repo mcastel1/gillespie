@@ -146,7 +146,7 @@ inline void BitSet::ResizeAndSetAll(unsigned long long int i){
 }
 
 
-void BitSet::Print(string title){
+inline void BitSet::Print(string title){
     
     unsigned int s;
     

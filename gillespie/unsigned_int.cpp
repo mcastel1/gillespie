@@ -44,7 +44,7 @@ inline void UnsignedInt::Set(unsigned int s, unsigned long long int i){
 
 
 
-void UnsignedInt::PrintBase10(string title){
+inline void UnsignedInt::PrintBase10(string title){
     
     unsigned int  p;
     vector<unsigned long long int> v;
@@ -61,7 +61,7 @@ void UnsignedInt::PrintBase10(string title){
 }
 
 
-void UnsignedInt::GetBase10(vector<unsigned long long int>& v){
+inline void UnsignedInt::GetBase10(vector<unsigned long long int>& v){
     
     unsigned int p;
     for(p=0, v.resize(n_bits); p<n_bits; p++){
@@ -73,7 +73,7 @@ void UnsignedInt::GetBase10(vector<unsigned long long int>& v){
 }
 
 
-void UnsignedInt::operator = (BitSet m){
+inline void UnsignedInt::operator = (BitSet m){
     
     b = m.b;
     
