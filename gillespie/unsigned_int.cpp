@@ -386,7 +386,7 @@ inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned
     
     //the maximum unsigned int that I will draw
     unsigned long long int max = 3;
-    UnsignedInt A(max), B(max), C, W;
+    UnsignedInt A(max), B(max), C, W_a, W_b;
     bool it_works;
     vector<unsigned long long int> v_a, v_b, v_a_times_b;
     unsigned int i, s;
@@ -428,7 +428,7 @@ inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned
         B.GetBase10(v_b);
         
 //        A *= &B;
-        A.Multiply(&B, &C, &W);
+        A.Multiply(&B, &C, &W_a, &W_b);
         
         //    cout << "----------- After += -----------" << endl;
         //    cout << "a+b: " << endl;

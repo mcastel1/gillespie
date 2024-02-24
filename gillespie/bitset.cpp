@@ -659,7 +659,7 @@ inline void BitSet::operator *= (BitSet* multiplicand){
  result->GetSize() >= (this-GetSize()) + (multiplicand->GetSize() - 1
 
  */
-inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_space){
+inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_space_a, BitSet* work_space_b){
     
     unsigned int s;
     Bits carry;
@@ -680,21 +680,21 @@ inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_
         multiplicand->Print("multiplicand");
         
         //the temporarly variable work_space is set equal to the original value of *this multiplyed by 2^s
-        (*work_space) = (*this);
+        (*work_space_a) = (*this);
         
-        work_space->Print("work space before &=");
+        work_space_a->Print("work space before &=");
         
         //I perform this '&' to multiply by *work_space the s-th bit of the multiplicand
-        (*work_space) &= &((*multiplicand)[s]);
+        (*work_space_a) &= &((*multiplicand)[s]);
         
-        work_space->Print("work_space after &=");
+        work_space_a->Print("work_space after &=");
 
         
         result->Print("result before AddTo");
         
         //add the partial sum to the result
 //        result += &t;
-        result->AddTo(work_space, &carry);
+        result->AddTo(work_space_a, &carry);
         
         result->Print("result after AddTo");
 

@@ -48,7 +48,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "677"
             endingLineNumber = "677"
-            landmarkName = "BitSet::Multiply(multiplicand, result, work_space)"
+            landmarkName = "BitSet::Multiply(multiplicand, result, work_space_a, work_space_b)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -96,7 +96,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "686"
             endingLineNumber = "686"
-            landmarkName = "BitSet::Multiply(multiplicand, result, work_space)"
+            landmarkName = "BitSet::Multiply(multiplicand, result, work_space_a, work_space_b)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -159,7 +159,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "691"
             endingLineNumber = "691"
-            landmarkName = "BitSet::Multiply(multiplicand, result, work_space)"
+            landmarkName = "BitSet::Multiply(multiplicand, result, work_space_a, work_space_b)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -222,7 +222,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "695"
             endingLineNumber = "695"
-            landmarkName = "BitSet::Multiply(multiplicand, result, work_space)"
+            landmarkName = "BitSet::Multiply(multiplicand, result, work_space_a, work_space_b)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -238,7 +238,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "701"
             endingLineNumber = "701"
-            landmarkName = "BitSet::Multiply(multiplicand, result, work_space)"
+            landmarkName = "BitSet::Multiply(multiplicand, result, work_space_a, work_space_b)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -286,7 +286,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "704"
             endingLineNumber = "704"
-            landmarkName = "BitSet::Multiply(multiplicand, result, work_space)"
+            landmarkName = "BitSet::Multiply(multiplicand, result, work_space_a, work_space_b)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -302,7 +302,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "710"
             endingLineNumber = "710"
-            landmarkName = "BitSet::Multiply(multiplicand, result, work_space)"
+            landmarkName = "BitSet::Multiply(multiplicand, result, work_space_a, work_space_b)"
             landmarkType = "7">
             <Locations>
                <Location
