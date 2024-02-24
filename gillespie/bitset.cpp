@@ -658,6 +658,7 @@ inline void BitSet::operator *= (BitSet* multiplicand){
  thus
  result->GetSize() >= (this-GetSize()) + (multiplicand->GetSize() - 1
 
+ the times are from  ./main.o -s 0 -S 6
  */
 inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_space_a, BitSet* work_space_b){
     
@@ -665,7 +666,10 @@ inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_
     Bits carry;
         
     //set work_space_b equal to *this
-    for(s=0, work_space_b->SetAll(0); s<GetSize(); s++){
+    //1.2 e-2 s
+    work_space_b->SetAll(0);
+    //9e-3 s
+    for(s=0; s<GetSize(); s++){
         (work_space_b->b)[s] = b[s];
     }
 
@@ -674,16 +678,20 @@ inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_
         
         
         //the temporarly variable work_space is set equal to the original value of *this multiplyed by 2^s
+        //1.8e-2 s
         (*work_space_a) = (*work_space_b);
         
         
         //I perform this '&' to multiply by *work_space the s-th bit of the multiplicand
+        //1.5 e-2 s
         (*work_space_a) &= &((*multiplicand)[s]);
                 
         //add the partial sum to the result
+        //2.4e-2 s
         result->AddTo(work_space_a, &carry);
         
         //shift *this = *work_space_b
+        //2.2 e-2 s
         (*work_space_b) <<= &Bits_one;
 
     }
