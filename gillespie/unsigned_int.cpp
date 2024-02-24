@@ -439,12 +439,14 @@ inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned
         
         cout << "Check of the result:" << endl;
         for( i=0; i<n_bits; ++i){
+
+            cout << "[" << n_bits-1-i << "]:\t\t\t" << v_a[n_bits-1-i]*v_b[n_bits-1-i] << "\t\t\t" << v_a_times_b[n_bits-1-i] << endl;
+
             if(v_a[n_bits-1-i]*v_b[n_bits-1-i] != v_a_times_b[n_bits-1-i]){
                 it_works = false;
                 break;
             }
             
-            cout << "[" << n_bits-1-i << "]:\t\t\t" << v_a[n_bits-1-i]*v_b[n_bits-1-i] << "\t\t\t" << v_a_times_b[n_bits-1-i] << endl;
         }
         //
         
