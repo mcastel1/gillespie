@@ -403,8 +403,9 @@ inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned
         
         A.Resize(bits(max));
         B.Resize(bits(max));
-        C.Resize(A.GetSize()+B.GetSize()-1);
-        W_b.Resize(A.GetSize()+B.GetSize()-1);
+        C.Resize(A.GetSize()+B.GetSize());
+        W_a.Resize(A.GetSize()+B.GetSize());
+        W_b.Resize(A.GetSize()+B.GetSize());
 
         A.Clear();
         B.Clear();
