@@ -697,8 +697,8 @@ inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_
         
         //I perform this '&' to multiply by *work_space the s-th bit of the multiplicand
         //1.5 e-2 s
-        //        (*work_space_a) &= &((*multiplicand)[s]);
-        work_space_a->AndTo(&((*multiplicand)[s]), s, s+(multiplicand->GetSize()));
+        (*work_space_a) &= &((*multiplicand)[s]);
+//        work_space_a->AndTo(&((*multiplicand)[s]), s, s+(multiplicand->GetSize()));
         
         //add the partial sum to the result
         //2.4e-2 s
