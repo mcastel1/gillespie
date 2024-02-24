@@ -673,6 +673,10 @@ inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_
 //    result.Resize(GetSize());
 //    //THIS MAY SLOW DOWN THE CODE
     
+    //set work_space_b equal to *this
+    for(s=0, work_space_b->SetAll(0); s<GetSize(); s++){
+        (work_space_b->b)[s] = b[s];
+    }
 
     for(s=0, result->SetAll(0); s<multiplicand->GetSize(); s++){
         //multiply by the s-th element of multiplicand: at each step of this loop *this is shifted by one unit to the left
@@ -680,7 +684,7 @@ inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_
         multiplicand->Print("multiplicand");
         
         //the temporarly variable work_space is set equal to the original value of *this multiplyed by 2^s
-        (*work_space_a) = (*this);
+        (*work_space_a) = (*work_space_b);
         
         work_space_a->Print("work space before &=");
         
@@ -700,12 +704,12 @@ inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_
 
         
         
-        Print("this before <<");
+       work_space_b -> Print("work_space_b before <<");
         
         //shift this
-        (*this) <<= &Bits_one;
+        (*work_space_b) <<= &Bits_one;
 
-        Print("this after <<");
+        work_space_b -> Print("work_space_b after <<");
 
         
     }

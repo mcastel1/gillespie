@@ -385,7 +385,7 @@ inline void CorrectnessTestUnsignedIntAddTo(unsigned long long int S, unsigned l
 inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned long long int seed){
     
     //the maximum unsigned int that I will draw
-    unsigned long long int max = 3;
+    unsigned long long int max = 30;
     UnsignedInt A(max), B(max), C, W_a, W_b;
     bool it_works;
     vector<unsigned long long int> v_a, v_b, v_a_times_b;
@@ -404,7 +404,8 @@ inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned
         A.Resize(bits(max));
         B.Resize(bits(max));
         C.Resize(A.GetSize()+B.GetSize()-1);
-        
+        W_b.Resize(A.GetSize()+B.GetSize()-1);
+
         A.Clear();
         B.Clear();
         
