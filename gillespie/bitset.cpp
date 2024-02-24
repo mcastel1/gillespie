@@ -645,3 +645,12 @@ inline void BitSet::operator *= (BitSet* multiplicand){
     (*this) = result;
     
 }
+
+
+
+//multiply *this by *multiplicand and write the result in *this.
+inline void BitSet::MultiplyTo(BitSet* multiplicand){
+    
+    
+    
+}
