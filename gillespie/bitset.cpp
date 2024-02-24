@@ -663,16 +663,7 @@ inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_
     
     unsigned int s;
     Bits carry;
-    
-//    //THIS MAY SLOW DOWN THE CODE
-//    //resize *this and result in order to be large enough to host the result
-//    Resize(GetSize() + (multiplicand->GetSize()));
-//    for(s=GetSize()-(multiplicand->GetSize()); s<GetSize(); s++){
-//        b[s].SetAll(false);
-//    }
-//    result.Resize(GetSize());
-//    //THIS MAY SLOW DOWN THE CODE
-    
+        
     //set work_space_b equal to *this
     for(s=0, work_space_b->SetAll(0); s<GetSize(); s++){
         (work_space_b->b)[s] = b[s];
@@ -681,45 +672,20 @@ inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_
     for(s=0, result->SetAll(0); s<multiplicand->GetSize(); s++){
         //multiply by the s-th element of multiplicand: at each step of this loop *this is shifted by one unit to the left
         
-//        multiplicand->Print("multiplicand");
         
         //the temporarly variable work_space is set equal to the original value of *this multiplyed by 2^s
         (*work_space_a) = (*work_space_b);
         
-//        work_space_a->Print("work space before &=");
         
         //I perform this '&' to multiply by *work_space the s-th bit of the multiplicand
         (*work_space_a) &= &((*multiplicand)[s]);
-        
-//        work_space_a->Print("work_space after &=");
-
-        
-//        result->Print("result before AddTo");
-        
+                
         //add the partial sum to the result
-//        result += &t;
         result->AddTo(work_space_a, &carry);
-        
-//        result->Print("result after AddTo");
-
-        
-        
-//       work_space_b -> Print("work_space_b before <<");
         
         //shift *this = *work_space_b
         (*work_space_b) <<= &Bits_one;
 
-//        work_space_b -> Print("work_space_b after <<");
-
-        
     }
-    
-    //during the for loop above, the line result += &t has uselessly increased the size of result -> THIS MAY SLOW DOWN THE CODE -> I resize result to the maximum size it can have after the multiplication
-//    result->Resize(GetSize());
-    //result now is complete: set *this equal to result
-//    (*this) = result;
-    
-
-    
     
 }
