@@ -458,3 +458,109 @@ inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned
     
     
 }
+
+
+
+inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long long int seed){
+    
+    
+    cout << " ***************************** Speed test for UnsignedInt::Multiply *****************************" << endl;
+
+    
+    clock_t start=0, end=0;
+    gsl_rng* ran;
+    unsigned long long int s, MAX = 30;
+    unsigned int i;
+    
+    vector<UnsignedInt> A(S);
+    UnsignedInt B, C, W_a, W_b;
+    vector<unsigned int> a(S);
+    unsigned int b, c;
+    
+    for(s=0; s<A.size(); ++s){
+        A[s].Resize(bits(MAX));
+    }
+    B.Resize(bits(MAX));
+    C.Resize(A[0].GetSize()+B.GetSize());
+    W_a.Resize(A[0].GetSize()+B.GetSize());
+    W_b.Resize(A[0].GetSize()+B.GetSize());
+
+
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    
+    
+    //****************** calculation without bits ******************
+    start = clock();
+    for(s=0; s<S; ++s){
+        b = gsl_rng_uniform(ran);
+    }
+    end = clock();
+    cout << "Time to draw S random numbers without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
+
+    
+    
+    for(s=0; s<S; ++s){
+        a[s] = (unsigned int)gsl_rng_uniform_int(ran, MAX);
+        //                cout << "a[]: " << a[s] << endl;
+    }
+    b = (unsigned int)gsl_rng_uniform_int(ran, MAX);
+    //    cout << "b: " << b << endl;
+
+    start = clock();
+    for(s=0; s<S; s++){
+        
+        c = (a[s]) * b;
+        
+    }
+    end = clock();
+    cout << "Time for S operations without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
+    
+    
+    //****************** calculation with bits ******************
+    for(s=0; s<S; s++){
+        
+        for(i=0; i<n_bits; i++){
+            A[s].Set(i, gsl_rng_uniform_int(ran, MAX));
+        }
+        
+    }
+    for(i=0; i<n_bits; i++){
+        B.Set(i, gsl_rng_uniform_int(ran, MAX));
+    }
+
+    
+    start = clock();
+    for(s=0; s<S; s++){
+        
+        //        A[s].PrintBase10("A");
+        //        B.PrintBase10("B");
+        
+        //        (A[s]) += (&B[s]);
+        //        (A[s]).AddTo(&(B[s]), &carry);
+        
+        //                (A[s]) -= (&B[s]);
+        (A[s]).Multiply(&B, &C, &W_a, &W_b);
+        
+        
+        
+        
+        //        A[s].PrintBase10("A");
+        
+    }
+    end = clock();
+    
+    cout << "Time for S operations with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+    
+    
+    
+    //without this the for loop will not be exectued with -O3
+    cout << endl;
+    C.PrintBase10("dummy print");
+    cout << "dummy print a = " << a[S-1] << " " << c << endl;
+    
+    
+    
+}
