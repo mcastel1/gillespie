@@ -14,8 +14,8 @@
             filePath = "gillespie/unsigned_int.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "513"
-            endingLineNumber = "513"
+            startingLineNumber = "507"
+            endingLineNumber = "507"
             landmarkName = "SpeedTestUnsignedIntMultiply(S, seed)"
             landmarkType = "9">
          </BreakpointContent>
@@ -32,7 +32,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "722"
             endingLineNumber = "722"
-            landmarkName = "BitSet::Multiply(multiplicand, result, work_space_a, work_space_b)"
+            landmarkName = "BitSet::Multiply(multiplicand, result)"
             landmarkType = "7">
             <Locations>
                <Location
@@ -80,7 +80,7 @@
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "725"
             endingLineNumber = "725"
-            landmarkName = "BitSet::Multiply(multiplicand, result, work_space_a, work_space_b)"
+            landmarkName = "BitSet::Multiply(multiplicand, result)"
             landmarkType = "7">
             <Locations>
                <Location

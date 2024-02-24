@@ -673,18 +673,18 @@ inline void BitSet::operator *= (BitSet* multiplicand){
 
  the times are from  ./main.o -s 0 -S 6
  */
-inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result, BitSet* work_space_a, BitSet* work_space_b){
+inline void BitSet::Multiply(BitSet* multiplicand, BitSet* result){
     
     unsigned int s, p;
     Bits carry, t, u;
         
     //set work_space_b equal to *this
     //1.2 e-2 s
-    work_space_b->SetAll(0);
-    //9e-3 s
-    for(s=0; s<GetSize(); s++){
-        (work_space_b->b)[s] = b[s];
-    }
+//    work_space_b->SetAll(0);
+//    //9e-3 s
+//    for(s=0; s<GetSize(); s++){
+//        (work_space_b->b)[s] = b[s];
+//    }
     
     for(s=0, result->SetAll(0); s<multiplicand->GetSize(); s++){
         //multiply by the s-th element of multiplicand: at each step of this loop *this is shifted by one unit to the left

@@ -386,7 +386,7 @@ inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned
     
     //the maximum unsigned int that I will draw
     unsigned long long int max = 30;
-    UnsignedInt A(max), B(max), C, W_a, W_b;
+    UnsignedInt A(max), B(max), C;
     bool it_works;
     vector<unsigned long long int> v_a, v_b, v_a_times_b;
     unsigned int i, s;
@@ -404,8 +404,6 @@ inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned
         A.Resize(bits(max));
         B.Resize(bits(max));
         C.Resize(A.GetSize()+B.GetSize());
-        W_a.Resize(A.GetSize()+B.GetSize());
-        W_b.Resize(A.GetSize()+B.GetSize());
 
         A.Clear();
         B.Clear();
@@ -430,7 +428,7 @@ inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned
         B.GetBase10(v_b);
         
 //        A *= &B;
-        A.Multiply(&B, &C, &W_a, &W_b);
+        A.Multiply(&B, &C);
         
         //    cout << "----------- After += -----------" << endl;
         //    cout << "a+b: " << endl;
@@ -473,7 +471,7 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
     unsigned int i;
     
     vector<UnsignedInt> A(S);
-    UnsignedInt B, C, W_a, W_b;
+    UnsignedInt B, C;
     vector<unsigned int> a(S);
     unsigned int b, c=0;
     
@@ -482,14 +480,10 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
     }
     B.Resize(bits(MAX));
     C.Resize(A[0].GetSize()+B.GetSize());
-    W_a.Resize(A[0].GetSize()+B.GetSize());
-    W_b.Resize(A[0].GetSize()+B.GetSize());
-
-
+    
     
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     gsl_rng_set(ran, seed);
-    
     
     
     //****************** calculation without bits ******************
@@ -542,10 +536,7 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
         //        (A[s]).AddTo(&(B[s]), &carry);
         
         //                (A[s]) -= (&B[s]);
-        (A[s]).Multiply(&B, &C, &W_a, &W_b);
-        
-        
-        
+        (A[s]).Multiply(&B, &C);
         
         //        A[s].PrintBase10("A");
         

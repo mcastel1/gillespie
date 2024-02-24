@@ -56,7 +56,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-S 2"
+            argument = "-S 3"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
