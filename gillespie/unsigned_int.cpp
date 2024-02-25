@@ -467,13 +467,12 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
     
     clock_t start=0, end=0;
     gsl_rng* ran;
-    unsigned long long int s, MAX = 30;
-    unsigned int i;
+    unsigned long long int r=0, s, MAX = 100;
+    unsigned int i, b, c=0;
     
     vector<UnsignedInt> A(S);
     UnsignedInt B, C;
-    vector<unsigned int> a(S);
-    unsigned int b, c=0;
+    vector<unsigned int> a(n_bits*S);
     
     for(s=0; s<A.size(); ++s){
         A[s].Resize(bits(MAX));
@@ -486,31 +485,19 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
     gsl_rng_set(ran, seed);
     
     
-    //****************** calculation without bits ******************
-    start = clock();
-    for(s=0; s<S; ++s){
-        b = gsl_rng_uniform(ran);
-    }
-    end = clock();
-    cout << "Time to draw S random numbers without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
-
     
-    
-    for(s=0; s<S; ++s){
-        a[s] = (unsigned int)gsl_rng_uniform_int(ran, MAX);
-        //                cout << "a[]: " << a[s] << endl;
-    }
     b = (unsigned int)gsl_rng_uniform_int(ran, MAX);
     //    cout << "b: " << b << endl;
 
     start = clock();
-    for(s=0; s<S; s++){
+    for(s=0; s<n_bits*S; s++){
         
+        r = gsl_rng_uniform_int(ran, MAX);
         c = (a[s]) * b;
         
     }
     end = clock();
-    cout << "Time for S operations without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
+    cout << "Time for n_bits * S [random number + operation]s without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
     
     
     //****************** calculation with bits ******************
@@ -536,6 +523,7 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
         //        (A[s]).AddTo(&(B[s]), &carry);
         
         //                (A[s]) -= (&B[s]);
+        r = (unsigned int)gsl_rng_uniform_int(ran, MAX);
         (A[s]).Multiply(&B, &C);
         
         //        A[s].PrintBase10("A");
@@ -543,14 +531,14 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
     }
     end = clock();
     
-    cout << "Time for S operations with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+    cout << "Time for S [random number + operation]s with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
     
     
     
     //without this the for loop will not be exectued with -O3
     cout << endl;
     C.PrintBase10("dummy print");
-    cout << "dummy print a = " << a[S-1] << " " << c << endl;
+    cout << "dummy print a = " << a[S-1] << " " << c << " " << r << endl;
     
     
     
