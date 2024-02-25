@@ -29,6 +29,7 @@
 /*
  note: - the performance test is very different if you do it on Xcode or on command line with -O3
   - to circumvent the slow down with >>= in Double::AddTo, represent a Double as a BitSet, where the first bs represent the mantissa and the others the part > 1
+ - make sure that Double::AddTo does not alter the content of *addend
  */
 
 
