@@ -492,6 +492,7 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
     start = clock();
     for(s=0; s<n_bits*S; s++){
         
+        //this simulates the drawing of the random number for the Gillespie algorithm
         r = gsl_rng_uniform_int(ran, MAX);
         c = (a[s]) * b;
         
@@ -523,6 +524,7 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
         //        (A[s]).AddTo(&(B[s]), &carry);
         
         //                (A[s]) -= (&B[s]);
+        //this simulates the drawing of the random number for the Gillespie algorithm
         r = (unsigned int)gsl_rng_uniform_int(ran, MAX);
         (A[s]).Multiply(&B, &C);
         
