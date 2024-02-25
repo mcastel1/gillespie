@@ -519,7 +519,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     
     vector<Double> A(S), /*I need to declare B as a vector rather than as a single Double because each AddTo(&B) will alter the content of B and thus lead to potential overflows/unerflows as many AddTo(s) are executed*/B(S);
     Double C;
-    vector<double> a(S);
+    vector<double> a(n_bits*S);
     double b;
     
     
@@ -529,30 +529,23 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     
     
     //****************** calculation without bits ******************
-    start = clock();
-    for(s=0; s<S; ++s){
-        b = gsl_rng_uniform(ran);
-    }
-    end = clock();
-    cout << "Time to draw S random numbers without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
-
-    
-    
     b = gsl_pow_int(2.0, (MAX/2 - (int)gsl_rng_uniform_int(ran, MAX)))*gsl_rng_uniform(ran);
     //    cout << "b: " << b << endl;
-    for(s=0; s<S; ++s){
+    for(s=0; s<n_bits*S; ++s){
         a[s] = gsl_pow_int(2.0, (MAX/2 - (int)gsl_rng_uniform_int(ran, MAX)))*gsl_rng_uniform(ran);
         //                cout << "a[]: " << a[s] << endl;
     }
 
     start = clock();
-    for(s=0; s<S; s++){
+    for(s=0; s<n_bits*S; s++){
         
+        //this simulates the drawing of the random number for the Gillespie algorithm
+        r = gsl_rng_uniform_int(ran, MAX);
         (a[s]) += b;
         
     }
     end = clock();
-    cout << "Time for S operations without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
+    cout << "Time for n_bits*S [random number + operation]s without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
     
     
     //****************** calculation with bits ******************
@@ -562,7 +555,6 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
 //    B.PrintBase10("B");
     for(s=0; s<S; ++s){
         
-        r = gsl_rng_uniform_int(ran, MAX);
         for(i=0; i<n_bits; i++){
             A[s].Set((unsigned int)i, false, 1023 + (MAX/2 - gsl_rng_uniform_int(ran, MAX)), gsl_rng_uniform(ran));
         }
@@ -578,6 +570,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
         //        A[s].PrintBase10("A");
         //        B.PrintBase10("B");
 
+        //this simulates the drawing of the random number for the Gillespie algorithm
         r = gsl_rng_uniform_int(ran, MAX);
         //        (A[s]) += (&B);
         (A[s]).AddTo(&(B[s]));
@@ -587,7 +580,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     }
     end = clock();
     
-    cout << "Time for S operations with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" << endl;
+    cout << "Time for n_bits*S [random number + operation]s with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" << endl;
     
     
     //without this the for loop will not be exectued with -O3
