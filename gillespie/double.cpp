@@ -515,7 +515,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     //speed test  for Double::AddTo
     clock_t start=0, end=0;
     gsl_rng* ran;
-    unsigned long long int i, s;
+    unsigned long long int i, r=0, s, MAX = 128;
     
     vector<Double> A(S), /*I need to declare B as a vector rather than as a single Double because each AddTo(&B) will alter the content of B and thus lead to potential overflows/unerflows as many AddTo(s) are executed*/B(S);
     Double C;
@@ -538,10 +538,10 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
 
     
     
-    b = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
+    b = gsl_pow_int(2.0, (MAX/2 - (int)gsl_rng_uniform_int(ran, MAX)))*gsl_rng_uniform(ran);
     //    cout << "b: " << b << endl;
     for(s=0; s<S; ++s){
-        a[s] = gsl_pow_int(2.0, (128/2 - (int)gsl_rng_uniform_int(ran, 128)))*gsl_rng_uniform(ran);
+        a[s] = gsl_pow_int(2.0, (MAX/2 - (int)gsl_rng_uniform_int(ran, MAX)))*gsl_rng_uniform(ran);
         //                cout << "a[]: " << a[s] << endl;
     }
 
@@ -557,13 +557,14 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     
     //****************** calculation with bits ******************
     for(i=0; i<n_bits; i++){
-        C.Set((unsigned int)i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+        C.Set((unsigned int)i, false, 1023 + (MAX/2 - gsl_rng_uniform_int(ran, MAX)), gsl_rng_uniform(ran));
     }
 //    B.PrintBase10("B");
     for(s=0; s<S; ++s){
         
+        r = gsl_rng_uniform_int(ran, MAX);
         for(i=0; i<n_bits; i++){
-            A[s].Set((unsigned int)i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+            A[s].Set((unsigned int)i, false, 1023 + (MAX/2 - gsl_rng_uniform_int(ran, MAX)), gsl_rng_uniform(ran));
         }
         B[s] = C;
         
@@ -576,7 +577,8 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
         
         //        A[s].PrintBase10("A");
         //        B.PrintBase10("B");
-        
+
+        r = gsl_rng_uniform_int(ran, MAX);
         //        (A[s]) += (&B);
         (A[s]).AddTo(&(B[s]));
         
@@ -591,7 +593,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     //without this the for loop will not be exectued with -O3
     cout << endl;
     A.back().PrintBase10("dummy print");
-    cout << "dummy print a = " << a[S-1] << " " << b << endl;
+    cout << "dummy print a = " << a[S-1] << " " << b << " " << r << endl;
     
     
     
