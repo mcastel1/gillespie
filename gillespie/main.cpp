@@ -28,7 +28,7 @@
 
 /*
  note: - the performance test is very different if you do it on Xcode or on command line with -O3
-  - to circumvent the slow down with >>= in Double::AddTo, represent a Double as a BitSet, where the first bs represent the mantissa and the others the part > 1
+ - to circumvent the slow down with >>= in Double::AddTo, represent a Double as a BitSet, where the first bs represent the mantissa and the others the part > 1
  - make sure that Double::AddTo does not alter the content of *addend
  */
 
@@ -73,7 +73,7 @@ int main(int argc, char * argv[]) {
     int options;
     unsigned long long int seed=0/*, N=0*/, S=0;
     unsigned int i;
-
+    
     cout.precision(cout_precision);
     BitSet_one.ResizeAndSetAll(1);
     for(i = 0; i<n_bits; i++){
@@ -107,34 +107,14 @@ int main(int argc, char * argv[]) {
     
     
     
-//        CorrectnessTestUnsignedIntTimesTo(S, seed);
-//    SpeedTestUnsignedIntMultiply(S, seed);
+    //        CorrectnessTestUnsignedIntTimesTo(S, seed);
+    //    SpeedTestUnsignedIntMultiply(S, seed);
     //    CorrectnessTestUnsignedIntAddTo(S, seed);
     //    CorrectnessTestDoubleAddTo(S, seed);
-//        SpeedTestDoubleAddTo(S, seed);
-        SpeedTestUnsignedIntAddto(S, seed);
+    //        SpeedTestDoubleAddTo(S, seed);
+    SpeedTestUnsignedIntAddto(S, seed);
     
     
-    
-    
-    
-    
-    
-    
-   
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
- 
     
     //test for Double::operator <
     /*
@@ -244,7 +224,7 @@ int main(int argc, char * argv[]) {
     //test for UnsignedInt::Normalize
     //    UnsignedInt x(10), one(1);
     
- 
+    
     
     /*
      //test for Bits::Swap

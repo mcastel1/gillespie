@@ -515,7 +515,8 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     //speed test  for Double::AddTo
     clock_t start=0, end=0;
     gsl_rng* ran;
-    unsigned long long int i, r=0, s, MAX = 128;
+    unsigned long long int i, r=0, s;
+    int MAX = 128;
     
     vector<Double> A(S), /*I need to declare B as a vector rather than as a single Double because each AddTo(&B) will alter the content of B and thus lead to potential overflows/unerflows as many AddTo(s) are executed*/B(S);
     Double C;
