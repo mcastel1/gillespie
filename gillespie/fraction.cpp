@@ -12,16 +12,6 @@ inline Fraction::Fraction(unsigned int size) : BitSet(){
     
 }
 
-
-//compute the floor of *this x *multiplicant and store the result in *result. This requires result->GetSize() = GetSize() + (result->GetSize())
-inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* result){
-    
-    this->Multiply(multiplicand, result);
-    
-    
-    
-}
-
 //get  bit-by-bit the value in base 10 of *this and write it in *v
 inline void Fraction::GetBase10(vector<double>* v){
     

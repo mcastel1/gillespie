@@ -599,3 +599,14 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
     }
     
 }
+
+
+//compute the floor of *this x *multiplicant and store the result in *result. This requires result->GetSize() = GetSize() + (result->GetSize())
+inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* result){
+    
+    this->Multiply(multiplicand, result);
+    result->b.erase(result->b.begin(),result->b.begin()+(GetSize()));
+
+    
+    
+}
