@@ -120,14 +120,18 @@ int main(int argc, char * argv[]) {
     Fraction r(n_bits_mantissa);
     UnsignedInt n(16), result;
     
+    result.Resize(r.GetSize()+n.GetSize());
     r.SetRandom((unsigned int)0);
     n.SetRandom((unsigned int)1);
-    result.Resize(r.GetSize()+n.GetSize());
+
+    r.PrintBase10("r");
+    n.PrintBase10("n");
     
+
     
     r.FloorMultiply(&n, &result);
     
-    result.Print("result");
+    result.PrintBase10("result");
     
     
     //test for Double::operator <

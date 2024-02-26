@@ -21,3 +21,37 @@ inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* resu
     
     
 }
+
+//get  bit-by-bit the value in base 10 of *this and write it in *v
+inline void Fraction::GetBase10(vector<double>* v){
+    
+    unsigned int p, s;
+    
+    v->resize(n_bits);
+    
+    for(s=0; s<n_bits; s++){
+        
+        for(p=0, (*v)[s]=0.0; p<GetSize(); p++){
+            (*v)[s] += gsl_pow_int(2.0, p-GetSize()) * b[p].Get(s);
+        }
+        
+    }
+    
+}
+
+inline void Fraction::PrintBase10(string title){
+    
+    unsigned int p;
+    vector<double> v;
+    
+    cout << title << ": {";
+    for(GetBase10(&v), p=0; p<n_bits; p++){
+        
+        cout << v[n_bits-1-p] << " ";
+        
+    }
+    
+    cout << "}" << endl;
+    
+    
+}

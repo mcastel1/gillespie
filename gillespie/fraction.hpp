@@ -10,6 +10,8 @@ public:
     Fraction(void);
     Fraction(unsigned int);
     void FloorMultiply(UnsignedInt*, UnsignedInt*);
+    void GetBase10(vector<double>*);
+    void PrintBase10(string);
     
 //    friend class ;
     
