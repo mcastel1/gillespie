@@ -42,7 +42,7 @@
 </string>
 				<key>trailing</key>
 				<string>#include "bitset.cpp"
-
+#include "fraction.cpp"
 
 </string>
 			</dict>

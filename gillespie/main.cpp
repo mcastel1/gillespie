@@ -38,6 +38,7 @@
 #include "lib.cpp"
 #include "bits.cpp"
 #include "bitset.cpp"
+#include "fraction.cpp"
 
 
 #include "int.cpp"
