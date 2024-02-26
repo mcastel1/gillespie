@@ -612,3 +612,69 @@ inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* resu
     
     
 }
+
+
+
+//test for   Fraction::FloorMultiply
+inline void TestFractionFloorMultiply(unsigned long long int S, unsigned long long int seed){
+    
+    //the maximum unsigned int that I will draw
+    unsigned long long int max = 30;
+    UnsignedInt B(max), C;
+    Fraction A;
+    bool it_works;
+    vector<unsigned long long int> v_a, v_floor_a_times_b;
+    vector<double> v_b;
+    unsigned int i, s;
+    gsl_rng* ran;
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    
+    for(it_works = true, s=0; (s<S) & it_works; ++s){
+        
+        A.Resize(0);
+        B.Resize(0);
+
+        A.Resize(bits(n_bits_mantissa));
+        B.Resize(bits(max));
+        C.Resize(B.GetSize()+A.GetSize());
+
+        A.Clear();
+        B.Clear();
+
+        
+        for(i=0; i<n_bits; i++){
+            B.Set(i, gsl_rng_uniform_int(ran, max));
+        }
+        A.SetRandom(ran);
+        
+            
+        A.GetBase10(&v_b);
+        B.GetBase10(v_a);
+        
+        A.FloorMultiply(&B, &C);
+        
+        C.GetBase10(v_floor_a_times_b);
+        
+        cout << "Check of the result:" << endl;
+        for( i=0; i<n_bits; ++i){
+
+            cout << "[" << n_bits-1-i << "]:\t\t\t" << floor(v_a[n_bits-1-i]*v_b[n_bits-1-i]) << "\t\t\t" << v_floor_a_times_b[n_bits-1-i] << endl;
+
+            if(floor(v_a[n_bits-1-i]*v_b[n_bits-1-i]) != v_floor_a_times_b[n_bits-1-i]){
+                it_works = false;
+                break;
+            }
+            
+        }
+        //
+        
+    }
+    
+    cout << "It works  = " << it_works << "." << endl;
+    
+    
+}
+

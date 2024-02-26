@@ -23,6 +23,7 @@ public:
     void Normalize(unsigned int);
     void Resize(unsigned long long int);
     unsigned int GetSize(void);
+    void SetRandom(gsl_rng*);
     void SetRandom(unsigned int);
     void SetAll(unsigned long long int);
     void SetAllFromDouble(double);

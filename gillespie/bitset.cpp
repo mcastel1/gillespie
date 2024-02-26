@@ -59,21 +59,27 @@ inline unsigned int BitSet::GetSize(void){
 //initialize *this randomly
 inline  void BitSet::SetRandom(unsigned int seed){
     
-    unsigned int s, p;
     gsl_rng* ran;
     
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     gsl_rng_set(ran, seed);
 
+    SetRandom(ran);
+    
+    gsl_rng_free(ran);
+    
+}
 
+
+inline  void BitSet::SetRandom(gsl_rng* ran){
+    
+    unsigned int s, p;
+    
     for(s=0; s<b.size(); s++){
         for(p=0; p<n_bits; p++){
             b[s].Set(p, (bool)(gsl_rng_uniform_int(ran, 2)));
         }
     }
-    
-    gsl_rng_free(ran);
-
     
 }
 
