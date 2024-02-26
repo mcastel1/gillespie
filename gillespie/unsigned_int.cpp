@@ -306,7 +306,7 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int maximum_value, unsi
 
 
 //test for BitSet::AddTo/SubstractTo
-inline void CorrectnessTestUnsignedIntAddTo(unsigned long long int S, unsigned long long int seed){
+inline void TestUnsignedIntAddTo(unsigned long long int S, unsigned long long int seed){
     
     UnsignedInt a, b;
     vector<unsigned long long int> v_a, v_b, v_a_minus_b;
@@ -372,7 +372,7 @@ inline void CorrectnessTestUnsignedIntAddTo(unsigned long long int S, unsigned l
 
 
 //test for    UnsignedInt *=
-inline void CorrectnessTestUnsignedIntMultiply(unsigned long long int S, unsigned long long int seed){
+inline void TestUnsignedIntMultiply(unsigned long long int S, unsigned long long int seed){
     
     //the maximum unsigned int that I will draw
     unsigned long long int max = 30;

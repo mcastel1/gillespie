@@ -45,3 +45,10 @@ inline void Fraction::PrintBase10(string title){
     
     
 }
+
+
+inline void CorrectnessTestFractionFloorMultiply(unsigned long long int S, unsigned int seed){
+    
+    
+    
+}

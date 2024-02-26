@@ -108,13 +108,13 @@ int main(int argc, char * argv[]) {
     
     
     
-    //    CorrectnessTestUnsignedIntMultiply(S, seed);
-    //    SpeedTestUnsignedIntMultiply(128, S, seed);
-    //    CorrectnessTestUnsignedIntAddTo(S, seed);
-    //    CorrectnessTestDoubleAddTo(S, seed);
-    //    SpeedTestDoubleAddTo(S, seed);
-    //    SpeedTestUnsignedIntAddto(4, S, seed);
-    
+//    TestUnsignedIntMultiply(S, seed);
+//    SpeedTestUnsignedIntMultiply(128, S, seed);
+//    TestUnsignedIntAddTo(S, seed);
+//    TestDoubleAddTo(S, seed);
+//    SpeedTestDoubleAddTo(S, seed);
+//    SpeedTestUnsignedIntAddto(4, S, seed);
+//    
     
     
     Fraction r(n_bits_mantissa);

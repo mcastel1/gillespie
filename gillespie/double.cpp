@@ -597,7 +597,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
 }
 
 //test for Double::operator +=
-inline void CorrectnessTestDoubleAddTo(unsigned long long int S, unsigned long long int seed){
+inline void TestDoubleAddTo(unsigned long long int S, unsigned long long int seed){
     
     
     Double A, B;
