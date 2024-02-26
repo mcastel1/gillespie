@@ -605,7 +605,7 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
 inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* result){
     
     //THIS CAN BE OPTIMIZED: DO NOT DO THE OPERATIONS THAT LEAD TO BITS THAT WILL BE DISCARDED IN THE END, AND AVOID THE erase() WHICH IS TIME CONSUMING
-    this->Multiply(multiplicand, result);
+    Multiply(multiplicand, result);
     result->b.erase(result->b.begin(),result->b.begin()+(GetSize()));
     //THIS CAN BE OPTIMIZED: DO NOT DO THE OPERATIONS THAT LEAD TO BITS THAT WILL BE DISCARDED IN THE END, AND AVOID THE erase() WHICH IS TIME CONSUMING
 
@@ -619,12 +619,12 @@ inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* resu
 inline void TestFractionFloorMultiply(unsigned long long int S, unsigned long long int seed){
     
     //the maximum unsigned int that I will draw
-    unsigned long long int max = 30;
+    unsigned long long int max = 1024;
     UnsignedInt B(max), C;
     Fraction A;
     bool it_works;
-    vector<unsigned long long int> v_a, v_floor_a_times_b;
-    vector<double> v_b;
+    vector<unsigned long long int> v_A, v_floor_A_times_B;
+    vector<double> v_B;
     unsigned int i, s;
     gsl_rng* ran;
     
@@ -651,19 +651,19 @@ inline void TestFractionFloorMultiply(unsigned long long int S, unsigned long lo
         A.SetRandom(ran);
         
             
-        A.GetBase10(&v_b);
-        B.GetBase10(v_a);
+        A.GetBase10(&v_B);
+        B.GetBase10(v_A);
         
         A.FloorMultiply(&B, &C);
         
-        C.GetBase10(v_floor_a_times_b);
+        C.GetBase10(v_floor_A_times_B);
         
         cout << "Check of the result:" << endl;
         for( i=0; i<n_bits; ++i){
 
-            cout << "[" << n_bits-1-i << "]:\t\t\t" << floor(v_a[n_bits-1-i]*v_b[n_bits-1-i]) << "\t\t\t" << v_floor_a_times_b[n_bits-1-i] << endl;
+            cout << "[" << n_bits-1-i << "]:\t\t\t" << floor(v_A[n_bits-1-i]*v_B[n_bits-1-i]) << "\t\t\t" << v_floor_A_times_B[n_bits-1-i] << endl;
 
-            if(floor(v_a[n_bits-1-i]*v_b[n_bits-1-i]) != v_floor_a_times_b[n_bits-1-i]){
+            if(floor(v_A[n_bits-1-i]*v_B[n_bits-1-i]) != v_floor_A_times_B[n_bits-1-i]){
                 it_works = false;
                 break;
             }
