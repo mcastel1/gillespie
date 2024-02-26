@@ -604,8 +604,10 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
 //compute the floor of *this x *multiplicant and store the result in *result. This requires result->GetSize() = GetSize() + (result->GetSize())
 inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* result){
     
+    //THIS CAN BE OPTIMIZED: DO NOT DO THE OPERATIONS THAT LEAD TO BITS THAT WILL BE DISCARDED IN THE END, AND AVOID THE erase() WHICH IS TIME CONSUMING
     this->Multiply(multiplicand, result);
     result->b.erase(result->b.begin(),result->b.begin()+(GetSize()));
+    //THIS CAN BE OPTIMIZED: DO NOT DO THE OPERATIONS THAT LEAD TO BITS THAT WILL BE DISCARDED IN THE END, AND AVOID THE erase() WHICH IS TIME CONSUMING
 
     
     
