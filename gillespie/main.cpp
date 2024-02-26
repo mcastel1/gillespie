@@ -117,6 +117,19 @@ int main(int argc, char * argv[]) {
     
     
     
+    Fraction r(n_bits_mantissa);
+    UnsignedInt n(16), result;
+    
+    r.SetRandom((unsigned int)0);
+    n.SetRandom((unsigned int)1);
+    result.Resize(r.GetSize()+n.GetSize());
+    
+    
+    r.FloorMultiply(&n, &result);
+    
+    result.Print("result");
+    
+    
     //test for Double::operator <
     /*
      Double a, b;
