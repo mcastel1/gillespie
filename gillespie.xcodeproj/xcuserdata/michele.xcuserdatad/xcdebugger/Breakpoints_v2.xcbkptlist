@@ -14,9 +14,9 @@
             filePath = "gillespie/unsigned_int.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "491"
-            endingLineNumber = "491"
-            landmarkName = "SpeedTestUnsignedIntMultiply(S, seed)"
+            startingLineNumber = "494"
+            endingLineNumber = "494"
+            landmarkName = "SpeedTestUnsignedIntMultiply(maximum_value, S, seed)"
             landmarkType = "9">
          </BreakpointContent>
       </BreakpointProxy>

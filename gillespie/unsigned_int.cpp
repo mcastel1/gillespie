@@ -202,7 +202,7 @@ inline UnsignedInt BitSet::PositionOfFirstSignificantBit(void){
 
 
 //speed test of UnsignedInt::AddTo method, with S samples and seed seed
-inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long long int seed){
+inline void SpeedTestUnsignedIntAddto(unsigned long long int maximum_value, unsigned long long int S, unsigned long long int seed){
         
     
     cout << " ***************************** Speed test for UnsignedInt::AddTo *****************************" << endl;
@@ -210,7 +210,7 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
     clock_t start=0, end=0;
     gsl_rng* ran;
     unsigned int i;
-    unsigned long long int s, r=0, MAX = 1024;
+    unsigned long long int s, r=0;
     double x = 0.0;
     Bits carry;
     
@@ -225,7 +225,7 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
     //****************** calculation without bits ******************
     for(s=0; s<n_bits*S; s++){
         
-        r = gsl_rng_uniform_int(ran, MAX);
+        r = gsl_rng_uniform_int(ran, maximum_value);
         a[s] = (unsigned int)r;
         if(r!=0){
             b[s] = (unsigned int)(r-1-gsl_rng_uniform_int(ran, r));
@@ -240,7 +240,7 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
     for(s=0; s<n_bits*S; s++){
         
         //this simulates the drawing of the random number for the Gillespie algorithm
-        r = gsl_rng_uniform_int(ran, MAX);
+        r = gsl_rng_uniform_int(ran, maximum_value);
         x = gsl_rng_uniform(ran);
         //        (a[s]) += b[s];
         (a[s]) -= b[s];
@@ -253,8 +253,8 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
     //****************** calculation with bits ******************
     for(s=0; s<S; s++){
         
-        A[s] = UnsignedInt(MAX);
-        B[s] = UnsignedInt(MAX);
+        A[s] = UnsignedInt(maximum_value);
+        B[s] = UnsignedInt(maximum_value);
         
     }
     
@@ -262,7 +262,7 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
         
         for(i=0; i<n_bits; i++){
             
-            r = gsl_rng_uniform_int(ran, MAX);
+            r = gsl_rng_uniform_int(ran, maximum_value);
             A[s].Set(i, r);
             if(r!=0){
                 B[s].Set(i, r-1-gsl_rng_uniform_int(ran, r));
@@ -282,7 +282,7 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
         //        B.PrintBase10("B");
         
         //this simulates the drawing of the random number for the Gillespie algorithm
-        r = gsl_rng_uniform_int(ran, MAX);
+        r = gsl_rng_uniform_int(ran, maximum_value);
         x = gsl_rng_uniform(ran);
         //        (A[s]) += (&B[s]);
         //        (A[s]).AddTo(&(B[s]), &carry);
@@ -449,7 +449,7 @@ inline void CorrectnessTestUnsignedIntTimesTo(unsigned long long int S, unsigned
 
 
 
-inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long long int seed){
+inline void SpeedTestUnsignedIntMultiply(unsigned long long int maximum_value, unsigned long long int S, unsigned long long int seed){
     
     
     cout << " ***************************** Speed test for UnsignedInt::Multiply *****************************" << endl;
@@ -457,7 +457,7 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
     
     clock_t start=0, end=0;
     gsl_rng* ran;
-    unsigned long long int r=0, s, MAX = 100;
+    unsigned long long int r=0, s;
     unsigned int i, b, c=0;
     double x = 0.0;
     
@@ -466,9 +466,9 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
     vector<unsigned int> a(n_bits*S);
     
     for(s=0; s<A.size(); ++s){
-        A[s].Resize(bits(MAX));
+        A[s].Resize(bits(maximum_value));
     }
-    B.Resize(bits(MAX));
+    B.Resize(bits(maximum_value));
     C.Resize(A[0].GetSize()+B.GetSize());
     
     
@@ -477,14 +477,14 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
     
     
     
-    b = (unsigned int)gsl_rng_uniform_int(ran, MAX);
+    b = (unsigned int)gsl_rng_uniform_int(ran, maximum_value);
     //    cout << "b: " << b << endl;
 
     start = clock();
     for(s=0; s<n_bits*S; s++){
         
         //this simulates the drawing of the random number for the Gillespie algorithm
-        r = gsl_rng_uniform_int(ran, MAX);
+        r = gsl_rng_uniform_int(ran, maximum_value);
         x = gsl_rng_uniform(ran);
         c = (a[s]) * b;
         
@@ -497,12 +497,12 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
     for(s=0; s<S; s++){
         
         for(i=0; i<n_bits; i++){
-            A[s].Set(i, gsl_rng_uniform_int(ran, MAX));
+            A[s].Set(i, gsl_rng_uniform_int(ran, maximum_value));
         }
         
     }
     for(i=0; i<n_bits; i++){
-        B.Set(i, gsl_rng_uniform_int(ran, MAX));
+        B.Set(i, gsl_rng_uniform_int(ran, maximum_value));
     }
 
     
@@ -517,7 +517,7 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
         
         //                (A[s]) -= (&B[s]);
         //this simulates the drawing of the random number for the Gillespie algorithm
-        r = (unsigned int)gsl_rng_uniform_int(ran, MAX);
+        r = (unsigned int)gsl_rng_uniform_int(ran, maximum_value);
         x = gsl_rng_uniform(ran);
         (A[s]).Multiply(&B, &C);
         
