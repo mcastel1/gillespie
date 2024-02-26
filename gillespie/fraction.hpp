@@ -9,6 +9,7 @@ public:
     
     Fraction(void);
     Fraction(unsigned int);
+    void FloorMultiply(UnsignedInt*, UnsignedInt*);
     
 //    friend class ;
     

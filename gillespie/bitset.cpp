@@ -664,12 +664,7 @@ inline void BitSet::operator *= (BitSet* multiplicand){
 //multiply *this by *multiplicand and write the result in *result. This method reqires *result to be large enough to host the result:
 /*
  
- *this = 2^0 (this->b)[0] + .... + 2^{(this->b).size()-1} (this->b)[(this->b).size()-1]
- *multiplicand = 2^0 (multiplicand->b)[0] + .... + 2^{(multiplicand->b).size()-1} (multiplicand->b)[(multiplicand->b).size()-1]
- 
- (*this) x (*multiplicand) = 2^{0}... + .... + 2^{(this->b).size()-1 + (multiplicand->b).size()-1}}
- thus
- result->GetSize() >= (this-GetSize()) + (multiplicand->GetSize() - 1
+ result->GetSize() <= (this-GetSize()) + (multiplicand->GetSize(), and when I call this method I take result->GetSize() = (this-GetSize()) + (multiplicand->GetSize() to be safe
 
  the times are from  ./main.o -s 0 -S 6
  */

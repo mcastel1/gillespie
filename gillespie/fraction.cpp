@@ -11,3 +11,11 @@ inline Fraction::Fraction(unsigned int size) : BitSet(){
     b.resize(size);
     
 }
+
+
+//compute the floor of *this x *multiplicant and store the result in *result. This requires result->GetSize() >= GetSize() + 
+inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* result){
+    
+    
+    
+}
