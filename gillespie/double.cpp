@@ -516,6 +516,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     clock_t start=0, end=0;
     gsl_rng* ran;
     unsigned long long int i, r=0, s;
+    double x = 0.0;
     int MAX = 128;
     
     vector<Double> A(S), /*I need to declare B as a vector rather than as a single Double because each AddTo(&B) will alter the content of B and thus lead to potential overflows/unerflows as many AddTo(s) are executed*/B(S);
@@ -542,6 +543,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
         
         //this simulates the drawing of the random number for the Gillespie algorithm
         r = gsl_rng_uniform_int(ran, MAX);
+        x = gsl_rng_uniform(ran);
         (a[s]) += b;
         
     }
@@ -573,6 +575,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
 
         //this simulates the drawing of the random number for the Gillespie algorithm
         r = gsl_rng_uniform_int(ran, MAX);
+        x = gsl_rng_uniform(ran);
         //        (A[s]) += (&B);
         (A[s]).AddTo(&(B[s]));
         
@@ -587,7 +590,7 @@ inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long in
     //without this the for loop will not be exectued with -O3
     cout << endl;
     A.back().PrintBase10("dummy print");
-    cout << "dummy print a = " << a[S-1] << " " << b << " " << r << endl;
+    cout << "dummy print a = " << a[S-1] << " " << b << " " << r << x << endl;
     
     
     

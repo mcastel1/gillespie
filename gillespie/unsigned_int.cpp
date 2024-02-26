@@ -203,9 +203,7 @@ inline UnsignedInt BitSet::PositionOfFirstSignificantBit(void){
 
 //speed test of UnsignedInt::AddTo method, with S samples and seed seed
 inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long long int seed){
-    
-    //test for speed for UnsignedInt +=
-    
+        
     
     cout << " ***************************** Speed test for UnsignedInt::AddTo *****************************" << endl;
     
@@ -213,6 +211,7 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
     gsl_rng* ran;
     unsigned int i;
     unsigned long long int s, r=0, MAX = 1024;
+    double x = 0.0;
     Bits carry;
     
     vector<UnsignedInt> A(S), B(S);
@@ -242,6 +241,7 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
         
         //this simulates the drawing of the random number for the Gillespie algorithm
         r = gsl_rng_uniform_int(ran, MAX);
+        x = gsl_rng_uniform(ran);
         //        (a[s]) += b[s];
         (a[s]) -= b[s];
         
@@ -283,6 +283,7 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
         
         //this simulates the drawing of the random number for the Gillespie algorithm
         r = gsl_rng_uniform_int(ran, MAX);
+        x = gsl_rng_uniform(ran);
         //        (A[s]) += (&B[s]);
         //        (A[s]).AddTo(&(B[s]), &carry);
     //                (A[s]) -= (&B[s]);
@@ -299,7 +300,7 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int S, unsigned long lo
     //without this the for loop will not be exectued with -O3
     cout << endl;
     A.back().PrintBase10("dummy print");
-    cout << "dummy print: a = " << a[S-1] << " " << b[S-1] << r << endl;
+    cout << "dummy print: a = " << a[S-1] << " " << b[S-1] << r << x << endl;
     
 }
 
@@ -458,6 +459,7 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
     gsl_rng* ran;
     unsigned long long int r=0, s, MAX = 100;
     unsigned int i, b, c=0;
+    double x = 0.0;
     
     vector<UnsignedInt> A(S);
     UnsignedInt B, C;
@@ -483,6 +485,7 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
         
         //this simulates the drawing of the random number for the Gillespie algorithm
         r = gsl_rng_uniform_int(ran, MAX);
+        x = gsl_rng_uniform(ran);
         c = (a[s]) * b;
         
     }
@@ -515,6 +518,7 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
         //                (A[s]) -= (&B[s]);
         //this simulates the drawing of the random number for the Gillespie algorithm
         r = (unsigned int)gsl_rng_uniform_int(ran, MAX);
+        x = gsl_rng_uniform(ran);
         (A[s]).Multiply(&B, &C);
         
         //        A[s].PrintBase10("A");
@@ -529,7 +533,7 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int S, unsigned long
     //without this the for loop will not be exectued with -O3
     cout << endl;
     C.PrintBase10("dummy print");
-    cout << "dummy print a = " << a[S-1] << " " << c << " " << r << endl;
+    cout << "dummy print a = " << a[S-1] << " " << c << " " << r << x << endl;
     
     
     
