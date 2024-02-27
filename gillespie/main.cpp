@@ -11,6 +11,8 @@
 #include <stdio.h>
 #include <time.h>
 #include <getopt.h>
+//this has to be uncommented to run on mesopsl
+//#include <stdint.h>
 
 #include "gsl_rng.h"
 #include "gsl_math.h"
