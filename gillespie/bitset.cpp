@@ -326,7 +326,7 @@ inline void BitSet::operator += (BitSet* addend){
 }
 
 
-//same as BitSet::operator +=  but the last bit is not pushed back into b, but written into *carry
+//same as BitSet::operator +=  but the last bit is not pushed back into b, but written into *carry. This method requires this->GetSize() to be >= addend->GetSize()
 inline void BitSet::AddTo(BitSet* addend, Bits* carry){
     
     Bits t;
