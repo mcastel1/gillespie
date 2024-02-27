@@ -554,27 +554,9 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
     unsigned int s, p;
     Bits carry, t, u;
         
-    //set work_space_b equal to *this
-    //1.2 e-2 s
-//    work_space_b->SetAll(0);
-//    //9e-3 s
-//    for(s=0; s<GetSize(); s++){
-//        (work_space_b->b)[s] = b[s];
-//    }
     
-    for(s=0, result->SetAll(0); s<multiplicand->GetSize(); s++){
-        //multiply by the s-th element of multiplicand: at each step of this loop *this is shifted by one unit to the left
-        
-        
-        //the temporarly variable work_space is set equal to the original value of *this multiplyed by 2^s
-        //1.8e-2 s
-//        (*work_space_a) = (*work_space_b);
-        
-        
-        //I perform this '&' to multiply by *work_space the s-th bit of the multiplicand
-        //1.5 e-2 s
-//        (*work_space_a) &= &((*multiplicand)[s]);
-//        work_space_a->AndTo(&((*multiplicand)[s]), s, s+(multiplicand->GetSize()));
+    for(s=0, /*BOTTLENECK: this is time consuming*/result->SetAll(0); s<multiplicand->GetSize(); s++){
+        //multiply by the s-th element of multiplicand: at each step of this loop *this is shifted by s places to the left and added to the result
         
         for(p=0, carry.Clear(); p<GetSize(); p++){
             
@@ -586,15 +568,6 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
             
         }
         ((result->b)[p+s]).n = (carry.n);
-
-        
-        //add the partial sum to the result
-        //2.4e-2 s
-//        result->AddTo(work_space_a, &carry);
-        
-        //shift *this = *work_space_b
-        //2.2 e-2 s
-//        (*work_space_b) <<= &Bits_one;
 
     }
     
