@@ -11,10 +11,10 @@ System::System(void){
     
 }
 
-System::System(unsigned int N_in, unsigned int seed_in){
+System::System(unsigned long long int N_in, unsigned int seed_in){
     
     unsigned int i, s, *n;
-    const double p[] = {1.0, 1.0, 1.0};
+    const double p[] = {1.0, 1.0, 2.0};
 
 
     n = new unsigned int [3];
@@ -45,6 +45,23 @@ System::System(unsigned int N_in, unsigned int seed_in){
             c[i].Set(s, gsl_rng_uniform_int(ran, pow(2, n_bits_N)));
             
         }
+        
+    }
+    
+    for(i=0; i<3; ++i){
+        
+        cout << "c[" << i << "]" << endl;
+        c[i].PrintBase10("");
+        
+   
+        
+    }
+    
+    
+    for(i=0; i<3; ++i){
+        
+        cout << "x[" << i << "]" << endl;
+        x[i].PrintBase10("");
         
     }
     

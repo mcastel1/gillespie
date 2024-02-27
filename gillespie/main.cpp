@@ -76,8 +76,8 @@
 int main(int argc, char * argv[]) {
     
     int options;
-    unsigned long long int seed=0/*, N=0*/, S=0;
-    unsigned int i;
+    unsigned long long int/*, N=0*/ S=0;
+    unsigned int i, seed=0;
     
     cout.precision(cout_precision);
     BitSet_one.ResizeAndSetAll(1);
@@ -108,18 +108,18 @@ int main(int argc, char * argv[]) {
         
     }
     
-    
-    
-    
+
     
     //    TestUnsignedIntMultiply(S, seed);
     //    SpeedTestUnsignedIntMultiply(128, S, seed);
     //    TestUnsignedIntAddTo(S, seed);
     //    TestDoubleAddTo(S, seed);
     //    SpeedTestDoubleAddTo(S, seed);
-    SpeedTestUnsignedIntAddto(128, S, seed);
+    //    SpeedTestUnsignedIntAddto(128, S, seed);
     //    TestFractionFloorMultiply(S, seed);
     //    SpeedTestFractionFloorMultiply(128, S, seed);
+    
+    System Frank(128, seed);
     
         
     

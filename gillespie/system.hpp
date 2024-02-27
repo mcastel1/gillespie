@@ -15,7 +15,7 @@ public:
     gsl_rng* ran;
     
     System(void);
-    System(unsigned int, unsigned int);
+    System(unsigned long long int, unsigned int);
     void Iterate(void);
     
 
