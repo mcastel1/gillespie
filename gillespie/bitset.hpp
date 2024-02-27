@@ -26,6 +26,7 @@ public:
     void SetRandom(gsl_rng*);
     void SetRandom(unsigned int);
     void SetAll(unsigned long long int);
+    void SetAll(Bits&);
     void SetAllFromDouble(double);
     void SetFromDouble(unsigned int, double);
     void ComplementTo(void);

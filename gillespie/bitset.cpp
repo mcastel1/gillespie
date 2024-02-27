@@ -101,6 +101,17 @@ inline void BitSet::SetAll(unsigned long long int i){
 }
 
 
+//set all b[]s equal to m
+inline void BitSet::SetAll(Bits& m){
+    
+    for(unsigned int s=0; s<GetSize(); s++){
+        b[s] = m;
+    }
+    
+}
+
+
+
 //set all n_bits entries of *this equal to the entries stored (in IEEE754 format) in the mantissa of x. This requires b to be properly sized
 inline void BitSet::SetAllFromDouble(double x){
     

@@ -555,7 +555,7 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
     Bits carry, t, u;
         
     
-    for(s=0, /*BOTTLENECK: this is time consuming*/result->SetAll(0); s<multiplicand->GetSize(); s++){
+    for(s=0, result->SetAll(Bits_zero); s<multiplicand->GetSize(); s++){
         //multiply by the s-th element of multiplicand: at each step of this loop *this is shifted by s places to the left and added to the result
         
         for(p=0, carry.Clear(); p<GetSize(); p++){
