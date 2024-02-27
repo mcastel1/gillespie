@@ -688,41 +688,78 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
     
   
     //the maximum unsigned int that I will draw
-    unsigned long long int max = 1024;
-    UnsignedInt B(max), C;
-    Fraction A;
-    unsigned int i, s;
+    unsigned long long int r=0;
+    vector<double> a(n_bits*S);
+    UnsignedInt B(maximum_value), C;
+    vector<Fraction> A(S);
+    unsigned int b=0, c=0, i, s;
+    double x = 0.0;
     gsl_rng* ran;
+    clock_t start=0, end=0;
+
     
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     gsl_rng_set(ran, seed);
     
     
-    for(s=0; s<S; ++s){
+    //****************** calculation without bits ******************
+    b = (unsigned int)gsl_rng_uniform_int(ran, maximum_value);
+    for(s=0; s<n_bits*S; s++){
         
-        A.Resize(0);
-        B.Resize(0);
-
-        A.Resize(bits(n_bits_mantissa));
-        B.Resize(bits(max));
-        C.Resize(B.GetSize()+A.GetSize());
-
-        A.Clear();
-        B.Clear();
-
-        
-        A.SetRandom(ran);
-        for(i=0; i<n_bits; i++){
-            B.Set(i, gsl_rng_uniform_int(ran, max));
-        }
-
-            
-        
-        A.FloorMultiply(&B, &C);
-        
-        
+        a[s] = gsl_rng_uniform(ran);
         
     }
     
+    start = clock();
+    for(s=0; s<n_bits*S; s++){
+        
+        //this simulates the drawing of the random number for the Gillespie algorithm
+        r = gsl_rng_uniform_int(ran, maximum_value);
+        x = gsl_rng_uniform(ran);
+        
+        c = floor((a[s])*b);
+        
+    }
+    end = clock();
+    cout  << "Time for n_bits*S [random number + operation]s without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
+    
+
+    
+    
+    //****************** calculation with bits ******************
+    C.Resize(B.GetSize()+A[0].GetSize());
+    
+
+    for(s=0; s<S; s++){
+        
+        A[s].Resize(bits(n_bits_mantissa));
+        A[s].SetRandom(ran);
+
+    }
+    for(i=0; i<n_bits; i++){
+        B.Set(i, gsl_rng_uniform_int(ran, maximum_value));
+    }
+    
+    start = clock();
+    for(s=0; s<S; ++s){
+                
+         //this simulates the drawing of the random number for the Gillespie algorithm
+         r = gsl_rng_uniform_int(ran, maximum_value);
+         x = gsl_rng_uniform(ran);
+
+        A[s].FloorMultiply(&B, &C);
+        
+    }
+    end = clock();
+    
+    cout << "Time for S [random number + operation]s with bits = " << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+    
+    
+    //without this the for loop will not be exectued with -O3
+    cout << endl;
+    A.back().PrintBase10("dummy print");
+    cout << "dummy print: a = " << a[S-1] << " " << b << c << r << x << endl;
+ 
+
     
 }
