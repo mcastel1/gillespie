@@ -678,3 +678,51 @@ inline void TestFractionFloorMultiply(unsigned long long int S, unsigned long lo
     
 }
 
+
+
+inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value, unsigned long long int S, unsigned long long int seed){
+    
+    
+    cout << " ***************************** Speed test for Fraction::FloorMultiply *****************************" << endl;
+
+    
+  
+    //the maximum unsigned int that I will draw
+    unsigned long long int max = 1024;
+    UnsignedInt B(max), C;
+    Fraction A;
+    unsigned int i, s;
+    gsl_rng* ran;
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    
+    for(s=0; s<S; ++s){
+        
+        A.Resize(0);
+        B.Resize(0);
+
+        A.Resize(bits(n_bits_mantissa));
+        B.Resize(bits(max));
+        C.Resize(B.GetSize()+A.GetSize());
+
+        A.Clear();
+        B.Clear();
+
+        
+        A.SetRandom(ran);
+        for(i=0; i<n_bits; i++){
+            B.Set(i, gsl_rng_uniform_int(ran, max));
+        }
+
+            
+        
+        A.FloorMultiply(&B, &C);
+        
+        
+        
+    }
+    
+    
+}
