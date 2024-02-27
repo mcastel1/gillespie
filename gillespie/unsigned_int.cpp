@@ -690,9 +690,9 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
     //the maximum unsigned int that I will draw
     unsigned long long int r=0;
     vector<double> a(n_bits*S);
+    vector<Fraction> A(S);
     UnsignedInt B(maximum_value);
     vector<UnsignedInt> C(S);
-    vector<Fraction> A(S);
     unsigned int b=0, c=0, i, s;
     double x = 0.0;
     gsl_rng* ran;
@@ -706,9 +706,7 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
     //****************** calculation without bits ******************
     b = (unsigned int)gsl_rng_uniform_int(ran, maximum_value);
     for(s=0; s<n_bits*S; s++){
-        
         a[s] = gsl_rng_uniform(ran);
-        
     }
     
     start = clock();
@@ -761,7 +759,7 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
     //without this the for loop will not be exectued with -O3
     cout << endl;
     A.back().PrintBase10("dummy print");
-    cout << "dummy print: a = " << a[S-1] << " " << b << c << r << x << endl;
+    cout << "dummy print: a = " << a.back() << " " << b << c << r << x << endl;
  
 
     
