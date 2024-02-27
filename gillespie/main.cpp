@@ -17,6 +17,7 @@
 #include "gsl_rng.h"
 #include "gsl_math.h"
 #include "gsl_sf_log.h"
+#include "gsl_randist.h"
 
 /*compile on mac
  //compile without optimization
