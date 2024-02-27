@@ -9,6 +9,8 @@
 #define n_bits_mantissa 52
 #define n_bits_exponent 11
 #define n_bits_sign 1
+//the maximum number of bits for c[j]
+#define n_bits_N 32
 #define cout_precision 8
 const unsigned long long int ullong_1 = 1;
 const unsigned long long int ullong_0 = 0;

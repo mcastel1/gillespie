@@ -22,6 +22,7 @@ System::System(unsigned int N_in, unsigned int seed_in){
 
     for(x.clear(), i=0; i<3; ++i){
         x.push_back(UnsignedInt(N));
+        c.push_back(UnsignedInt(n_bits_N));
     }
     
     gsl_rng_set(ran, seed);
