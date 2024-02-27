@@ -9,7 +9,7 @@ public:
     
     Fraction(void);
     Fraction(unsigned int);
-    void FloorMultiply(UnsignedInt*, UnsignedInt*);
+    void FloorMultiply(UnsignedInt*, UnsignedInt*, UnsignedInt*);
     void GetBase10(vector<double>*);
     void PrintBase10(string);
     

@@ -601,16 +601,14 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
 }
 
 
-//compute the floor of *this x *multiplicant and store the result in *result. This requires result->GetSize() = (this->GetSize()) + (multiplicand->GetSize())
-inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* result){
+//compute the floor of *this x *multiplicant and store the result in *result. This requires work_space->GetSize() = (this->GetSize()) + (multiplicand->GetSize()) and result->GetSize() = this->GetSize()
+inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* work_space){
     
-    //THIS CAN BE OPTIMIZED: DO NOT DO THE OPERATIONS THAT LEAD TO BITS THAT WILL BE DISCARDED IN THE END, AND AVOID THE erase() WHICH IS TIME CONSUMING
-    Multiply(multiplicand, result);
-    result->b.erase(result->b.begin(),result->b.begin()+(GetSize()));
-    //THIS CAN BE OPTIMIZED: DO NOT DO THE OPERATIONS THAT LEAD TO BITS THAT WILL BE DISCARDED IN THE END, AND AVOID THE erase() WHICH IS TIME CONSUMING
-
-    
-    
+    Multiply(multiplicand, work_space);
+  
+    //copy the last this->GetSize() bits of work_space into *result : this will yield the floor of the multiplication above
+    copy(work_space->b.begin()+GetSize(), work_space->b.end(), result->b.begin());
+     
 }
 
 
@@ -620,7 +618,7 @@ inline void TestFractionFloorMultiply(unsigned long long int S, unsigned long lo
     
     //the maximum unsigned int that I will draw
     unsigned long long int max = 1024;
-    UnsignedInt B(max), C;
+    UnsignedInt B(max), C, W;
     Fraction A;
     bool it_works;
     vector<unsigned long long int> v_A, v_floor_A_times_B;
@@ -631,15 +629,13 @@ inline void TestFractionFloorMultiply(unsigned long long int S, unsigned long lo
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     gsl_rng_set(ran, seed);
     
-    
+    W.Resize(bits(n_bits_mantissa)+bits(max));
+    C.Resize(bits(max));
+
     for(it_works = true, s=0; (s<S) & it_works; ++s){
         
-        A.Resize(0);
-        B.Resize(0);
-
         A.Resize(bits(n_bits_mantissa));
         B.Resize(bits(max));
-        C.Resize(B.GetSize()+A.GetSize());
 
         A.Clear();
         B.Clear();
@@ -654,7 +650,7 @@ inline void TestFractionFloorMultiply(unsigned long long int S, unsigned long lo
         A.GetBase10(&v_B);
         B.GetBase10(v_A);
         
-        A.FloorMultiply(&B, &C);
+        A.FloorMultiply(&B, &C, &W);
         
         C.GetBase10(v_floor_A_times_B);
         
@@ -691,8 +687,7 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
     unsigned long long int r=0;
     vector<double> a(n_bits*S);
     vector<Fraction> A(S);
-    UnsignedInt B(maximum_value);
-    vector<UnsignedInt> C(S);
+    UnsignedInt B(maximum_value), C(maximum_value), W;
     unsigned int b=0, c=0, i, s;
     double x = 0.0;
     gsl_rng* ran;
@@ -727,19 +722,13 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
     
     //****************** calculation with bits ******************
     for(s=0; s<S; s++){
-        
         A[s].Resize(bits(n_bits_mantissa));
-        C[s].Resize(bits(maximum_value)+bits(n_bits_mantissa));
-        
-    }
-
-    for(s=0; s<S; s++){
         A[s].SetRandom(ran);
     }
     for(i=0; i<n_bits; i++){
         B.Set(i, gsl_rng_uniform_int(ran, maximum_value));
     }
-
+    W.Resize(bits(n_bits_mantissa)+bits(maximum_value));
     
     start = clock();
     for(s=0; s<S; ++s){
@@ -748,7 +737,7 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
          r = gsl_rng_uniform_int(ran, maximum_value);
          x = gsl_rng_uniform(ran);
 
-        A[s].FloorMultiply(&B, &C[s]);
+        A[s].FloorMultiply(&B, &C, &W);
         
     }
     end = clock();
@@ -759,6 +748,7 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
     //without this the for loop will not be exectued with -O3
     cout << endl;
     A.back().PrintBase10("dummy print");
+    C.PrintBase10("dummy print");
     cout << "dummy print: a = " << a.back() << " " << b << c << r << x << endl;
  
 
