@@ -601,7 +601,7 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
 }
 
 
-//compute the floor of *this x *multiplicant and store the result in *result. This requires result->GetSize() = GetSize() + (result->GetSize())
+//compute the floor of *this x *multiplicant and store the result in *result. This requires result->GetSize() = (this->GetSize()) + (multiplicand->GetSize())
 inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* result){
     
     //THIS CAN BE OPTIMIZED: DO NOT DO THE OPERATIONS THAT LEAD TO BITS THAT WILL BE DISCARDED IN THE END, AND AVOID THE erase() WHICH IS TIME CONSUMING
@@ -690,7 +690,8 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
     //the maximum unsigned int that I will draw
     unsigned long long int r=0;
     vector<double> a(n_bits*S);
-    UnsignedInt B(maximum_value), C;
+    UnsignedInt B(maximum_value);
+    vector<UnsignedInt> C(S);
     vector<Fraction> A(S);
     unsigned int b=0, c=0, i, s;
     double x = 0.0;
@@ -727,18 +728,20 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
     
     
     //****************** calculation with bits ******************
-    C.Resize(B.GetSize()+A[0].GetSize());
-    
-
     for(s=0; s<S; s++){
         
         A[s].Resize(bits(n_bits_mantissa));
-        A[s].SetRandom(ran);
+        C[s].Resize(bits(maximum_value)+bits(n_bits_mantissa));
+        
+    }
 
+    for(s=0; s<S; s++){
+        A[s].SetRandom(ran);
     }
     for(i=0; i<n_bits; i++){
         B.Set(i, gsl_rng_uniform_int(ran, maximum_value));
     }
+
     
     start = clock();
     for(s=0; s<S; ++s){
@@ -747,7 +750,7 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
          r = gsl_rng_uniform_int(ran, maximum_value);
          x = gsl_rng_uniform(ran);
 
-        A[s].FloorMultiply(&B, &C);
+        A[s].FloorMultiply(&B, &C[s]);
         
     }
     end = clock();
