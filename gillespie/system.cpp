@@ -28,7 +28,7 @@ System::System(unsigned int N_in, unsigned int seed_in){
     
 }
 
-void System::iterate(void){
+void System::Iterate(void){
     
     
     
