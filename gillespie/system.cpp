@@ -26,7 +26,9 @@ System::System(unsigned long long int N_in, unsigned int seed_in){
     for(x.clear(), c.clear(), i=0; i<3; ++i){
         
         x.push_back(UnsignedInt(N));
-        c.push_back(UnsignedInt(n_bits_N));
+        c.push_back(UnsignedInt(M));
+        //a must host c[](x[]*x[], thus
+        a.push_back(UnsignedInt(M*N*N));
         
     }
     
@@ -44,7 +46,7 @@ System::System(unsigned long long int N_in, unsigned int seed_in){
             //write the initial number of particles in x
             x[i].Set(s, n[i]);
             //draw the values of c and write them in c
-            c[i].Set(s, gsl_rng_uniform_int(ran, pow(2, n_bits_N)));
+            c[i].Set(s, gsl_rng_uniform_int(ran, M));
             
         }
         
@@ -74,7 +76,7 @@ System::System(unsigned long long int N_in, unsigned int seed_in){
 
 void System::Iterate(void){
     
-    //draw the random number 
+    //draw the random number
     R.SetAllFromDouble(gsl_rng_uniform(ran));
     
 }
