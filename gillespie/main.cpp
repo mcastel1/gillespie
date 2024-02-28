@@ -76,8 +76,9 @@
 int main(int argc, char * argv[]) {
     
     int options;
-    unsigned long long int/*, N=0*/ S=0;
+    unsigned long long int/*, N=0*/ S=0, s;
     unsigned int i, seed=0;
+    clock_t start=0, end=0;
     
     cout.precision(cout_precision);
     BitSet_one.ResizeAndSetAll(1);
@@ -121,8 +122,18 @@ int main(int argc, char * argv[]) {
     
     System Frank(128, seed);
     
-    Frank.Iterate();
     
+    start = clock();
+    for(s=0; s<S; ++s){
+        Frank.Iterate();
+    }
+    end = clock();
+    cout << "Time for S Iterate()s with bits = " << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+   
+    
+    cout << endl << "dummy print";
+    Frank.Z.PrintBase10("");
+    Frank.RHS.PrintBase10("");
     
     cout << endl;
     return 0;
