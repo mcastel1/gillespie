@@ -36,6 +36,8 @@ System::System(unsigned long long int N_in, unsigned int seed_in){
     //Z must contain a[0] + a[1] + a[2]
     Z = UnsignedInt(3*M*N*N);
     R.Resize(n_bits_mantissa);
+    RHS.Resize(Z.GetSize());
+    W.Resize(R.GetSize() + Z.GetSize());
     
         
     for(s=0; s<n_bits; s++){
@@ -99,7 +101,7 @@ void System::Iterate(void){
     Z.AddTo(&(a[1]), &carry);
     Z.AddTo(&(a[2]), &carry);
 
-    
+    R.FloorMultiply(&Z, &RHS, &W);
 
     a[0].PrintBase10("c[0]*x[0]*x[1]");
     

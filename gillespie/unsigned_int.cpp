@@ -574,12 +574,12 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
 }
 
 
-//compute the floor of *this x *multiplicant and store the result in *result. This requires work_space->GetSize() = (this->GetSize()) + (multiplicand->GetSize()) and result->GetSize() = this->GetSize()
+//compute the floor of *this x *multiplicant and store the result in *result. This requires work_space->GetSize() = (this->GetSize()) + (multiplicand->GetSize()) and result->GetSize() = multiplicand->GetSize()
 inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* work_space){
     
     Multiply(multiplicand, work_space);
   
-    //copy the last this->GetSize() bits of work_space into *result : this will yield the floor of the multiplication above
+    //copy the last multiplicand->GetSize() bits of work_space into *result : this will yield the floor of the multiplication above
     copy(work_space->b.begin()+GetSize(), work_space->b.end(), result->b.begin());
      
 }
