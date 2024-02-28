@@ -33,6 +33,8 @@ System::System(unsigned long long int N_in, unsigned int seed_in){
     }
     
     A = UnsignedInt(N*N);
+    //Z must contain a[0] + a[1] + a[2]
+    Z = UnsignedInt(3*M*N*N);
     R.Resize(n_bits_mantissa);
     
         
@@ -91,6 +93,7 @@ void System::Iterate(void){
     
     x[1].Multiply(&(x[2]), &A);
     A.Multiply(&(c[2]), &(a[2]));
+    
   
   
     
