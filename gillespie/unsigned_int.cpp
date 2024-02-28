@@ -542,10 +542,10 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int maximum_value, u
 
 
 
-//multiply *this by *multiplicand and write the result in *result. This method reqires *result to be large enough to host the result:
-/*
+/*multiply *this by *multiplicand and write the result in *result
+
  
- result->GetSize() <= (this-GetSize()) + (multiplicand->GetSize(), and when I call this method I take result->GetSize() = (this-GetSize()) + (multiplicand->GetSize() to be safe
+ result->GetSize() <= (this-GetSize()) + (multiplicand->GetSize(), and when I call this method I take result->GetSize() = (this-GetSize()) + (multiplicand->GetSize() to be safe. Thus when this method is called, result->GetSize() must be equal to (this-GetSize()) + (multiplicand->GetSize()
 
  the times are from  ./main.o -s 0 -S 6
  */
