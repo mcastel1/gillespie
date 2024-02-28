@@ -94,8 +94,11 @@ void System::Iterate(void){
     x[1].Multiply(&(x[2]), &A);
     A.Multiply(&(c[2]), &(a[2]));
     
-  
-  
+  //add the a[]s and compute Z
+    Z.BitSet::Set(&(a[0]));
+    Z.AddTo(&(a[1]), &carry);
+    Z.AddTo(&(a[2]), &carry);
+
     
 
     a[0].PrintBase10("c[0]*x[0]*x[1]");

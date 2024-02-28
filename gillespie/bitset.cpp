@@ -111,6 +111,20 @@ inline void BitSet::SetAll(Bits& m){
 }
 
 
+//set the first m->GetSize() entries of *this equal to the respective entries of *m. This method requires this->Getsize() to be >= m->GetSize()
+inline void BitSet::Set(BitSet* m){
+    
+    unsigned int s;
+    
+    for(s=0; s<m->GetSize(); s++){
+        b[s] = (m->b)[s];
+    }
+    for(; s<GetSize(); s++){
+        b[s].SetAll(false);
+    }
+    
+}
+
 
 //set all n_bits entries of *this equal to the entries stored (in IEEE754 format) in the mantissa of x. This requires b to be properly sized
 inline void BitSet::SetAllFromDouble(double x){

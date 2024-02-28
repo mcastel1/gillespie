@@ -28,6 +28,7 @@ public:
     void SetAll(unsigned long long int);
     void SetAll(Bits&);
     void SetAllFromDouble(double);
+    void Set(BitSet*);
     void SetFromDouble(unsigned int, double);
     void ComplementTo(void);
     void ComplementTo(unsigned int);

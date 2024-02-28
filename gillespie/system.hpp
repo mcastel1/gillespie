@@ -15,6 +15,8 @@ public:
     UnsignedInt /*a temporary variable used to store the product x[]*x[]*/A, /*this is a_0 in gillespie2007stochastic*/Z;
     //the random number used to draw the reaction, equal to r2 in Eq. (10b) in gillespie2007stochastic
     Fraction R;
+    //a temporary variable to store the carry of operations
+    Bits carry;
     gsl_rng* ran;
     
     System(void);
