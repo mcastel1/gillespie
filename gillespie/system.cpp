@@ -31,6 +31,8 @@ System::System(unsigned long long int N_in, unsigned int seed_in){
     }
     
     
+    R.Resize(n_bits_mantissa);
+    
         
     for(s=0; s<n_bits; s++){
         
@@ -72,6 +74,7 @@ System::System(unsigned long long int N_in, unsigned int seed_in){
 
 void System::Iterate(void){
     
-    
+    //draw the random number 
+    R.SetAllFromDouble(gsl_rng_uniform(ran));
     
 }
