@@ -32,7 +32,7 @@ System::System(unsigned long long int N_in, unsigned int seed_in){
         
     }
     
-    
+    A = UnsignedInt(N*N);
     R.Resize(n_bits_mantissa);
     
         
@@ -52,22 +52,21 @@ System::System(unsigned long long int N_in, unsigned int seed_in){
         
     }
     
-    for(i=0; i<3; ++i){
-        
-        cout << "c[" << i << "]" << endl;
-        c[i].PrintBase10("");
-        
-   
-        
-    }
     
-    
-    for(i=0; i<3; ++i){
-        
-        cout << "x[" << i << "]" << endl;
-        x[i].PrintBase10("");
-        
-    }
+//    for(i=0; i<3; ++i){
+//        
+//        cout << "c[" << i << "]" << endl;
+//        c[i].PrintBase10("");
+//        
+//    }
+//    
+//    
+//    for(i=0; i<3; ++i){
+//        
+//        cout << "x[" << i << "]" << endl;
+//        x[i].PrintBase10("");
+//        
+//    }
     
     gsl_rng_set(ran, seed);
     delete [] n;
@@ -78,5 +77,15 @@ void System::Iterate(void){
     
     //draw the random number
     R.SetAllFromDouble(gsl_rng_uniform(ran));
+    
+    c[0].PrintBase10("c[0]");
+    x[0].PrintBase10("x[0]");
+    x[1].PrintBase10("x[1]");
+
+    
+    x[0].Multiply(&(x[1]), &A);
+    A.Multiply(&(c[0]), &(a[0]));
+    
+    a[0].PrintBase10("c[0]*x[0]*x[1]");
     
 }

@@ -121,7 +121,8 @@ int main(int argc, char * argv[]) {
     
     System Frank(128, seed);
     
-        
+    Frank.Iterate();
+    
     
     cout << endl;
     return 0;
