@@ -86,6 +86,15 @@ void System::Iterate(void){
     x[0].Multiply(&(x[1]), &A);
     A.Multiply(&(c[0]), &(a[0]));
     
+    x[0].Multiply(&(x[2]), &A);
+    A.Multiply(&(c[1]), &(a[1]));
+    
+    x[1].Multiply(&(x[2]), &A);
+    A.Multiply(&(c[2]), &(a[2]));
+  
+  
+    
+
     a[0].PrintBase10("c[0]*x[0]*x[1]");
     
 }

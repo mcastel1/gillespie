@@ -14,42 +14,26 @@
             filePath = "gillespie/system.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "91"
-            endingLineNumber = "91"
+            startingLineNumber = "96"
+            endingLineNumber = "96"
             landmarkName = "System::Iterate()"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "60881C47-C0AD-42E3-865B-6A68C60BEB11 - 4d54d7d4c5a791fc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "System::Iterate()"
-                  moduleName = "gillespie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "412">
-               </Location>
-               <Location
-                  uuid = "60881C47-C0AD-42E3-865B-6A68C60BEB11 - 4d54d7d4c5a791fc"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "System::Iterate()"
-                  moduleName = "gillespie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "91"
-                  endingLineNumber = "91"
-                  offsetFromSymbolStart = "420">
-               </Location>
-            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5F67A6D8-D3B4-48B7-A06C-E4D00AEB239D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gillespie/system.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "38"
+            endingLineNumber = "38"
+            landmarkName = "System::System(N_in, seed_in)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>
