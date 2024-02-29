@@ -125,20 +125,6 @@ int main(int argc, char * argv[]) {
     
     System Frank(128, seed);
     
-    //
-    double x = gsl_rng_uniform(Frank.ran);
-    Fraction R;
-    vector<bool> v(n_bits_mantissa);
-    R.Resize(n_bits_mantissa);
-    R.Fraction::SetAllFromDoubleMantissa(x, &v);
-    
-    
-    cout << "x:" << x << endl;
-    R.Fraction::PrintBase10("R");
-    
-    
-    //
-    
     start = clock();
     for(s=0; s<S; ++s){
         Frank.Iterate();
@@ -153,5 +139,17 @@ int main(int argc, char * argv[]) {
     
     cout << endl;
     return 0;
+    
+    /*
+    double x = gsl_rng_uniform(Frank.ran);
+    Fraction R;
+    vector<bool> v(n_bits_mantissa);
+    R.Resize(n_bits_mantissa);
+    R.Fraction::SetAllFromDoubleMantissa(x, &v);
+    
+    
+    cout << "x:" << x << endl;
+    R.Fraction::PrintBase10("R");
+    */
     
 }

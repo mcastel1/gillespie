@@ -82,7 +82,7 @@ void System::Iterate(void){
     
     //draw the random number
     //THIS IS A BOTTLENECK
-    R.SetAllFromDoubleMantissa(gsl_rng_uniform(ran), &w);
+    R.Fraction::SetAllFromDoubleMantissa(gsl_rng_uniform(ran), &w);
     //THIS IS A BOTTLENECK
     
 //    c[0].PrintBase10("c[0]");
