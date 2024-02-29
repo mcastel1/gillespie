@@ -12,6 +12,13 @@ inline Fraction::Fraction(unsigned int size) : BitSet(){
     
 }
 
+
+inline void Fraction::SetAllFromDoubleMantissa(double x, vector<bool>* w){
+    
+    
+    
+}
+
 //get  bit-by-bit the value in base 10 of *this and write it in *v
 inline void Fraction::GetBase10(vector<double>* v){
     

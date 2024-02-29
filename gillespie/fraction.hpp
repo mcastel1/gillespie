@@ -9,6 +9,7 @@ public:
     
     Fraction(void);
     Fraction(unsigned int);
+    void SetAllFromDoubleMantissa(double, vector<bool>*);
     void FloorMultiply(UnsignedInt*, UnsignedInt*, UnsignedInt*);
     void GetBase10(vector<double>*);
     void PrintBase10(string);
