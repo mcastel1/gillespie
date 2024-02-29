@@ -120,8 +120,10 @@ int main(int argc, char * argv[]) {
     //    TestFractionFloorMultiply(S, seed);
     //    SpeedTestFractionFloorMultiply(128, S, seed);
     
-    System Frank(128, seed);
     
+    
+    
+    System Frank(128, seed);
     
     start = clock();
     for(s=0; s<S; ++s){

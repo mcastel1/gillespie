@@ -129,9 +129,15 @@ inline void BitSet::Set(BitSet* m){
 //set all n_bits entries of *this equal to the entries stored (in IEEE754 format) in the mantissa of x. This requires b to be properly sized
 inline void BitSet::SetAllFromDouble(double x){
     
-    for(unsigned int s=0; s<n_bits; s++){
-        SetFromDouble(s, x);
+    vector<bool> v;
+
+    GetMantissaFromDouble(&v, x);
+
+    for(unsigned int p=0; p<GetSize(); p++){
+        b[p].SetAll(v[p]);
     }
+  
+    v.clear();
     
 }
 
@@ -141,7 +147,7 @@ inline void BitSet::SetFromDouble(unsigned int s, double x){
     
     vector<bool> v;
     
-    GetFromDouble(&v, x);
+    GetMantissaFromDouble(&v, x);
     
     for(unsigned int p=0; p<GetSize(); p++){
         b[p].Set(s, v[p]);

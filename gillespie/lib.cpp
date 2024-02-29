@@ -81,7 +81,7 @@ inline void bitwise_print_double(const double& x){
 
 
 //write the mantissa of x into *result by resizing *result properly
-inline void GetFromDouble(vector<bool>* result, double x){
+inline void GetMantissaFromDouble(vector<bool>* result, double x){
     
     uint8_t *bytePointer = (uint8_t*)&x;
     size_t index;
