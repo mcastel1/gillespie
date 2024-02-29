@@ -81,7 +81,7 @@ void System::Iterate(void){
     
     //draw the random number
     //THIS IS A BOTTLENECK
-    R.SetAllFromDouble(gsl_rng_uniform(ran));
+    R.SetAllFromDoubleMantissa(gsl_rng_uniform(ran));
     //THIS IS A BOTTLENECK
     
 //    c[0].PrintBase10("c[0]");

@@ -27,9 +27,9 @@ public:
     void SetRandom(unsigned int);
     void SetAll(unsigned long long int);
     void SetAll(Bits&);
-    void SetAllFromDouble(double);
+    void SetAllFromDoubleMantissa(double);
     void Set(BitSet*);
-    void SetFromDouble(unsigned int, double);
+    void SetFromDoubleMantissa(unsigned int, double);
     void ComplementTo(void);
     void ComplementTo(unsigned int);
     void ResizeAndSetAll(unsigned long long int);

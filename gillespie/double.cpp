@@ -198,7 +198,7 @@ inline void Double::SetAll(bool sign, unsigned long long int exponent,  double m
         
         s.SetAll(sign);
         e.SetAll(exponent);
-        b.SetAllFromDouble(mantissa);
+        b.SetAllFromDoubleMantissa(mantissa);
         
     }else{
         
@@ -216,7 +216,7 @@ inline void Double::Set(unsigned int p, bool sign, unsigned long long int expone
         
         s.Set(p, sign);
         e.Set(p, exponent);
-        b.SetFromDouble(p, x);
+        b.SetFromDoubleMantissa(p, x);
         
     }else{
         

@@ -127,7 +127,7 @@ inline void BitSet::Set(BitSet* m){
 
 
 //set all n_bits entries of *this equal to the entries stored (in IEEE754 format) in the mantissa of x. This requires b to be properly sized
-inline void BitSet::SetAllFromDouble(double x){
+inline void BitSet::SetAllFromDoubleMantissa(double x){
     
     vector<bool> v;
 
@@ -143,7 +143,7 @@ inline void BitSet::SetAllFromDouble(double x){
 
 
 //set the s-th bit entry of *this equal to the entries stored (in IEEE754 format) in the mantissa of x. This requires b to be properly sized
-inline void BitSet::SetFromDouble(unsigned int s, double x){
+inline void BitSet::SetFromDoubleMantissa(unsigned int s, double x){
     
     vector<bool> v;
     
