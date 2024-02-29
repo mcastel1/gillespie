@@ -134,7 +134,7 @@ int main(int argc, char * argv[]) {
     
     
     cout << "x:" << x << endl;
-    R.Print("R");
+    R.Fraction::PrintBase10("R");
     
     
     //
