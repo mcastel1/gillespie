@@ -127,13 +127,14 @@ int main(int argc, char * argv[]) {
     
     //
     double x = gsl_rng_uniform(Frank.ran);
-    BitSet X;
+    Fraction R;
     vector<bool> v(n_bits_mantissa);
-    X.Resize(n_bits_mantissa);
-    GetMantissaFromDouble(&v, x);
-    X.SetAllFromDoubleMantissa(x, &v);
+    R.Resize(n_bits_mantissa);
+    R.Fraction::SetAllFromDoubleMantissa(x, &v);
+    
+    
     cout << "x:" << x << endl;
-    X.Print("X in base 10");
+    R.Print("R");
     
     
     //

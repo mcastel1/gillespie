@@ -13,10 +13,20 @@ inline Fraction::Fraction(unsigned int size) : BitSet(){
 }
 
 
-inline void Fraction::SetAllFromDoubleMantissa(double x, vector<bool>* w){
+//obtain the mantissa from x (in the IEEE 754 format) and store it bit-by-bit in *this, by setting all n_bits entries of  b[s] equal
+inline void Fraction::SetAllFromDoubleMantissa(double x, vector<bool>* work_space){
+        
+    unsigned int p;
     
+    GetMantissaFromDouble(work_space, x);
     
-    
+    for(p=0; p<GetSize()-1; p++){
+        //the [p+1] is to account of the offset of one entry between the IEEE 754 convention and the convention used here to write Fraction
+        b[p].SetAll((*work_space)[p+1]);
+    }
+    //in the IEEE 754 format the first entry of the mantissa is 1 by default -> I write it in b
+    b.back().SetAll(true);
+   
 }
 
 //get  bit-by-bit the value in base 10 of *this and write it in *v
