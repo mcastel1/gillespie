@@ -78,12 +78,10 @@ System::System(unsigned long long int N_in, unsigned int seed_in){
     
 }
 
-void System::Iterate(void){
+inline void System::Iterate(void){
     
     //draw the random number
-    //THIS IS A BOTTLENECK
     R.Fraction::SetAllFromDoubleMantissa(gsl_rng_uniform(ran), &w);
-    //THIS IS A BOTTLENECK
     
 //    c[0].PrintBase10("c[0]");
 //    x[0].PrintBase10("x[0]");
