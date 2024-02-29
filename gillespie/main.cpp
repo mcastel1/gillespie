@@ -125,6 +125,19 @@ int main(int argc, char * argv[]) {
     
     System Frank(128, seed);
     
+    //
+    double x = gsl_rng_uniform(Frank.ran);
+    BitSet X;
+    vector<bool> v(n_bits_mantissa);
+    X.Resize(n_bits_mantissa);
+    GetMantissaFromDouble(&v, x);
+    X.SetAllFromDoubleMantissa(x, &v);
+    cout << "x:" << x << endl;
+    X.Print("X in base 10");
+    
+    
+    //
+    
     start = clock();
     for(s=0; s<S; ++s){
         Frank.Iterate();
