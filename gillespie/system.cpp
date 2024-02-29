@@ -81,8 +81,10 @@ System::System(unsigned long long int N_in, unsigned int seed_in){
 inline void System::Iterate(void){
     
     //draw the random number
+    //POTENTIAL ERROR: IF THE gsl_rng_uniform(ran) IS VERY SMALL AND THUS e << 1023,   IS THE MANTISSA OF gsl_rng_uniform(ran) STILL UNIFORMLY DISTRIBUTED IN [0,1)?
     R.Fraction::SetAllFromDoubleMantissa(gsl_rng_uniform(ran), &w);
-    
+    //POTENTIAL ERROR: IF THE gsl_rng_uniform(ran) IS VERY SMALL AND THUS e << 1023,   IS THE MANTISSA OF gsl_rng_uniform(ran) STILL UNIFORMLY DISTRIBUTED IN [0,1)?
+
 //    c[0].PrintBase10("c[0]");
 //    x[0].PrintBase10("x[0]");
 //    x[1].PrintBase10("x[1]");
