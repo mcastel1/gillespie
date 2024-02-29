@@ -126,18 +126,16 @@ inline void BitSet::Set(BitSet* m){
 }
 
 
-//set all n_bits entries of *this equal to the entries stored (in IEEE754 format) in the mantissa of x. This requires b to be properly sized
-inline void BitSet::SetAllFromDoubleMantissa(double x){
+//set all n_bits entries of *this equal to the entries stored (in IEEE754 format) in the mantissa of x. This requires b.size() = n_bits_mantissa and work_space->size() = n_bits_mantissa
+inline void BitSet::SetAllFromDoubleMantissa(double x, vector<bool>* work_space){
     
-    vector<bool> v;
-
-    GetMantissaFromDouble(&v, x);
-
+    
+    GetMantissaFromDouble(work_space, x);
+    
     for(unsigned int p=0; p<GetSize(); p++){
-        b[p].SetAll(v[p]);
+        b[p].SetAll((*work_space)[p]);
     }
-  
-    v.clear();
+    
     
 }
 

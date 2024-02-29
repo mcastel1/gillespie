@@ -38,6 +38,7 @@ System::System(unsigned long long int N_in, unsigned int seed_in){
     R.Resize(n_bits_mantissa);
     RHS.Resize(Z.GetSize());
     W.Resize(R.GetSize() + Z.GetSize());
+    w.resize(n_bits_mantissa);
     
         
     for(s=0; s<n_bits; s++){
@@ -81,7 +82,7 @@ void System::Iterate(void){
     
     //draw the random number
     //THIS IS A BOTTLENECK
-    R.SetAllFromDoubleMantissa(gsl_rng_uniform(ran));
+    R.SetAllFromDoubleMantissa(gsl_rng_uniform(ran), &w);
     //THIS IS A BOTTLENECK
     
 //    c[0].PrintBase10("c[0]");

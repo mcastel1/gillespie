@@ -196,9 +196,15 @@ inline void Double::SetAll(bool sign, unsigned long long int exponent,  double m
     
     if(exponent < two_pow(n_bits_exponent+1)){
         
+        //BOTTLENECK
+        vector<bool> work_space(n_bits_mantissa);
+        //BOTTLENECK
+
         s.SetAll(sign);
         e.SetAll(exponent);
-        b.SetAllFromDoubleMantissa(mantissa);
+        b.SetAllFromDoubleMantissa(mantissa, &work_space);
+        
+        work_space.clear();
         
     }else{
         
