@@ -139,36 +139,15 @@ inline void BitSet::SetAllFromDouble(double x){
 //set the s-th bit entry of *this equal to the entries stored (in IEEE754 format) in the mantissa of x. This requires b to be properly sized
 inline void BitSet::SetFromDouble(unsigned int s, double x){
     
-    uint8_t *bytePointer = (uint8_t*)&x;
-    size_t index;
-    uint8_t byte;
-    int bit;
-    unsigned int p;
+    vector<bool> v;
     
-    for(index=0, p=0; index<sizeof(double); index++){
-        
-        byte = bytePointer[index];
-        
-        for(bit=0; bit<8; bit++, p++){
-            
-            if(p < (this->GetSize())){
-                //I am running through a part of x which is the mantissa -> store the result in b and keep going
-                
-                b[p].Set(s, ((bool)(byte & 1)));
-                
-            }else{
-                //I am runnning over a part of x which is no longer the mantissa -> stop
-                
-                break;
-                break;
-                
-            }
-            
-            byte >>= 1;
-            
-        }
-        
+    GetFromDouble(&v, x);
+    
+    for(unsigned int p=0; p<GetSize(); p++){
+        b[p].Set(s, v[p]);
     }
+    
+    v.clear();
     
 }
 
