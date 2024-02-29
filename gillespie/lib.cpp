@@ -80,6 +80,36 @@ inline void bitwise_print_double(const double& x){
 }
 
 
+//write the mantissa of x into *result by resizing *result properly
+inline void GetFromDouble(vector<bool>* result, double x){
+    
+    uint8_t *bytePointer = (uint8_t*)&x;
+    size_t index;
+    //this runs over the byte blocks of x
+    uint8_t byte;
+    //this runs over the bits of byte blocks of x
+    int bit;
+    unsigned int p;
+    
+    for(result->resize(n_bits_mantissa), index=0, p=0; index<sizeof(double); index++){
+        
+        byte = bytePointer[index];
+        
+        for(bit=0; (bit < 8) && (p < result->size()); bit++, p++){
+            //I am running through a part of x which is the mantissa -> store the result in *result and keep going
+            
+            (*result)[p] = ((bool)(byte & 1));
+            
+            byte >>= 1;
+            
+        }
+        
+    }
+    
+    
+}
+
+
 
 
 //    Fraction r(n_bits_mantissa);

@@ -152,7 +152,7 @@ inline void BitSet::SetFromDouble(unsigned int s, double x){
         for(bit=0; bit<8; bit++, p++){
             
             if(p < (this->GetSize())){
-                //I am running through a part of x which is the mantissa -> store the result in b and keep going 
+                //I am running through a part of x which is the mantissa -> store the result in b and keep going
                 
                 b[p].Set(s, ((bool)(byte & 1)));
                 
@@ -171,7 +171,6 @@ inline void BitSet::SetFromDouble(unsigned int s, double x){
     }
     
 }
-
 
 
 //reize *this in order to contain all bits of i, and set all n_bits entries of *this to the respective bits of i
