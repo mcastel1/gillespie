@@ -648,7 +648,7 @@ inline void TestFractionFloorMultiply(unsigned long long int S, unsigned long lo
 
 
 
-inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value, unsigned long long int S, unsigned long long int seed){
+inline void SpeedTestFractionFloorMultiply(unsigned int n_bits_factor, unsigned long long int maximum_value_multiplicand, unsigned long long int S, unsigned long long int seed){
     
     
     cout << " ***************************** Speed test for Fraction::FloorMultiply *****************************" << endl;
@@ -659,7 +659,7 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
     unsigned long long int r=0;
     vector<double> a(n_bits*S);
     vector<Fraction> A(S);
-    UnsignedInt B(maximum_value), C(maximum_value), W;
+    UnsignedInt B(maximum_value_multiplicand), C(maximum_value_multiplicand), W;
     unsigned int b=0, c=0, i, s;
     double x = 0.0;
     gsl_rng* ran;
@@ -671,7 +671,7 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
     
     
     //****************** calculation without bits ******************
-    b = (unsigned int)gsl_rng_uniform_int(ran, maximum_value);
+    b = (unsigned int)gsl_rng_uniform_int(ran, maximum_value_multiplicand);
     for(s=0; s<n_bits*S; s++){
         a[s] = gsl_rng_uniform(ran);
     }
@@ -680,7 +680,7 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
     for(s=0; s<n_bits*S; s++){
         
         //this simulates the drawing of the random number for the Gillespie algorithm
-        r = gsl_rng_uniform_int(ran, maximum_value);
+        r = gsl_rng_uniform_int(ran, maximum_value_multiplicand);
         x = gsl_rng_uniform(ran);
         
         c = floor((a[s])*b);
@@ -694,12 +694,12 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
     
     //****************** calculation with bits ******************
     for(s=0; s<S; s++){
-        A[s].Resize(n_bits_mantissa);
+        A[s].Resize(n_bits_factor);
 
         A[s].SetRandom(ran);
     }
     for(i=0; i<n_bits; i++){
-        B.Set(i, gsl_rng_uniform_int(ran, maximum_value));
+        B.Set(i, gsl_rng_uniform_int(ran, maximum_value_multiplicand));
     }
     W.Resize(A.front().GetSize() + B.GetSize());
     
@@ -707,7 +707,7 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
     for(s=0; s<S; ++s){
                 
          //this simulates the drawing of the random number for the Gillespie algorithm
-         r = gsl_rng_uniform_int(ran, maximum_value);
+         r = gsl_rng_uniform_int(ran, maximum_value_multiplicand);
          x = gsl_rng_uniform(ran);
 
         A[s].FloorMultiply(&B, &C, &W);
