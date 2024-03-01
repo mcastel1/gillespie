@@ -7,11 +7,11 @@
 
 #include "system.hpp"
 
-System::System(void){
+System_bits::System_bits(void){
     
 }
 
-System::System(unsigned long long int N_in, unsigned int seed_in){
+System_bits::System_bits(unsigned long long int N_in, unsigned int seed_in){
     
     unsigned int i, s, *n;
     const double p[] = {1.0, 1.0, 2.0};
@@ -19,6 +19,8 @@ System::System(unsigned long long int N_in, unsigned int seed_in){
 
     n = new unsigned int [3];
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    
+    gsl_rng_set(ran, seed);
 
     N = N_in;
     seed = seed_in;
@@ -73,12 +75,11 @@ System::System(unsigned long long int N_in, unsigned int seed_in){
 //        
 //    }
     
-    gsl_rng_set(ran, seed);
     delete [] n;
     
 }
 
-inline void System::Iterate(void){
+inline void System_bits::Iterate(void){
     
     //draw the random number
     //POTENTIAL ERROR: IF THE gsl_rng_uniform(ran) IS VERY SMALL AND THUS e << 1023,   IS THE MANTISSA OF gsl_rng_uniform(ran) STILL UNIFORMLY DISTRIBUTED IN [0,1)?
@@ -107,5 +108,48 @@ inline void System::Iterate(void){
     R.FloorMultiply(&Z, &RHS, &W);
 
 //    a[0].PrintBase10("c[0]*x[0]*x[1]");
+    
+}
+
+
+System_nobits::System_nobits(void){
+    
+}
+
+
+System_nobits::System_nobits(unsigned long long int N_in, unsigned int seed_in){
+    
+    unsigned int i, *n;
+    const double p[] = {1.0, 1.0, 2.0};
+
+
+
+    n = new unsigned int [3];
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+
+    gsl_rng_set(ran, seed);
+    
+    N = N_in;
+    seed = seed_in;
+
+    x.resize(3);
+    c.resize(3);
+    a.resize(3);
+    
+    
+    
+    //draw the initial number of particles of the three species according to a multinomial distribution
+    gsl_ran_multinomial(ran, 3, (unsigned int)N, p, n);
+    
+    for(i=0; i<3; ++i){
+        
+        //write the initial number of particles in x
+        x[i] = n[i];
+        //draw the values of c and write them in c
+        c[i] = (unsigned int)gsl_rng_uniform_int(ran, M);
+        
+    }
+    
+    delete [] n;
     
 }

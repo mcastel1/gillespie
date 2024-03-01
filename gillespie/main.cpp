@@ -109,7 +109,7 @@ int main(int argc, char * argv[]) {
         
     }
     
-
+    
     
     //    TestUnsignedIntMultiply(S, seed);
     //    SpeedTestUnsignedIntMultiply(128, S, seed);
@@ -117,40 +117,41 @@ int main(int argc, char * argv[]) {
     //    TestDoubleAddTo(S, seed);
     //    SpeedTestDoubleAddTo(S, seed);
     //    SpeedTestUnsignedIntAddto(128, S, seed);
-//        TestFractionFloorMultiply(S, seed);
-        SpeedTestFractionFloorMultiply(32, 128, S, seed);
+    //        TestFractionFloorMultiply(S, seed);
+    //        SpeedTestFractionFloorMultiply(32, 128, S, seed);
     
     
     
-    /*
-    System Frank(128, seed);
+    //
+    System_bits FRANK(128, seed);
+    System_nobits frank(128, seed);
     
     start = clock();
     for(s=0; s<S; ++s){
-        Frank.Iterate();
+        FRANK.Iterate();
     }
     end = clock();
     cout << "Time for S Iterate()s with bits = " << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
-   
+    
     
     cout << endl << "dummy print";
-    Frank.Z.PrintBase10("");
-    Frank.RHS.PrintBase10("");
-     */
+    FRANK.Z.PrintBase10("");
+    FRANK.RHS.PrintBase10("");
+    //
     
     cout << endl;
     return 0;
     
     /*
-    double x = gsl_rng_uniform(Frank.ran);
-    Fraction R;
-    vector<bool> v(n_bits_mantissa);
-    R.Resize(n_bits_mantissa);
-    R.Fraction::SetAllFromDoubleMantissa(x, &v);
-    
-    
-    cout << "x:" << x << endl;
-    R.Fraction::PrintBase10("R");
-    */
+     double x = gsl_rng_uniform(Frank.ran);
+     Fraction R;
+     vector<bool> v(n_bits_mantissa);
+     R.Resize(n_bits_mantissa);
+     R.Fraction::SetAllFromDoubleMantissa(x, &v);
+     
+     
+     cout << "x:" << x << endl;
+     R.Fraction::PrintBase10("R");
+     */
     
 }
