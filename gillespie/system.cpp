@@ -7,11 +7,11 @@
 
 #include "system.hpp"
 
-System_bits::System_bits(void){
+inline System_bits::System_bits(void){
     
 }
 
-System_bits::System_bits(unsigned long long int N_in, unsigned int seed_in){
+inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_in){
     
     unsigned int i, s, *n;
     const double p[] = {1.0, 1.0, 2.0};
@@ -112,12 +112,12 @@ inline void System_bits::Iterate(void){
 }
 
 
-System_nobits::System_nobits(void){
+inline System_nobits::System_nobits(void){
     
 }
 
 
-System_nobits::System_nobits(unsigned long long int N_in, unsigned int seed_in){
+inline System_nobits::System_nobits(unsigned long long int N_in, unsigned int seed_in){
     
     unsigned int i, *n;
     const double p[] = {1.0, 1.0, 2.0};
