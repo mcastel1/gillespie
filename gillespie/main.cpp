@@ -117,12 +117,12 @@ int main(int argc, char * argv[]) {
     //    TestDoubleAddTo(S, seed);
     //    SpeedTestDoubleAddTo(S, seed);
     //    SpeedTestUnsignedIntAddto(128, S, seed);
-    //    TestFractionFloorMultiply(S, seed);
+        TestFractionFloorMultiply(S, seed);
     //    SpeedTestFractionFloorMultiply(128, S, seed);
     
     
     
-    
+    /*
     System Frank(128, seed);
     
     start = clock();
@@ -136,6 +136,7 @@ int main(int argc, char * argv[]) {
     cout << endl << "dummy print";
     Frank.Z.PrintBase10("");
     Frank.RHS.PrintBase10("");
+     */
     
     cout << endl;
     return 0;

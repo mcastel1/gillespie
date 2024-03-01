@@ -602,17 +602,16 @@ inline void TestFractionFloorMultiply(unsigned long long int S, unsigned long lo
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     gsl_rng_set(ran, seed);
     
-    W.Resize(bits(n_bits_mantissa)+bits(max));
-    C.Resize(bits(max));
 
     for(it_works = true, s=0; (s<S) & it_works; ++s){
         
         A.Resize(bits(n_bits_mantissa));
         B.Resize(bits(max));
+        C.Resize(B.GetSize());
+        W.Resize(A.GetSize() + B.GetSize());
 
         A.Clear();
         B.Clear();
-
         
         for(i=0; i<n_bits; i++){
             B.Set(i, gsl_rng_uniform_int(ran, max));
