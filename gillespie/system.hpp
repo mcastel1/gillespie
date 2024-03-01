@@ -16,6 +16,7 @@ public:
     UnsignedInt /*a temporary variable used to store the product x[]*x[]*/A, /*worrk space */W, /*this is a_0 in gillespie2007stochastic*/Z, /*the right-hand side of Eq. (10b) in gillespie2007stochastic*/RHS;
     //the random number used to draw the reaction, equal to r2 in Eq. (10b) in gillespie2007stochastic
     Fraction R;
+    unsigned long int q;
     //a temporary variable to store the carry of operations
     Bits carry;
     gsl_rng* ran;
@@ -33,7 +34,7 @@ class System_nobits{
     
 public:
     
-    unsigned long long int seed, /*the total number of molecules in the system*/N;
+    unsigned long long int seed, /*the total number of molecules in the system*/N, q;
     vector<unsigned int> /*the vector containing the numbers of molecules:  x[0] -> A, x[1] -> L, x[2] -> D*/x, /*the reaction rates: a[j](x) = c[j] * f(x), where c[j] is independent of x*/c, /*the quantities a_j in Gillespie algorithm, a[0] corresponds to the resction A+L -> 2L, a[1] to the reaction A+D -> 2D, a[2] to the reaction L+D->2A*/a;
     unsigned int  /*this is a_0 in gillespie2007stochastic*/z, rhs;
     //the random number used to draw the reaction, equal to r2 in Eq. (10b) in gillespie2007stochastic

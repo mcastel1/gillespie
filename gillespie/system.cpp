@@ -81,10 +81,12 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
 
 inline void System_bits::Iterate(void){
     
-    //draw the random number
+    //draw the random numbers
     //POTENTIAL ERROR: IF THE gsl_rng_uniform(ran) IS VERY SMALL AND THUS e << 1023,   IS THE MANTISSA OF gsl_rng_uniform(ran) STILL UNIFORMLY DISTRIBUTED IN [0,1)?
     R.Fraction::SetAllFromDoubleMantissa(gsl_rng_uniform(ran), &w);
     //POTENTIAL ERROR: IF THE gsl_rng_uniform(ran) IS VERY SMALL AND THUS e << 1023,   IS THE MANTISSA OF gsl_rng_uniform(ran) STILL UNIFORMLY DISTRIBUTED IN [0,1)?
+    q = gsl_rng_uniform_int(ran, 3);
+
 
 //    c[0].PrintBase10("c[0]");
 //    x[0].PrintBase10("x[0]");
@@ -157,8 +159,9 @@ inline System_nobits::System_nobits(unsigned long long int N_in, unsigned int se
 
 inline void System_nobits::iterate(void){
     
-    //draw the random number
+    //draw the random numbers
     r = gsl_rng_uniform(ran);
+    q = gsl_rng_uniform_int(ran, 3);
 
     
     a[0] = c[0]*x[0]*x[1];
