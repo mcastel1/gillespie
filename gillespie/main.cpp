@@ -126,6 +126,18 @@ int main(int argc, char * argv[]) {
     System_bits FRANK(128, seed);
     System_nobits frank(128, seed);
     
+    
+    //********************* speed test without bits  *********************
+    start = clock();
+    for(s=0; s<n_bits*S; ++s){
+        frank.iterate();
+    }
+    end = clock();
+    cout << "Time for [n_bits*S] Iterate()s without bits = " << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+
+    
+    
+    //********************* speed test with bits  *********************
     start = clock();
     for(s=0; s<S; ++s){
         FRANK.Iterate();
@@ -137,6 +149,7 @@ int main(int argc, char * argv[]) {
     cout << endl << "dummy print";
     FRANK.Z.PrintBase10("");
     FRANK.RHS.PrintBase10("");
+    cout << frank.z << frank.rhs;
     //
     
     cout << endl;

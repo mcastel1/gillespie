@@ -153,3 +153,21 @@ System_nobits::System_nobits(unsigned long long int N_in, unsigned int seed_in){
     delete [] n;
     
 }
+
+
+inline void System_nobits::iterate(void){
+    
+    //draw the random number
+    r = gsl_rng_uniform(ran);
+
+    
+    a[0] = c[0]*x[0]*x[1];
+    a[1] = c[1]*x[0]*x[2];
+    a[2] = c[2]*x[1]*x[2];
+
+    z = a[0]+a[1]+a[2];
+    
+    rhs = floor(r*z);
+    
+    
+}
