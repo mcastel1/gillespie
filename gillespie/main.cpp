@@ -118,7 +118,7 @@ int main(int argc, char * argv[]) {
     //    SpeedTestDoubleAddTo(S, seed);
     //    SpeedTestUnsignedIntAddto(128, S, seed);
         TestFractionFloorMultiply(S, seed);
-    //    SpeedTestFractionFloorMultiply(128, S, seed);
+//        SpeedTestFractionFloorMultiply(128, S, seed);
     
     
     

@@ -574,7 +574,7 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
 }
 
 
-//compute the floor of *this x *multiplicant and store the result in *result. This requires work_space->GetSize() = (this->GetSize()) + (multiplicand->GetSize()) and result->GetSize() = multiplicand->GetSize()
+//compute the floor of *this x *multiplicant and store the result in *result. This requires result->GetSize() = multiplicand->GetSize() and work_space->GetSize() = (this->GetSize()) + (multiplicand->GetSize()) 
 inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* work_space){
     
     Multiply(multiplicand, work_space);
@@ -694,13 +694,14 @@ inline void SpeedTestFractionFloorMultiply(unsigned long long int maximum_value,
     
     //****************** calculation with bits ******************
     for(s=0; s<S; s++){
-        A[s].Resize(bits(n_bits_mantissa));
+        A[s].Resize(n_bits_mantissa);
+
         A[s].SetRandom(ran);
     }
     for(i=0; i<n_bits; i++){
         B.Set(i, gsl_rng_uniform_int(ran, maximum_value));
     }
-    W.Resize(bits(n_bits_mantissa)+bits(maximum_value));
+    W.Resize(A.front().GetSize() + B.GetSize());
     
     start = clock();
     for(s=0; s<S; ++s){
