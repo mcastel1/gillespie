@@ -13,7 +13,7 @@ inline System_bits::System_bits(void){
 
 inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_in){
     
-    unsigned int i, s, *n;
+    unsigned int i, s, *n, n_bits_R;
     const double p[] = {1.0, 1.0, 2.0};
 
 
@@ -25,6 +25,12 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
     N = N_in;
     seed = seed_in;
 
+    
+    //number of bits to write the random number (Fraction) R for the Gillespie simulation
+    //VERIFY
+    n_bits_R = bits((unsigned int)(gsl_pow_2(N)/3.0));
+    //VERIFY
+    
     for(x.clear(), /*c.clear(),*/ i=0; i<3; ++i){
         
         x.push_back(UnsignedInt(N));

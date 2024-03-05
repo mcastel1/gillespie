@@ -9,8 +9,6 @@
 #define n_bits_mantissa 52
 #define n_bits_exponent 11
 #define n_bits_sign 1
-//number of bits to write the random number (Fraction) R for the Gillespie simulation
-#define n_bits_R 13
 //the maximum value for c[j]
 #define M 8
 #define cout_precision 8
