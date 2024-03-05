@@ -85,7 +85,7 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
     
 }
 
-inline void System_bits::Iterate(void){
+    inline void System_bits::Iterate(void){
     
     //draw the random numbers
     //POTENTIAL ERROR: IF THE gsl_rng_uniform(ran) IS VERY SMALL AND THUS e << 1023,   IS THE MANTISSA OF gsl_rng_uniform(ran) STILL UNIFORMLY DISTRIBUTED IN [0,1)?
@@ -137,7 +137,7 @@ inline System_nobits::System_nobits(unsigned long long int N_in, unsigned int se
     seed = seed_in;
 
     x.resize(3);
-    c.resize(3);
+//    c.resize(3);
     a.resize(3);
     
     
@@ -150,7 +150,7 @@ inline System_nobits::System_nobits(unsigned long long int N_in, unsigned int se
         //write the initial number of particles in x
         x[i] = n[i];
         //draw the values of c and write them in c
-        c[i] = (unsigned int)gsl_rng_uniform_int(ran, M);
+        //        c[i] = (unsigned int)gsl_rng_uniform_int(ran, M);
         
     }
     
@@ -166,9 +166,9 @@ inline void System_nobits::iterate(void){
     q = gsl_rng_uniform_int(ran, 3);
 
     
-    a[0] = c[0]*x[0]*x[1];
-    a[1] = c[1]*x[0]*x[2];
-    a[2] = c[2]*x[1]*x[2];
+    a[0] = x[0]*x[1];
+    a[1] = x[0]*x[2];
+    a[2] = x[1]*x[2];
 
     z = a[0]+a[1]+a[2];
     
