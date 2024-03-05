@@ -37,10 +37,10 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
     A = UnsignedInt(N*N);
     //Z must contain a[0] + a[1] + a[2]
     Z = UnsignedInt(3*M*N*N);
-    R.Resize(n_bits_mantissa);
+    R.Resize(n_bits_R);
     RHS.Resize(Z.GetSize());
     W.Resize(R.GetSize() + Z.GetSize());
-    w.resize(n_bits_mantissa);
+    w.resize(n_bits_R);
     
         
     for(s=0; s<n_bits; s++){
