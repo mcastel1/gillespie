@@ -133,7 +133,7 @@ int main(int argc, char * argv[]) {
         frank.iterate();
     }
     end = clock();
-    cout << "Time for [n_bits*S] Iterate()s without bits = " << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+    cout << endl << "Time for [n_bits*S] Iterate()s without bits = \t\t " << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl;
 
     
     
@@ -143,7 +143,7 @@ int main(int argc, char * argv[]) {
         FRANK.Iterate();
     }
     end = clock();
-    cout << "Time for S Iterate()s with bits = " << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+    cout << "Time for S Iterate()s with bits = \t\t         " << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
     
     
     cout << endl << "dummy print";
