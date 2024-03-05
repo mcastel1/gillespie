@@ -92,15 +92,11 @@ inline void System_bits::Iterate(void){
 //    x[0].PrintBase10("x[0]");
 //    x[1].PrintBase10("x[1]");
 
-    
+
+    //THESE SHOULD BE OPTIMIZED BY UPDATING x[i] from the previous step with a sum 
     x[0].Multiply(&(x[1]), &A);
-//    A.Multiply(&(c[0]), &(a[0]));
-    
     x[0].Multiply(&(x[2]), &A);
-//    A.Multiply(&(c[1]), &(a[1]));
-    
     x[1].Multiply(&(x[2]), &A);
-//    A.Multiply(&(c[2]), &(a[2]));
     
   //add the a[]s and compute Z
     Z.BitSet::Set(&(a[0]));
