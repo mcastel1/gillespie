@@ -25,10 +25,10 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
     N = N_in;
     seed = seed_in;
 
-    for(x.clear(), c.clear(), i=0; i<3; ++i){
+    for(x.clear(), /*c.clear(),*/ i=0; i<3; ++i){
         
         x.push_back(UnsignedInt(N));
-        c.push_back(UnsignedInt(M));
+//        c.push_back(UnsignedInt(M));
         //a must host c[](x[]*x[], thus
         a.push_back(UnsignedInt(M*N*N));
         
@@ -53,7 +53,7 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
             //write the initial number of particles in x
             x[i].Set(s, n[i]);
             //draw the values of c and write them in c
-            c[i].Set(s, gsl_rng_uniform_int(ran, M));
+//            c[i].Set(s, gsl_rng_uniform_int(ran, M));
             
         }
         
@@ -94,13 +94,13 @@ inline void System_bits::Iterate(void){
 
     
     x[0].Multiply(&(x[1]), &A);
-    A.Multiply(&(c[0]), &(a[0]));
+//    A.Multiply(&(c[0]), &(a[0]));
     
     x[0].Multiply(&(x[2]), &A);
-    A.Multiply(&(c[1]), &(a[1]));
+//    A.Multiply(&(c[1]), &(a[1]));
     
     x[1].Multiply(&(x[2]), &A);
-    A.Multiply(&(c[2]), &(a[2]));
+//    A.Multiply(&(c[2]), &(a[2]));
     
   //add the a[]s and compute Z
     Z.BitSet::Set(&(a[0]));
