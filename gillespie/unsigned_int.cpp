@@ -658,7 +658,11 @@ inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* re
     
     //compute x1+x0
     work_space->AddTo(&(b.back()), GetSize()-1, &carry);
+    //compute y1+y0
+    multiplicand->AddTo(&(multiplicand->b.back()), (multiplicand->GetSize())-1, &carry);
     
+    
+
     
 }
 
