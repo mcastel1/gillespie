@@ -542,23 +542,32 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int maximum_value, u
 
 
 
-/*multiply *this by *multiplicand and write the result in *result
 
- 
+/*
+ multiply *this by *multiplicand and write the result in *result
  result->GetSize() <= (this-GetSize()) + (multiplicand->GetSize(), and when I call this method I take result->GetSize() = (this-GetSize()) + (multiplicand->GetSize() to be safe. Thus when this method is called, result->GetSize() must be equal to (this-GetSize()) + (multiplicand->GetSize()
-
- the times are from  ./main.o -s 0 -S 6
  */
 inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
+    
+    Multiply(multiplicand, GetSize(), multiplicand->GetSize(), result);
+    
+}
+
+
+
+/*multiply *this by *multiplicand by considering only the first N bits of *this and the first L bits of *multiplicand, and write the result in *result
+ result->GetSize() <= N + L, and when I call this method I take result->GetSize() = N+L to be safe. Thus when this method is called, result->GetSize() must be equal to N+L
+ */
+inline void BitSet::Multiply(UnsignedInt* multiplicand, unsigned int N, unsigned int L, UnsignedInt* result){
     
     unsigned int s, p;
     Bits carry, t, u;
         
     
-    for(s=0, result->SetAll(Bits_zero); s<multiplicand->GetSize(); s++){
+    for(s=0, result->SetAll(Bits_zero); s<L; s++){
         //multiply by the s-th element of multiplicand: at each step of this loop *this is shifted by s places to the left and added to the result
         
-        for(p=0, carry.Clear(); p<GetSize(); p++){
+        for(p=0, carry.Clear(); p<N; p++){
             
             (u.n) = ((((*multiplicand)[s]).n) & ((b[p]).n));
             (t.n) = ((((result->b)[p+s]).n) ^ (u.n) ^ (carry.n));
@@ -570,6 +579,20 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
         ((result->b)[p+s]).n = (carry.n);
 
     }
+    
+}
+
+
+
+//this method requires that *this and *multiplicand have the same length
+inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* result){
+    
+    Bits z2;
+    
+    //do z2 = x1 y1
+    z2 = (b.back());
+    z2 &= (&(multiplicand->b.back()));
+    
     
 }
 
