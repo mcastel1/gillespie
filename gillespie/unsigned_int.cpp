@@ -644,6 +644,8 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, unsigned int N, unsigned
 
 
 /*
+ multiply *this and *multiplicand with Kabatsuba method, by considering the first N and L bits in *this and multiplicand, respectively
+ 
  THIS METHOD HAS NOT BEEN TESTED AND IS PROBABLY WRONG, I AM USING IT TO TEST SPEED ONLY
  
  requirements:
@@ -654,7 +656,7 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, unsigned int N, unsigned
  - work_space_x->GetSize() = GetSize()
  - work_space_y->GetSize() = multiplicand->GetSize()
  */
-inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* z0,  UnsignedInt* z2, UnsignedInt* z3, UnsignedInt* work_space_x, UnsignedInt* work_space_y){
+inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, unsigned int N, unsigned int L, UnsignedInt* result, UnsignedInt* z0,  UnsignedInt* z2, UnsignedInt* z3, UnsignedInt* work_space_x, UnsignedInt* work_space_y){
     
     Bits carry;
     
@@ -916,7 +918,7 @@ inline void SpeedTestUnsignedIntMultiplyKabatsuba(unsigned long long int maximum
         //this simulates the drawing of the random number for the Gillespie algorithm
         r = (unsigned int)gsl_rng_uniform_int(ran, maximum_value);
         x = gsl_rng_uniform(ran);
-        (A[s]).MultiplyKabatsuba(&B, &C, &z0, &z2, &z3, &work_space_x, &work_space_y);
+        (A[s]).MultiplyKabatsuba(&B, A[s].GetSize(), B.GetSize(), &C, &z0, &z2, &z3, &work_space_x, &work_space_y);
         
         //        A[s].PrintBase10("A");
         
