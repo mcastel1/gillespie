@@ -393,6 +393,14 @@ inline void BitSet::Normalize(unsigned int n){
 //add bit-by-bit addend (which here is either 1 or 0) to *this and store the result in *this and the carry in *carry. This method requires this->GetSize() to be > 1
 inline void BitSet::AddTo(Bits* addend, Bits* carry){
         
+    AddTo(addend, GetSize(), carry);
+    
+}
+
+
+//add bit-by-bit addend (which here is either 1 or 0) to *this, by considering only the first N bits of *thuis,  store the result in *this and the carry in *carry
+inline void BitSet::AddTo(Bits* addend, unsigned int N, Bits* carry){
+        
     Bits t;
     unsigned int p;
 
@@ -400,7 +408,7 @@ inline void BitSet::AddTo(Bits* addend, Bits* carry){
     (carry->n) = ((addend->n) & ((b[0]).n));
     (b[0]).n = (((b[0]).n) ^ (addend->n));
     
-    for(p=1; p<GetSize(); p++){
+    for(p=1; p<N; p++){
         //run over the extra bits of augend
         
         (t.n) = (((b[p]).n) ^ (carry->n));
@@ -411,7 +419,6 @@ inline void BitSet::AddTo(Bits* addend, Bits* carry){
         
     
 }
-
 
 
 
