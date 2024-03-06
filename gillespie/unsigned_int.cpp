@@ -306,7 +306,7 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int maximum_value, unsi
 
 
 //test for BitSet::AddTo/SubstractTo
-inline void TestUnsignedIntAddTo(unsigned long long int S, unsigned long long int seed){
+inline void TestUnsignedIntSubstractTo(unsigned long long int S, unsigned long long int seed){
     
     UnsignedInt a, b;
     vector<unsigned long long int> v_a, v_b, v_a_minus_b;

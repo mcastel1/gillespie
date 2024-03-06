@@ -112,7 +112,7 @@ int main(int argc, char * argv[]) {
 
 //    TestUnsignedIntMultiply(S, seed);
 //    SpeedTestUnsignedIntMultiply(128, S, seed);
-//    TestUnsignedIntAddTo(S, seed);
+    TestUnsignedIntSubstractTo(S, seed);
 //    TestDoubleAddTo(S, seed);
 //    SpeedTestDoubleAddTo(S, seed);
 //    SpeedTestUnsignedIntAddto(128, S, seed);
