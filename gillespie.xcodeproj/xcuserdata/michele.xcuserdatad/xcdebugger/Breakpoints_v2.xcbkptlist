@@ -46,8 +46,8 @@
             filePath = "gillespie/unsigned_int.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "655"
-            endingLineNumber = "655"
+            startingLineNumber = "653"
+            endingLineNumber = "653"
             landmarkName = "TestFractionFloorMultiply(S, seed)"
             landmarkType = "9">
          </BreakpointContent>
@@ -97,6 +97,21 @@
                   endingLineNumber = "171"
                   offsetFromSymbolStart = "300">
                </Location>
+               <Location
+                  uuid = "23035624-7110-4EBA-809C-008C67D6376F - 2bb31f8c3cf0129b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "System_nobits::iterate()"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "171"
+                  endingLineNumber = "171"
+                  offsetFromSymbolStart = "236">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -145,6 +160,21 @@
                   endingLineNumber = "175"
                   offsetFromSymbolStart = "496">
                </Location>
+               <Location
+                  uuid = "D368C11E-63FF-4D42-983D-F082EBC72ED0 - 2bb31f8c3cf0121f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "System_nobits::iterate()"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "175"
+                  endingLineNumber = "175"
+                  offsetFromSymbolStart = "400">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -162,6 +192,38 @@
             endingLineNumber = "178"
             landmarkName = "System_nobits::iterate()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "F8B32295-1F96-45AB-95C2-FDABDD1D6B1C - 2bb31f8c3cf015b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "System_nobits::iterate()"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "524">
+               </Location>
+               <Location
+                  uuid = "F8B32295-1F96-45AB-95C2-FDABDD1D6B1C - 2bb31f8c3cf015b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "System_nobits::iterate()"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "428">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -192,6 +254,38 @@
             endingLineNumber = "178"
             landmarkName = "System_nobits::iterate()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "AE745800-6CDF-44AE-99CB-35C7D52287D4 - 2bb31f8c3cf015b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "System_nobits::iterate()"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "524">
+               </Location>
+               <Location
+                  uuid = "AE745800-6CDF-44AE-99CB-35C7D52287D4 - 2bb31f8c3cf015b0"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "System_nobits::iterate()"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "178"
+                  endingLineNumber = "178"
+                  offsetFromSymbolStart = "428">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -271,6 +365,38 @@
             endingLineNumber = "115"
             landmarkName = "main(argc, argv)"
             landmarkType = "9">
+            <Locations>
+               <Location
+                  uuid = "3EA2DDB1-68A5-4345-A5AE-69E080E7CB6E - 40e678f257759cfc"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "141"
+                  endingLineNumber = "141"
+                  offsetFromSymbolStart = "364">
+               </Location>
+               <Location
+                  uuid = "3EA2DDB1-68A5-4345-A5AE-69E080E7CB6E - 40e678f2577582ed"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "126"
+                  endingLineNumber = "126"
+                  offsetFromSymbolStart = "356">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

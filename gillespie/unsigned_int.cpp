@@ -585,13 +585,12 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, unsigned int N, unsigned
 
 
 //this method requires that *this and *multiplicand have the same length
-inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* result){
+inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* result, BitSet* z0, BitSet* z1, Bits* z2){
     
-    Bits z2;
     
     //do z2 = x1 y1
-    z2 = (b.back());
-    z2 &= (&(multiplicand->b.back()));
+    (*z2) = (b.back());
+    (*z2) &= (&(multiplicand->b.back()));
     
     
 }
