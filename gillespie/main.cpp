@@ -119,6 +119,7 @@ int main(int argc, char * argv[]) {
 //    SpeedTestUnsignedIntAddto(128, S, seed);
 //    TestFractionFloorMultiply(S, seed);
 //    SpeedTestFractionFloorMultiply(32, 128, S, seed);
+    SpeedTestMultiplyKabatsuba(128, S, seed);
 
 
     /*

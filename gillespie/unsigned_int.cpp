@@ -651,7 +651,7 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, unsigned int N, unsigned
  - work_space->GetSize() = GetSize()
  - z0-GetSize() = 2*(this->GetSize()-1)
  - z2->GetSize() = 1
- - z0-GetSize() = 2*(this->GetSize()-1)
+ - z3-GetSize() = 2*(this->GetSize()-1)
  */
 inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* z0,  UnsignedInt* z2, UnsignedInt* z3, UnsignedInt* work_space){
     
@@ -834,5 +834,100 @@ inline void SpeedTestFractionFloorMultiply(unsigned int n_bits_factor, unsigned 
     cout << "dummy print: a = " << a.back() << " " << b << c << r << x << endl;
  
 
+    
+}
+
+
+
+inline void SpeedTestMultiplyKabatsuba(unsigned long long int maximum_value, unsigned long long int S, unsigned long long int seed){
+    
+    
+    cout << " ***************************** Speed test for UnsignedInt::MultiplyKabatsuba *****************************" << endl;
+
+    
+    clock_t start=0, end=0;
+    gsl_rng* ran;
+    unsigned long long int r=0, s;
+    unsigned int i, b, c=0;
+    double x = 0.0;
+    
+    vector<UnsignedInt> A(S);
+    UnsignedInt B, C, z0, z2, z3, work_space;
+    vector<unsigned int> a(n_bits*S);
+    
+    for(s=0; s<A.size(); ++s){
+        A[s].Resize(bits(maximum_value));
+    }
+    B.Resize(bits(maximum_value));
+    C.Resize(A[0].GetSize()+B.GetSize());
+    z0.Resize(2*(A[0].GetSize()-1));
+    z2.Resize(1);
+    z3.Resize(2*(A[0].GetSize()-1));
+    
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    
+    
+    b = (unsigned int)gsl_rng_uniform_int(ran, maximum_value);
+    //    cout << "b: " << b << endl;
+
+    start = clock();
+    for(s=0; s<n_bits*S; s++){
+        
+        //this simulates the drawing of the random number for the Gillespie algorithm
+        r = gsl_rng_uniform_int(ran, maximum_value);
+        x = gsl_rng_uniform(ran);
+        c = (a[s]) * b;
+        
+    }
+    end = clock();
+    cout << "Time for n_bits * S [random number + operation]s without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
+    
+    
+    //****************** calculation with bits ******************
+    for(s=0; s<S; s++){
+        
+        for(i=0; i<n_bits; i++){
+            A[s].Set(i, gsl_rng_uniform_int(ran, maximum_value));
+        }
+        
+    }
+    for(i=0; i<n_bits; i++){
+        B.Set(i, gsl_rng_uniform_int(ran, maximum_value));
+    }
+
+    
+    start = clock();
+    for(s=0; s<S; s++){
+        
+        //        A[s].PrintBase10("A");
+        //        B.PrintBase10("B");
+        
+        //        (A[s]) += (&B[s]);
+        //        (A[s]).AddTo(&(B[s]), &carry);
+        
+        //                (A[s]) -= (&B[s]);
+        //this simulates the drawing of the random number for the Gillespie algorithm
+        r = (unsigned int)gsl_rng_uniform_int(ran, maximum_value);
+        x = gsl_rng_uniform(ran);
+        (A[s]).MultiplyKabatsuba(&B, &C, &z0, &z2, &z3, &work_space);
+        
+        //        A[s].PrintBase10("A");
+        
+    }
+    end = clock();
+    
+    cout << "Time for S [random number + operation]s with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+    
+    
+    
+    //without this the for loop will not be exectued with -O3
+    cout << endl;
+    C.PrintBase10("dummy print");
+    cout << "dummy print a = " << a[S-1] << " " << c << " " << r << x << endl;
+    
+    
     
 }
