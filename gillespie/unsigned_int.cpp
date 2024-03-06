@@ -653,7 +653,7 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, unsigned int N, unsigned
  - z2->GetSize() = 1
  - z3-GetSize() = 2*(this->GetSize()-1)
  */
-inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* z0,  UnsignedInt* z2, UnsignedInt* z3, UnsignedInt* work_space){
+inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* z0,  UnsignedInt* z2, UnsignedInt* z3, UnsignedInt* work_space_x, UnsignedInt* work_space_y){
     
     Bits carry;
     
@@ -662,16 +662,17 @@ inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* re
     (z2->b.back()) &= (&(multiplicand->b.back()));
     
     //z0 = x0 y0
-    (*work_space) = (*this);
-    work_space->Multiply(multiplicand, GetSize()-1, GetSize()-1, z0);
+    (*work_space_x) = (*this);
+    work_space_x->Multiply(multiplicand, GetSize()-1, GetSize()-1, z0);
     
     //compute x1+x0
-    work_space->AddTo(&(b.back()), GetSize()-1, &carry);
+    work_space_x->AddTo(&(b.back()), GetSize()-1, &carry);
     //compute y1+y0
-    multiplicand->AddTo(&(multiplicand->b.back()), (multiplicand->GetSize())-1, &carry);
+    (*work_space_y) = (*multiplicand);
+    work_space_y->AddTo(&(multiplicand->b.back()), (multiplicand->GetSize())-1, &carry);
     
     //compute z3
-    work_space->Multiply(multiplicand, GetSize()-1, GetSize()-1, z3);
+    work_space_x->Multiply(multiplicand, GetSize()-1, GetSize()-1, z3);
     
     //compute z1 = z3-z2-z0
     z3->SubstractTo(z2, &carry);

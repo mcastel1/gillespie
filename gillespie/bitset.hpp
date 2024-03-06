@@ -39,7 +39,7 @@ public:
     void Print(string);
 
     //bitwise sum and substraction
-    void SubstractTo(BitSet*, Bits*), AddTo(BitSet*, Bits*), AddTo(Bits*, Bits*), AddTo(Bits*, unsigned int, Bits*), Multiply(UnsignedInt*, UnsignedInt*), Multiply(UnsignedInt*, unsigned int, unsigned int, UnsignedInt*), AndTo(Bits*, unsigned int, unsigned int), MultiplyKabatsuba(UnsignedInt*, UnsignedInt*, UnsignedInt*, UnsignedInt*, UnsignedInt*, UnsignedInt*);
+    void SubstractTo(BitSet*, Bits*), AddTo(BitSet*, Bits*), AddTo(Bits*, Bits*), AddTo(Bits*, unsigned int, Bits*), Multiply(UnsignedInt*, UnsignedInt*), Multiply(UnsignedInt*, unsigned int, unsigned int, UnsignedInt*), AndTo(Bits*, unsigned int, unsigned int), MultiplyKabatsuba(UnsignedInt*, UnsignedInt*, UnsignedInt*, UnsignedInt*, UnsignedInt*, UnsignedInt*, UnsignedInt*);
     BitSet operator + (BitSet*), operator - (BitSet*), operator << (Bits*), Add(BitSet*, Bits*), Substract(BitSet*, Bits*);
     void operator += (BitSet*), operator -= (BitSet*), operator *= (BitSet*);
     Bits& operator [] (const unsigned int&);
