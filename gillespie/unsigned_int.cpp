@@ -643,14 +643,14 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, unsigned int N, unsigned
 
 
 
-//this method requires that *this and *multiplicand have the same length
-inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* z0, UnsignedInt* z1, Bits* z2, UnsignedInt* work_space){
+//this method requires that *this and *multiplicand have the same length. THIS METHOD HAS NOT BEEN TESTED AND IS PROBABLY WRONG, I AM USING IT TO TEST SPEED ONLY
+inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* z0, UnsignedInt* z1, UnsignedInt* z2, UnsignedInt* z3, UnsignedInt* work_space){
     
     Bits carry;
     
     //do z2 = x1 y1
-    (*z2) = (b.back());
-    (*z2) &= (&(multiplicand->b.back()));
+    (z2->b.back()) = (b.back());
+    (z2->b.back()) &= (&(multiplicand->b.back()));
     
     //z0 = x0 y0
     (*work_space) = (*this);
@@ -661,6 +661,10 @@ inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* re
     //compute y1+y0
     multiplicand->AddTo(&(multiplicand->b.back()), (multiplicand->GetSize())-1, &carry);
     
+    work_space->Multiply(multiplicand, GetSize()-1, GetSize()-1, z3);
+    z3->SubstractTo(z2, &carry);
+    z3->SubstractTo(z0, &carry);
+
     
 
     
