@@ -643,8 +643,17 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, unsigned int N, unsigned
 
 
 
-//this method requires that *this and *multiplicand have the same length. THIS METHOD HAS NOT BEEN TESTED AND IS PROBABLY WRONG, I AM USING IT TO TEST SPEED ONLY
-inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* z0, UnsignedInt* z1, UnsignedInt* z2, UnsignedInt* z3, UnsignedInt* work_space){
+/*
+ THIS METHOD HAS NOT BEEN TESTED AND IS PROBABLY WRONG, I AM USING IT TO TEST SPEED ONLY
+ 
+ requirements:
+ - this->GetSize() = multiplicand->GetSize()
+ - work_space->GetSize() = GetSize()
+ - z0-GetSize() = 2*(this->GetSize()-1)
+ - z2->GetSize() = 1
+ - z0-GetSize() = 2*(this->GetSize()-1)
+ */
+inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* z0,  UnsignedInt* z2, UnsignedInt* z3, UnsignedInt* work_space){
     
     Bits carry;
     
