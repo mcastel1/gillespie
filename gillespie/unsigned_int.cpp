@@ -585,12 +585,16 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, unsigned int N, unsigned
 
 
 //this method requires that *this and *multiplicand have the same length
-inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* result, BitSet* z0, BitSet* z1, Bits* z2){
+inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* z0, UnsignedInt* z1, Bits* z2, BitSet* work_space){
     
     
     //do z2 = x1 y1
     (*z2) = (b.back());
     (*z2) &= (&(multiplicand->b.back()));
+    
+    //z0 = x0 y0
+    (*work_space) = (*this);
+    work_space->Multiply(multiplicand, GetSize()-1, GetSize()-1, z0);
     
     
 }
