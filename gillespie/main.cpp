@@ -109,20 +109,18 @@ int main(int argc, char * argv[]) {
         
     }
     
-    
-    
-    //    TestUnsignedIntMultiply(S, seed);
-    //    SpeedTestUnsignedIntMultiply(128, S, seed);
-    //    TestUnsignedIntAddTo(S, seed);
-    //    TestDoubleAddTo(S, seed);
-    //    SpeedTestDoubleAddTo(S, seed);
-    //    SpeedTestUnsignedIntAddto(128, S, seed);
-    //        TestFractionFloorMultiply(S, seed);
-    //        SpeedTestFractionFloorMultiply(32, 128, S, seed);
-    
-    
-    
-    //
+
+//    TestUnsignedIntMultiply(S, seed);
+//    SpeedTestUnsignedIntMultiply(128, S, seed);
+//    TestUnsignedIntAddTo(S, seed);
+//    TestDoubleAddTo(S, seed);
+//    SpeedTestDoubleAddTo(S, seed);
+//    SpeedTestUnsignedIntAddto(128, S, seed);
+//    TestFractionFloorMultiply(S, seed);
+//    SpeedTestFractionFloorMultiply(32, 128, S, seed);
+
+
+    /*
     System_bits FRANK(128, seed);
     System_nobits frank(128, seed);
     
@@ -150,7 +148,7 @@ int main(int argc, char * argv[]) {
     FRANK.Z.PrintBase10("");
     FRANK.RHS.PrintBase10("");
     cout << frank.z << frank.rhs;
-    //
+    */
     
     cout << endl;
     return 0;
