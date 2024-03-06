@@ -839,7 +839,7 @@ inline void SpeedTestFractionFloorMultiply(unsigned int n_bits_factor, unsigned 
 
 
 
-inline void SpeedTestMultiplyKabatsuba(unsigned long long int maximum_value, unsigned long long int S, unsigned long long int seed){
+inline void SpeedTestUnsignedIntMultiplyKabatsuba(unsigned long long int maximum_value, unsigned long long int S, unsigned long long int seed){
     
     
     cout << " ***************************** Speed test for UnsignedInt::MultiplyKabatsuba *****************************" << endl;
