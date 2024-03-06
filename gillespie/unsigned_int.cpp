@@ -648,10 +648,11 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, unsigned int N, unsigned
  
  requirements:
  - this->GetSize() = multiplicand->GetSize()
- - work_space->GetSize() = GetSize()
  - z0-GetSize() = 2*(this->GetSize()-1)
  - z2->GetSize() = 1
  - z3-GetSize() = 2*(this->GetSize()-1)
+ - work_space_x->GetSize() = GetSize()
+ - work_space_y->GetSize() = multiplicand->GetSize()
  */
 inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* z0,  UnsignedInt* z2, UnsignedInt* z3, UnsignedInt* work_space_x, UnsignedInt* work_space_y){
     
@@ -853,7 +854,7 @@ inline void SpeedTestUnsignedIntMultiplyKabatsuba(unsigned long long int maximum
     double x = 0.0;
     
     vector<UnsignedInt> A(S);
-    UnsignedInt B, C, z0, z2, z3, work_space;
+    UnsignedInt B, C, z0, z2, z3, work_space_x, work_space_y;
     vector<unsigned int> a(n_bits*S);
     
     for(s=0; s<A.size(); ++s){
@@ -864,7 +865,9 @@ inline void SpeedTestUnsignedIntMultiplyKabatsuba(unsigned long long int maximum
     z0.Resize(2*(A[0].GetSize()-1));
     z2.Resize(1);
     z3.Resize(2*(A[0].GetSize()-1));
-    
+    work_space_x.Resize(A[0].GetSize());
+    work_space_y.Resize(C.GetSize());
+
     
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     gsl_rng_set(ran, seed);
@@ -913,7 +916,7 @@ inline void SpeedTestUnsignedIntMultiplyKabatsuba(unsigned long long int maximum
         //this simulates the drawing of the random number for the Gillespie algorithm
         r = (unsigned int)gsl_rng_uniform_int(ran, maximum_value);
         x = gsl_rng_uniform(ran);
-        (A[s]).MultiplyKabatsuba(&B, &C, &z0, &z2, &z3, &work_space);
+        (A[s]).MultiplyKabatsuba(&B, &C, &z0, &z2, &z3, &work_space_x, &work_space_y);
         
         //        A[s].PrintBase10("A");
         
