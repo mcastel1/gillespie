@@ -661,7 +661,10 @@ inline void BitSet::MultiplyKabatsuba(UnsignedInt* multiplicand, UnsignedInt* re
     //compute y1+y0
     multiplicand->AddTo(&(multiplicand->b.back()), (multiplicand->GetSize())-1, &carry);
     
+    //compute z3
     work_space->Multiply(multiplicand, GetSize()-1, GetSize()-1, z3);
+    
+    //compute z1 = z3-z2-z0
     z3->SubstractTo(z2, &carry);
     z3->SubstractTo(z0, &carry);
 
