@@ -112,6 +112,7 @@ int main(int argc, char * argv[]) {
 
 //    TestUnsignedIntMultiply(S, seed);
 //    SpeedTestUnsignedIntMultiply(128, S, seed);
+//    TestUnsignedIntAddTo(S, seed);
     TestUnsignedIntSubstractTo(S, seed);
 //    TestDoubleAddTo(S, seed);
 //    SpeedTestDoubleAddTo(S, seed);
@@ -125,7 +126,7 @@ int main(int argc, char * argv[]) {
     System_nobits frank(128, seed);
     
     
-    //********************* speed test without bits  *********************
+    // ********************* speed test without bits  *********************
     start = clock();
     for(s=0; s<n_bits*S; ++s){
         frank.iterate();
@@ -135,7 +136,7 @@ int main(int argc, char * argv[]) {
 
     
     
-    //********************* speed test with bits  *********************
+    // ********************* speed test with bits  *********************
     start = clock();
     for(s=0; s<S; ++s){
         FRANK.Iterate();

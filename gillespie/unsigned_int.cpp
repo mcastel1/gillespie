@@ -306,6 +306,65 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int maximum_value, unsi
 
 
 //test for BitSet::AddTo/SubstractTo
+inline void TestUnsignedIntAddTo(unsigned long long int S, unsigned long long int seed){
+    
+    UnsignedInt a, b;
+    vector<unsigned long long int> v_a, v_b, v_a_plus_b;
+    unsigned int i, s;
+    unsigned long long int MAX = 1024;
+    gsl_rng* ran;
+    Bits borrow;
+    bool it_works;
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    a.Resize(bits(MAX));
+    b.Resize(bits(2*MAX));
+    
+    
+    for(it_works = true, s=0; s<S; ++s){
+        
+        
+        for(i=0; i<n_bits; i++){
+            
+            a.Set(i, gsl_rng_uniform_int(ran, MAX));
+            b.Set(i, gsl_rng_uniform_int(ran, MAX));
+
+        }
+        
+        
+        //        a.PrintBase10("a");
+        //        b.PrintBase10("b");
+        
+        a.GetBase10(v_a);
+        b.GetBase10(v_b);
+        
+        a.AddTo(&b, &borrow);
+        
+        //            a.PrintBase10("a-b");
+        
+        a.GetBase10(v_a_plus_b);
+        
+        for(i=0; i<n_bits; ++i){
+            if( v_a[i]+v_b[i] !=  v_a_plus_b[i] ){
+                it_works = false;
+                break;
+            }
+            
+            cout << "[" << i << "]:\t\t\t" << v_a[i]+v_b[i] << "\t\t\t" << v_a_plus_b[i] << endl;
+        }
+        //
+        
+    }
+    
+    cout << "It works = " << it_works << "." <<  endl;
+    
+    
+}
+
+
+//test for BitSet::AddTo/SubstractTo
 inline void TestUnsignedIntSubstractTo(unsigned long long int S, unsigned long long int seed){
     
     UnsignedInt a, b;
@@ -319,8 +378,8 @@ inline void TestUnsignedIntSubstractTo(unsigned long long int S, unsigned long l
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     gsl_rng_set(ran, seed);
     
-    a.Resize(10);
-    b.Resize(10);
+    a.Resize(bits(MAX));
+    b.Resize(bits(MAX));
     
     
     for(it_works = true, s=0; s<S; ++s){
@@ -331,7 +390,7 @@ inline void TestUnsignedIntSubstractTo(unsigned long long int S, unsigned long l
             r = gsl_rng_uniform_int(ran, MAX);
             a.Set(i, r);
             if(r!=0){
-                b.Set(i, r-1-gsl_rng_uniform_int(ran, r));
+                b.Set(i, r-gsl_rng_uniform_int(ran, r));
             }else{
                 b.Set(i, 0);
             }
