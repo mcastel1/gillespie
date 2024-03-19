@@ -43,7 +43,7 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
     A = UnsignedInt(N*N);
     //Z must contain a[0] + a[1] + a[2]
     Z = UnsignedInt(3*M*N*N);
-    R.Resize(n_bits_R);
+    R = UnsignedInt(N*(N-1)/2);
     RHS.Resize(Z.GetSize());
     W.Resize(R.GetSize() + Z.GetSize());
     w.resize(n_bits_R);
@@ -87,33 +87,33 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
 
 inline void System_bits::Iterate(void){
     
-    //draw the random numbers
-    //POTENTIAL ERROR: IF THE gsl_rng_uniform(ran) IS VERY SMALL AND THUS e << 1023,   IS THE MANTISSA OF gsl_rng_uniform(ran) STILL UNIFORMLY DISTRIBUTED IN [0,1)?
-    R.Fraction::SetAllFromDoubleMantissa(gsl_rng_uniform(ran), &w);
-    //POTENTIAL ERROR: IF THE gsl_rng_uniform(ran) IS VERY SMALL AND THUS e << 1023,   IS THE MANTISSA OF gsl_rng_uniform(ran) STILL UNIFORMLY DISTRIBUTED IN [0,1)?
-    q = gsl_rng_uniform_int(ran, 3);
-    
-    
-    //    c[0].PrintBase10("c[0]");
-    //    x[0].PrintBase10("x[0]");
-    //    x[1].PrintBase10("x[1]");
-    
-    
-    //THESE SHOULD BE OPTIMIZED BY UPDATING x[i] from the previous step with a sum 
-    /*
-     x[0].Multiply(&(x[1]), &A);
-     x[0].Multiply(&(x[2]), &A);
-     x[1].Multiply(&(x[2]), &A);
-     */
-    
-    //add the a[]s and compute Z
-    Z.BitSet::Set(&(a[0]));
-    Z.AddTo(&(a[1]), &carry);
-    Z.AddTo(&(a[2]), &carry);
-    
-    R.FloorMultiply(&Z, &RHS, &W);
-    
-    //    a[0].PrintBase10("c[0]*x[0]*x[1]");
+//    //draw the random numbers
+//    //POTENTIAL ERROR: IF THE gsl_rng_uniform(ran) IS VERY SMALL AND THUS e << 1023,   IS THE MANTISSA OF gsl_rng_uniform(ran) STILL UNIFORMLY DISTRIBUTED IN [0,1)?
+//    R.Fraction::SetAllFromDoubleMantissa(gsl_rng_uniform(ran), &w);
+//    //POTENTIAL ERROR: IF THE gsl_rng_uniform(ran) IS VERY SMALL AND THUS e << 1023,   IS THE MANTISSA OF gsl_rng_uniform(ran) STILL UNIFORMLY DISTRIBUTED IN [0,1)?
+//    q = gsl_rng_uniform_int(ran, 3);
+//    
+//    
+//    //    c[0].PrintBase10("c[0]");
+//    //    x[0].PrintBase10("x[0]");
+//    //    x[1].PrintBase10("x[1]");
+//    
+//    
+//    //THESE SHOULD BE OPTIMIZED BY UPDATING x[i] from the previous step with a sum 
+//    /*
+//     x[0].Multiply(&(x[1]), &A);
+//     x[0].Multiply(&(x[2]), &A);
+//     x[1].Multiply(&(x[2]), &A);
+//     */
+//    
+//    //add the a[]s and compute Z
+//    Z.BitSet::Set(&(a[0]));
+//    Z.AddTo(&(a[1]), &carry);
+//    Z.AddTo(&(a[2]), &carry);
+//    
+//    R.FloorMultiply(&Z, &RHS, &W);
+//    
+//    //    a[0].PrintBase10("c[0]*x[0]*x[1]");
     
 }
 
