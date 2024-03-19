@@ -41,12 +41,8 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
         
     }
     
-    A = UnsignedInt(N*N);
-    //Z must contain a[0] + a[1] + a[2]
-    Z = UnsignedInt(3*M*N*N);
+    L = UnsignedInt(N*(N-1)/2);
     R = UnsignedInt(N*(N-1)/2);
-    RHS.Resize(Z.GetSize());
-    W.Resize(R.GetSize() + Z.GetSize());
     w.resize(n_bits_R);
     
     
@@ -91,6 +87,7 @@ inline void System_bits::Iterate(void){
     //draw the random numbers
     R.SetAll(gsl_rng_uniform_int(ran, N*(N-1)/2));
     
+    L.SetAll(0);
     
     //    q = gsl_rng_uniform_int(ran, 3);
 //

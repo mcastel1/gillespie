@@ -147,8 +147,7 @@ int main(int argc, char * argv[]) {
     
     
     cout << endl << "dummy print";
-    FRANK.Z.PrintBase10("");
-    FRANK.RHS.PrintBase10("");
+    FRANK.L.PrintBase10("");
     cout << frank.z << frank.rhs;
     //
     
