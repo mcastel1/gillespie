@@ -18,6 +18,7 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
     
     
     n = new unsigned int [3];
+    changer.resize(6);
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     
     gsl_rng_set(ran, seed);
