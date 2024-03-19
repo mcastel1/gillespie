@@ -33,14 +33,17 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
     //VERIFY
     
     for(x.clear(), /*c.clear(),*/ i=0; i<3; ++i){
-        
         x.push_back(UnsignedInt(N));
-        //        c.push_back(UnsignedInt(M));
-        //a must host c[](x[]*x[], thus
-        a.push_back(UnsignedInt(M*N*N));
-        
     }
     
+    //set a[i] so they can host the maximum values that can be stored in them
+    //double check
+    for(i=0; i<3; i++){
+        a[i] = UnsignedInt(gsl_pow_2(N/2));
+        a[3+i] = UnsignedInt(N*(N-1)/2);
+    }
+    //double check
+
     L = UnsignedInt(N*(N-1)/2);
     R = UnsignedInt(N*(N-1)/2);
     w.resize(n_bits_R);

@@ -16,7 +16,7 @@ public:
     UnsignedInt /*the left-hand side of Eq. (10b) in gillespie2007stochastic*/L, /*the random number used to draw the reaction, equal to r2 in Eq. (10b) in gillespie2007stochastic*/ R;
     //changer[j] sets which out of the n_bits replicas has undergone reaction j: if the s-th bit of changer[j] = 0 then the s-th replica has not undergone the reaction j, while if it = 1, the s-th replica has undergone the reaction j
     vector<Bits> changer;
-    
+   
     unsigned long int q;
     //a temporary variable to store the carry of operations
     Bits carry;
