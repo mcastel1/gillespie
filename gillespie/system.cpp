@@ -58,9 +58,7 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
             
             //write the initial number of particles in x
             x[i].Set(s, n[i]);
-            //draw the values of c and write them in c
-            //            c[i].Set(s, gsl_rng_uniform_int(ran, M));
-            
+              
         }
         
     }
