@@ -14,43 +14,13 @@
             filePath = "gillespie/system.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "131"
-            endingLineNumber = "131"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
             landmarkName = "SystemBits::Iterate()"
             landmarkType = "7">
             <Locations>
                <Location
-                  uuid = "0CE9A1DD-72F3-4339-96A0-F894B33B9B2E - 3ed48158e0e618bd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "systemnobits::systemnobits(unsigned long long, unsigned int)"
-                  moduleName = "gillespie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
-                  offsetFromSymbolStart = "32">
-               </Location>
-               <Location
-                  uuid = "0CE9A1DD-72F3-4339-96A0-F894B33B9B2E - 3ed48158e0e618bd"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "systemnobits::systemnobits(unsigned long long, unsigned int)"
-                  moduleName = "gillespie"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "137"
-                  endingLineNumber = "137"
-                  offsetFromSymbolStart = "56">
-               </Location>
-               <Location
-                  uuid = "0CE9A1DD-72F3-4339-96A0-F894B33B9B2E - 97d05580d8329761"
+                  uuid = "0CE9A1DD-72F3-4339-96A0-F894B33B9B2E - 97d05580d83296be"
                   shouldBeEnabled = "Yes"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
@@ -60,9 +30,24 @@
                   urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "130"
-                  endingLineNumber = "130"
-                  offsetFromSymbolStart = "576">
+                  startingLineNumber = "143"
+                  endingLineNumber = "143"
+                  offsetFromSymbolStart = "780">
+               </Location>
+               <Location
+                  uuid = "0CE9A1DD-72F3-4339-96A0-F894B33B9B2E - 97d05580d83296dd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SystemBits::Iterate()"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "142"
+                  endingLineNumber = "142"
+                  offsetFromSymbolStart = "512">
                </Location>
             </Locations>
          </BreakpointContent>
@@ -77,10 +62,57 @@
             filePath = "gillespie/system.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "152"
+            endingLineNumber = "152"
             landmarkName = "SystemBits::Iterate()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "82BBCBBC-F60F-4FD1-87D0-69894C0DF3F8 - 3ed48158e0e61629"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "systemnobits::systemnobits(unsigned long long, unsigned int)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "32">
+               </Location>
+               <Location
+                  uuid = "82BBCBBC-F60F-4FD1-87D0-69894C0DF3F8 - 3ed48158e0e61629"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "systemnobits::systemnobits(unsigned long long, unsigned int)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "157"
+                  endingLineNumber = "157"
+                  offsetFromSymbolStart = "56">
+               </Location>
+               <Location
+                  uuid = "82BBCBBC-F60F-4FD1-87D0-69894C0DF3F8 - 97d05580d8329997"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SystemBits::Iterate()"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "152"
+                  endingLineNumber = "152"
+                  offsetFromSymbolStart = "780">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -93,10 +125,90 @@
             filePath = "gillespie/system.cpp"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "147"
-            endingLineNumber = "147"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
             landmarkName = "SystemBits::Iterate()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7BEBD2C3-C117-4F6A-BA27-E00C0163E975 - 3ed48158e0e6164a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "systemnobits::systemnobits(unsigned long long, unsigned int)"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "160"
+                  endingLineNumber = "160"
+                  offsetFromSymbolStart = "92">
+               </Location>
+               <Location
+                  uuid = "7BEBD2C3-C117-4F6A-BA27-E00C0163E975 - 97d05580d83298cd"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SystemBits::Iterate()"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "158"
+                  endingLineNumber = "158"
+                  offsetFromSymbolStart = "360">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "61B77B1F-4DBC-4F54-A326-06C287BFC455"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "gillespie/system.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
+            landmarkName = "SystemBits::Iterate()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "61B77B1F-4DBC-4F54-A326-06C287BFC455 - 97d05580d832961b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SystemBits::Iterate()"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
+                  offsetFromSymbolStart = "660">
+               </Location>
+               <Location
+                  uuid = "61B77B1F-4DBC-4F54-A326-06C287BFC455 - 97d05580d832961b"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SystemBits::Iterate()"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
+                  offsetFromSymbolStart = "408">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

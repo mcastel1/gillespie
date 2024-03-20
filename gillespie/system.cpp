@@ -113,11 +113,22 @@ inline void SystemBits::Iterate(void){
     r1 = gsl_rng_uniform(ran);
     R.SetAll(gsl_rng_uniform_int(ran, N*(N-1)/2));
     
+    /*
+     a0 = sum_{ a < b} x_a x_b + sum_a x_a(x_a-1)/2
+        = 1/2 sum_{a!=b} x_a x_b + sum_a x_a(x_a-1)/2
+        = 1/2 sum_{a!=b} x_a x_b + 1/2 sum_a x_a x_a - N/2
+        = 1/2 sum_{a,b} x_a x_b - N/2
+        = N^2/2 - N/2
+        = N(N-1)/2
+     */
     
-    for(cout << "x[]: " << endl, i=0; i<x.size(); ++i){
-        cout << "x[" << i << "]" << endl;
-        x[i].PrintBase10("");
-    }
+    R.PrintBase10("R");
+    
+    
+//    for(cout << "x[]: " << endl, i=0; i<x.size(); ++i){
+//        cout << "x[" << i << "]" << endl;
+//        x[i].PrintBase10("");
+//    }
     
     
     for(cout << "a[]:" << endl, i=0; i<a.size(); ++i){
@@ -136,7 +147,7 @@ inline void SystemBits::Iterate(void){
         changer[i] = (L < R);
         
         L.PrintBase10("L");
-        changer[i].Print("changer");
+        (changer[i]).Print("changer");
         
     }
     
