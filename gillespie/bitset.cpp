@@ -507,13 +507,13 @@ inline void BitSet::SubstractTo(BitSet* subtrahend, Bits* borrow) {
 //substract bit-by-bit subtrahend (which here is either 1 or 0) to *this and store the result in *this and the borrow in *borrow. This method requires this->GetSize() to be >= addend.GetSize()
 inline void BitSet::SubstractTo(Bits* subtrahend, Bits* borrow) {
     
+    Bits t;
     unsigned int p;
     
     (borrow->n) = ((~((b[0]).n)) & ((*subtrahend).n));
-    (b[0]).n = (((b[0]).n) ^ ((*subtrahend).n) ^ (borrow->n));
+    (b[0]).n = (((b[0]).n) ^ ((*subtrahend).n));
 
-    
-    for(p=subtrahend->GetSize(); p<GetSize(); p++){
+    for(p=1; p<GetSize(); p++){
         //run over the extra bits of minuend
         
         (t.n) = (((b[p]).n) ^ (borrow->n));
