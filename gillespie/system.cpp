@@ -71,21 +71,17 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
     //set a
     x[0].Multiply(&(x[2]), &(a[0]));
     
+    for(cout << "x[]: " << endl, i=0; i<x.size(); ++i){
+        cout << "x[" << i << "]" << endl;
+        x[i].PrintBase10("");
+    }
     
-    //    for(i=0; i<3; ++i){
-    //        
-    //        cout << "c[" << i << "]" << endl;
-    //        c[i].PrintBase10("");
-    //        
-    //    }
-    //    
-    //    
-    //    for(i=0; i<3; ++i){
-    //        
-    //        cout << "x[" << i << "]" << endl;
-    //        x[i].PrintBase10("");
-    //        
-    //    }
+    
+    for(cout << "a[]:" << endl, i=0; i<a.size(); ++i){
+        cout << "a[" << i << "]" << endl;
+        a[i].PrintBase10("");
+    }
+
     
     delete [] n;
     
