@@ -64,6 +64,20 @@ inline bool Bits::Get(unsigned int s){
 }
 
 
+//convert (bit-by_bit) *this in base 10 (so either 0 or 1) and write the result in the entries of v
+inline void Bits::GetBase10(vector<unsigned long long int>& v){
+    
+    unsigned int p;
+    
+    for(p=0, v.resize(n_bits); p<n_bits; p++){
+        
+        v[p] = Get(p);
+        
+    }
+    
+}
+
+
 //set *this randomly with seed seed
 inline void Bits::SetRandom(unsigned int seed){
     

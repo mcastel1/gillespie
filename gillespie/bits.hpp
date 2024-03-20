@@ -21,6 +21,7 @@ public:
     void Set(unsigned int, bool);
     void SetAll(bool);
     bool Get(unsigned int);
+    void GetBase10(vector<unsigned long long int>&);
     void SetRandom(unsigned int);
     void SetRandom(gsl_rng*);
     Bits Complement(void);
