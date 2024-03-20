@@ -19,7 +19,6 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in)
     
     
     n = new unsigned int [3];
-    changer.resize(6);
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
     
     gsl_rng_set(ran, seed);
@@ -136,21 +135,28 @@ inline void SystemBits::Iterate(void){
         a[i].PrintBase10("");
     }
     
-    //set all changer entries to zero
-    for(i=0; i<changer.size(); i++){changer[i].SetAll(false);}
     //run through all reactions and compute the left-hand size of eq. (10b) in gillespie2007stochastic
-    for (L.SetAll(0), i=0; i<6; i++) {
+    for (L.SetAll(0), compare_old.SetAll(true), i=0; i<6; i++) {
         
         
         L.AddTo(&(a[i]), &carry);
 
-        changer[i] = (L < R);
+        compare_new = (L < R);
         
         L.PrintBase10("L");
-        (changer[i]).Print("changer");
+        compare_old.Print("changer_old");
+        compare_new.Print("changer_new");
         
+        compare_old = compare_new;
+
     }
     
+    
+    //here I loop through all reactions, but I need to go through only the first three reactions -> change this later
+    for(i=0; i<6; i++){
+        
+        
+    }
     
     
 
