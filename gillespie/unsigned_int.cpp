@@ -573,6 +573,12 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
     
 }
 
+//this method requires *this to be even, it divides *this by 2 and writes the result in *this
+inline void BitSet::DivideByTwoTo(UnsignedInt* result){
+    
+    
+}
+
 
 //compute the floor of *this x *multiplicant and store the result in *result. This requires result->GetSize() = multiplicand->GetSize() and work_space->GetSize() = (this->GetSize()) + (multiplicand->GetSize()) 
 inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* work_space){
