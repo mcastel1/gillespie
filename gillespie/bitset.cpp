@@ -101,6 +101,15 @@ inline void BitSet::SetAll(unsigned long long int i){
 }
 
 
+inline void BitSet::SetAllToSize(unsigned long long int i){
+    
+    for(unsigned int s=0; s<GetSize(); s++){
+        (b[s]).SetAll( ((i >> s) & ullong_1) );
+    }
+    
+}
+
+
 //set all b[]s equal to m
 inline void BitSet::SetAll(Bits& m){
     

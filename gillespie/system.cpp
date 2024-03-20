@@ -113,6 +113,7 @@ inline void SystemBits::Iterate(void){
     r1 = gsl_rng_uniform(ran);
     //the SetAll command here is a bottleneck
     R.SetAll(gsl_rng_uniform_int(ran, N_N_m_1_2));
+//    R.SetAllToSize(gsl_rng_uniform_int(ran, N_N_m_1_2));
     //the SetAll command here is a bottleneck
 
     /*

@@ -26,6 +26,7 @@ public:
     void SetRandom(gsl_rng*);
     void SetRandom(unsigned int);
     void SetAll(unsigned long long int);
+    void SetAllToSize(unsigned long long int);
     void SetAll(Bits&);
     void SetAllFromDoubleMantissa(double, vector<bool>*);
     void Set(BitSet*);
