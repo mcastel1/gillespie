@@ -132,11 +132,15 @@ inline void SystemBits::Iterate(void){
         
         
         L.AddTo(&(a[i]), &carry);
-        L.PrintBase10("L");
 
         changer[i] = (L < R);
         
+        L.PrintBase10("L");
+        changer[i].Print("changer");
+        
     }
+    
+    
     
 
     
