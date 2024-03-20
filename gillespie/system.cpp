@@ -153,6 +153,20 @@ inline void SystemBits::Iterate(void){
 //        compare_new.Print("compare_new");
 //        changer.Print("changer");
         
+//        x[0] -> A, x[1] -> L, x[2] -> D
+        
+        switch (i) {
+            case 0:
+
+                //a[0] -> a[0] - x_D
+                a[0].SubstractTo(&(x[2]), &borrow);
+                //a[0] -> a[0] + x_A
+                a[0].AddTo(&(x[0]), &carry);
+                
+                break;
+
+        }
+        
         compare_old = compare_new;
 
     }
@@ -223,6 +237,14 @@ inline void systemnobits::iterate(void){
         
         compare_new = (L < R);
         changer = (compare_old ^ compare_new);
+        
+        switch (i) {
+            case 0:
+
+                a[0]-=x[2];
+                break;
+
+        }
                 
         compare_old = compare_new;
         
