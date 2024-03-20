@@ -70,7 +70,10 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
     
     //set a
     x[0].Multiply(&(x[2]), &(a[0]));
-    
+    x[0].Multiply(&(x[1]), &(a[1]));
+    x[1].Multiply(&(x[2]), &(a[2]));
+
+
     for(cout << "x[]: " << endl, i=0; i<x.size(); ++i){
         cout << "x[" << i << "]" << endl;
         x[i].PrintBase10("");
