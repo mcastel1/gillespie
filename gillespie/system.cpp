@@ -21,7 +21,6 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in)
     n = new unsigned int [3];
     changer.resize(6);
     ran = gsl_rng_alloc(gsl_rng_gfsr4);
-    Bits borrow;
     
     gsl_rng_set(ran, seed);
     
@@ -89,7 +88,32 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in)
     a[5].DivideByTwoTo();
 
 
+//
+//    for(cout << "x[]: " << endl, i=0; i<x.size(); ++i){
+//        cout << "x[" << i << "]" << endl;
+//        x[i].PrintBase10("");
+//    }
+//    
+//    
+//    for(cout << "a[]:" << endl, i=0; i<a.size(); ++i){
+//        cout << "a[" << i << "]" << endl;
+//        a[i].PrintBase10("");
+//    }
 
+    
+    delete [] n;
+    
+}
+
+inline void SystemBits::Iterate(void){
+    
+    unsigned int i;
+    
+    //draw the random numbers
+    r1 = gsl_rng_uniform(ran);
+    R.SetAll(gsl_rng_uniform_int(ran, N*(N-1)/2));
+    
+    
     for(cout << "x[]: " << endl, i=0; i<x.size(); ++i){
         cout << "x[" << i << "]" << endl;
         x[i].PrintBase10("");
@@ -100,45 +124,21 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in)
         cout << "a[" << i << "]" << endl;
         a[i].PrintBase10("");
     }
+    
+    //set all changer entries to zero
+    for(i=0; i<changer.size(); i++){changer[i].SetAll(false);}
+    //run through all reactions and compute the left-hand size of eq. (10b) in gillespie2007stochastic
+    for (L.SetAll(0), i=0; i<6; i++) {
+        
+        
+        L.AddTo(&(a[i]), &carry);
+        L.PrintBase10("L");
 
+        changer[i] = (L < R);
+        
+    }
     
-    delete [] n;
-    
-}
 
-inline void SystemBits::Iterate(void){
-    
-    
-    
-    //draw the random numbers
-    r1 = gsl_rng_uniform(ran);
-    R.SetAll(gsl_rng_uniform_int(ran, N*(N-1)/2));
-    
-    L.SetAll(0);
-    
-    //    q = gsl_rng_uniform_int(ran, 3);
-//
-//    
-//    //    c[0].PrintBase10("c[0]");
-//    //    x[0].PrintBase10("x[0]");
-//    //    x[1].PrintBase10("x[1]");
-//    
-//    
-//    //THESE SHOULD BE OPTIMIZED BY UPDATING x[i] from the previous step with a sum 
-//    /*
-//     x[0].Multiply(&(x[1]), &A);
-//     x[0].Multiply(&(x[2]), &A);
-//     x[1].Multiply(&(x[2]), &A);
-//     */
-//    
-//    //add the a[]s and compute Z
-//    Z.BitSet::Set(&(a[0]));
-//    Z.AddTo(&(a[1]), &carry);
-//    Z.AddTo(&(a[2]), &carry);
-//    
-//    R.FloorMultiply(&Z, &RHS, &W);
-//    
-//    //    a[0].PrintBase10("c[0]*x[0]*x[1]");
     
 }
 

@@ -22,7 +22,7 @@ public:
    
     unsigned long int q;
     //a temporary variable to store the carry of operations
-    Bits carry;
+    Bits carry, borrow;
     gsl_rng* ran;
     
     SystemBits(void);
