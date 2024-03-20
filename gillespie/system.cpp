@@ -7,11 +7,11 @@
 
 #include "system.hpp"
 
-inline System_bits::System_bits(void){
+inline SystemBits::SystemBits(void){
     
 }
 
-inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_in){
+inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in){
     
     
     unsigned int i, s, *n, n_bits_R;
@@ -106,9 +106,12 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
     
 }
 
-inline void System_bits::Iterate(void){
+inline void SystemBits::Iterate(void){
+    
+    
     
     //draw the random numbers
+    r1 = gsl_rng_uniform(ran);
     R.SetAll(gsl_rng_uniform_int(ran, N*(N-1)/2));
     
     L.SetAll(0);
@@ -140,12 +143,12 @@ inline void System_bits::Iterate(void){
 }
 
 
-inline System_nobits::System_nobits(void){
+inline systemnobits::systemnobits(void){
     
 }
 
 
-inline System_nobits::System_nobits(unsigned long long int N_in, unsigned int seed_in){
+inline systemnobits::systemnobits(unsigned long long int N_in, unsigned int seed_in){
     
     unsigned int i, *n;
     const double p[] = {1.0, 1.0, 2.0};
@@ -183,11 +186,11 @@ inline System_nobits::System_nobits(unsigned long long int N_in, unsigned int se
 }
 
 
-inline void System_nobits::iterate(void){
+inline void systemnobits::iterate(void){
     
     //draw the random numbers
     r1 = gsl_rng_uniform(ran);
-    R = gsl_rng_uniform_int(ran, 3);
+    R = gsl_rng_uniform_int(ran, N*(N-1)/2);
     
     
     a[0] = x[0]*x[1];
