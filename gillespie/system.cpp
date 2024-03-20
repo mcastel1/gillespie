@@ -25,7 +25,8 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in)
     
     N = N_in;
     seed = seed_in;
-    
+    N_N_m_1_2 = N*(N-1)/2;
+
     
     //number of bits to write the random number (Fraction) R for the Gillespie simulation
     //VERIFY
@@ -110,7 +111,7 @@ inline void SystemBits::Iterate(void){
     
     //draw the random numbers
     r1 = gsl_rng_uniform(ran);
-    R.SetAll(gsl_rng_uniform_int(ran, N*(N-1)/2));
+    R.SetAll(gsl_rng_uniform_int(ran, N_N_m_1_2));
     
     /*
      a0 = sum_{ a < b} x_a x_b + sum_a x_a(x_a-1)/2
@@ -180,6 +181,7 @@ inline systemnobits::systemnobits(unsigned long long int N_in, unsigned int seed
     
     N = N_in;
     seed = seed_in;
+    N_N_m_1_2 = N*(N-1)/2;
     
     x.resize(3);
     //    c.resize(3);
@@ -208,16 +210,16 @@ inline void systemnobits::iterate(void){
     
     //draw the random numbers
     r1 = gsl_rng_uniform(ran);
-    R = gsl_rng_uniform_int(ran, N*(N-1)/2);
+    R = gsl_rng_uniform_int(ran, N_N_m_1_2);
     
     
-    a[0] = x[0]*x[1];
-    a[1] = x[0]*x[2];
-    a[2] = x[1]*x[2];
-    
-    z = a[0]+a[1]+a[2];
-    
-    rhs = floor(r1*z);
+//    a[0] = x[0]*x[1];
+//    a[1] = x[0]*x[2];
+//    a[2] = x[1]*x[2];
+//    
+//    z = a[0]+a[1]+a[2];
+//    
+//    rhs = floor(r1*z);
     
     
 }
