@@ -39,7 +39,7 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
     
     //set a[i] so they can host the maximum values that can be stored in them
     //double check
-    for(i=0; i<3; i++){
+    for(a.resize(6), i=0; i<3; i++){
         a[i] = UnsignedInt(gsl_pow_2(N/2));
         a[3+i] = UnsignedInt(N*(N-1)/2);
     }
@@ -66,7 +66,10 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
         
     }
     
+//    x[0] -> A, x[1] -> L, x[2] -> D*
+    
     //set a
+    x[0].Multiply(&(x[2]), &(a[0]));
     
     
     //    for(i=0; i<3; ++i){
