@@ -13,6 +13,7 @@ inline System_bits::System_bits(void){
 
 inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_in){
     
+    
     unsigned int i, s, *n, n_bits_R;
     const double p[] = {1.0, 1.0, 2.0};
     
@@ -43,12 +44,14 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
         a[3+i] = UnsignedInt(N*(N-1)/2);
     }
     //double check
+    
+
 
     L = UnsignedInt(N*(N-1)/2);
     R = UnsignedInt(N*(N-1)/2);
     w.resize(n_bits_R);
     
-    
+    //set x
     for(s=0; s<n_bits; s++){
         
         //draw the initial number of particles of the three species according to a multinomial distribution
@@ -62,6 +65,8 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
         }
         
     }
+    
+    //set a
     
     
     //    for(i=0; i<3; ++i){
