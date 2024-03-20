@@ -110,6 +110,13 @@ int main(int argc, char * argv[]) {
     }
     
     
+//    UnsignedInt I(24);
+//    I.SetRandom((unsigned int)0);
+//    I.PrintBase10("before");
+//    I.DivideByTwoTo();
+//    I.PrintBase10("after");
+
+    
     
     //    TestUnsignedIntMultiply(S, seed);
     //    SpeedTestUnsignedIntMultiply(128, S, seed);

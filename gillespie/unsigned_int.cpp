@@ -574,7 +574,7 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
 }
 
 //this method requires *this to be even, it divides *this by 2 and writes the result in *this
-inline void BitSet::DivideByTwoTo(UnsignedInt* result){
+inline void BitSet::DivideByTwoTo(void){
     
     //to divide by two, I shift all entries to the right by one place
     (*this) >>= (&Bits_one);
