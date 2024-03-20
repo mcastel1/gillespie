@@ -504,6 +504,14 @@ inline void BitSet::SubstractTo(BitSet* subtrahend, Bits* borrow) {
     
 }
 
+//substract bit-by-bit subtrahend (which here is either 1 or 0) to *this and store the result in *this and the borrow in *borrow. This method requires this->GetSize() to be >= addend.GetSize()
+inline void BitSet::SubstractTo(Bits* subtrahend, Bits* borrow) {
+    
+    
+    
+    
+}
+
 
 //write the one-complement of *this with respect to a size 'size' of the binary representation and write it into *this
 inline void BitSet::ComplementTo(unsigned int size){

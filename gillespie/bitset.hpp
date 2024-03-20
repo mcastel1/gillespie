@@ -40,7 +40,7 @@ public:
     void Print(string);
 
     //bitwise sum and substraction
-    void SubstractTo(BitSet*, Bits*), AddTo(BitSet*, Bits*), AddTo(Bits*, Bits*), Multiply(UnsignedInt*, UnsignedInt*), DivideByTwoTo(void), AndTo(Bits*, unsigned int, unsigned int);
+    void AddTo(BitSet*, Bits*), AddTo(Bits*, Bits*), SubstractTo(BitSet*, Bits*), SubstractTo(Bits*, Bits*), Multiply(UnsignedInt*, UnsignedInt*), DivideByTwoTo(void), AndTo(Bits*, unsigned int, unsigned int);
     BitSet operator + (BitSet*), operator - (BitSet*), operator << (Bits*), Add(BitSet*, Bits*), Substract(BitSet*, Bits*);
     void operator += (BitSet*), operator -= (BitSet*), operator *= (BitSet*);
     Bits& operator [] (const unsigned int&);
