@@ -136,11 +136,11 @@ int main(int argc, char * argv[]) {
     
     //********************* speed test without bits  *********************
     start = clock();
-    for(s=0; s<n_bits*S; ++s){
+    for(s=0; s<S; ++s){
         frank.iterate();
     }
     end = clock();
-    cout << endl << "Time for [n_bits*S] Iterate()s without bits = \t\t " << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl;
+    cout << endl << "Time for S Iterate()s without bits = \t\t " << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl;
 
     
     

@@ -112,8 +112,8 @@ inline void SystemBits::Iterate(void){
     //draw the random numbers
     r1 = gsl_rng_uniform(ran);
     //the SetAll command here is a bottleneck
-    R.SetAll(gsl_rng_uniform_int(ran, N_N_m_1_2));
-//    R.SetAllToSize(gsl_rng_uniform_int(ran, N_N_m_1_2));
+//    R.SetAll(gsl_rng_uniform_int(ran, N_N_m_1_2));
+    R.SetAllToSize(gsl_rng_uniform_int(ran, N_N_m_1_2));
     //the SetAll command here is a bottleneck
 
     /*
@@ -125,38 +125,38 @@ inline void SystemBits::Iterate(void){
         = N(N-1)/2
      */
     
-    R.PrintBase10("R");
-    
-    
-//    for(cout << "x[]: " << endl, i=0; i<x.size(); ++i){
-//        cout << "x[" << i << "]" << endl;
-//        x[i].PrintBase10("");
+//    R.PrintBase10("R");
+//    
+//    
+////    for(cout << "x[]: " << endl, i=0; i<x.size(); ++i){
+////        cout << "x[" << i << "]" << endl;
+////        x[i].PrintBase10("");
+////    }
+//    
+//    
+//    for(cout << "a[]:" << endl, i=0; i<a.size(); ++i){
+//        cout << "a[" << i << "]" << endl;
+//        a[i].PrintBase10("");
 //    }
-    
-    
-    for(cout << "a[]:" << endl, i=0; i<a.size(); ++i){
-        cout << "a[" << i << "]" << endl;
-        a[i].PrintBase10("");
-    }
-    
-    //run through all reactions and compute the left-hand size of eq. (10b) in gillespie2007stochastic
-    for (L.SetAll(0), compare_old.SetAll(true), i=0; i<6; i++) {
-        
-        
-        L.AddTo(&(a[i]), &carry);
-
-        compare_new = (L < R);
-        changer = (compare_old ^ compare_new);
-        
-        L.PrintBase10("L");
-        compare_old.Print("compare_old");
-        compare_new.Print("compare_new");
-        changer.Print("changer");
-        
-        compare_old = compare_new;
-
-    }
-    
+//    
+//    //run through all reactions and compute the left-hand size of eq. (10b) in gillespie2007stochastic
+//    for (L.SetAll(0), compare_old.SetAll(true), i=0; i<6; i++) {
+//        
+//        
+//        L.AddTo(&(a[i]), &carry);
+//
+//        compare_new = (L < R);
+//        changer = (compare_old ^ compare_new);
+//        
+//        L.PrintBase10("L");
+//        compare_old.Print("compare_old");
+//        compare_new.Print("compare_new");
+//        changer.Print("changer");
+//        
+//        compare_old = compare_new;
+//
+//    }
+//    
 
     
     
