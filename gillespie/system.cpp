@@ -80,6 +80,14 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
     a[3].SubstractTo(&(x[0]), &borrow);
     a[3].DivideByTwoTo();
 
+    x[2].Multiply(&(x[2]), &(a[4]));
+    a[4].SubstractTo(&(x[2]), &borrow);
+    a[4].DivideByTwoTo();
+
+    x[1].Multiply(&(x[1]), &(a[5]));
+    a[5].SubstractTo(&(x[1]), &borrow);
+    a[5].DivideByTwoTo();
+
 
 
     for(cout << "x[]: " << endl, i=0; i<x.size(); ++i){
