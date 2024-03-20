@@ -15,7 +15,7 @@ public:
     vector<bool> /*a temporary variable used to store the bits of the mantissa of the random number r_2*/ w;
     UnsignedInt /*the left-hand side of Eq. (10b) in gillespie2007stochastic*/L, /*the random number used to draw the reaction, which represents r2 in Eq. (10b) in gillespie2007stochastic*/ R;
     //changer[j] sets which out of the n_bits replicas has undergone reaction j: if the s-th bit of changer[j] = 0 then the s-th replica has not undergone the reaction j, while if it = 1, the s-th replica has undergone the reaction j
-    Bits compare_old, compare_new;
+    Bits compare_old, compare_new, changer;
     //the random number used to draw the reaction time, equal to r1 in Eq. (10a) in gillespie2007stochastic
     double r1;
 

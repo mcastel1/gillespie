@@ -142,21 +142,18 @@ inline void SystemBits::Iterate(void){
         L.AddTo(&(a[i]), &carry);
 
         compare_new = (L < R);
+        changer = (compare_old ^ compare_new);
         
         L.PrintBase10("L");
-        compare_old.Print("changer_old");
-        compare_new.Print("changer_new");
+        compare_old.Print("compare_old");
+        compare_new.Print("compare_new");
+        changer.Print("changer");
         
         compare_old = compare_new;
 
     }
     
-    
-    //here I loop through all reactions, but I need to go through only the first three reactions -> change this later
-    for(i=0; i<6; i++){
-        
-        
-    }
+
     
     
 
