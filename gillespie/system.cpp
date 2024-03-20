@@ -157,12 +157,15 @@ inline void SystemBits::Iterate(void){
         
         switch (i) {
             case 0:
+                
+                //remember to add & with changer here
 
                 //a[0] -> a[0] - x_D
                 a[0].SubstractTo(&(x[2]), &borrow);
                 //a[0] -> a[0] + x_A
                 a[0].AddTo(&(x[0]), &carry);
-                
+                //a[0] -> a[0] -1
+                a[0].SubstractTo(&Bits_one, &borrow);
                 break;
 
         }
@@ -242,6 +245,9 @@ inline void systemnobits::iterate(void){
             case 0:
 
                 a[0]-=x[2];
+                a[0]+=x[0];
+                a[0]-=1;
+                
                 break;
 
         }
