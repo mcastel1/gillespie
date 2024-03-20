@@ -186,8 +186,8 @@ inline System_nobits::System_nobits(unsigned long long int N_in, unsigned int se
 inline void System_nobits::iterate(void){
     
     //draw the random numbers
-    r = gsl_rng_uniform(ran);
-    q = gsl_rng_uniform_int(ran, 3);
+    r1 = gsl_rng_uniform(ran);
+    R = gsl_rng_uniform_int(ran, 3);
     
     
     a[0] = x[0]*x[1];
@@ -196,7 +196,7 @@ inline void System_nobits::iterate(void){
     
     z = a[0]+a[1]+a[2];
     
-    rhs = floor(r*z);
+    rhs = floor(r1*z);
     
     
 }
