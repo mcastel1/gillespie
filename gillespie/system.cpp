@@ -78,6 +78,7 @@ inline System_bits::System_bits(unsigned long long int N_in, unsigned int seed_i
     //set the last three values
     x[0].Multiply(&(x[0]), &(a[3]));
     a[3].SubstractTo(&(x[0]), &borrow);
+    a[3].DivideByTwoTo();
 
 
 
