@@ -43,8 +43,10 @@ public:
     unsigned int  /*this is a_0 in gillespie2007stochastic*/z, rhs;
     //the random number used to draw the reaction time, equal to r1 in Eq. (10a) in gillespie2007stochastic
     double r1;
+    bool compare_old, compare_new, changer;
     //a temporary variable to store the carry of operations
     gsl_rng* ran;
+    
     
     systemnobits(void);
     systemnobits(unsigned long long int, unsigned int);

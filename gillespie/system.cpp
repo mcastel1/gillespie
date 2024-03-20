@@ -139,24 +139,24 @@ inline void SystemBits::Iterate(void){
 //        a[i].PrintBase10("");
 //    }
 //    
-//    //run through all reactions and compute the left-hand size of eq. (10b) in gillespie2007stochastic
-//    for (L.SetAll(0), compare_old.SetAll(true), i=0; i<6; i++) {
-//        
-//        
-//        L.AddTo(&(a[i]), &carry);
-//
-//        compare_new = (L < R);
-//        changer = (compare_old ^ compare_new);
-//        
+    //run through all reactions and compute the left-hand size of eq. (10b) in gillespie2007stochastic
+    for (L.SetAll(0), compare_old.SetAll(true), i=0; i<3; i++) {
+        
+        
+        L.AddTo(&(a[i]), &carry);
+
+        compare_new = (L < R);
+        changer = (compare_old ^ compare_new);
+        
 //        L.PrintBase10("L");
 //        compare_old.Print("compare_old");
 //        compare_new.Print("compare_new");
 //        changer.Print("changer");
-//        
-//        compare_old = compare_new;
-//
-//    }
-//    
+        
+        compare_old = compare_new;
+
+    }
+
 
     
     
@@ -211,18 +211,24 @@ inline systemnobits::systemnobits(unsigned long long int N_in, unsigned int seed
 
 inline void systemnobits::iterate(void){
     
+    unsigned int i;
+    
     //draw the random numbers
     r1 = gsl_rng_uniform(ran);
     R = gsl_rng_uniform_int(ran, N_N_m_1_2);
     
+    for (L=0, compare_old=true, i=0; i<3; i++) {
+        
+        L += a[i];
+        
+        compare_new = (L < R);
+        changer = (compare_old ^ compare_new);
+                
+        compare_old = compare_new;
+        
+    }
     
-//    a[0] = x[0]*x[1];
-//    a[1] = x[0]*x[2];
-//    a[2] = x[1]*x[2];
-//    
-//    z = a[0]+a[1]+a[2];
-//    
-//    rhs = floor(r1*z);
+    
     
     
 }
