@@ -153,6 +153,8 @@ int main(int argc, char * argv[]) {
     cout << "Time for S Iterate()s with bits = \t\t         " << std::scientific << ((double)(end_bits - start_bits))/CLOCKS_PER_SEC << "s" <<  endl << endl;
     
     
+    cout << "Gain bits/nobits = " << ((double)(end_nobits - start_nobits)) / ((double)(end_bits - start_bits)) << endl;
+    
     cout << endl << "dummy print";
     FRANK.L.PrintBase10("");
     cout << frank.z << frank.rhs;

@@ -49,6 +49,21 @@
                   endingLineNumber = "143"
                   offsetFromSymbolStart = "72">
                </Location>
+               <Location
+                  uuid = "60B782D8-4ED6-4DF3-8685-9CBB107050F1 - 97d05580d832969f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SystemBits::Iterate()"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/system.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "144"
+                  endingLineNumber = "144"
+                  offsetFromSymbolStart = "72">
+               </Location>
             </Locations>
          </BreakpointContent>
       </BreakpointProxy>
@@ -96,6 +111,21 @@
                   startingLineNumber = "133"
                   endingLineNumber = "133"
                   offsetFromSymbolStart = "356">
+               </Location>
+               <Location
+                  uuid = "1DFF78B4-44E0-4B41-B291-731F26DDAB6B - 40e678f257758204"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "main"
+                  moduleName = "gillespie"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/michele/Dropbox/homochirality/gillespie/gillespie/gillespie/main.cpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "133"
+                  endingLineNumber = "133"
+                  offsetFromSymbolStart = "332">
                </Location>
             </Locations>
          </BreakpointContent>
