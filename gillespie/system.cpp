@@ -144,7 +144,7 @@ inline void SystemBits::Iterate(void){
     for (L.SetAll(0), compare_old.SetAll(true), i=0; i<3; i++) {
         
         
-        L.AddTo(&(a[i]), &carry);
+//        L.AddTo(&(a[i]), &carry);
 
         compare_new = (L < R);
         changer = (compare_old ^ compare_new);
