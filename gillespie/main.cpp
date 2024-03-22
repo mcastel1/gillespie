@@ -26,7 +26,7 @@
  //compile with optimization
  g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
  
- ./main.o -N 1 -s 0 -S 1024
+ ./main.o -s 0 -S 5
  */
 
 /*

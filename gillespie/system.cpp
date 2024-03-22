@@ -36,6 +36,7 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in)
     for(x.clear(), /*c.clear(),*/ i=0; i<3; ++i){
         x.push_back(UnsignedInt(N));
     }
+    x_t = x;
     
     //set a[i] so they can host the maximum values that can be stored in them
     //double check
@@ -155,17 +156,20 @@ inline void SystemBits::Iterate(void){
         
 //        x[0] -> A, x[1] -> L, x[2] -> D
         
+        
         switch (i) {
             case 0:
-                
-                //remember to add & with changer here
+                            
+                //I & x[0] and x[2] with changer and write the result in x_t[0] and x_t[2], respectively
+                x[0].And(&changer, &(x_t[0]));
+                x[2].And(&changer, &(x_t[2]));
 
                 //a[0] -> a[0] - x_D
                 a[0].SubstractTo(&(x[2]), &borrow);
                 //a[0] -> a[0] + x_A
                 a[0].AddTo(&(x[0]), &carry);
                 //a[0] -> a[0] -1
-                a[0].SubstractTo(&Bits_one, &borrow);
+                a[0].SubstractTo(&changer, &borrow);
                 break;
 
         }
