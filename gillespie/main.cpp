@@ -78,7 +78,7 @@ int main(int argc, char * argv[]) {
     int options;
     unsigned long long int/*, N=0*/ S=0, s;
     unsigned int i, seed=0;
-    clock_t start=0, end=0;
+    clock_t start_nobits, start_bits, end_nobits, end_bits;
     
     cout.precision(cout_precision);
     BitSet_one.ResizeAndSetAll(1);
@@ -135,22 +135,22 @@ int main(int argc, char * argv[]) {
     
     
     //********************* speed test without bits  *********************
-    start = clock();
+    start_nobits = clock();
     for(s=0; s<n_bits*S; ++s){
         frank.iterate();
     }
-    end = clock();
-    cout << endl << "Time for [n_bits*S] Iterate()s without bits = \t\t " << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl;
+    end_nobits = clock();
+    cout << endl << "Time for [n_bits*S] Iterate()s without bits = \t\t " << std::scientific << ((double)(end_nobits - start_nobits))/CLOCKS_PER_SEC << "s" <<  endl;
 
     
     
     //********************* speed test with bits  *********************
-    start = clock();
+    start_bits = clock();
     for(s=0; s<S; ++s){
         FRANK.Iterate();
     }
-    end = clock();
-    cout << "Time for S Iterate()s with bits = \t\t         " << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+    end_bits = clock();
+    cout << "Time for S Iterate()s with bits = \t\t         " << std::scientific << ((double)(end_bits - start_bits))/CLOCKS_PER_SEC << "s" <<  endl << endl;
     
     
     cout << endl << "dummy print";
