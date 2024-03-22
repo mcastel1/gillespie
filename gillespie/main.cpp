@@ -26,7 +26,7 @@
  //compile with optimization
  g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
  
- ./main.o -s 0 -S 5
+ ./main.o -N 128 -s 0 -S 5
  */
 
 /*
@@ -76,7 +76,7 @@
 int main(int argc, char * argv[]) {
     
     int options;
-    unsigned long long int/*, N=0*/ S=0, s;
+    unsigned long long int N=0, S=0, s;
     unsigned int i, seed=0;
     clock_t start_nobits, start_bits, end_nobits, end_bits;
     
@@ -88,13 +88,13 @@ int main(int argc, char * argv[]) {
     }
     
     
-    while ((options = getopt(argc, argv, ":S:s:")) != -1) {
+    while ((options = getopt(argc, argv, ":N:S:s:")) != -1) {
         
         switch (options) {
                 
-                //                case 'N':
-                //                    N = ((unsigned int)atoi(optarg));
-                //                    break;
+            case 'N':
+                N = ((unsigned int)atoi(optarg));
+                break;
                 
             case 's':
                 seed = ((unsigned int)atoi(optarg));
@@ -130,8 +130,8 @@ int main(int argc, char * argv[]) {
     
     
     //
-    SystemBits FRANK(128, seed);
-    systemnobits frank(128, seed);
+    SystemBits FRANK(N, seed);
+    systemnobits frank(N, seed);
     
     
     //********************* speed test without bits  *********************
