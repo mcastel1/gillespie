@@ -110,7 +110,7 @@ inline void BitSet::operator >>=(UnsignedInt* e){
         }
         
         //in this loop, I run over the second chunk of entries of b: m =b.size() - 2^n , ..., b.size(). I can no longer replace b[m] with b[m+2^n] as in the loop above, becuase b[m+2^n] does not exist in b -> I replace it with zero. Note that if 2^n > b.size(), this second loop must cover the entire vector b -> I set as starting value of m  max(((int)GetSize())-((int)gsl_pow_int(2, n)), 0)
-        for(m = max(((int)GetSize())-((int)gsl_pow_int(2, n)), 0); (m<GetSize()); m++){
+        for(m = max(((int)GetSize())-((int)gsl_pow_int(2, n)), 0); (m<((int)GetSize())); m++){
             
             b[m].Replace(
                          //a Bits filled with zeros
