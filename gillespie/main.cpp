@@ -26,7 +26,7 @@
  //compile with optimization
  g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
  
- ./main.o -N 128 -s 0 -S 5
+ ./main.o -N 128 -S 5 -s 0
  */
 
 /*
@@ -95,15 +95,15 @@ int main(int argc, char * argv[]) {
             case 'N':
                 N = ((unsigned int)atoi(optarg));
                 break;
-                
-            case 's':
-                seed = ((unsigned int)atoi(optarg));
-                break;
-                
+
             case 'S':
                 S = ((unsigned int)gsl_pow_int(10, atoi(optarg)));
                 break;
                 
+            case 's':
+                seed = ((unsigned int)atoi(optarg));
+                break;
+                            
                 
         }
         

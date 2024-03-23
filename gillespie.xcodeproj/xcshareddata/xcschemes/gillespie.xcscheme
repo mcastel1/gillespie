@@ -52,11 +52,15 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-s 0"
+            argument = "-N 128"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
             argument = "-S 2"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-s 0"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>
