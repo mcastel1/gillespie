@@ -12,7 +12,7 @@
 #include <time.h>
 #include <getopt.h>
 //this has to be uncommented to run on mesopsl
-//#include <stdint.h>
+#include <stdint.h>
 
 #include "gsl_rng.h"
 #include "gsl_math.h"
@@ -25,6 +25,9 @@
  
  //compile with optimization
  g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
+ 
+ //compile on calcsub
+ g++ -O3 -o main.o -I ./ -lgsl -lgslcblas -lm main.cpp -Wall -I/usr/include/gsl
  
  ./main.o -N 128 -S 5 -s 0
  */
