@@ -39,12 +39,9 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in)
     x_t = x;
     
     //set a[i] so they can host the maximum values that can be stored in them
-    //double check
-    for(a.resize(6), i=0; i<3; i++){
-        a[i] = UnsignedInt(gsl_pow_2(N/2));
-        a[3+i] = UnsignedInt(N*(N-1)/2);
+    for(a.resize(6), i=0; i<6; i++){
+        a[i].Resize(2*x[0].GetSize());
     }
-    //double check
     
 
 
