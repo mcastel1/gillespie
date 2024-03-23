@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -l walltime=00:10:00
+#PBS -l walltime=01:00:00
 #PBS -l mem=1gb
 #PBS -l nodes=1:ppn=1
 #PBS -q batch
@@ -10,7 +10,9 @@
 
 
 cd /data/users/mcastel1/gillespie/
-g++ -O3 -o rescaling_vii_cr.o -I ./ -lgsl -lgslcblas -lm rescaling_vii_cr.cpp -Wall
 
+g++ -O3 -o main.o -I ./ -lgsl -lgslcblas -lm main.cpp -Wall -I/usr/include/gsl
 
-#timeout -s TERM 240h ./rescaling_vii_cr.o -s 0.9 -T 20 -N 256 -S 8 -Q 18 -R 8 -o /data/tmp/mcastel1/rg1/
+./main.o -N 128 -S 5 -s 0
+./main.o -N 128 -S 6 -s 0
+./main.o -N 128 -S 7 -s 0
