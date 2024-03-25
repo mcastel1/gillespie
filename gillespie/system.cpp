@@ -211,7 +211,11 @@ inline void SystemBits::Iterate(void){
                  a[0] = x[0]*x[2] -> (x[0]-changer)*x[2] = a[0] - changer*x[2] = a[0] - x_t[2]
                  */
                 
-         
+                //update a[0]
+                //a[0] -> a[0] - x_D
+                a[0].SubstractTo(&(x_t[2]), &borrow);
+
+                
 
                 
                 
