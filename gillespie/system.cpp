@@ -206,7 +206,7 @@ inline void SystemBits::Iterate(void){
                 //the second reaction A+L -> 2 L  has been selected
             
                 
-                //update a
+                //update the as
                 /*
                  a[0] = x[0]*x[2] -> (x[0]-changer)*x[2] = a[0] - changer*x[2] = a[0] - x_t[2]
                  a[1] = x[0]*x[1] -> (x[0]-changer)*(x[1]+changer) = a[0] - x_t[1] +x_t[0] - changer
@@ -366,8 +366,19 @@ inline void systemnobits::iterate(void){
             case 1:{
                 //the second reaction A+L -> 2 L  has been selected
                 
+                //update the as
+                a[0]-=x[2];
                 
+                a[1]-=x[1];
+                a[1]+=x[0];
+                a[1]-=1;
          
+                a[2]+=x[2];
+                
+                a[3]-=x[0];
+                a[3]+=1;
+                
+                a[5]+=x[1];
                 
                 
                 //update x
