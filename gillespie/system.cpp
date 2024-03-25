@@ -189,6 +189,9 @@ inline void SystemBits::Iterate(void){
 
                 
                 //update a
+                /*
+                 a[0] = x[0]*x[2] -> (x[0]-changer)*x[2] = a[0] - changer*x[2] = a[0] - x_t[2]
+                 */
                 
          
 
