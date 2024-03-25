@@ -324,13 +324,64 @@ inline void systemnobits::iterate(void){
         changer = (compare_old ^ compare_new);
         
         switch (i) {
-            case 0:
-
+            case 0:{
+                
+                //update the as
+                //update a[0]
                 a[0]-=x[2];
                 a[0]+=x[0];
                 a[0]-=1;
                 
+                //update a[1]
+                a[1]-=x[1];
+                
+                //update a[2]
+                a[2]+=x[1];
+                
+                //update a[3]
+                a[3]-=x[0];
+                a[3]+=1;
+                
+                //update a[4]
+                a[4]+=x[2];
+                
+                //update x
+                x[0]-=1;
+                x[2]+=1;
+                
                 break;
+                
+            }
+                
+            case 1:{
+                //the second reaction A+L -> 2 L  has been selected
+                
+                
+         
+                
+                
+                //update x
+                x[0]-=1;
+                x[1]+=1;
+  
+                break;
+                
+            }
+                
+            case 2:{
+                //the third reaction D+L -> 2 A  has been selected
+                
+                //update a
+
+                
+                //update x
+                x[2]-=1;
+                x[1]-=1;
+                x[0]+=1;
+
+                break;
+                
+            }
 
         }
                 
