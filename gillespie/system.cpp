@@ -109,6 +109,7 @@ inline void SystemBits::Iterate(void){
     
     //draw the random numbers
     r1 = gsl_rng_uniform(ran);
+    tau = -1.0/((double)N_N_m_1_2)*log(r1);
     //the SetAll command here is a bottleneck
 //    R.SetAll(gsl_rng_uniform_int(ran, N_N_m_1_2));
     R.SetAllToSize(gsl_rng_uniform_int(ran, N_N_m_1_2));
@@ -324,6 +325,7 @@ inline void systemnobits::iterate(void){
     
     //draw the random numbers
     r1 = gsl_rng_uniform(ran);
+    tau = -1.0/((double)N_N_m_1_2)*log(r1);
     R = gsl_rng_uniform_int(ran, N_N_m_1_2);
     
     for (L=0, compare_old=true, i=0; i<3; i++) {

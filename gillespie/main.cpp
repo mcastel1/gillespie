@@ -160,7 +160,7 @@ int main(int argc, char * argv[]) {
     
     cout << endl << "dummy print";
     FRANK.L.PrintBase10("");
-    cout << frank.z << frank.rhs;
+    cout << FRANK.tau << frank.tau << frank.z << frank.rhs;
     //
     
     cout << endl;
