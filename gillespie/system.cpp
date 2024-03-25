@@ -161,16 +161,36 @@ inline void SystemBits::Iterate(void){
                 
                 //I & x[0] and x[2] with changer and write the result in x_t[0] and x_t[2], respectively
                 x[0].And(&changer, &(x_t[0]));
+                x[1].And(&changer, &(x_t[2]));
                 x[2].And(&changer, &(x_t[2]));
                 
                 
-                //update a
+                //update as
+                
+                //update a[0]
                 //a[0] -> a[0] - x_D
                 a[0].SubstractTo(&(x_t[2]), &borrow);
                 //a[0] -> a[0] + x_A
                 a[0].AddTo(&(x_t[0]), &carry);
                 //a[0] -> a[0] -1
                 a[0].SubstractTo(&changer, &borrow);
+                
+                //update a[1]
+                //a[1] -> a[1] - x_L
+                a[0].SubstractTo(&(x_t[1]), &borrow);
+    
+                //update a[2]
+                //a[2] -> a[2] + x_L
+                a[2].AddTo(&(x_t[1]), &carry);
+                
+                //update a[3]
+                //a[3] -> a[3] - x_A
+                a[3].SubstractTo(&(x_t[0]), &borrow);
+                //a[3] -> a[3] + 1
+                a[3].AddTo(&changer, &carry);
+               
+  
+                
                 
                 //update x
                 x[0].SubstractTo(&changer, &borrow);
