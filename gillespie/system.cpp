@@ -153,15 +153,17 @@ inline void SystemBits::Iterate(void){
         
 //        x[0] -> A, x[1] -> L, x[2] -> D
         
-        
+        //note that hwew the fourth, ..., sixth reaction are not considered because they don't do anything 
         switch (i) {
-            case 0:
-                            
+                
+            case 0:{
+                //the first reaction A+D -> 2 D has been selected
+                
                 //I & x[0] and x[2] with changer and write the result in x_t[0] and x_t[2], respectively
                 x[0].And(&changer, &(x_t[0]));
                 x[2].And(&changer, &(x_t[2]));
                 
-
+                
                 //update a
                 //a[0] -> a[0] - x_D
                 a[0].SubstractTo(&(x_t[2]), &borrow);
@@ -173,8 +175,28 @@ inline void SystemBits::Iterate(void){
                 //update x
                 x[0].SubstractTo(&changer, &borrow);
                 x[2].AddTo(&changer, &carry);
-
+                
                 break;
+                
+            }
+                
+            case 1:{
+                //the second reaction A+L -> 2 L  has been selected
+                
+     
+                
+                break;
+                
+            }
+                
+            case 2:{
+                //the third reaction D+L -> 2 A  has been selected
+                
+     
+                
+                break;
+                
+            }
 
         }
         
