@@ -249,7 +249,17 @@ inline void SystemBits::Iterate(void){
             case 2:{
                 //the third reaction D+L -> 2 A  has been selected
                 
-                //update a
+                //x[0]->x[0]+changer, x[1] -> x[1]-changer, x[2] -> x[2]-changer
+                
+                //update the as
+                /*
+                 a[0] = x[0]*x[2] -> (x[0]+changer)*(x[2]-changer) = a[0] + changer*x[2] - changer*x[0] - changer = a[0] + x_t[2] - x_t[0] - changer
+                 */
+                a[0].AddTo(&(x_t[2]), &carry);
+                a[0].SubstractTo(&(x_t[0]), &borrow);
+                a[0].SubstractTo(&changer, &borrow);
+
+
 
                 
                 //update x
