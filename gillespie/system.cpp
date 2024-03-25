@@ -165,7 +165,7 @@ inline void SystemBits::Iterate(void){
                 x[2].And(&changer, &(x_t[2]));
                 
                 
-                //update as
+                //update the as
                 
                 //update a[0]
                 //a[0] -> a[0] - x_D
@@ -189,7 +189,10 @@ inline void SystemBits::Iterate(void){
                 //a[3] -> a[3] + 1
                 a[3].AddTo(&changer, &carry);
                
-  
+                //update a[4]
+                //a[4] -> a[4] + x_D
+                a[4].AddTo(&(x_t[2]), &carry);
+ 
                 
                 
                 //update x
