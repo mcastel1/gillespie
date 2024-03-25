@@ -177,7 +177,7 @@ inline void SystemBits::Iterate(void){
                 
                 //update a[1]
                 //a[1] -> a[1] - x_L
-                a[0].SubstractTo(&(x_t[1]), &borrow);
+                a[1].SubstractTo(&(x_t[1]), &borrow);
     
                 //update a[2]
                 //a[2] -> a[2] + x_L
