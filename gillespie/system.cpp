@@ -349,6 +349,7 @@ inline systemnobits::systemnobits(unsigned long long int N_in, unsigned int seed
     N_N_m_1_2 = N*(N-1)/2;
     
     x.resize(3);
+    x_t.resize(3);
     //    c.resize(3);
     a.resize(3);
     
@@ -394,31 +395,35 @@ inline void systemnobits::iterate(void){
         compare_new = (L < R);
         changer = (compare_old ^ compare_new);
         
+        x_t[0] = (changer ? x[0] : 0);
+        x_t[1] = (changer ? x[1] : 0);
+        x_t[2] = (changer ? x[2] : 0);
+        
         switch (i) {
             case 0:{
                 
                 //update the as
                 //update a[0]
-                a[0]-=x[2];
-                a[0]+=x[0];
-                a[0]-=1;
+                a[0]-=x_t[2];
+                a[0]+=x_t[0];
+                a[0]-=changer;
                 
                 //update a[1]
-                a[1]-=x[1];
+                a[1]-=x_t[1];
                 
                 //update a[2]
-                a[2]+=x[1];
+                a[2]+=x_t[1];
                 
                 //update a[3]
-                a[3]-=x[0];
-                a[3]+=1;
+                a[3]-=x_t[0];
+                a[3]+=changer;
                 
                 //update a[4]
-                a[4]+=x[2];
+                a[4]+=x_t[2];
                 
                 //update x
-                x[0]-=1;
-                x[2]+=1;
+                x[0]-=changer;
+                x[2]+=changer;
                 
                 break;
                 
@@ -428,23 +433,23 @@ inline void systemnobits::iterate(void){
                 //the second reaction A+L -> 2 L  has been selected
                 
                 //update the as
-                a[0]-=x[2];
+                a[0]-=x_t[2];
                 
-                a[1]-=x[1];
-                a[1]+=x[0];
-                a[1]-=1;
+                a[1]-=x_t[1];
+                a[1]+=x_t[0];
+                a[1]-=changer;
          
-                a[2]+=x[2];
+                a[2]+=x_t[2];
                 
-                a[3]-=x[0];
-                a[3]+=1;
+                a[3]-=x_t[0];
+                a[3]+=changer;
                 
-                a[5]+=x[1];
+                a[5]+=x_t[1];
                 
                 
                 //update x
-                x[0]-=1;
-                x[1]+=1;
+                x[0]-=changer;
+                x[1]+=changer;
   
                 break;
                 
@@ -454,31 +459,34 @@ inline void systemnobits::iterate(void){
                 //the third reaction D+L -> 2 A  has been selected
                 
                 //update a
-                a[0]+=x[2];
-                a[0]-=x[0];
-                a[0]-=1;
+                a[0]+=x_t[2];
+                a[0]-=x_t[0];
+                a[0]-=changer;
                 
-                a[1]+=x[1];
-                a[1]-=x[0];
-                a[1]-=1;
+                a[1]+=x_t[1];
+                a[1]-=x_t[0];
+                a[1]-=changer;
                 
-                a[2]-=x[2];
-                a[2]-=x[1];
-                a[2]+=1;
+                a[2]-=x_t[2];
+                a[2]-=x_t[1];
+                a[2]+=changer;
                 
-                a[3]+=x[0];
+                a[3]+=x_t[0];
                 
-                a[4]-=x[2];
-                a[4]+=1;
+                a[4]-=x_t[2];
+                a[4]+=changer;
                 
-                a[5]-=x[1];
-                a[5]+=1;
+                a[5]-=x_t[1];
+                a[5]+=changer;
 
                 
                 //update x
-                x[2]-=1;
-                x[1]-=1;
-                x[0]+=1;
+                x[2]-=changer;
+                x[1]-=changer;
+                //here A should be updated by 2 changer!
+                x[0]+=changer;
+                //here A should be updated by 2 changer!
+
 
                 break;
                 
