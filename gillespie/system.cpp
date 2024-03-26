@@ -11,7 +11,7 @@ inline SystemBits::SystemBits(void){
     
 }
 
-inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in){
+inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in, const string& out_directory_in){
     
     
     unsigned int i, s, *n, n_bits_R;
@@ -25,6 +25,7 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in)
     
     N = N_in;
     seed = seed_in;
+    out_directory = out_directory_in;
     N_N_m_1_2 = N*(N-1)/2;
 
     
@@ -316,7 +317,7 @@ inline systemnobits::systemnobits(void){
 }
 
 
-inline systemnobits::systemnobits(unsigned long long int N_in, unsigned int seed_in){
+inline systemnobits::systemnobits(unsigned long long int N_in, unsigned int seed_in, const string& out_directory_in){
     
     unsigned int i, *n;
     const double p[] = {1.0, 1.0, 2.0};
@@ -330,6 +331,7 @@ inline systemnobits::systemnobits(unsigned long long int N_in, unsigned int seed
     
     N = N_in;
     seed = seed_in;
+    out_directory = out_directory_in;
     N_N_m_1_2 = N*(N-1)/2;
     
     x.resize(3);

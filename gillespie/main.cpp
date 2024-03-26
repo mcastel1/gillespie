@@ -133,8 +133,8 @@ int main(int argc, char * argv[]) {
     
     
     //
-    SystemBits FRANK(N, seed);
-    systemnobits frank(N, seed);
+    SystemBits FRANK(N, seed, "");
+    systemnobits frank(N, seed, "");
     
     
     //********************* speed test without bits  *********************

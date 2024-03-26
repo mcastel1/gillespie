@@ -18,6 +18,8 @@ public:
     Bits compare_old, compare_new, /*as I run through the reactions, if changer = 0 (bitwise) I don't change x[] according to the reaction, while if changer = 1 I change the x[] according to the reaction */changer;
     //the random number used to draw the reaction time, equal to r1 in Eq. (10a) in gillespie2007stochastic
     double r1, tau;
+    string out_directory;
+    ofstream outfile;
 
    
     unsigned long int q;
@@ -26,7 +28,7 @@ public:
     gsl_rng* ran;
     
     SystemBits(void);
-    SystemBits(unsigned long long int, unsigned int);
+    SystemBits(const unsigned long long int, const unsigned int, const string&);
     void Iterate(void);
     
 
@@ -43,13 +45,15 @@ public:
     unsigned int  /*this is a_0 in gillespie2007stochastic*/z, rhs;
     //the random number used to draw the reaction time, equal to r1 in Eq. (10a) in gillespie2007stochastic
     double r1, tau;
+    string out_directory;
+    ofstream outfile;
     bool compare_old, compare_new, changer;
     //a temporary variable to store the carry of operations
     gsl_rng* ran;
     
     
     systemnobits(void);
-    systemnobits(unsigned long long int, unsigned int);
+    systemnobits(const unsigned long long int, const unsigned int, const string&);
     void iterate(void);
 
 };
