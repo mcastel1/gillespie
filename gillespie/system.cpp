@@ -256,6 +256,7 @@ inline void SystemBits::Iterate(void){
                  a[0] = x[0]*x[2] -> (x[0]+changer)*(x[2]-changer) = a[0] + changer*x[2] - changer*x[0] - changer = a[0] + x_t[2] - x_t[0] - changer
                  a[1] = x[0]*x[1] -> (x[0]+changer)*(x[1]-changer) = a[1] + x_t[1] - x_t[0] - changer
                  a[2] = x[1]*x[2] -> (x[1]-changer)*(x[2]-changer) = a[2] - x_t[2] - x_t[1] + changer
+                 a[3] = x[0]*(x[0]-1)/2 -> (x[0]+changer)*(x[0]-1+changer)/2 = a[3] + changer*(x[0]-1)/2 + changer*x[0]/2 + changer/2 = a[3] + x_t[0]
 
 
                  */
@@ -274,6 +275,8 @@ inline void SystemBits::Iterate(void){
                 a[2].SubstractTo(&(x_t[1]), &borrow);
                 a[2].AddTo(&changer, &carry);
 
+                //update a[3]
+                a[3].AddTo(&(x_t[0]), &carry);
 
 
                 
