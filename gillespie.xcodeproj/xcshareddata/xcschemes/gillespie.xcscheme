@@ -56,7 +56,7 @@
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-o &quot;/Users/michele/Dropbox&quot;"
+            argument = "-o &quot;/Users/michele/Desktop&quot;"
             isEnabled = "YES">
          </CommandLineArgument>
          <CommandLineArgument

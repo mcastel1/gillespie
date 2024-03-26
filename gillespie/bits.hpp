@@ -30,6 +30,7 @@ public:
     void Swap(Bits*, Bits&, Bits*);
     void Clear(void);
     void Print(string);
+    void Print(ostream&);
         
     friend class UnsignedInt;
     

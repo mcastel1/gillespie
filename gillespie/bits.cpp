@@ -149,6 +149,7 @@ inline void Bits::Clear(void){
     
 }
 
+//print *this as a sequence of n_bits zeros and ones
 inline void Bits::Print(string title){
     
     cout << title << "{ ";
@@ -157,6 +158,13 @@ inline void Bits::Print(string title){
     }
     cout << " }\n";
     
+}
+
+//print *this as an integer to the output stream output_stream
+inline void Bits::Print(ostream& output_stream){
+    
+    output_stream << n;
+
 }
 
 inline void Bits::operator = (const Bits& m){

@@ -189,6 +189,18 @@ inline void BitSet::Print(string title){
     
 }
 
+//print *this to the output stream output_stream 
+inline void BitSet::Print(ostream& output_stream){
+        
+    for(unsigned int s=0; s<GetSize(); s++){
+        (b[s]).Print(output_stream);
+        output_stream << "\t";
+    }
+    output_stream << endl;
+    
+}
+
+
 //return (bit-by-bit) true if *this == m, and false otherwise. This method requires *this and m to have the same size
 inline Bits BitSet::operator == (BitSet& m){
     

@@ -38,6 +38,7 @@ public:
     void RemoveFirstSignificantBit(void);
     unsigned long long int Get(unsigned int);
     void Print(string);
+    void Print(ostream&);
 
     //bitwise sum and substraction
     void AddTo(BitSet*, Bits*), AddTo(Bits*, Bits*), SubstractTo(BitSet*, Bits*), SubstractTo(Bits*, Bits*), Multiply(UnsignedInt*, UnsignedInt*), DivideByTwoTo(void), AndTo(Bits*, unsigned int, unsigned int), And(Bits*, BitSet*);

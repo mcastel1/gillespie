@@ -29,6 +29,7 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in,
     
     outfile_name.str("");
     outfile_name << out_directory << "/out_bits.dat";
+    outfile.open(outfile_name.str().c_str());
     
     N_N_m_1_2 = N*(N-1)/2;
 
@@ -308,8 +309,12 @@ inline void SystemBits::Iterate(void){
 
     }
 
-
     
+    //print simulation results
+    x[0].Print(outfile);
+    x[1].Print(outfile);
+    x[2].Print(outfile);
+    outfile << tau << endl;
     
 
     
@@ -339,7 +344,7 @@ inline systemnobits::systemnobits(unsigned long long int N_in, unsigned int seed
     
     outfile_name.str("");
     outfile_name << out_directory << "/out_nobits.dat";
- 
+    outfile.open(outfile_name.str().c_str());
     
     N_N_m_1_2 = N*(N-1)/2;
     
