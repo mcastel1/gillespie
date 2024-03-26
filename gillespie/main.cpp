@@ -25,7 +25,8 @@
  
  //compile with optimization
  g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
- 
+ clear; g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE;  ./main.o -N 128 -S 5 -s 0 -o /Users/michele/Desktop
+
  //compile on calcsub
  g++ -O3 -o main.o -I ./ -lgsl -lgslcblas -lm main.cpp -Wall -I/usr/include/gsl
  
@@ -148,6 +149,7 @@ int main(int argc, char * argv[]) {
         frank.iterate();
     }
     end_nobits = clock();
+    frank.outfile.close();
     cout << endl << "Time for [n_bits*S] Iterate()s without bits = \t\t " << std::scientific << ((double)(end_nobits - start_nobits))/CLOCKS_PER_SEC << "s" <<  endl;
 
     
@@ -158,6 +160,7 @@ int main(int argc, char * argv[]) {
         FRANK.Iterate();
     }
     end_bits = clock();
+    FRANK.outfile.close();
     cout << "Time for S Iterate()s with bits = \t\t         " << std::scientific << ((double)(end_bits - start_bits))/CLOCKS_PER_SEC << "s" <<  endl << endl;
     
     

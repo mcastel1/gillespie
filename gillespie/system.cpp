@@ -26,6 +26,10 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in,
     N = N_in;
     seed = seed_in;
     out_directory = out_directory_in;
+    
+    outfile_name.str("");
+    outfile_name << out_directory << "/out_bits.dat";
+    
     N_N_m_1_2 = N*(N-1)/2;
 
     
@@ -332,6 +336,11 @@ inline systemnobits::systemnobits(unsigned long long int N_in, unsigned int seed
     N = N_in;
     seed = seed_in;
     out_directory = out_directory_in;
+    
+    outfile_name.str("");
+    outfile_name << out_directory << "/out_nobits.dat";
+ 
+    
     N_N_m_1_2 = N*(N-1)/2;
     
     x.resize(3);
@@ -469,7 +478,6 @@ inline void systemnobits::iterate(void){
         
     }
     
-    
-    
+    outfile << x[0] << "\t" << x[1] << "\t" << x[2] << "\t" << tau << endl;
     
 }

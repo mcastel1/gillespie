@@ -19,6 +19,7 @@ public:
     //the random number used to draw the reaction time, equal to r1 in Eq. (10a) in gillespie2007stochastic
     double r1, tau;
     string out_directory;
+    stringstream outfile_name;
     ofstream outfile;
 
    
@@ -46,6 +47,7 @@ public:
     //the random number used to draw the reaction time, equal to r1 in Eq. (10a) in gillespie2007stochastic
     double r1, tau;
     string out_directory;
+    stringstream outfile_name;
     ofstream outfile;
     bool compare_old, compare_new, changer;
     //a temporary variable to store the carry of operations
