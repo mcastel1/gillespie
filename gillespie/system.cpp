@@ -251,7 +251,8 @@ inline void SystemBits::Iterate(void){
                 break;
                 
             }
-                
+               
+                //FIX THIS: THIS NUMBER OF AS IS INCREASED BY 2, NOT BY ONE
             case 2:{
                 //the third reaction D+L -> 2 A  has been selected
                 
@@ -302,7 +303,9 @@ inline void SystemBits::Iterate(void){
                 break;
                 
             }
+                //FIX THIS: THIS NUMBER OF AS IS INCREASED BY 2, NOT BY ONE
 
+                
         }
         
         compare_old = compare_new;
@@ -459,20 +462,31 @@ inline void systemnobits::iterate(void){
             case 2:{
                 //the third reaction D+L -> 2 A  has been selected
                 
-                //update a
-                a[0] += x_t[2];
-                a[0] -= x_t[0];
-                a[0] -= changer;
+                //update the as
+                /*
+                 a[0] = x[0]*x[2] -> (x[0]+2*changer)*(x[2]-changer) = a[0] + 2*changer*x[2] - changer*x[0] - 2*changer = a[0] + 2*x_t[2] - x_t[0] - 2*changer
+                 a[1] = x[0]*x[1] -> (x[0]+2*changer)*(x[1]-changer) = a[1] + 2*x_t[1] - x_t[0] - 2*changer
+                 a[2] = x[1]*x[2] -> (x[1]-changer)*(x[2]-changer) = a[2] - x_t[2] - x_t[1] + changer
+                 a[3] = x[0]*(x[0]-1)/2 -> (x[0]+2*changer)*(x[0]-1+2*changer)/2 = a[3] + changer*(x[0]-1) + changer*x[0] + 2*changer = a[3] + 2*x_t[0] + changer
+                 a[4] = x[2]*(x[2]-1)/2 -> (x[2]-changer)*(x[2]-1-changer)/2 = a[4] - changer*(x[2]-1)/2 - changer*x[2]/2 + changer/2 = a[4] - x_t[2] + changer
+                 a[5] = x[1]*(x[1]-1)/2 -> (x[1]-changer)*(x[1]-1-changer)/2 = a[5] - changer*(x[1]-1)/2 - changer*x[1]/2 + changer/2 = a[5] - x_t[1] + changer
+
+                 */
                 
-                a[1] += x_t[1];
+                //update a
+                a[0] += 2*x_t[2];
+                a[0] -= x_t[0];
+                a[0] -= 2*changer;
+                
+                a[1] += 2*x_t[1];
                 a[1] -= x_t[0];
-                a[1] -= changer;
+                a[1] -= 2*changer;
                 
                 a[2] -= x_t[2];
                 a[2] -= x_t[1];
                 a[2] += changer;
                 
-                a[3] += x_t[0];
+                a[3] += 2*x_t[0] + changer;
                 
                 a[4] -= x_t[2];
                 a[4] += changer;
@@ -485,7 +499,7 @@ inline void systemnobits::iterate(void){
                 x[2] -= changer;
                 x[1] -= changer;
                 //here A should be updated by 2 changer!
-                x[0] += changer;
+                x[0] += 2*changer;
                 //here A should be updated by 2 changer!
 
 
