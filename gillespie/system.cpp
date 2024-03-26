@@ -366,6 +366,13 @@ inline systemnobits::systemnobits(unsigned long long int N_in, unsigned int seed
         
     }
     
+    a[0] = x[0]*x[2];
+    a[1] = x[0]*x[1];
+    a[2] = x[1]*x[2];
+    a[3] = x[0]*(x[0]-1)/2;
+    a[4] = x[2]*(x[2]-1)/2;
+    a[5] = x[1]*(x[1]-1)/2;
+    
     delete [] n;
     
 }
