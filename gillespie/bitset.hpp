@@ -45,7 +45,7 @@ public:
     BitSet operator + (BitSet*), operator - (BitSet*), operator << (Bits*), Add(BitSet*, Bits*), Substract(BitSet*, Bits*);
     void operator += (BitSet*), operator -= (BitSet*), operator *= (BitSet*);
     Bits& operator [] (const unsigned int&);
-    Bits operator == (BitSet&), operator < (const BitSet&);
+    Bits operator == (BitSet&), operator < (const BitSet&), operator <= (BitSet&);
     void operator >>= (UnsignedInt*), operator <<= (UnsignedInt*), operator >>= (Bits*), operator <<= (Bits*), operator &= (Bits*);
 
     friend class UnsignedInt;

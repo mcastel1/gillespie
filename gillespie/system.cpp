@@ -150,7 +150,7 @@ inline void SystemBits::Iterate(void){
         
 //        L.AddTo(&(a[i]), &carry);
 
-        compare_new = (L < R);
+        compare_new = (L <= R);
         changer = (compare_old ^ compare_new);
         
 //        L.PrintBase10("L");

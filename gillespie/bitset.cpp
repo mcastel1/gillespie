@@ -189,7 +189,7 @@ inline void BitSet::Print(string title){
     
 }
 
-//print *this to the output stream output_stream 
+//print *this to the output stream output_stream
 inline void BitSet::Print(ostream& output_stream){
         
     for(unsigned int s=0; s<GetSize(); s++){
@@ -247,6 +247,13 @@ inline Bits BitSet::operator < (const BitSet& m){
     
 }
 
+
+
+inline Bits BitSet::operator <= (BitSet& m){
+    
+    return(~(m < (*this)));
+    
+}
 
 //shift bit-by-bit to the left the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *m (thus by either one position or zero positions), replace the remaining entries b[] by all zeros and write the result in *this
 inline BitSet BitSet::operator << (Bits* m){
