@@ -350,6 +350,7 @@ inline systemnobits::systemnobits(unsigned long long int N_in, unsigned int seed
     outfile.open(outfile_name.str().c_str());
     
     N_N_m_1_2 = N*(N-1)/2;
+    t=0;
     
     x.resize(3);
     x_t.resize(3);
@@ -395,7 +396,7 @@ inline void systemnobits::iterate(void){
         
         L += a[i];
         
-        compare_new = (L < R);
+        compare_new = (L <= R);
         changer = (compare_old ^ compare_new);
         
         x_t[0] = (changer ? x[0] : 0);
@@ -515,4 +516,5 @@ inline void systemnobits::iterate(void){
     
     outfile << x[0] << "\t" << x[1] << "\t" << x[2] << "\t" << tau << endl;
     
+    ++t;
 }
