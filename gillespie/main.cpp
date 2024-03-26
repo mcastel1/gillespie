@@ -29,7 +29,7 @@
  //compile on calcsub
  g++ -O3 -o main.o -I ./ -lgsl -lgslcblas -lm main.cpp -Wall -I/usr/include/gsl
  
- ./main.o -N 128 -S 5 -s 0
+ ./main.o -N 128 -S 5 -s 0 -o /Users/michele/Desktop
  */
 
 /*
@@ -81,6 +81,7 @@ int main(int argc, char * argv[]) {
     int options;
     unsigned long long int N=0, S=0, s;
     unsigned int i, seed=0;
+    string output_directory;
     clock_t start_nobits, start_bits, end_nobits, end_bits;
     
     cout.precision(cout_precision);
@@ -91,7 +92,7 @@ int main(int argc, char * argv[]) {
     }
     
     
-    while ((options = getopt(argc, argv, ":N:S:s:")) != -1) {
+    while ((options = getopt(argc, argv, ":N:S:s:o:")) != -1) {
         
         switch (options) {
                 
@@ -105,6 +106,10 @@ int main(int argc, char * argv[]) {
                 
             case 's':
                 seed = ((unsigned int)atoi(optarg));
+                break;
+                
+            case 'o':
+                output_directory.assign(optarg);
                 break;
                             
                 
@@ -133,8 +138,8 @@ int main(int argc, char * argv[]) {
     
     
     //
-    SystemBits FRANK(N, seed, "");
-    systemnobits frank(N, seed, "");
+    SystemBits FRANK(N, seed, output_directory);
+    systemnobits frank(N, seed, output_directory);
     
     
     //********************* speed test without bits  *********************
