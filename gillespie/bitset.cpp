@@ -196,7 +196,7 @@ inline void BitSet::Print(ostream& output_stream){
         (b[s]).Print(output_stream);
         output_stream << "\t";
     }
-    output_stream << endl;
+//    output_stream << endl;
     
 }
 
