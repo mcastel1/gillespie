@@ -582,6 +582,15 @@ inline void BitSet::DivideByTwoTo(void){
     
 }
 
+//this method  multiplies *this by 2 and writes the result in *this
+inline void BitSet::MultiplyByTwoTo(void){
+    
+    //to divide by two, I shift all entries to the right by one place
+    (*this) <<= (&Bits_one);
+    
+    
+}
+
 
 //compute the floor of *this x *multiplicant and store the result in *result. This requires result->GetSize() = multiplicand->GetSize() and work_space->GetSize() = (this->GetSize()) + (multiplicand->GetSize()) 
 inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* work_space){
