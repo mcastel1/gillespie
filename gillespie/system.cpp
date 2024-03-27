@@ -159,8 +159,7 @@ inline void SystemBits::Iterate(void){
     //run through all reactions and compute the left-hand size of eq. (10b) in gillespie2007stochastic
     for (L.SetAll(0), compare_old.SetAll(true), i=0; i<3; i++) {
         
-        
-//        L.AddTo(&(a[i]), &carry);
+        L.AddTo(&(a[i]), &carry);
 
         compare_new = (L <= R);
         changer = (compare_old ^ compare_new);
