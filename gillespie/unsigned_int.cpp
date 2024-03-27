@@ -61,6 +61,18 @@ inline void UnsignedInt::PrintBase10(string title){
 }
 
 
+inline void UnsignedInt::PrintBase10(ostream& output_stream){
+    
+    unsigned int  p;
+    vector<unsigned long long int> v;
+    
+    for(p=0, GetBase10(v); p<n_bits; p++){
+        output_stream << v[n_bits-1-p] << "\t";
+    }
+
+}
+
+
 inline void UnsignedInt::GetBase10(vector<unsigned long long int>& v){
     
     unsigned int p;

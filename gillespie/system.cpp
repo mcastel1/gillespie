@@ -43,6 +43,7 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in,
         x.push_back(UnsignedInt(N));
     }
     x_t = x;
+    x_times_two.Resize((x[0]).GetSize()+1);
     
     //set a[i] so they can host the maximum values that can be stored in them
     for(a.resize(6), i=0; i<6; i++){
@@ -263,7 +264,6 @@ inline void SystemBits::Iterate(void){
                 
             }
                
-                //FIX THIS: THIS NUMBER OF AS IS INCREASED BY 2, NOT BY ONE
             case 2:{
                 //the third reaction D+L -> 2 A  has been selected
                 
@@ -283,12 +283,16 @@ inline void SystemBits::Iterate(void){
 
                  */
                 //update a[0]
-                a[0].AddTo(&(x_t[2]), &carry);
+                x_times_two = x_t[2];
+                x_times_two.MultiplyByTwoTo();
+                a[0].AddTo(&x_times_two, &carry);
                 a[0].SubstractTo(&(x_t[0]), &borrow);
                 a[0].SubstractTo(&changer_times_two, &borrow);
                 
                 //update a[1]
-                a[1].AddTo(&(x_t[1]), &carry);
+                x_times_two = x_t[1];
+                x_times_two.MultiplyByTwoTo();
+                a[1].AddTo(&x_times_two, &carry);
                 a[1].SubstractTo(&(x_t[0]), &borrow);
                 a[1].SubstractTo(&changer_times_two, &borrow);
 
@@ -298,7 +302,10 @@ inline void SystemBits::Iterate(void){
                 a[2].AddTo(&changer, &carry);
 
                 //update a[3]
-                a[3].AddTo(&(x_t[0]), &carry);
+                x_times_two = x_t[0];
+                x_times_two.MultiplyByTwoTo();
+                a[3].AddTo(&x_times_two, &carry);
+                a[3].AddTo(&changer, &carry);
                 
                 //update a[4]
                 a[4].SubstractTo(&(x_t[2]), &borrow);
@@ -317,7 +324,6 @@ inline void SystemBits::Iterate(void){
                 break;
                 
             }
-                //FIX THIS: THIS NUMBER OF AS IS INCREASED BY 2, NOT BY ONE
 
                 
         }
