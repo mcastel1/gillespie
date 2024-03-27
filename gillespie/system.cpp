@@ -173,7 +173,7 @@ inline void SystemBits::Iterate(void){
         
         //I & x[0] and x[2] with changer and write the result in x_t[0] and x_t[2], respectively. The x_ts will be needed in the following no matter what i
         x[0].And(&changer, &(x_t[0]));
-        x[1].And(&changer, &(x_t[2]));
+        x[1].And(&changer, &(x_t[1]));
         x[2].And(&changer, &(x_t[2]));
         
         //note that hwew the fourth, ..., sixth reaction are not considered because they don't do anything
