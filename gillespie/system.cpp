@@ -55,9 +55,9 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in,
     R = UnsignedInt(N*(N-1)/2);
     changer_times_two = UnsignedInt(2);
     
-    if(x[0].GetSize() < changer_times_two.GetSize()){
+    if((((x[0]).GetSize() )< changer_times_two.GetSize()) || (((a[0]).GetSize()) < changer_times_two.GetSize())){
         
-        cout << "****************** The size of X is not >= than that of changer_times_two !!! ******************" << endl;
+        cout << "****************** The size of X or a is not >= than that of changer_times_two !!! ******************" << endl;
         
     }
     
@@ -285,7 +285,7 @@ inline void SystemBits::Iterate(void){
                 //update a[0]
                 a[0].AddTo(&(x_t[2]), &carry);
                 a[0].SubstractTo(&(x_t[0]), &borrow);
-                a[0].SubstractTo(&changer, &borrow);
+                a[0].SubstractTo(&changer_times_two, &borrow);
                 
                 //update a[1]
                 a[1].AddTo(&(x_t[1]), &carry);
@@ -312,7 +312,7 @@ inline void SystemBits::Iterate(void){
                 //update x
                 x[2].SubstractTo(&changer, &borrow);
                 x[1].SubstractTo(&changer, &borrow);
-                x[0].AddTo(&changer, &carry);
+                x[0].AddTo(&changer_times_two, &carry);
 
                 break;
                 
