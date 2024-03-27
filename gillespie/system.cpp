@@ -54,6 +54,13 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in,
     L = UnsignedInt(N*(N-1)/2);
     R = UnsignedInt(N*(N-1)/2);
     changer_times_two = UnsignedInt(2);
+    
+    if(x[0].GetSize() < changer_times_two.GetSize()){
+        
+        cout << "****************** The size of X is not >= than that of changer_times_two !!! ******************" << endl;
+        
+    }
+    
     w.resize(n_bits_R);
     
     //set x
