@@ -53,6 +53,7 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in,
 
     L = UnsignedInt(N*(N-1)/2);
     R = UnsignedInt(N*(N-1)/2);
+    changer_times_two = UnsignedInt(2);
     w.resize(n_bits_R);
     
     //set x
@@ -90,6 +91,9 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in,
     x[1].Multiply(&(x[1]), &(a[5]));
     a[5].SubstractTo(&(x[1]), &borrow);
     a[5].DivideByTwoTo();
+    
+    //set changer_times_two to zero, because it will be filled with nonzero entries later
+    changer_times_two.SetAllToSize(0);
 
 
 //
@@ -257,6 +261,9 @@ inline void SystemBits::Iterate(void){
                 //the third reaction D+L -> 2 A  has been selected
                 
                 //x[0]->x[0]+changer, x[1] -> x[1]-changer, x[2] -> x[2]-changer
+                
+                //changer_times_two is set to 2 * changer
+                (changer_times_two.b)[1] = changer;
                 
                 //update the as
                 /*

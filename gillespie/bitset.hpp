@@ -51,6 +51,7 @@ public:
     friend class UnsignedInt;
     friend class Double;
     friend class Fraction;
+    friend class SystemBits;
     
     
 };
