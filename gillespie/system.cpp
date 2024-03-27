@@ -336,6 +336,11 @@ inline void SystemBits::Iterate(void){
     x[0].Print(outfile);
     x[1].Print(outfile);
     x[2].Print(outfile);
+    
+//    x[0].PrintBase10("x[0]", outfile);
+//    x[1].PrintBase10("x[1]", outfile);
+//    x[2].PrintBase10("x[2]", outfile);
+
     outfile << tau << endl;
     
 

@@ -46,30 +46,23 @@ inline void UnsignedInt::Set(unsigned int s, unsigned long long int i){
 
 inline void UnsignedInt::PrintBase10(string title){
     
-    unsigned int  p;
-    vector<unsigned long long int> v;
-    
-    cout << title << ": {";
-    for(p=0, GetBase10(v); p<n_bits; p++){
-        
-        cout << v[n_bits-1-p] << " ";
-        
-    }
-    
-    cout << "}" << endl;
+    PrintBase10(title, cout);
     
 }
 
 
-inline void UnsignedInt::PrintBase10(ostream& output_stream){
+inline void UnsignedInt::PrintBase10(const string& title, ostream& output_stream){
     
     unsigned int  p;
     vector<unsigned long long int> v;
     
+    output_stream << title << ": {";
     for(p=0, GetBase10(v); p<n_bits; p++){
         output_stream << v[n_bits-1-p] << "\t";
     }
+    output_stream << "}" << endl;
 
+    
 }
 
 
