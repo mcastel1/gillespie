@@ -290,7 +290,7 @@ inline void SystemBits::Iterate(void){
                 //update a[1]
                 a[1].AddTo(&(x_t[1]), &carry);
                 a[1].SubstractTo(&(x_t[0]), &borrow);
-                a[1].SubstractTo(&changer, &borrow);
+                a[1].SubstractTo(&changer_times_two, &borrow);
 
                 //update a[2]
                 a[2].SubstractTo(&(x_t[2]), &borrow);
