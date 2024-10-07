@@ -5,6 +5,16 @@
 //  Created by Michele on 12/02/2024.
 //
 
+#ifndef bitset_hpp
+#define bitset_hpp
+
+#include <iostream>
+
+#include "bits.hpp"
+
+using namespace std;
+
+
 
 class BitSet{
     
@@ -56,5 +66,4 @@ public:
     
 };
 
-
-
+#endif
