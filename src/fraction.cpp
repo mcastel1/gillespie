@@ -1,6 +1,8 @@
 #include "fraction.hpp"
 
+#include "main.hpp"
 
+#include "gsl_math.h"
 
 inline Fraction::Fraction(void) : BitSet(){}
 

@@ -7,6 +7,8 @@
 
 #include "int.hpp"
 
+#include "gsl_math.h"
+
 
 //default constructor
 inline Int::Int(void): BitSet(){}
