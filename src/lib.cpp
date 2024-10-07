@@ -5,8 +5,14 @@
 //  Created by Michele on 13/02/2024.
 //
 
+#include <vector>
+
 
 #include "lib.hpp"
+#include "main.hpp"
+#include "gsl_math.h"
+
+
 
 //this file includes functions that do not belong a classes
 

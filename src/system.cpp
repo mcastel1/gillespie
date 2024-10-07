@@ -6,6 +6,11 @@
 //
 
 #include "system.hpp"
+#include "lib.hpp"
+#include "main.hpp"
+
+#include "gsl_math.h"
+#include "gsl_randist.h"
 
 inline SystemBits::SystemBits(void){
     

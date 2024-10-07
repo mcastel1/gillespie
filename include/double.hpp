@@ -13,6 +13,8 @@
 using namespace std;
 
 #include "bits.hpp"
+#include "bitset.hpp"
+#include "unsigned_int.hpp"
 
 //a (collection of n_bits) double(s) represented in base 2
 class Double{

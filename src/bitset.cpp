@@ -6,7 +6,10 @@
 //
 
 #include "bitset.hpp"
+#include "lib.hpp"
+#include "main.hpp"
 
+#include <vector>
 
 inline BitSet::BitSet(void){
     

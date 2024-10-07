@@ -43,16 +43,16 @@
 
 
 #include "main.hpp"
-#include "lib.cpp"
-#include "bits.cpp"
-#include "bitset.cpp"
-#include "fraction.cpp"
+//#include "lib.cpp"
+//#include "bits.cpp"
+//#include "bitset.cpp"
+//#include "fraction.cpp"
 
 
-#include "int.cpp"
-#include "unsigned_int.cpp"
-#include "double.cpp"
-#include "system.cpp"
+//#include "int.cpp"
+//#include "unsigned_int.cpp"
+//#include "double.cpp"
+#include "system.hpp"
 
 //all entries of BitSet_one are equal to 1
 
