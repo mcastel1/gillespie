@@ -10,6 +10,8 @@
 #include "lib.hpp"
 #include "main.hpp"
 
+#include "gsl_math.h"
+
 //default constructor
 inline Double::Double(void){
     
