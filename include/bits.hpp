@@ -5,8 +5,8 @@
 //  Created by Michele on 07/02/2024.
 //
 
-#ifndef question_frame_hpp
-#define question_frame_hpp
+#ifndef bits_hpp
+#define bits_hpp
 
 #include <iostream>
 

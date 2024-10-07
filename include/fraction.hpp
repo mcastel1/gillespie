@@ -1,6 +1,6 @@
 
-#ifndef double_hpp
-#define double_hpp
+#ifndef fraction_hpp
+#define fraction_hpp
 
 #include <iostream>
 

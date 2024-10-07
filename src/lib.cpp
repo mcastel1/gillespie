@@ -23,7 +23,7 @@ inline unsigned long long int two_pow(unsigned long long int i){
 }
 
 //return the number of bits necessary to write n in base 2
-unsigned int inline bits(unsigned long long int n){
+unsigned int bits(unsigned long long int n){
     
     unsigned int s;
     

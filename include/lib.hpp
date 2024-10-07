@@ -14,7 +14,7 @@
 using namespace std;
 
 unsigned long long int two_pow(unsigned long long int);
-unsigned int inline bits(unsigned long long int);
+unsigned int bits(unsigned long long int);
 void bitwise_print_double(const double& x);
 void GetMantissaFromDouble(vector<bool>* result, double x);
 
