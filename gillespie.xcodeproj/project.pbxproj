@@ -288,6 +288,7 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include/gsl,
 					/usr/local/include,
+					/Users/michelecastellana/Documents/gillespie/include,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				OTHER_LDFLAGS = (
@@ -311,6 +312,7 @@
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include/gsl,
 					/usr/local/include,
+					/Users/michelecastellana/Documents/gillespie/include,
 				);
 				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				OTHER_LDFLAGS = (

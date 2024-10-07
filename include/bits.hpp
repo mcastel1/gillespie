@@ -5,6 +5,13 @@
 //  Created by Michele on 07/02/2024.
 //
 
+#ifndef question_frame_hpp
+#define question_frame_hpp
+
+#include <iostream>
+
+using namespace std;
+
 
 // a collection of n_bits bits
 class Bits{
@@ -40,3 +47,5 @@ public:
     
 };
 
+
+#endif
