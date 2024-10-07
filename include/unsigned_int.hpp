@@ -15,7 +15,6 @@
 
 using namespace std;
 
-class BitSet;
 
 
 //an int represented in base 2 in b
