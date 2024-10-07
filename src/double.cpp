@@ -7,6 +7,8 @@
 
 #include "double.hpp"
 
+#include "main.hpp"
+
 //default constructor
 inline Double::Double(void){
     

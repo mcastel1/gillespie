@@ -1,5 +1,6 @@
 #include "fraction.hpp"
 
+#include "lib.hpp"
 #include "main.hpp"
 
 #include "gsl_math.h"
