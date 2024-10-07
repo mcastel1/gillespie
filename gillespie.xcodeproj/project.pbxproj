@@ -7,7 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D1ADCAFF2B62C1EB007DDD5A /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = D1ADCAFE2B62C1EB007DDD5A /* main.cpp */; };
+		038577FB2CB40BD9002E85AD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038577FA2CB40BD9002E85AD /* main.cpp */; };
+		038578042CB40BE1002E85AD /* fraction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038577FC2CB40BE1002E85AD /* fraction.cpp */; };
+		038578052CB40BE1002E85AD /* system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038577FD2CB40BE1002E85AD /* system.cpp */; };
+		038578062CB40BE1002E85AD /* unsigned_int.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038577FE2CB40BE1002E85AD /* unsigned_int.cpp */; };
+		038578072CB40BE1002E85AD /* lib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038577FF2CB40BE1002E85AD /* lib.cpp */; };
+		038578082CB40BE1002E85AD /* bits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038578002CB40BE1002E85AD /* bits.cpp */; };
+		038578092CB40BE1002E85AD /* double.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038578012CB40BE1002E85AD /* double.cpp */; };
+		0385780A2CB40BE1002E85AD /* int.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038578022CB40BE1002E85AD /* int.cpp */; };
+		0385780B2CB40BE1002E85AD /* bitset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038578032CB40BE1002E85AD /* bitset.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,10 +31,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		038577FA2CB40BD9002E85AD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		038577FC2CB40BE1002E85AD /* fraction.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = fraction.cpp; path = src/fraction.cpp; sourceTree = "<group>"; };
+		038577FD2CB40BE1002E85AD /* system.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = system.cpp; path = src/system.cpp; sourceTree = "<group>"; };
+		038577FE2CB40BE1002E85AD /* unsigned_int.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = unsigned_int.cpp; path = src/unsigned_int.cpp; sourceTree = "<group>"; };
+		038577FF2CB40BE1002E85AD /* lib.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = lib.cpp; path = src/lib.cpp; sourceTree = "<group>"; };
+		038578002CB40BE1002E85AD /* bits.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = bits.cpp; path = src/bits.cpp; sourceTree = "<group>"; };
+		038578012CB40BE1002E85AD /* double.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = double.cpp; path = src/double.cpp; sourceTree = "<group>"; };
+		038578022CB40BE1002E85AD /* int.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = int.cpp; path = src/int.cpp; sourceTree = "<group>"; };
+		038578032CB40BE1002E85AD /* bitset.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = bitset.cpp; path = src/bitset.cpp; sourceTree = "<group>"; };
 		D1ADCAFB2B62C1EB007DDD5A /* gillespie */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gillespie; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1ADCAFE2B62C1EB007DDD5A /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		D1ADCB062B63D5B8007DDD5A /* gillespie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gillespie.entitlements; sourceTree = "<group>"; };
-		D1BDABE62B73A44F0099B603 /* gillespie */ = {isa = PBXFileReference; lastKnownFileType = folder; path = gillespie; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,8 +57,15 @@
 		D1ADCAF22B62C1EB007DDD5A = {
 			isa = PBXGroup;
 			children = (
-				D1BDABE62B73A44F0099B603 /* gillespie */,
-				D1ADCAFD2B62C1EB007DDD5A /* gillespie */,
+				038578002CB40BE1002E85AD /* bits.cpp */,
+				038578032CB40BE1002E85AD /* bitset.cpp */,
+				038578012CB40BE1002E85AD /* double.cpp */,
+				038577FC2CB40BE1002E85AD /* fraction.cpp */,
+				038578022CB40BE1002E85AD /* int.cpp */,
+				038577FF2CB40BE1002E85AD /* lib.cpp */,
+				038577FD2CB40BE1002E85AD /* system.cpp */,
+				038577FE2CB40BE1002E85AD /* unsigned_int.cpp */,
+				038577FA2CB40BD9002E85AD /* main.cpp */,
 				D1ADCAFC2B62C1EB007DDD5A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,15 +76,6 @@
 				D1ADCAFB2B62C1EB007DDD5A /* gillespie */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		D1ADCAFD2B62C1EB007DDD5A /* gillespie */ = {
-			isa = PBXGroup;
-			children = (
-				D1ADCB062B63D5B8007DDD5A /* gillespie.entitlements */,
-				D1ADCAFE2B62C1EB007DDD5A /* main.cpp */,
-			);
-			path = gillespie;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,7 +135,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D1ADCAFF2B62C1EB007DDD5A /* main.cpp in Sources */,
+				038578042CB40BE1002E85AD /* fraction.cpp in Sources */,
+				038578052CB40BE1002E85AD /* system.cpp in Sources */,
+				038578062CB40BE1002E85AD /* unsigned_int.cpp in Sources */,
+				038578072CB40BE1002E85AD /* lib.cpp in Sources */,
+				038578082CB40BE1002E85AD /* bits.cpp in Sources */,
+				038578092CB40BE1002E85AD /* double.cpp in Sources */,
+				0385780A2CB40BE1002E85AD /* int.cpp in Sources */,
+				0385780B2CB40BE1002E85AD /* bitset.cpp in Sources */,
+				038577FB2CB40BD9002E85AD /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

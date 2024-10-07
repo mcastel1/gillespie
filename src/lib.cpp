@@ -6,6 +6,8 @@
 //
 
 
+#include "lib.hpp"
+
 //this file includes functions that do not belong a classes
 
 inline unsigned long long int two_pow(unsigned long long int i){
