@@ -16,10 +16,12 @@
 #include "gsl_math.h"
 
 //default constructor
-inline UnsignedInt::UnsignedInt(void) : BitSet(){}
+//inline 
+UnsignedInt::UnsignedInt(void) : BitSet(){}
 
 //constructor taht resizes *this in ordert to host N
-inline UnsignedInt::UnsignedInt(unsigned long long int N) : BitSet(N){}
+//inline 
+UnsignedInt::UnsignedInt(unsigned long long int N) : BitSet(N){}
 
 
 //if this->GetSize() == replacer->GetSize(), replace bit-by-bit all bs of *this with the respective bs of *replacer, and leave *this unchanged otherwise
@@ -37,7 +39,8 @@ inline void UnsignedInt::Replace(UnsignedInt* replacer, Bits* check){
 
 
 //set the s-th bit of *this equal to i. This requires b to be sized properly
-inline void UnsignedInt::Set(unsigned int s, unsigned long long int i){
+//inline 
+void UnsignedInt::Set(unsigned int s, unsigned long long int i){
     
     unsigned int p;
     Bits n(i);
@@ -50,14 +53,16 @@ inline void UnsignedInt::Set(unsigned int s, unsigned long long int i){
 
 
 
-inline void UnsignedInt::PrintBase10(string title){
+//inline 
+void UnsignedInt::PrintBase10(string title){
     
     PrintBase10(title, cout);
     
 }
 
 
-inline void UnsignedInt::PrintBase10(const string& title, ostream& output_stream){
+//inline 
+void UnsignedInt::PrintBase10(const string& title, ostream& output_stream){
     
     unsigned int  p;
     vector<unsigned long long int> v;
@@ -93,7 +98,8 @@ inline void UnsignedInt::operator = (BitSet m){
 
 //I am obliged to put this method definition here, because this method needs the full declaration of the UnsignedInt class before it is declared
 //shift bit-by-bit the entries of  b[51] b[50] ... in *this by a number of positions to the right (>>) encoded in *e and replace the remaining entries b[] by all zeros
-inline void BitSet::operator >>=(UnsignedInt* e){
+//inline 
+void BitSet::operator >>=(UnsignedInt* e){
     
     unsigned int n;
     int m;
@@ -140,7 +146,8 @@ inline void BitSet::operator >>=(UnsignedInt* e){
 
 
 //shift bit-by-bit the entries of  b[51] b[50] ... in *this by a number of positions to the left (<<) encoded in *e and replace the remaining entries b[] by all zeros
-inline void BitSet::operator <<=(UnsignedInt* e){
+//inline 
+void BitSet::operator <<= (UnsignedInt* e){
     
     unsigned int n;
     int m;
@@ -560,7 +567,8 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int maximum_value, u
 
  the times are from  ./main.o -s 0 -S 6
  */
-inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
+//inline 
+void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
     
     unsigned int s, p;
     Bits carry, t, u;
@@ -585,7 +593,8 @@ inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
 }
 
 //this method requires *this to be even, it divides *this by 2 and writes the result in *this
-inline void BitSet::DivideByTwoTo(void){
+//inline 
+void BitSet::DivideByTwoTo(void){
     
     //to divide by two, I shift all entries to the right by one place
     (*this) >>= (&Bits_one);
@@ -594,7 +603,8 @@ inline void BitSet::DivideByTwoTo(void){
 }
 
 //this method  multiplies *this by 2 and writes the result in *this
-inline void BitSet::MultiplyByTwoTo(void){
+//inline 
+void BitSet::MultiplyByTwoTo(void){
     
     //to divide by two, I shift all entries to the right by one place
     (*this) <<= (&Bits_one);

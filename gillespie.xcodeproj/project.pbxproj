@@ -308,7 +308,8 @@
 		D1ADCB032B62C1EB007DDD5A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = gillespie/gillespie.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V3N3VGR839;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -332,7 +333,8 @@
 		D1ADCB042B62C1EB007DDD5A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = gillespie/gillespie.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V3N3VGR839;
 				ENABLE_HARDENED_RUNTIME = YES;

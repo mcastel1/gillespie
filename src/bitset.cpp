@@ -11,12 +11,15 @@
 
 #include <vector>
 
-inline BitSet::BitSet(void){
+//inline 
+BitSet::BitSet(void){
     
     
 }
 
-inline BitSet::BitSet(unsigned long long int N){
+
+//inline 
+BitSet::BitSet(unsigned long long int N){
     
     b.resize(bits(N));
     
@@ -45,7 +48,9 @@ inline void BitSet::Swap(BitSet* a, Bits& check, Bits* work_space){
     
 }
 
-inline void BitSet::Resize(unsigned long long int size){
+
+//inline
+void BitSet::Resize(unsigned long long int size){
     
     b.resize(size);
     
@@ -87,7 +92,8 @@ inline  void BitSet::SetRandom(gsl_rng* ran){
 }
 
 //set all n_bits entries of *this to the respective bits of i. This method requires  *this to be properly sized to contain i
-inline void BitSet::SetAll(unsigned long long int i){
+//inline 
+void BitSet::SetAll(unsigned long long int i){
     
     unsigned int s;
     Bits m(i);
@@ -104,7 +110,8 @@ inline void BitSet::SetAll(unsigned long long int i){
 }
 
 
-inline void BitSet::SetAllToSize(unsigned long long int i){
+//inline 
+void BitSet::SetAllToSize(unsigned long long int i){
     
     for(unsigned int s=0; s<GetSize(); s++){
         (b[s]).SetAll( ((i >> s) & ullong_1) );
@@ -114,7 +121,8 @@ inline void BitSet::SetAllToSize(unsigned long long int i){
 
 
 //set all b[]s equal to m
-inline void BitSet::SetAll(Bits& m){
+//inline 
+void BitSet::SetAll(Bits& m){
     
     for(unsigned int s=0; s<GetSize(); s++){
         b[s] = m;
@@ -169,7 +177,8 @@ inline void BitSet::SetFromDoubleMantissa(unsigned int s, double x){
 
 
 //reize *this in order to contain all bits of i, and set all n_bits entries of *this to the respective bits of i
-inline void BitSet::ResizeAndSetAll(unsigned long long int i){
+//inline 
+void BitSet::ResizeAndSetAll(unsigned long long int i){
     
     Resize(bits(i));
     SetAll(i);
@@ -177,7 +186,8 @@ inline void BitSet::ResizeAndSetAll(unsigned long long int i){
 }
 
 
-inline void BitSet::Print(string title){
+//inline 
+void BitSet::Print(string title){
     
     unsigned int s;
     
@@ -193,13 +203,13 @@ inline void BitSet::Print(string title){
 }
 
 //print *this to the output stream output_stream
-inline void BitSet::Print(ostream& output_stream){
+//inline 
+void BitSet::Print(ostream& output_stream){
         
     for(unsigned int s=0; s<GetSize(); s++){
         (b[s]).Print(output_stream);
         output_stream << "\t";
     }
-//    output_stream << endl;
     
 }
 
@@ -252,11 +262,13 @@ inline Bits BitSet::operator < (const BitSet& m){
 
 
 
-inline Bits BitSet::operator <= (BitSet& m){
+//inline 
+Bits BitSet::operator <= (BitSet& m){
     
     return(~(m < (*this)));
     
 }
+
 
 //shift bit-by-bit to the left the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *m (thus by either one position or zero positions), replace the remaining entries b[] by all zeros and write the result in *this
 inline BitSet BitSet::operator << (Bits* m){
@@ -269,7 +281,8 @@ inline BitSet BitSet::operator << (Bits* m){
 
 
 //return the unsigned long long int written in the p-th bit of *this
-inline unsigned long long int BitSet::Get(unsigned int p){
+//inline 
+unsigned long long int BitSet::Get(unsigned int p){
     
     unsigned int s;
     unsigned long long int result;
@@ -360,7 +373,8 @@ inline void BitSet::operator += (BitSet* addend){
 
 
 //same as BitSet::operator +=  but the last bit is not pushed back into b, but written into *carry. This method requires this->GetSize() to be >= addend->GetSize()
-inline void BitSet::AddTo(BitSet* addend, Bits* carry){
+//inline 
+void BitSet::AddTo(BitSet* addend, Bits* carry){
     
     Bits t;
     unsigned int p;
@@ -422,7 +436,8 @@ inline void BitSet::Normalize(unsigned int n){
 }
 
 //add bit-by-bit addend (which here is either 1 or 0) to *this and store the result in *this and the carry in *carry. This method requires this->GetSize() to be > 1
-inline void BitSet::AddTo(Bits* addend, Bits* carry){
+//inline 
+void BitSet::AddTo(Bits* addend, Bits* carry){
         
     Bits t;
     unsigned int p;
@@ -498,7 +513,8 @@ inline void BitSet::operator -= (BitSet* subtrahend) {
 
 
 //do the same as BitSet::operator -= but without resizing operations. This method requires this->GetSize() to be >= addend.GetSize()
-inline void BitSet::SubstractTo(BitSet* subtrahend, Bits* borrow) {
+//inline 
+void BitSet::SubstractTo(BitSet* subtrahend, Bits* borrow) {
     
     unsigned int p;
     Bits t;
@@ -527,7 +543,8 @@ inline void BitSet::SubstractTo(BitSet* subtrahend, Bits* borrow) {
 }
 
 //substract bit-by-bit subtrahend (which here is either 1 or 0) to *this and store the result in *this and the borrow in *borrow. This method requires this->GetSize() to be >= addend.GetSize()
-inline void BitSet::SubstractTo(Bits* subtrahend, Bits* borrow) {
+//inline 
+void BitSet::SubstractTo(Bits* subtrahend, Bits* borrow) {
     
     Bits t;
     unsigned int p;
@@ -610,7 +627,8 @@ inline void BitSet::RemoveFirstSignificantBit(void){
 
 
 //shift bit-by-bit to the right the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *l (thus by either one position or zero positions) and replace the remaining entries b[] by all zeros
-inline void BitSet::operator >>= (Bits* l){
+//inline 
+void BitSet::operator >>= (Bits* l){
     
     int m;
         
@@ -638,7 +656,8 @@ inline void BitSet::operator >>= (Bits* l){
 
 
 //shift bit-by-bit to the left the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *l (thus by either one position or zero positions), replace the remaining entries b[] by all zeros and write the result on *this
-inline void BitSet::operator <<= (Bits* l){
+//inline 
+void BitSet::operator <<= (Bits* l){
     
     int m;
     
@@ -666,14 +685,9 @@ inline void BitSet::operator <<= (Bits* l){
 
 
 //perform (bit-by-bit) an & between  b[s] and *m ,and write the result in b[s] for all s = 0 ... GetSize()
-inline void BitSet::operator &= (Bits* m){
-    
-//    for(unsigned int s=0; s<GetSize(); s++){
-//
-//        b[s] &= m;
-//
-//    }
-  
+//inline 
+void BitSet::operator &= (Bits* m){
+      
     AndTo(m, 0, GetSize());
     
 }
@@ -692,7 +706,8 @@ inline void BitSet::AndTo(Bits* m, unsigned int start, unsigned int end){
 
 
 //perform (bit-by-bit) an & between  b[s] and *m ,and write the result in (result->b)[s] for all s
-inline void BitSet::And(Bits* m, BitSet* result){
+//inline 
+void BitSet::And(Bits* m, BitSet* result){
     
     for(unsigned int s=0; s<GetSize(); s++){
         
@@ -704,7 +719,8 @@ inline void BitSet::And(Bits* m, BitSet* result){
 
 
 //multiply *this by addend (as if they were two UnsignedInts)  and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize(). once this method is called, *this has size [size of *this before the method is called] + multiplicand.GetSize()
-inline void BitSet::operator *= (BitSet* multiplicand){
+//inline 
+void BitSet::operator *= (BitSet* multiplicand){
     
     unsigned int s;
     BitSet result, t;

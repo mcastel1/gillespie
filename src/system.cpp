@@ -6,6 +6,7 @@
 //
 
 #include "system.hpp"
+
 #include "lib.hpp"
 #include "main.hpp"
 
@@ -16,7 +17,8 @@ inline SystemBits::SystemBits(void){
     
 }
 
-inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in, const string& out_directory_in){
+//inline 
+SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in, const string& out_directory_in){
     
     
     unsigned int i, s, *n, n_bits_R;
@@ -126,7 +128,8 @@ inline SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in,
     
 }
 
-inline void SystemBits::Iterate(void){
+//inline 
+void SystemBits::Iterate(void){
     
     unsigned int i;
     
@@ -358,7 +361,8 @@ inline systemnobits::systemnobits(void){
 }
 
 
-inline systemnobits::systemnobits(unsigned long long int N_in, unsigned int seed_in, const string& out_directory_in){
+//inline 
+systemnobits::systemnobits(unsigned long long int N_in, unsigned int seed_in, const string& out_directory_in){
     
     unsigned int i, *n;
     const double p[] = {1.0, 1.0, 2.0};
@@ -412,7 +416,8 @@ inline systemnobits::systemnobits(unsigned long long int N_in, unsigned int seed
 }
 
 
-inline void systemnobits::iterate(void){
+//inline 
+void systemnobits::iterate(void){
     
     unsigned int i;
     
