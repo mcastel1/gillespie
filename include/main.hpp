@@ -23,7 +23,7 @@ using namespace std;
 #define n_bits_exponent 11
 #define n_bits_sign 1
 //the maximum value for c[j]
-#define M 8
+#define my_M 8
 #define cout_precision 8
 const unsigned long long int ullong_1 = 1;
 const unsigned long long int ullong_0 = 0;

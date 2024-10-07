@@ -6,8 +6,9 @@
 //
 
 #include "unsigned_int.hpp"
+#include "lib.hpp"
 
-
+#include "gsl_math.h"
 
 //default constructor
 inline UnsignedInt::UnsignedInt(void) : BitSet(){}

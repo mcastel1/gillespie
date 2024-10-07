@@ -16,6 +16,7 @@
 using namespace std;
 
 
+
 //an int represented in base 2 in b
 class UnsignedInt : public BitSet{
     

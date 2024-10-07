@@ -15,6 +15,9 @@
 
 using namespace std;
 
+class UnsignedInt;
+
+
 
 class BitSet{
     

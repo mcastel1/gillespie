@@ -8,6 +8,8 @@
 #include "bits.hpp"
 #include "main.hpp"
 
+#include <vector>
+
 Bits::Bits(){}
 
 Bits::Bits(unsigned long long int n_in){
