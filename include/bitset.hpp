@@ -13,6 +13,8 @@
 #include "bits.hpp"
 #include "unsigned_int.hpp"
 
+#include <vector>
+
 using namespace std;
 
 class UnsignedInt;
