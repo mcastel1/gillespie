@@ -5,6 +5,15 @@
 //  Created by Michele on 10/02/2024.
 //
 
+#ifndef double_hpp
+#define double_hpp
+
+#include <iostream>
+
+using namespace std;
+
+#include "bits.hpp"
+
 //a (collection of n_bits) double(s) represented in base 2
 class Double{
     
@@ -40,3 +49,5 @@ public:
     Bits operator <(Double&);
 
 };
+
+#endif
