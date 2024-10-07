@@ -10,6 +10,9 @@
 
 #include <iostream>
 
+#include "gsl_rng.h"
+
+
 using namespace std;
 
 
