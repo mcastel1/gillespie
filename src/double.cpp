@@ -7,6 +7,7 @@
 
 #include "double.hpp"
 
+#include "lib.hpp"
 #include "main.hpp"
 
 //default constructor
