@@ -6,6 +6,7 @@
 //
 
 #include "bits.hpp"
+#include "main.hpp"
 
 Bits::Bits(){}
 
