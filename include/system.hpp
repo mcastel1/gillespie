@@ -5,6 +5,15 @@
 //  Created by Michele on 07/02/2024.
 //
 
+#ifndef system_hpp
+#define system_hpp
+
+#include <iostream>
+
+#include "unsigned_int.hpp"
+
+using namespace std;
+
 //a reaction-diffusion System with bits framework
 class SystemBits{
     
@@ -59,3 +68,5 @@ public:
     void iterate(void);
 
 };
+
+#endif

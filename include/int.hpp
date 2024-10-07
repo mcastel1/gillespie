@@ -6,6 +6,14 @@
 //
 
 
+#ifndef int_hpp
+#define int_hpp
+
+#include <iostream>
+
+using namespace std;
+
+
 // a (collection of n_bits) signed interger(s) represented in base 2. The magnitude is stored in the BitSet
 class Int: public BitSet{
     
@@ -19,3 +27,5 @@ public:
     void SetAll(long long int);
     
 };
+
+#endif

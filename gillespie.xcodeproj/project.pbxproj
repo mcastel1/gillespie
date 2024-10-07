@@ -40,6 +40,15 @@
 		038578012CB40BE1002E85AD /* double.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = double.cpp; path = src/double.cpp; sourceTree = "<group>"; };
 		038578022CB40BE1002E85AD /* int.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = int.cpp; path = src/int.cpp; sourceTree = "<group>"; };
 		038578032CB40BE1002E85AD /* bitset.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = bitset.cpp; path = src/bitset.cpp; sourceTree = "<group>"; };
+		0385780C2CB40E17002E85AD /* bits.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bits.hpp; sourceTree = "<group>"; };
+		0385780D2CB40E17002E85AD /* bitset.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = bitset.hpp; sourceTree = "<group>"; };
+		0385780E2CB40E17002E85AD /* double.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = double.hpp; sourceTree = "<group>"; };
+		0385780F2CB40E17002E85AD /* fraction.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = fraction.hpp; sourceTree = "<group>"; };
+		038578102CB40E17002E85AD /* gillespie.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = gillespie.entitlements; sourceTree = "<group>"; };
+		038578112CB40E17002E85AD /* int.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = int.hpp; sourceTree = "<group>"; };
+		038578122CB40E17002E85AD /* main.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = main.hpp; sourceTree = "<group>"; };
+		038578132CB40E17002E85AD /* system.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = system.hpp; sourceTree = "<group>"; };
+		038578142CB40E17002E85AD /* unsigned_int.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unsigned_int.hpp; sourceTree = "<group>"; };
 		D1ADCAFB2B62C1EB007DDD5A /* gillespie */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gillespie; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -54,9 +63,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		038578152CB40E17002E85AD /* include */ = {
+			isa = PBXGroup;
+			children = (
+				0385780C2CB40E17002E85AD /* bits.hpp */,
+				0385780D2CB40E17002E85AD /* bitset.hpp */,
+				0385780E2CB40E17002E85AD /* double.hpp */,
+				0385780F2CB40E17002E85AD /* fraction.hpp */,
+				038578102CB40E17002E85AD /* gillespie.entitlements */,
+				038578112CB40E17002E85AD /* int.hpp */,
+				038578122CB40E17002E85AD /* main.hpp */,
+				038578132CB40E17002E85AD /* system.hpp */,
+				038578142CB40E17002E85AD /* unsigned_int.hpp */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
 		D1ADCAF22B62C1EB007DDD5A = {
 			isa = PBXGroup;
 			children = (
+				038578152CB40E17002E85AD /* include */,
 				038578002CB40BE1002E85AD /* bits.cpp */,
 				038578032CB40BE1002E85AD /* bitset.cpp */,
 				038578012CB40BE1002E85AD /* double.cpp */,
