@@ -7,6 +7,9 @@
 
 #include "unsigned_int.hpp"
 #include "lib.hpp"
+#include "main.hpp"
+
+#include <vector>
 
 #include "gsl_math.h"
 
