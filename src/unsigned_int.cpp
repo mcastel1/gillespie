@@ -6,6 +6,8 @@
 //
 
 #include "unsigned_int.hpp"
+
+#include "fraction.hpp"
 #include "lib.hpp"
 #include "main.hpp"
 
