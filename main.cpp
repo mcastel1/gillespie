@@ -19,26 +19,26 @@
 #include "gsl_sf_log.h"
 #include "gsl_randist.h"
 
-/*compile on mac
- //compile without optimization
- clear; clear;  g++ main.cpp src/*.cpp -llapack -lgsl -lcblas -lm -O0 -Wno-deprecated -I/Users/michelecastellana/Documents/gillespie/include -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
+//compile on mac
+// compile without optimization
+// clear; clear;  g++ main.cpp src/*.cpp -llapack -lgsl -lcblas -lm -O0 -Wno-deprecated -I/Users/michelecastellana/Documents/gillespie/include -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
+// 
+// compile with optimization
+// g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
+// clear; g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE;  ./main.o -N 128 -S 5 -s 0 -o /Users/michelecastellana/Desktop
+//
+// compile on calcsub
+// g++ -O3 -o main.o -I ./ -lgsl -lgslcblas -lm main.cpp -Wall -I/usr/include/gsl
+// 
+// ./main.o -N 128 -S 5 -s 0 -o /Users/michelecastellana/Desktop
+// */
+//
+///*
+// note: - the performance test is very different if you do it on Xcode or on command line with -O3
+// - to circumvent the slow down with >>= in Double::AddTo, represent a Double as a BitSet, where the first bs represent the mantissa and the others the part > 1
+// - make sure that Double::AddTo does not alter the content of *addend
+// - if you run  void SpeedTestUnsignedIntAddTo and instead of calling once (A[s]).SubstractTo(&(B[s]), &carry) you call it twice, the execution time does not change and it stays smaller than the executio time without bits -> The gillespie simulation should be improved by the approach with bits
  
- //compile with optimization
- g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
- clear; g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE;  ./main.o -N 128 -S 5 -s 0 -o /Users/michelecastellana/Desktop
-
- //compile on calcsub
- g++ -O3 -o main.o -I ./ -lgsl -lgslcblas -lm main.cpp -Wall -I/usr/include/gsl
- 
- ./main.o -N 128 -S 5 -s 0 -o /Users/michelecastellana/Desktop
- */
-
-/*
- note: - the performance test is very different if you do it on Xcode or on command line with -O3
- - to circumvent the slow down with >>= in Double::AddTo, represent a Double as a BitSet, where the first bs represent the mantissa and the others the part > 1
- - make sure that Double::AddTo does not alter the content of *addend
- - if you run  void SpeedTestUnsignedIntAddTo and instead of calling once (A[s]).SubstractTo(&(B[s]), &carry) you call it twice, the execution time does not change and it stays smaller than the executio time without bits -> The gillespie simulation should be improved by the approach with bits
- */
 
 
 
