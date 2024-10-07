@@ -220,13 +220,6 @@ inline Bits Bits::operator ~ (void){
 }
 
 
-//this is not a method of the Bits class, but an ordinary function which had to be declared in this file because it need to know who the Bits type is
-inline Bits operator ~ (const Bits& m){
-    
-    return Bits((~(m.n)));
-    
-}
-
 //return (bit-by-bit) true if *this == m, false otherwise
 inline Bits Bits::operator == (Bits& m){
     

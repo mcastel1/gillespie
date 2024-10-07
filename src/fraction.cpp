@@ -66,3 +66,14 @@ inline void Fraction::PrintBase10(string title){
     
 }
 
+
+
+//compute the floor of *this x *multiplicant and store the result in *result. This requires result->GetSize() = multiplicand->GetSize() and work_space->GetSize() = (this->GetSize()) + (multiplicand->GetSize())
+inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* work_space){
+    
+    Multiply(multiplicand, work_space);
+  
+    //copy the last multiplicand->GetSize() bits of work_space into *result : this will yield the floor of the multiplication above
+    copy(work_space->b.begin()+GetSize(), work_space->b.end(), result->b.begin());
+     
+}

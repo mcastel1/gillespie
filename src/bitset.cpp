@@ -914,3 +914,30 @@ void BitSet::operator <<= (UnsignedInt* e){
     }
     
 }
+
+
+//return the position of the first signigificant bit in *this, starting from the last element of  b[]
+inline UnsignedInt BitSet::PositionOfFirstSignificantBit(void){
+    
+    int s;
+    Bits check_old, check_new, t, carry;
+    //result must be big enough to host an unsigned int equal to this->GetSize()
+    UnsignedInt result(GetSize());
+    
+    check_old.SetAll(0);
+    result.SetAll(0);
+    
+    for(s=GetSize()-1; s>=0; s--){
+        
+        check_new = check_old | ((*this)[s]);
+        t = (~check_new);
+        result.AddTo(&t, &carry);
+        
+        check_old = check_new;
+        
+    }
+    
+    return result;
+    
+    
+}
