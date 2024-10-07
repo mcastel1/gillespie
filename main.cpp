@@ -75,6 +75,9 @@
  }
  */
 
+//fill all the entries of BitSet_one and of Bits_one with 1, same for 0 with Bits_zero
+BitSet BitSet_one;
+Bits Bits_one, Bits_zero;
 
 
 int main(int argc, char * argv[]) {

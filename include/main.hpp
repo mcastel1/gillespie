@@ -30,8 +30,8 @@ const unsigned long long int ullong_0 = 0;
 
 
 //fill all the entries of BitSet_one and of Bits_one with 1, same for 0 with Bits_zero
-BitSet BitSet_one;
-Bits Bits_one, Bits_zero;
+extern BitSet BitSet_one;
+extern Bits Bits_one, Bits_zero;
 
 
 #endif
