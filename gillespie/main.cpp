@@ -25,12 +25,12 @@
  
  //compile with optimization
  g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
- clear; g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE;  ./main.o -N 128 -S 5 -s 0 -o /Users/michele/Desktop
+ clear; g++ main.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE;  ./main.o -N 128 -S 5 -s 0 -o /Users/michelecastellana/Desktop
 
  //compile on calcsub
  g++ -O3 -o main.o -I ./ -lgsl -lgslcblas -lm main.cpp -Wall -I/usr/include/gsl
  
- ./main.o -N 128 -S 5 -s 0 -o /Users/michele/Desktop
+ ./main.o -N 128 -S 5 -s 0 -o /Users/michelecastellana/Desktop
  */
 
 /*
