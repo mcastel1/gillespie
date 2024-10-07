@@ -10,6 +10,10 @@
 
 #include <iostream>
 
+#include "bits.hpp"
+#include "bitset.hpp"
+#include "unsigned_int.hpp"
+
 using namespace std;
 
 
@@ -24,11 +28,6 @@ using namespace std;
 const unsigned long long int ullong_1 = 1;
 const unsigned long long int ullong_0 = 0;
 
-
-
-class UnsignedInt;
-#include "bits.hpp"
-#include "bitset.hpp"
 
 //fill all the entries of BitSet_one and of Bits_one with 1, same for 0 with Bits_zero
 BitSet BitSet_one;

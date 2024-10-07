@@ -11,6 +11,8 @@
 
 #include <iostream>
 
+#include "bitset.hpp"
+
 using namespace std;
 
 
