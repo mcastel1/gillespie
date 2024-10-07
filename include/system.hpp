@@ -9,8 +9,12 @@
 #define system_hpp
 
 #include <iostream>
+#include <sstream>
+#include <fstream>
+#include <vector>
 
 #include "unsigned_int.hpp"
+
 
 using namespace std;
 
