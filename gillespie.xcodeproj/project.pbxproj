@@ -49,6 +49,7 @@
 		038578122CB40E17002E85AD /* main.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = main.hpp; sourceTree = "<group>"; };
 		038578132CB40E17002E85AD /* system.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = system.hpp; sourceTree = "<group>"; };
 		038578142CB40E17002E85AD /* unsigned_int.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unsigned_int.hpp; sourceTree = "<group>"; };
+		038578162CB41183002E85AD /* lib.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = lib.h; sourceTree = "<group>"; };
 		D1ADCAFB2B62C1EB007DDD5A /* gillespie */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gillespie; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -66,6 +67,7 @@
 		038578152CB40E17002E85AD /* include */ = {
 			isa = PBXGroup;
 			children = (
+				038578162CB41183002E85AD /* lib.h */,
 				0385780C2CB40E17002E85AD /* bits.hpp */,
 				0385780D2CB40E17002E85AD /* bitset.hpp */,
 				0385780E2CB40E17002E85AD /* double.hpp */,
