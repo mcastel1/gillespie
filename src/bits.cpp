@@ -19,6 +19,20 @@ Bits::Bits(unsigned long long int n_in){
 }
 
 
+//class setter
+inline void Bits::Set(const unsigned long long int& m){
+    
+    n = m;
+    
+}
+
+//class getter
+inline unsigned long long int Bits::Get(void){
+    
+    return n;
+    
+}
+
 //set the s-th bit of *this equal to bit
 void Bits::Set(unsigned int s, bool bit){
     

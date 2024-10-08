@@ -28,10 +28,13 @@ public:
     
     Bits();
     Bits(unsigned long long int);
-    
+
+    void Set(const unsigned long long int&);
+    bool Get(unsigned int);
+
     void Set(unsigned int, bool);
     void SetAll(bool);
-    bool Get(unsigned int);
+    unsigned long long int Get();
     void GetBase10(vector<unsigned long long int>&);
     void SetRandom(unsigned int);
     void SetRandom(gsl_rng*);
