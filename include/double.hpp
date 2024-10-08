@@ -16,7 +16,7 @@ using namespace std;
 #include "bitset.hpp"
 #include "unsigned_int.hpp"
 
-//a (collection of n_bits) double(s) represented in base 2
+//this class represents a double (i.e. a collection of n_bits doubles) represented in base 2
 class Double{
     
 private:

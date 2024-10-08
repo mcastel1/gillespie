@@ -16,7 +16,7 @@
 using namespace std;
 
 
-// a collection of n_bits bits
+// this class decribes a a collection of n_bits bits, where each bit is 0 or 1
 class Bits{
   
 private:

@@ -10,8 +10,11 @@
 
 #include <iostream>
 
-
 using namespace std;
+
+
+//this file includes miscellaneous functions that do not belong a classes
+
 
 unsigned long long int two_pow(unsigned long long int);
 unsigned int bits(unsigned long long int);

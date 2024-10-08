@@ -18,7 +18,7 @@
 
 using namespace std;
 
-//a reaction-diffusion System with bits framework
+//this class describes a reaction-diffusion System with bits framework
 class SystemBits{
     
 public:
@@ -45,7 +45,6 @@ public:
     SystemBits(const unsigned long long int, const unsigned int, const string&);
     void Iterate(void);
     
-
 };
 
 
