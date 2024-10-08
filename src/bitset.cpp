@@ -397,8 +397,10 @@ void BitSet::AddTo(BitSet* addend, Bits* carry){
     for(p=addend->GetSize(); p<GetSize(); p++){
         //run over the extra bits of augend
         
-        (t.Get()) = (((b[p]).Get()) ^ (carry->Get()));
-        (carry->Get()) = (((b[p]).Get()) & (carry->Get()));
+//        (t.Get()) = (((b[p]).Get()) ^ (carry->Get()));
+        t.Set((b[p]) ^ (*carry));
+//        (carry->Get()) = (((b[p]).Get()) & (carry->Get()));
+        carry->Set((b[p]) & (*carry));
         (b[p]).Set(t);
         
     }
