@@ -389,8 +389,8 @@ void BitSet::AddTo(BitSet* addend, Bits* carry){
         p++){
         //run over  bits of addend
         
-        (t.Get()) = (((b[p]).Get()) ^ (((addend->b)[p]).Get()) ^ (carry->Get()));
-        (carry->Get()) = ((((addend->b)[p]).Get()) & (((b[p]).Get()) | (carry->Get()))) | (((b[p]).Get()) & (carry->Get()));
+        t.Set(((b[p]).Get()) ^ (((addend->b)[p]).Get()) ^ (carry->Get()));
+        carry->Set(((((addend->b)[p]).Get()) & (((b[p]).Get()) | (carry->Get()))) | (((b[p]).Get()) & (carry->Get())));
         (b[p]).Get() = (t.Get());
         
     }
