@@ -37,25 +37,7 @@
 //./main.o -N 128 -S 5 -s 0 -o /Users/michelecastellana/Desktop
 
 
-/*
- note: - the performance test is very different if you do it on Xcode or on command line with -O3
- - to circumvent the slow down with >>= in Double::AddTo, represent a Double as a BitSet, where the first bs represent the mantissa and the others the part > 1
- - make sure that Double::AddTo does not alter the content of *addend
- - if you run  void SpeedTestUnsignedIntAddTo and instead of calling once (A[s]).SubstractTo(&(B[s]), &carry) you call it twice, the execution time does not change and it stays smaller than the executio time without bits -> The gillespie simulation should be improved by the approach with bits
- */
-
-
-
 #include "main.hpp"
-//#include "lib.cpp"
-//#include "bits.cpp"
-//#include "bitset.cpp"
-//#include "fraction.cpp"
-
-
-//#include "int.cpp"
-//#include "unsigned_int.cpp"
-//#include "double.cpp"
 #include "system.hpp"
 
 //all entries of BitSet_one are equal to 1
@@ -107,7 +89,7 @@ int main(int argc, char * argv[]) {
             case 'N':
                 N = ((unsigned int)atoi(optarg));
                 break;
-
+                
             case 'S':
                 S = ((unsigned int)gsl_pow_int(10, atoi(optarg)));
                 break;
@@ -119,19 +101,19 @@ int main(int argc, char * argv[]) {
             case 'o':
                 output_directory.assign(optarg);
                 break;
-                            
+                
                 
         }
         
     }
     
     
-//    UnsignedInt I(24);
-//    I.SetRandom((unsigned int)0);
-//    I.PrintBase10("before");
-//    I.MultiplyByTwoTo();
-//    I.PrintBase10("after");
-
+    //    UnsignedInt I(24);
+    //    I.SetRandom((unsigned int)0);
+    //    I.PrintBase10("before");
+    //    I.MultiplyByTwoTo();
+    //    I.PrintBase10("after");
+    
     
     
     //    TestUnsignedIntMultiply(S, seed);
@@ -158,7 +140,7 @@ int main(int argc, char * argv[]) {
     end_nobits = clock();
     frank.outfile.close();
     cout << endl << "Time for [n_bits*S] Iterate()s without bits = \t\t " << std::scientific << ((double)(end_nobits - start_nobits))/CLOCKS_PER_SEC << "s" <<  endl;
-
+    
     
     
     //********************* speed test with bits  *********************
