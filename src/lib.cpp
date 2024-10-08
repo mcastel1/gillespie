@@ -18,7 +18,8 @@
 
 //this file includes functions that do not belong a classes
 
-inline unsigned long long int two_pow(unsigned long long int i){
+//inline
+unsigned long long int two_pow(unsigned long long int i){
     
     return ((unsigned long long int)gsl_pow_int(2.0, ((int)i)));
     

@@ -59,12 +59,13 @@ void BitSet::Resize(unsigned long long int size){
     
 }
 
-inline unsigned int BitSet::GetSize(void){
+
+//inline
+unsigned int BitSet::GetSize(void){
     
     return ((unsigned int)(b.size()));
     
 }
-
 
 
 //initialize *this randomly

@@ -212,11 +212,11 @@ Bits Bits::operator ^ (const Bits& m){
 
 
 //apply a bit-by-bit negation to *this and return the result
-inline Bits Bits::operator ~ (void){
+//inline 
+Bits Bits::operator ~ (void){
     
     return Bits((~n));
 
-    
 }
 
 
