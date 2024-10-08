@@ -35,7 +35,12 @@
 
 //run with
 //./main.o -N 128 -S 5 -s 0 -o /Users/michelecastellana/Desktop
-
+/*
+ N is the total perticle number in the Frank model
+ S is log_10(total number of iterations)
+ s is the seed of the random-number generator
+ o is the path where to store the results
+ */
 
 #include "main.hpp"
 #include "system.hpp"
