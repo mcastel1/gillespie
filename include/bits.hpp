@@ -30,6 +30,7 @@ public:
     Bits(unsigned long long int);
 
     void Set(const unsigned long long int&);
+    void Set(const Bits&);
     bool Get(unsigned int);
 
     void Set(unsigned int, bool);

@@ -26,6 +26,14 @@ inline void Bits::Set(const unsigned long long int& m){
     
 }
 
+
+//class setter
+inline void Bits::Set(const Bits& m){
+    
+    Set(m.n);
+    
+}
+
 //class getter
 inline unsigned long long int Bits::Get(void){
     

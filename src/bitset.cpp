@@ -391,7 +391,7 @@ void BitSet::AddTo(BitSet* addend, Bits* carry){
         
         t.Set(((b[p]).Get()) ^ (((addend->b)[p]).Get()) ^ (carry->Get()));
         carry->Set(((((addend->b)[p]).Get()) & (((b[p]).Get()) | (carry->Get()))) | (((b[p]).Get()) & (carry->Get())));
-        (b[p]).Get() = (t.Get());
+        (b[p]).Set(t);
         
     }
     for(p=addend->GetSize(); p<GetSize(); p++){
@@ -399,7 +399,7 @@ void BitSet::AddTo(BitSet* addend, Bits* carry){
         
         (t.Get()) = (((b[p]).Get()) ^ (carry->Get()));
         (carry->Get()) = (((b[p]).Get()) & (carry->Get()));
-        (b[p].Get()) = (t.Get());
+        (b[p]).Set(t);
         
     }
     
@@ -455,7 +455,7 @@ void BitSet::AddTo(Bits* addend, Bits* carry){
         
         (t.Get()) = (((b[p]).Get()) ^ (carry->Get()));
         (carry->Get()) = (((b[p]).Get()) & (carry->Get()));
-        (b[p].Get()) = (t.Get());
+        (b[p]).Set(t);
         
     }
         
@@ -531,7 +531,7 @@ void BitSet::SubstractTo(BitSet* subtrahend, Bits* borrow) {
         (t.Get()) = (((b[p]).Get()) ^ (((subtrahend->b)[p]).Get()) ^ (borrow->Get()));
         //        (borrow && (! minuend || subtrahend)) || (! minuend && subtrahend)
         (borrow->Get()) = ((borrow->Get()) & ((~((b[p]).Get())) | (((*subtrahend)[p]).Get()))) | ((~((b[p]).Get())) & (((*subtrahend)[p]).Get()));
-        (b[p]).Get() = (t.Get());
+        (b[p]).Set(t);
         
     }
 
@@ -540,7 +540,7 @@ void BitSet::SubstractTo(BitSet* subtrahend, Bits* borrow) {
         
         (t.Get()) = (((b[p]).Get()) ^ (borrow->Get()));
         (borrow->Get()) = ((~((b[p]).Get())) & (borrow->Get()));
-        (b[p].Get()) = (t.Get());
+        (b[p].Set(t));
         
     }
     
@@ -561,7 +561,7 @@ void BitSet::SubstractTo(Bits* subtrahend, Bits* borrow) {
         
         (t.Get()) = (((b[p]).Get()) ^ (borrow->Get()));
         (borrow->Get()) = ((~((b[p]).Get())) & (borrow->Get()));
-        (b[p].Get()) = (t.Get());
+        (b[p]).Set(t);
         
     }
     
