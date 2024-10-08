@@ -181,12 +181,12 @@ void Bits::operator = (const Bits& m){
     
     n = (m.n);
     
-    
 }
 
 
 //return (this->n) | (m.n) (bitwise OR)
-inline Bits Bits::operator | (const Bits& m){
+//  inline
+Bits Bits::operator | (const Bits& m){
     
     return Bits((n | (m.n)));
     
@@ -194,7 +194,8 @@ inline Bits Bits::operator | (const Bits& m){
 
 
 //return (this->n) & (m.n) (bitwise AND)
-inline Bits Bits::operator & (const Bits& m){
+//inline 
+Bits Bits::operator & (const Bits& m){
     
     return Bits((n & (m.n)));
     
@@ -208,7 +209,6 @@ Bits Bits::operator ^ (const Bits& m){
     return Bits((n ^ (m.n)));
     
 }
-
 
 
 //apply a bit-by-bit negation to *this and return the result
