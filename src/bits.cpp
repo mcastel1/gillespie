@@ -5,7 +5,10 @@
 //  Created by Michele on 07/02/2024.
 //
 
-//#include "bits.hpp"
+#include "bits.hpp"
+#include "main.hpp"
+
+#include <vector>
 
 Bits::Bits(){}
 
@@ -45,10 +48,9 @@ void Bits::Set(unsigned int s, bool bit){
 }
 
 
-
-
 //set all n_bits entries of *this equal to bit
-inline void Bits::SetAll(bool bit){
+//inline 
+void Bits::SetAll(bool bit){
     
     if(bit){(*this) = Bits_one;}
     else{(*this) = Bits_zero;}
@@ -57,7 +59,8 @@ inline void Bits::SetAll(bool bit){
 
 
 //return the s-th bit ofinput
-inline bool Bits::Get(unsigned int s){
+//inline 
+bool Bits::Get(unsigned int s){
     
     return ((n >> s) & ullong_1);
     
@@ -65,7 +68,8 @@ inline bool Bits::Get(unsigned int s){
 
 
 //convert (bit-by_bit) *this in base 10 (so either 0 or 1) and write the result in the entries of v
-inline void Bits::GetBase10(vector<unsigned long long int>& v){
+//inline 
+void Bits::GetBase10(vector<unsigned long long int>& v){
     
     unsigned int p;
     
@@ -121,7 +125,8 @@ inline void Bits::ComplementTo(void){
 
 
 //replace bit-by-bit *this with replacer if check = true, and leave *this unchanged if check = false
-inline void Bits::Replace(Bits* replacer,  Bits* check){
+//inline 
+void Bits::Replace(Bits* replacer,  Bits* check){
     
     (*this) =  (((*this) & (~(*check))) | ((*replacer) & (*check)));
     
@@ -143,14 +148,16 @@ inline void Bits::Swap(Bits* a, Bits& check, Bits* work_space){
 
 
 //set all bits of *this to 0
-inline void Bits::Clear(void){
+//inline 
+void Bits::Clear(void){
     
     n = 0;
     
 }
 
 //print *this as a sequence of n_bits zeros and ones
-inline void Bits::Print(string title){
+//inline 
+void Bits::Print(string title){
     
     cout << title << "{ ";
     for(unsigned int s=0; s<n_bits; s++){
@@ -161,22 +168,25 @@ inline void Bits::Print(string title){
 }
 
 //print *this as an integer to the output stream output_stream
-inline void Bits::Print(ostream& output_stream){
+//inline 
+void Bits::Print(ostream& output_stream){
     
     output_stream << n;
 
 }
 
-inline void Bits::operator = (const Bits& m){
+
+//inline
+void Bits::operator = (const Bits& m){
     
     n = (m.n);
-    
     
 }
 
 
 //return (this->n) | (m.n) (bitwise OR)
-inline Bits Bits::operator | (const Bits& m){
+//  inline
+Bits Bits::operator | (const Bits& m){
     
     return Bits((n | (m.n)));
     
@@ -184,7 +194,8 @@ inline Bits Bits::operator | (const Bits& m){
 
 
 //return (this->n) & (m.n) (bitwise AND)
-inline Bits Bits::operator & (const Bits& m){
+//inline 
+Bits Bits::operator & (const Bits& m){
     
     return Bits((n & (m.n)));
     
@@ -192,29 +203,22 @@ inline Bits Bits::operator & (const Bits& m){
 
 
 //return (this->n) ^ (m.n) (bitwise xOR)
-inline Bits Bits::operator ^ (const Bits& m){
+//inline
+Bits Bits::operator ^ (const Bits& m){
     
     return Bits((n ^ (m.n)));
     
 }
 
 
-
 //apply a bit-by-bit negation to *this and return the result
-inline Bits Bits::operator ~ (void){
+//inline 
+Bits Bits::operator ~ (void){
     
     return Bits((~n));
 
-    
 }
 
-
-//this is not a method of the Bits class, but an ordinary function which had to be declared in this file because it need to know who the Bits type is
-inline Bits operator ~ (const Bits& m){
-    
-    return Bits((~(m.n)));
-    
-}
 
 //return (bit-by-bit) true if *this == m, false otherwise
 inline Bits Bits::operator == (Bits& m){
@@ -224,18 +228,21 @@ inline Bits Bits::operator == (Bits& m){
 }
 
 
-inline void Bits::operator &= (const Bits& m){
+//inline 
+void Bits::operator &= (const Bits& m){
     
     n &= (m.n);
     
 }
 
 
-inline void Bits::operator &= (Bits* m){
+//inline 
+void Bits::operator &= (Bits* m){
     
     n &= (m->n);
     
 }
+
 
 inline void Bits::operator ^= (Bits* m){
     

@@ -5,6 +5,18 @@
 //  Created by Michele on 07/02/2024.
 //
 
+
+#ifndef unsigned_int_hpp
+#define unsigned_int_hpp
+
+#include <iostream>
+
+#include "bitset.hpp"
+
+using namespace std;
+
+
+
 //an int represented in base 2 in b
 class UnsignedInt : public BitSet{
     
@@ -29,3 +41,5 @@ public:
     friend class Double;
     
 };
+
+#endif

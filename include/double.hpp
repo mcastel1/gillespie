@@ -5,7 +5,18 @@
 //  Created by Michele on 10/02/2024.
 //
 
-//a (collection of n_bits) double(s) represented in base 2
+#ifndef double_hpp
+#define double_hpp
+
+#include <iostream>
+
+using namespace std;
+
+#include "bits.hpp"
+#include "bitset.hpp"
+#include "unsigned_int.hpp"
+
+//this class represents a double (i.e. a collection of n_bits doubles) represented in base 2
 class Double{
     
 private:
@@ -40,3 +51,5 @@ public:
     Bits operator <(Double&);
 
 };
+
+#endif

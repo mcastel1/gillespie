@@ -1,209 +1,302 @@
 //
-//  int.cpp
+//  lib.cpp
 //  gillespie
 //
-//  Created by Michele on 07/02/2024.
+//  Created by Michele on 13/02/2024.
 //
 
-#include "unsigned_int.hpp"
+#include "lib.hpp"
+
+#include <vector>
+
+#include "double.hpp"
+#include "fraction.hpp"
+#include "main.hpp"
+#include "gsl_math.h"
 
 
-
-//default constructor
-inline UnsignedInt::UnsignedInt(void) : BitSet(){}
-
-//constructor taht resizes *this in ordert to host N
-inline UnsignedInt::UnsignedInt(unsigned long long int N) : BitSet(N){}
-
-
-//if this->GetSize() == replacer->GetSize(), replace bit-by-bit all bs of *this with the respective bs of *replacer, and leave *this unchanged otherwise
-inline void UnsignedInt::Replace(UnsignedInt* replacer, Bits* check){
+//inline
+unsigned long long int two_pow(unsigned long long int i){
     
-    if((this->GetSize()) == (replacer->GetSize())){
-        
-        for(unsigned int s=0; s<(this->GetSize()); s++){
-            b[s].Replace((replacer->b.data()) + s, check);
-        }
-        
-    }
+    return ((unsigned long long int)gsl_pow_int(2.0, ((int)i)));
+    
+}
+
+//return the number of bits necessary to write n in base 2
+unsigned int bits(unsigned long long int n){
+    
+    unsigned int s;
+    
+    for(s=0; two_pow(s) <= (unsigned long long int)n; s++){}
+    
+    return s;
     
 }
 
 
-//set the s-th bit of *this equal to i. This requires b to be sized properly
-inline void UnsignedInt::Set(unsigned int s, unsigned long long int i){
+//print bit-by-bit the double x
+inline void bitwise_print_double(const double& x){
     
+    uint8_t *bytePointer = (uint8_t*)&x;
+    size_t index;
+    uint8_t byte;
+    int bit;
     unsigned int p;
-    Bits n(i);
+    vector<bool> result(n_bits);
     
-    for(p=0; p<b.size(); p++){
-        b[p].Set(s, ((bool)(n.Get(p))));
+    for(index=0, p=0; index < sizeof(double); index++){
+        
+        byte = bytePointer[index];
+        
+        for(bit = 0; bit < 8; bit++, p++){
+            
+            result[p] = ((bool)(byte & 1));
+            byte >>= 1;
+            
+        }
+        
     }
     
-}
-
-
-
-inline void UnsignedInt::PrintBase10(string title){
     
-    PrintBase10(title, cout);
-    
-}
-
-
-inline void UnsignedInt::PrintBase10(const string& title, ostream& output_stream){
-    
-    unsigned int  p;
-    vector<unsigned long long int> v;
-    
-    output_stream << title << ": {";
-    for(p=0, GetBase10(v); p<n_bits; p++){
-        output_stream << v[n_bits-1-p] << "\t";
+    cout << "double:";
+    for(p=0; p<n_bits; p++){
+        
+        switch (p) {
+            case 0:
+                cout << "\n\tSign: ";
+                break;
+                
+            case 1:
+                cout << "\n\tExponent: ";
+                break;
+                
+            case 12:
+                cout << "\n\tMantissa: ";
+                break;
+                
+            default:
+                break;
+        }
+        
+        cout << result[n_bits-1-p];
+        
     }
-    output_stream << "}" << endl;
-
+    
+    cout << "\n";
+    
     
 }
 
 
-inline void UnsignedInt::GetBase10(vector<unsigned long long int>& v){
+//write the mantissa of x into *result by resizing *result properly. This method requires that result->size() = n_bits_mantissa
+inline void GetMantissaFromDouble(vector<bool>* result, double x){
     
+    uint64_t *pointer = (uint64_t*)&x;
+    uint64_t byte;
     unsigned int p;
-    for(p=0, v.resize(n_bits); p<n_bits; p++){
+    
+    
+    byte = pointer[0];
+    
+    for(p=0; (p < 64) && (p < result->size());  p++){
+        //run through the part of x which is the mantissa
         
-        v[p] = Get(p);
+        (*result)[p] = ((bool)(byte & 1));
         
-    }
-    
-}
-
-
-inline void UnsignedInt::operator = (BitSet m){
-    
-    b = m.b;
-    
-}
-
-
-//I am obliged to put this method definition here, because this method needs the full declaration of the UnsignedInt class before it is declared
-//shift bit-by-bit the entries of  b[51] b[50] ... in *this by a number of positions to the right (>>) encoded in *e and replace the remaining entries b[] by all zeros
-inline void BitSet::operator >>=(UnsignedInt* e){
-    
-    unsigned int n;
-    int m;
-    Bits zero;
-    
-    zero.SetAll(false);
-    
-    
-    for(n=0; n<(e->GetSize()); n++){
-        //shift by 2^n positions according to e[n]
-        
-        //run through the components of this->b and shift them
-        
-        //in this first loop, I run over the first chunk of entries of b: m = 0, ..., b.size() - 2^n-1 and I replace the m-th component of b with the m+2^n-th compoennt if e[n]=true, and do nothing otherwise
-        for(m=0; m<GetSize()-gsl_pow_int(2, n); m++){
-            
-            b[m].Replace(
-                         //the element # m+2^n in b
-                         &(b[m+gsl_pow_int(2, n)]),
-                         //the element #n in e
-                         &((e->b)[n])
-                         );
-            
-            
-        }
-        
-        //in this loop, I run over the second chunk of entries of b: m =b.size() - 2^n , ..., b.size(). I can no longer replace b[m] with b[m+2^n] as in the loop above, becuase b[m+2^n] does not exist in b -> I replace it with zero. Note that if 2^n > b.size(), this second loop must cover the entire vector b -> I set as starting value of m  max(((int)GetSize())-((int)gsl_pow_int(2, n)), 0)
-        for(m = max(((int)GetSize())-((int)gsl_pow_int(2, n)), 0); (m<((int)GetSize())); m++){
-            
-            b[m].Replace(
-                         //a Bits filled with zeros
-                         &zero,
-                         //the element #n in e
-                         &((e->b)[n])
-                         );
-            
-            
-        }
-        
-    }
-    
-    
-}
-
-
-//shift bit-by-bit the entries of  b[51] b[50] ... in *this by a number of positions to the left (<<) encoded in *e and replace the remaining entries b[] by all zeros
-inline void BitSet::operator <<=(UnsignedInt* e){
-    
-    unsigned int n;
-    int m;
-    Bits zero;
-    
-    zero.SetAll(false);
-    
-    
-    for(n=0; n<(e->GetSize()); n++){
-        //shift by 2^n positions according to e[n]
-        
-        //run through the components of this->b and shift them
-        
-        //in this first loop, I run over the first chunk of entries of b: m = b.size()-1, ..., 2^n and I replace the m-th component of b with the m-2^n-th compoennt if e[n]=true, and do nothing otherwise
-        for(m=GetSize()-1; m>=gsl_pow_int(2, n); m--){
-            
-            b[m].Replace(
-                         //the element # m+2^n in b
-                         &(b[m-gsl_pow_int(2, n)]),
-                         //the element #n in e
-                         &((e->b)[n])
-                         );
-            
-            
-        }
-        
-        //in this loop, I run over the second chunk of entries of b: m =2^n-1 , ..., 0. I can no longer replace b[m] with b[m-2^n] as in the loop above, becuase b[m-2^n] does not exist in b -> I replace it with zero. Note that if 2^n > b.size(), this second loop must cover the entire vector b -> I set as starting value of m  max(((int)(this->GetSize()))-((int)gsl_pow_int(2, n)), 0)
-        for(m = min(((int)GetSize())-1, (((int)gsl_pow_int(2, n))-1)); m>=0; m--){
-            
-            b[m].Replace(
-                         //a Bits filled with zeros
-                         &zero,
-                         //the element #n in e
-                         &((e->b)[n])
-                         );
-            
-            
-        }
+        byte >>= 1;
         
     }
     
 }
 
 
-//return the position of the first signigificant bit in *this, starting from the last element of  b[]
-inline UnsignedInt BitSet::PositionOfFirstSignificantBit(void){
-    
-    int s;
-    Bits check_old, check_new, t, carry;
-    //result must be big enough to host an unsigned int equal to this->GetSize()
-    UnsignedInt result(GetSize());
-    
-    check_old.SetAll(0);
-    result.SetAll(0);
-    
-    for(s=GetSize()-1; s>=0; s--){
-        
-        check_new = check_old | ((*this)[s]);
-        t = (~check_new);
-        result.AddTo(&t, &carry);
-        
-        check_old = check_new;
-        
-    }
-    
-    return result;
-    
-    
-}
+
+
+//    Fraction r(n_bits_mantissa);
+//    UnsignedInt n(16), result;
+//
+//    result.Resize(r.GetSize()+n.GetSize());
+//    r.SetRandom((unsigned int)0);
+//    n.SetRandom((unsigned int)1);
+//
+//    r.PrintBase10("r");
+//    n.PrintBase10("n");
+//
+//
+//
+//    r.FloorMultiply(&n, &result);
+//
+//    result.PrintBase10("result");
+
+
+//test for Double::operator <
+/*
+ Double a, b;
+ unsigned int s, i;
+ gsl_rng* ran;
+ Bits smaller;
+ vector<double> v_a, v_b;
+ bool it_works;
+ 
+ 
+ ran = gsl_rng_alloc(gsl_rng_gfsr4);
+ gsl_rng_set(ran, seed);
+ 
+ 
+ for(it_works=true, s=0; s<1000; ++s){
+ 
+ for(i=0; i<n_bits; i++){
+ a.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+ b.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+ }
+ 
+ a.GetBase10(v_a);
+ b.GetBase10(v_b);
+ 
+ cout << "a : " << endl;
+ //    a.Print();
+ a.PrintBase10();
+ cout << "b : " << endl;
+ //    b.Print();
+ b.PrintBase10();
+ smaller  = (a < b);
+ cout << "a<b : " << endl;
+ smaller.Print();
+ 
+ 
+ 
+ for(i=0; i<n_bits; ++i){
+ cout << "\t" << (v_a[i] < v_b[i]) << "\t" << smaller.Get(i) << endl;
+ if((v_a[i] < v_b[i]) != smaller.Get(i)){it_works = false; break;}
+ }
+ 
+ }
+ 
+ 
+ cout << "Check of the result:" << it_works << endl;
+ */
+
+
+
+
+//
+
+//test for == for Unsigned Ints
+/*
+ UnsignedInt a(10), b(10);
+ Bits check;
+ a.SetRandom((unsigned int)0);
+ b.SetRandom((unsigned int)3);
+ cout << "a : " << endl;
+ a.PrintBase10();
+ cout << "b : " << endl;
+ b.PrintBase10();
+ 
+ 
+ check = (a == b);
+ 
+ int x;
+ x=0;
+ cout <<  x;
+ */
+
+
+//test for <<= and >>=
+/*
+ BitSet n(80);
+ UnsignedInt shift(12);
+ n.SetRandom((unsigned int)0);
+ shift.SetRandom((unsigned int)0);
+ cout << "shift:" << endl;
+ shift.PrintBase10();
+ 
+ cout << "n before >>= :" << endl;
+ n.Print();
+ 
+ n >>= &shift;
+ 
+ cout << "n after >>= :" << endl;
+ n.Print();
+ */
+
+
+/*
+ //test for Double::Normalize
+ Double x;
+ x.SetRandom((unsigned int)0);
+ cout << "x before noramlize:";
+ //    x.Print();
+ x.PrintBase10();
+ x.Normalize();
+ cout << "x after noramlize:";
+ x.PrintBase10();
+ */
+
+
+//
+//test for UnsignedInt::Normalize
+//    UnsignedInt x(10), one(1);
+
+
+
+/*
+ //test for Bits::Swap
+ Bits a, b, check, w;
+ a.SetRandom((unsigned int)0);
+ b.SetRandom((unsigned int)1);
+ check.SetRandom((unsigned int)2);
+ 
+ a.Print("a");
+ b.Print("b");
+ check.Print("c");
+ a.Swap(&b, check, &w);
+ 
+ 
+ a.Print("a");
+ b.Print("b");
+ */
+
+//test for BitSet::Swap
+/*
+ BitSet a(4), b(4);
+ Bits check, w;
+ a.SetRandom((unsigned int)0);
+ b.SetRandom((unsigned int)1);
+ check.SetRandom((unsigned int)2);
+ 
+ a.Print("a");
+ b.Print("b");
+ check.Print("      c");
+ 
+ a.Swap(&b, check, &w);
+ 
+ 
+ a.Print("a");
+ b.Print("b");
+ 
+ */
+
+
+//test for Double::Swap
+/*
+ Double a, b;
+ Bits check, w;
+ a.SetRandom((unsigned int)0);
+ b.SetRandom((unsigned int)1);
+ check.SetRandom((unsigned int)2);
+ 
+ a.PrintBase10("a");
+ b.PrintBase10("b");
+ check.Print("      c");
+ 
+ a.Swap(&b, check, &w);
+ 
+ 
+ a.PrintBase10("a");
+ b.PrintBase10("b");
+ */
+
+
 
 
 //speed test of UnsignedInt::AddTo method, with S samples and seed seed
@@ -545,70 +638,6 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int maximum_value, u
 }
 
 
-
-
-/*multiply *this by *multiplicand and write the result in *result
-
- 
- result->GetSize() <= (this-GetSize()) + (multiplicand->GetSize(), and when I call this method I take result->GetSize() = (this-GetSize()) + (multiplicand->GetSize() to be safe. Thus when this method is called, result->GetSize() must be equal to (this-GetSize()) + (multiplicand->GetSize()
-
- the times are from  ./main.o -s 0 -S 6
- */
-inline void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
-    
-    unsigned int s, p;
-    Bits carry, t, u;
-        
-    
-    for(s=0, result->SetAll(Bits_zero); s<multiplicand->GetSize(); s++){
-        //multiply by the s-th element of multiplicand: at each step of this loop *this is shifted by s places to the left and added to the result
-        
-        for(p=0, carry.Clear(); p<GetSize(); p++){
-            
-            (u.n) = ((((*multiplicand)[s]).n) & ((b[p]).n));
-            (t.n) = ((((result->b)[p+s]).n) ^ (u.n) ^ (carry.n));
-            
-            (carry.n) = ((u.n) & ((((result->b)[p+s]).n) | (carry.n))) | ((((result->b)[p+s]).n) & (carry.n));
-            ((result->b)[p+s]).n = (t.n);
-            
-        }
-        ((result->b)[p+s]).n = (carry.n);
-
-    }
-    
-}
-
-//this method requires *this to be even, it divides *this by 2 and writes the result in *this
-inline void BitSet::DivideByTwoTo(void){
-    
-    //to divide by two, I shift all entries to the right by one place
-    (*this) >>= (&Bits_one);
-    
-    
-}
-
-//this method  multiplies *this by 2 and writes the result in *this
-inline void BitSet::MultiplyByTwoTo(void){
-    
-    //to divide by two, I shift all entries to the right by one place
-    (*this) <<= (&Bits_one);
-    
-    
-}
-
-
-//compute the floor of *this x *multiplicant and store the result in *result. This requires result->GetSize() = multiplicand->GetSize() and work_space->GetSize() = (this->GetSize()) + (multiplicand->GetSize()) 
-inline void Fraction::FloorMultiply(UnsignedInt* multiplicand, UnsignedInt* result, UnsignedInt* work_space){
-    
-    Multiply(multiplicand, work_space);
-  
-    //copy the last multiplicand->GetSize() bits of work_space into *result : this will yield the floor of the multiplication above
-    copy(work_space->b.begin()+GetSize(), work_space->b.end(), result->b.begin());
-     
-}
-
-
-
 //test for   Fraction::FloorMultiply
 inline void TestFractionFloorMultiply(unsigned long long int S, unsigned long long int seed){
     
@@ -748,5 +777,164 @@ inline void SpeedTestFractionFloorMultiply(unsigned int n_bits_factor, unsigned 
     cout << "dummy print: a = " << a.back() << " " << b << c << r << x << endl;
  
 
+    
+}
+
+
+
+inline void SpeedTestDoubleAddTo(unsigned long long int S, unsigned long long int seed){
+    
+    
+    cout << " ***************************** Speed test for Double::AddTo *****************************" << endl;
+
+    
+    //speed test  for Double::AddTo
+    clock_t start=0, end=0;
+    gsl_rng* ran;
+    unsigned long long int i, r=0, s;
+    double x = 0.0;
+    int MAX = 128;
+    
+    vector<Double> A(S), /*I need to declare B as a vector rather than as a single Double because each AddTo(&B) will alter the content of B and thus lead to potential overflows/unerflows as many AddTo(s) are executed*/B(S);
+    Double C;
+    vector<double> a(n_bits*S);
+    double b;
+    
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    
+    
+    //****************** calculation without bits ******************
+    b = gsl_pow_int(2.0, (MAX/2 - (int)gsl_rng_uniform_int(ran, MAX)))*gsl_rng_uniform(ran);
+    //    cout << "b: " << b << endl;
+    for(s=0; s<n_bits*S; ++s){
+        a[s] = gsl_pow_int(2.0, (MAX/2 - (int)gsl_rng_uniform_int(ran, MAX)))*gsl_rng_uniform(ran);
+        //                cout << "a[]: " << a[s] << endl;
+    }
+
+    start = clock();
+    for(s=0; s<n_bits*S; s++){
+        
+        //this simulates the drawing of the random number for the Gillespie algorithm
+        r = gsl_rng_uniform_int(ran, MAX);
+        x = gsl_rng_uniform(ran);
+        (a[s]) += b;
+        
+    }
+    end = clock();
+    cout << "Time for n_bits*S [random number + operation]s without bits = "  << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << " s" << endl;
+    
+    
+    //****************** calculation with bits ******************
+    for(i=0; i<n_bits; i++){
+        C.Set((unsigned int)i, false, 1023 + (MAX/2 - gsl_rng_uniform_int(ran, MAX)), gsl_rng_uniform(ran));
+    }
+//    B.PrintBase10("B");
+    for(s=0; s<S; ++s){
+        
+        for(i=0; i<n_bits; i++){
+            A[s].Set((unsigned int)i, false, 1023 + (MAX/2 - gsl_rng_uniform_int(ran, MAX)), gsl_rng_uniform(ran));
+        }
+        B[s] = C;
+        
+        //        A[s].PrintBase10("A");
+    }
+    
+    
+    start = clock();
+    for(s=0; s<S; s++){
+        
+        //        A[s].PrintBase10("A");
+        //        B.PrintBase10("B");
+
+        //this simulates the drawing of the random number for the Gillespie algorithm
+        r = gsl_rng_uniform_int(ran, MAX);
+        x = gsl_rng_uniform(ran);
+        //        (A[s]) += (&B);
+        (A[s]).AddTo(&(B[s]));
+        
+        //        A[s].PrintBase10("A");
+        
+    }
+    end = clock();
+    
+    cout << "Time for n_bits*S [random number + operation]s with bits = "   << std::scientific << ((double)(end - start))/CLOCKS_PER_SEC << "s" << endl;
+    
+    
+    //without this the for loop will not be exectued with -O3
+    cout << endl;
+    A.back().PrintBase10("dummy print");
+    cout << "dummy print a = " << a[S-1] << " " << b << " " << r << x << endl;
+    
+    
+    
+}
+
+//test for Double::operator +=
+inline void TestDoubleAddTo(unsigned long long int S, unsigned long long int seed){
+    
+    
+    Double A, B;
+    double error;
+    vector<double> v_a, v_b, v_a_plus_b;
+    unsigned int i, s;
+    gsl_rng* ran;
+    
+    ran = gsl_rng_alloc(gsl_rng_gfsr4);
+    gsl_rng_set(ran, seed);
+    
+    
+    for(error = 0.0, s=0; s<S; ++s){
+        
+        for(i=0; i<n_bits; i++){
+            A.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+            B.Set(i, false, 1023 + (128/2 - gsl_rng_uniform_int(ran, 128)), gsl_rng_uniform(ran));
+        }
+        
+        
+        //    cout << "----------- Before += -----------" << endl;
+        //    cout << "a : " << endl;
+        //    a.Print();
+        //    a.PrintBase10();
+        
+        //    cout << "b : " << endl;
+        //    b.Print();
+        //    b.PrintBase10();
+        
+        A.GetBase10(v_a);
+        B.GetBase10(v_b);
+        
+        //        a+= &b;
+        A.AddTo(&B);
+        
+        //    cout << "----------- After += -----------" << endl;
+        //    cout << "a+b: " << endl;
+        //    a.Print();
+        //    a.PrintBase10();
+        
+        A.GetBase10(v_a_plus_b);
+        
+        cout << "Check of the result:" << endl;
+        for( i=0; i<n_bits; ++i){
+            if(fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]) > error){error = fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]);}
+            
+            cout << "[" << n_bits-1-i << "]:\t\t\t" << v_a[n_bits-1-i]+v_b[n_bits-1-i] << "\t\t\t" << v_a_plus_b[n_bits-1-i] << "\t\t\t" << fabs(((v_a[n_bits-1-i]+v_b[n_bits-1-i])-v_a_plus_b[n_bits-1-i])/v_a_plus_b[n_bits-1-i]) << endl;
+        }
+        //
+        
+    }
+    
+    cout << "Maximum relative error = " << error << endl;
+
+    
+}
+
+
+//this is not a method of the Bits class, but an ordinary function which had to be declared in this file because it need to know who the Bits type is
+inline Bits operator ~ (const Bits& m){
+    
+    return Bits((~(m.n)));
     
 }

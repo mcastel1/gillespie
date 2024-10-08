@@ -5,15 +5,24 @@
 //  Created by Michele on 12/02/2024.
 //
 
-//#include "bitset.hpp"
+#include "bitset.hpp"
+
+#include "gsl_math.h"
+#include <vector>
+
+#include "lib.hpp"
+#include "main.hpp"
 
 
-inline BitSet::BitSet(void){
+//inline 
+BitSet::BitSet(void){
     
     
 }
 
-inline BitSet::BitSet(unsigned long long int N){
+
+//inline 
+BitSet::BitSet(unsigned long long int N){
     
     b.resize(bits(N));
     
@@ -42,18 +51,21 @@ inline void BitSet::Swap(BitSet* a, Bits& check, Bits* work_space){
     
 }
 
-inline void BitSet::Resize(unsigned long long int size){
+
+//inline
+void BitSet::Resize(unsigned long long int size){
     
     b.resize(size);
     
 }
 
-inline unsigned int BitSet::GetSize(void){
+
+//inline
+unsigned int BitSet::GetSize(void){
     
     return ((unsigned int)(b.size()));
     
 }
-
 
 
 //initialize *this randomly
@@ -84,7 +96,8 @@ inline  void BitSet::SetRandom(gsl_rng* ran){
 }
 
 //set all n_bits entries of *this to the respective bits of i. This method requires  *this to be properly sized to contain i
-inline void BitSet::SetAll(unsigned long long int i){
+//inline 
+void BitSet::SetAll(unsigned long long int i){
     
     unsigned int s;
     Bits m(i);
@@ -101,7 +114,8 @@ inline void BitSet::SetAll(unsigned long long int i){
 }
 
 
-inline void BitSet::SetAllToSize(unsigned long long int i){
+//inline 
+void BitSet::SetAllToSize(unsigned long long int i){
     
     for(unsigned int s=0; s<GetSize(); s++){
         (b[s]).SetAll( ((i >> s) & ullong_1) );
@@ -111,7 +125,8 @@ inline void BitSet::SetAllToSize(unsigned long long int i){
 
 
 //set all b[]s equal to m
-inline void BitSet::SetAll(Bits& m){
+//inline 
+void BitSet::SetAll(Bits& m){
     
     for(unsigned int s=0; s<GetSize(); s++){
         b[s] = m;
@@ -166,7 +181,8 @@ inline void BitSet::SetFromDoubleMantissa(unsigned int s, double x){
 
 
 //reize *this in order to contain all bits of i, and set all n_bits entries of *this to the respective bits of i
-inline void BitSet::ResizeAndSetAll(unsigned long long int i){
+//inline 
+void BitSet::ResizeAndSetAll(unsigned long long int i){
     
     Resize(bits(i));
     SetAll(i);
@@ -174,7 +190,8 @@ inline void BitSet::ResizeAndSetAll(unsigned long long int i){
 }
 
 
-inline void BitSet::Print(string title){
+//inline 
+void BitSet::Print(string title){
     
     unsigned int s;
     
@@ -190,13 +207,13 @@ inline void BitSet::Print(string title){
 }
 
 //print *this to the output stream output_stream
-inline void BitSet::Print(ostream& output_stream){
+//inline 
+void BitSet::Print(ostream& output_stream){
         
     for(unsigned int s=0; s<GetSize(); s++){
         (b[s]).Print(output_stream);
         output_stream << "\t";
     }
-//    output_stream << endl;
     
 }
 
@@ -249,11 +266,13 @@ inline Bits BitSet::operator < (const BitSet& m){
 
 
 
-inline Bits BitSet::operator <= (BitSet& m){
+//inline 
+Bits BitSet::operator <= (BitSet& m){
     
     return(~(m < (*this)));
     
 }
+
 
 //shift bit-by-bit to the left the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *m (thus by either one position or zero positions), replace the remaining entries b[] by all zeros and write the result in *this
 inline BitSet BitSet::operator << (Bits* m){
@@ -266,7 +285,8 @@ inline BitSet BitSet::operator << (Bits* m){
 
 
 //return the unsigned long long int written in the p-th bit of *this
-inline unsigned long long int BitSet::Get(unsigned int p){
+//inline 
+unsigned long long int BitSet::Get(unsigned int p){
     
     unsigned int s;
     unsigned long long int result;
@@ -357,7 +377,8 @@ inline void BitSet::operator += (BitSet* addend){
 
 
 //same as BitSet::operator +=  but the last bit is not pushed back into b, but written into *carry. This method requires this->GetSize() to be >= addend->GetSize()
-inline void BitSet::AddTo(BitSet* addend, Bits* carry){
+//inline 
+void BitSet::AddTo(BitSet* addend, Bits* carry){
     
     Bits t;
     unsigned int p;
@@ -419,7 +440,8 @@ inline void BitSet::Normalize(unsigned int n){
 }
 
 //add bit-by-bit addend (which here is either 1 or 0) to *this and store the result in *this and the carry in *carry. This method requires this->GetSize() to be > 1
-inline void BitSet::AddTo(Bits* addend, Bits* carry){
+//inline 
+void BitSet::AddTo(Bits* addend, Bits* carry){
         
     Bits t;
     unsigned int p;
@@ -495,7 +517,8 @@ inline void BitSet::operator -= (BitSet* subtrahend) {
 
 
 //do the same as BitSet::operator -= but without resizing operations. This method requires this->GetSize() to be >= addend.GetSize()
-inline void BitSet::SubstractTo(BitSet* subtrahend, Bits* borrow) {
+//inline 
+void BitSet::SubstractTo(BitSet* subtrahend, Bits* borrow) {
     
     unsigned int p;
     Bits t;
@@ -524,7 +547,8 @@ inline void BitSet::SubstractTo(BitSet* subtrahend, Bits* borrow) {
 }
 
 //substract bit-by-bit subtrahend (which here is either 1 or 0) to *this and store the result in *this and the borrow in *borrow. This method requires this->GetSize() to be >= addend.GetSize()
-inline void BitSet::SubstractTo(Bits* subtrahend, Bits* borrow) {
+//inline 
+void BitSet::SubstractTo(Bits* subtrahend, Bits* borrow) {
     
     Bits t;
     unsigned int p;
@@ -607,7 +631,8 @@ inline void BitSet::RemoveFirstSignificantBit(void){
 
 
 //shift bit-by-bit to the right the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *l (thus by either one position or zero positions) and replace the remaining entries b[] by all zeros
-inline void BitSet::operator >>= (Bits* l){
+//inline 
+void BitSet::operator >>= (Bits* l){
     
     int m;
         
@@ -635,7 +660,8 @@ inline void BitSet::operator >>= (Bits* l){
 
 
 //shift bit-by-bit to the left the entries of  b[GetSize()-1], b[GetSize()-2] , ... b[0] in *this by *l (thus by either one position or zero positions), replace the remaining entries b[] by all zeros and write the result on *this
-inline void BitSet::operator <<= (Bits* l){
+//inline 
+void BitSet::operator <<= (Bits* l){
     
     int m;
     
@@ -663,14 +689,9 @@ inline void BitSet::operator <<= (Bits* l){
 
 
 //perform (bit-by-bit) an & between  b[s] and *m ,and write the result in b[s] for all s = 0 ... GetSize()
-inline void BitSet::operator &= (Bits* m){
-    
-//    for(unsigned int s=0; s<GetSize(); s++){
-//
-//        b[s] &= m;
-//
-//    }
-  
+//inline 
+void BitSet::operator &= (Bits* m){
+      
     AndTo(m, 0, GetSize());
     
 }
@@ -689,7 +710,8 @@ inline void BitSet::AndTo(Bits* m, unsigned int start, unsigned int end){
 
 
 //perform (bit-by-bit) an & between  b[s] and *m ,and write the result in (result->b)[s] for all s
-inline void BitSet::And(Bits* m, BitSet* result){
+//inline 
+void BitSet::And(Bits* m, BitSet* result){
     
     for(unsigned int s=0; s<GetSize(); s++){
         
@@ -701,7 +723,8 @@ inline void BitSet::And(Bits* m, BitSet* result){
 
 
 //multiply *this by addend (as if they were two UnsignedInts)  and store the result in *this. This method requires this->GetSize() to be >= addend.GetSize(). once this method is called, *this has size [size of *this before the method is called] + multiplicand.GetSize()
-inline void BitSet::operator *= (BitSet* multiplicand){
+//inline 
+void BitSet::operator *= (BitSet* multiplicand){
     
     unsigned int s;
     BitSet result, t;
@@ -740,3 +763,182 @@ inline void BitSet::operator *= (BitSet* multiplicand){
     
 }
 
+
+
+
+/*multiply *this by *multiplicand and write the result in *result
+
+ 
+ result->GetSize() <= (this-GetSize()) + (multiplicand->GetSize(), and when I call this method I take result->GetSize() = (this-GetSize()) + (multiplicand->GetSize() to be safe. Thus when this method is called, result->GetSize() must be equal to (this-GetSize()) + (multiplicand->GetSize()
+
+ the times are from  ./main.o -s 0 -S 6
+ */
+//inline
+void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
+    
+    unsigned int s, p;
+    Bits carry, t, u;
+        
+    
+    for(s=0, result->SetAll(Bits_zero); s<multiplicand->GetSize(); s++){
+        //multiply by the s-th element of multiplicand: at each step of this loop *this is shifted by s places to the left and added to the result
+        
+        for(p=0, carry.Clear(); p<GetSize(); p++){
+            
+            (u.n) = ((((*multiplicand)[s]).n) & ((b[p]).n));
+            (t.n) = ((((result->b)[p+s]).n) ^ (u.n) ^ (carry.n));
+            
+            (carry.n) = ((u.n) & ((((result->b)[p+s]).n) | (carry.n))) | ((((result->b)[p+s]).n) & (carry.n));
+            ((result->b)[p+s]).n = (t.n);
+            
+        }
+        ((result->b)[p+s]).n = (carry.n);
+
+    }
+    
+}
+
+
+//this method requires *this to be even, it divides *this by 2 and writes the result in *this
+//inline
+void BitSet::DivideByTwoTo(void){
+    
+    //to divide by two, I shift all entries to the right by one place
+    (*this) >>= (&Bits_one);
+    
+    
+}
+
+//this method  multiplies *this by 2 and writes the result in *this
+//inline
+void BitSet::MultiplyByTwoTo(void){
+    
+    //to divide by two, I shift all entries to the right by one place
+    (*this) <<= (&Bits_one);
+    
+    
+}
+
+
+
+//I am obliged to put this method definition here, because this method needs the full declaration of the UnsignedInt class before it is declared
+//shift bit-by-bit the entries of  b[51] b[50] ... in *this by a number of positions to the right (>>) encoded in *e and replace the remaining entries b[] by all zeros
+//inline
+void BitSet::operator >>=(UnsignedInt* e){
+    
+    unsigned int n;
+    int m;
+    Bits zero;
+    
+    zero.SetAll(false);
+    
+    
+    for(n=0; n<(e->GetSize()); n++){
+        //shift by 2^n positions according to e[n]
+        
+        //run through the components of this->b and shift them
+        
+        //in this first loop, I run over the first chunk of entries of b: m = 0, ..., b.size() - 2^n-1 and I replace the m-th component of b with the m+2^n-th compoennt if e[n]=true, and do nothing otherwise
+        for(m=0; m<GetSize()-gsl_pow_int(2, n); m++){
+            
+            b[m].Replace(
+                         //the element # m+2^n in b
+                         &(b[m+gsl_pow_int(2, n)]),
+                         //the element #n in e
+                         &((e->b)[n])
+                         );
+            
+            
+        }
+        
+        //in this loop, I run over the second chunk of entries of b: m =b.size() - 2^n , ..., b.size(). I can no longer replace b[m] with b[m+2^n] as in the loop above, becuase b[m+2^n] does not exist in b -> I replace it with zero. Note that if 2^n > b.size(), this second loop must cover the entire vector b -> I set as starting value of m  max(((int)GetSize())-((int)gsl_pow_int(2, n)), 0)
+        for(m = max(((int)GetSize())-((int)gsl_pow_int(2, n)), 0); (m<((int)GetSize())); m++){
+            
+            b[m].Replace(
+                         //a Bits filled with zeros
+                         &zero,
+                         //the element #n in e
+                         &((e->b)[n])
+                         );
+            
+            
+        }
+        
+    }
+    
+    
+}
+
+
+//shift bit-by-bit the entries of  b[51] b[50] ... in *this by a number of positions to the left (<<) encoded in *e and replace the remaining entries b[] by all zeros
+//inline
+void BitSet::operator <<= (UnsignedInt* e){
+    
+    unsigned int n;
+    int m;
+    Bits zero;
+    
+    zero.SetAll(false);
+    
+    
+    for(n=0; n<(e->GetSize()); n++){
+        //shift by 2^n positions according to e[n]
+        
+        //run through the components of this->b and shift them
+        
+        //in this first loop, I run over the first chunk of entries of b: m = b.size()-1, ..., 2^n and I replace the m-th component of b with the m-2^n-th compoennt if e[n]=true, and do nothing otherwise
+        for(m=GetSize()-1; m>=gsl_pow_int(2, n); m--){
+            
+            b[m].Replace(
+                         //the element # m+2^n in b
+                         &(b[m-gsl_pow_int(2, n)]),
+                         //the element #n in e
+                         &((e->b)[n])
+                         );
+            
+            
+        }
+        
+        //in this loop, I run over the second chunk of entries of b: m =2^n-1 , ..., 0. I can no longer replace b[m] with b[m-2^n] as in the loop above, becuase b[m-2^n] does not exist in b -> I replace it with zero. Note that if 2^n > b.size(), this second loop must cover the entire vector b -> I set as starting value of m  max(((int)(this->GetSize()))-((int)gsl_pow_int(2, n)), 0)
+        for(m = min(((int)GetSize())-1, (((int)gsl_pow_int(2, n))-1)); m>=0; m--){
+            
+            b[m].Replace(
+                         //a Bits filled with zeros
+                         &zero,
+                         //the element #n in e
+                         &((e->b)[n])
+                         );
+            
+            
+        }
+        
+    }
+    
+}
+
+
+//return the position of the first signigificant bit in *this, starting from the last element of  b[]
+inline UnsignedInt BitSet::PositionOfFirstSignificantBit(void){
+    
+    int s;
+    Bits check_old, check_new, t, carry;
+    //result must be big enough to host an unsigned int equal to this->GetSize()
+    UnsignedInt result(GetSize());
+    
+    check_old.SetAll(0);
+    result.SetAll(0);
+    
+    for(s=GetSize()-1; s>=0; s--){
+        
+        check_new = check_old | ((*this)[s]);
+        t = (~check_new);
+        result.AddTo(&t, &carry);
+        
+        check_old = check_new;
+        
+    }
+    
+    return result;
+    
+    
+}

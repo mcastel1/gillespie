@@ -5,8 +5,18 @@
 //  Created by Michele on 07/02/2024.
 //
 
+#ifndef bits_hpp
+#define bits_hpp
 
-// a collection of n_bits bits
+#include <iostream>
+
+#include "gsl_rng.h"
+
+
+using namespace std;
+
+
+// this class decribes a a collection of n_bits bits, where each bit is 0 or 1
 class Bits{
   
 private:
@@ -40,3 +50,5 @@ public:
     
 };
 
+
+#endif

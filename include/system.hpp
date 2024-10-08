@@ -5,7 +5,20 @@
 //  Created by Michele on 07/02/2024.
 //
 
-//a reaction-diffusion System with bits framework
+#ifndef system_hpp
+#define system_hpp
+
+#include <iostream>
+#include <sstream>
+#include <fstream>
+#include <vector>
+
+#include "unsigned_int.hpp"
+
+
+using namespace std;
+
+//this class describes a reaction-diffusion System with bits framework
 class SystemBits{
     
 public:
@@ -32,7 +45,6 @@ public:
     SystemBits(const unsigned long long int, const unsigned int, const string&);
     void Iterate(void);
     
-
 };
 
 
@@ -59,3 +71,5 @@ public:
     void iterate(void);
 
 };
+
+#endif

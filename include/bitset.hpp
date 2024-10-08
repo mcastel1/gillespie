@@ -5,6 +5,20 @@
 //  Created by Michele on 12/02/2024.
 //
 
+#ifndef bitset_hpp
+#define bitset_hpp
+
+#include <iostream>
+
+#include "bits.hpp"
+
+#include <vector>
+
+using namespace std;
+
+class UnsignedInt;
+
+
 
 class BitSet{
     
@@ -56,5 +70,4 @@ public:
     
 };
 
-
-
+#endif
