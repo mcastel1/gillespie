@@ -449,14 +449,17 @@ void BitSet::AddTo(Bits* addend, Bits* carry){
     unsigned int p;
 
     //sum the only bit of addend
-    (carry->Get()) = ((addend->Get()) & ((b[0]).Get()));
-    (b[0]).Get() = (((b[0]).Get()) ^ (addend->Get()));
+    //    (carry->Get()) = ((addend->Get()) & ((b[0]).Get()));
+    carry->Set((*addend) & (b[0]));
+    
+    //    (b[0]).Get() = (((b[0]).Get()) ^ (addend->Get()));
+    (b[0]).Set((b[0]) ^ (*addend));
     
     for(p=1; p<GetSize(); p++){
         //run over the extra bits of augend
         
-        (t.Get()) = (((b[p]).Get()) ^ (carry->Get()));
-        (carry->Get()) = (((b[p]).Get()) & (carry->Get()));
+        t.Set((b[p]) ^ (*carry));
+        carry->Set((b[p]) & (*carry));
         (b[p]).Set(t);
         
     }
@@ -530,7 +533,9 @@ void BitSet::SubstractTo(BitSet* subtrahend, Bits* borrow) {
         p++){
         //run over  bits of subtrahend
         
-        (t.Get()) = (((b[p]).Get()) ^ (((subtrahend->b)[p]).Get()) ^ (borrow->Get()));
+        //        (t.Get()) = (((b[p]).Get()) ^ (((subtrahend->b)[p]).Get()) ^ (borrow->Get()));
+        t.Set((b[p]) ^ ((subtrahend->b)[p]) ^ (*borrow));
+        
         //        (borrow && (! minuend || subtrahend)) || (! minuend && subtrahend)
         (borrow->Get()) = ((borrow->Get()) & ((~((b[p]).Get())) | (((*subtrahend)[p]).Get()))) | ((~((b[p]).Get())) & (((*subtrahend)[p]).Get()));
         (b[p]).Set(t);
