@@ -20,7 +20,8 @@ Bits::Bits(unsigned long long int n_in){
 
 
 //class setter
-inline void Bits::Set(const unsigned long long int& m){
+//inline 
+void Bits::Set(const unsigned long long int& m){
     
     n = m;
     
@@ -28,18 +29,22 @@ inline void Bits::Set(const unsigned long long int& m){
 
 
 //class setter
-inline void Bits::Set(const Bits& m){
+//inline 
+void Bits::Set(const Bits& m){
     
     Set(m.n);
     
 }
 
+
 //class getter
-inline unsigned long long int Bits::Get(void){
+//inline 
+unsigned long long int Bits::Get(void){
     
     return n;
     
 }
+
 
 //set the s-th bit of *this equal to bit
 void Bits::Set(unsigned int s, bool bit){
@@ -66,7 +71,6 @@ void Bits::Set(unsigned int s, bool bit){
     
     n = result;
     
-
 }
 
 
@@ -117,6 +121,7 @@ inline void Bits::SetRandom(unsigned int seed){
     gsl_rng_free(ran);
 
 }
+
 
 //set *this randomly with random number generator ran
 inline void Bits::SetRandom(gsl_rng* ran){
@@ -177,6 +182,7 @@ void Bits::Clear(void){
     
 }
 
+
 //print *this as a sequence of n_bits zeros and ones
 //inline 
 void Bits::Print(string title){
@@ -188,6 +194,7 @@ void Bits::Print(string title){
     cout << " }\n";
     
 }
+
 
 //print *this as an integer to the output stream output_stream
 //inline 
