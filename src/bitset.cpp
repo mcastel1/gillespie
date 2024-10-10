@@ -561,7 +561,7 @@ void BitSet::SubstractTo(Bits* subtrahend, Bits* borrow) {
     unsigned int p;
     
     borrow->Set((~(b[0])) & (*subtrahend));
-    (b[0]).Get() = (((b[0]).Get()) ^ ((*subtrahend).Get()));
+    (b[0]).Set((b[0]) ^ (*subtrahend));
 
     for(p=1; p<GetSize(); p++){
         //run over the extra bits of minuend
