@@ -623,7 +623,7 @@ inline void BitSet::RemoveFirstSignificantBit(void){
         
         check_new.Set(check_old | ((*this)[s]));
         
-        (b[s]).Get() =  (((*this)[s]).Get()) & (check_old.Get()) & (check_new.Get());
+        (b[s]).Set(((*this)[s]) & check_old & check_new);
         
         check_old = check_new;
         
