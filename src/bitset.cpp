@@ -537,7 +537,7 @@ void BitSet::SubstractTo(BitSet* subtrahend, Bits* borrow) {
         t.Set((b[p]) ^ ((subtrahend->b)[p]) ^ (*borrow));
         
         //        (borrow && (! minuend || subtrahend)) || (! minuend && subtrahend)
-        (borrow->Get()) = ((borrow->Get()) & ((~((b[p]).Get())) | (((*subtrahend)[p]).Get()))) | ((~((b[p]).Get())) & (((*subtrahend)[p]).Get()));
+        borrow->Set(((*borrow) & ((~(b[p])) | ((*subtrahend)[p]))) | ((~(b[p])) & ((*subtrahend)[p])) );
         (b[p]).Set(t);
         
     }
