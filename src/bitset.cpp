@@ -796,7 +796,7 @@ void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
             t.Set(((result->b)[p+s]) ^ u ^ carry);
             
             carry.Set((u & (((result->b)[p+s]) | carry)) | (((result->b)[p+s]) & carry));
-            ((result->b)[p+s]).Get() = (t.Get());
+            ((result->b)[p+s]).Set(t);
             
         }
         ((result->b)[p+s]).Get() = (carry.Get());
