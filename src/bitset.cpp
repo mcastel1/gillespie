@@ -621,7 +621,7 @@ inline void BitSet::RemoveFirstSignificantBit(void){
     //remove the last significant bit in minuend
     for(s=(this->GetSize())-1, check_old.SetAll(0); s>=0; s--){
         
-        (check_new.Get()) = (check_old.Get()) | (((*this)[s]).Get());
+        check_new.Set(check_old | ((*this)[s]));
         
         (b[s]).Get() =  (((*this)[s]).Get()) & (check_old.Get()) & (check_new.Get());
         
