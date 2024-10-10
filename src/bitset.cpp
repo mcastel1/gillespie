@@ -560,7 +560,7 @@ void BitSet::SubstractTo(Bits* subtrahend, Bits* borrow) {
     Bits t;
     unsigned int p;
     
-    (borrow->Get()) = ((~((b[0]).Get())) & ((*subtrahend).Get()));
+    borrow->Set((~(b[0])) & (*subtrahend));
     (b[0]).Get() = (((b[0]).Get()) ^ ((*subtrahend).Get()));
 
     for(p=1; p<GetSize(); p++){
