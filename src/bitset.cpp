@@ -33,7 +33,7 @@ BitSet::BitSet(unsigned long long int N){
 inline void BitSet::Clear(){
     
     for(unsigned int s=0; s<b.size(); s++){
-        b[s].n = 0;
+        (b[s]).Set(0);
     }
     
 }
@@ -102,12 +102,12 @@ void BitSet::SetAll(unsigned long long int i){
     unsigned int s;
     Bits m(i);
           
-    //set the first bits(m.n) bits of *this equal to the bits of i
-    for(s=0; s<bits(m.n); s++){
+    //set the first bits(m.Get()) bits of *this equal to the bits of i
+    for(s=0; s<bits(m.Get()); s++){
         (b[s]).SetAll(m.Get(s));
     }
     //set the remaining bits of *this, if any, to false (0)
-    for(s=bits(m.n); s<GetSize(); s++){
+    for(s=bits(m.Get()); s<GetSize(); s++){
         (b[s]).SetAll(false);
     }
     
@@ -389,17 +389,19 @@ void BitSet::AddTo(BitSet* addend, Bits* carry){
         p++){
         //run over  bits of addend
         
-        (t.n) = (((b[p]).n) ^ (((addend->b)[p]).n) ^ (carry->n));
-        (carry->n) = ((((addend->b)[p]).n) & (((b[p]).n) | (carry->n))) | (((b[p]).n) & (carry->n));
-        (b[p]).n = (t.n);
+        t.Set(((b[p]).Get()) ^ (((addend->b)[p]).Get()) ^ (carry->Get()));
+        carry->Set(((((addend->b)[p]).Get()) & (((b[p]).Get()) | (carry->Get()))) | (((b[p]).Get()) & (carry->Get())));
+        (b[p]).Set(t);
         
     }
     for(p=addend->GetSize(); p<GetSize(); p++){
         //run over the extra bits of augend
         
-        (t.n) = (((b[p]).n) ^ (carry->n));
-        (carry->n) = (((b[p]).n) & (carry->n));
-        (b[p].n) = (t.n);
+//        (t.Get()) = (((b[p]).Get()) ^ (carry->Get()));
+        t.Set((b[p]) ^ (*carry));
+//        (carry->Get()) = (((b[p]).Get()) & (carry->Get()));
+        carry->Set((b[p]) & (*carry));
+        (b[p]).Set(t);
         
     }
     
@@ -412,7 +414,7 @@ inline void BitSet::Normalize(void){
     
     for(p=GetSize()-1; p>=0; p--){
         
-        if((b[p]).n == 0){
+        if((b[p]).Get() == 0){
             b.pop_back();
         }else{
             break;
@@ -429,7 +431,7 @@ inline void BitSet::Normalize(unsigned int n){
     
     for(p=GetSize()-1; p>=0; p--){
         
-        if(((b[p]).n == 0) && (GetSize() >= n)){
+        if(((b[p]).Get() == 0) && (GetSize() >= n)){
             b.pop_back();
         }else{
             break;
@@ -447,15 +449,18 @@ void BitSet::AddTo(Bits* addend, Bits* carry){
     unsigned int p;
 
     //sum the only bit of addend
-    (carry->n) = ((addend->n) & ((b[0]).n));
-    (b[0]).n = (((b[0]).n) ^ (addend->n));
+    //    (carry->Get()) = ((addend->Get()) & ((b[0]).Get()));
+    carry->Set((*addend) & (b[0]));
+    
+    //    (b[0]).Get() = (((b[0]).Get()) ^ (addend->Get()));
+    (b[0]).Set((b[0]) ^ (*addend));
     
     for(p=1; p<GetSize(); p++){
         //run over the extra bits of augend
         
-        (t.n) = (((b[p]).n) ^ (carry->n));
-        (carry->n) = (((b[p]).n) & (carry->n));
-        (b[p].n) = (t.n);
+        t.Set((b[p]) ^ (*carry));
+        carry->Set((b[p]) & (*carry));
+        (b[p]).Set(t);
         
     }
         
@@ -528,19 +533,21 @@ void BitSet::SubstractTo(BitSet* subtrahend, Bits* borrow) {
         p++){
         //run over  bits of subtrahend
         
-        (t.n) = (((b[p]).n) ^ (((subtrahend->b)[p]).n) ^ (borrow->n));
+        //        (t.Get()) = (((b[p]).Get()) ^ (((subtrahend->b)[p]).Get()) ^ (borrow->Get()));
+        t.Set((b[p]) ^ ((subtrahend->b)[p]) ^ (*borrow));
+        
         //        (borrow && (! minuend || subtrahend)) || (! minuend && subtrahend)
-        (borrow->n) = ((borrow->n) & ((~((b[p]).n)) | (((*subtrahend)[p]).n))) | ((~((b[p]).n)) & (((*subtrahend)[p]).n));
-        (b[p]).n = (t.n);
+        borrow->Set(((*borrow) & ((~(b[p])) | ((*subtrahend)[p]))) | ((~(b[p])) & ((*subtrahend)[p])) );
+        (b[p]).Set(t);
         
     }
 
     for(p=subtrahend->GetSize(); p<GetSize(); p++){
         //run over the extra bits of minuend
         
-        (t.n) = (((b[p]).n) ^ (borrow->n));
-        (borrow->n) = ((~((b[p]).n)) & (borrow->n));
-        (b[p].n) = (t.n);
+        t.Set((b[p]) ^ (*borrow));
+        borrow->Set((~(b[p])) & (*borrow));
+        (b[p].Set(t));
         
     }
     
@@ -553,15 +560,15 @@ void BitSet::SubstractTo(Bits* subtrahend, Bits* borrow) {
     Bits t;
     unsigned int p;
     
-    (borrow->n) = ((~((b[0]).n)) & ((*subtrahend).n));
-    (b[0]).n = (((b[0]).n) ^ ((*subtrahend).n));
+    borrow->Set((~(b[0])) & (*subtrahend));
+    (b[0]).Set((b[0]) ^ (*subtrahend));
 
     for(p=1; p<GetSize(); p++){
         //run over the extra bits of minuend
         
-        (t.n) = (((b[p]).n) ^ (borrow->n));
-        (borrow->n) = ((~((b[p]).n)) & (borrow->n));
-        (b[p].n) = (t.n);
+        t.Set((b[p]) ^ (*borrow));
+        borrow->Set((~(b[p])) & (*borrow));
+        (b[p]).Set(t);
         
     }
     
@@ -614,9 +621,9 @@ inline void BitSet::RemoveFirstSignificantBit(void){
     //remove the last significant bit in minuend
     for(s=(this->GetSize())-1, check_old.SetAll(0); s>=0; s--){
         
-        (check_new.n) = (check_old.n) | (((*this)[s]).n);
+        check_new.Set(check_old | ((*this)[s]));
         
-        (b[s]).n =  (((*this)[s]).n) & (check_old.n) & (check_new.n);
+        (b[s]).Set(((*this)[s]) & check_old & check_new);
         
         check_old = check_new;
         
@@ -785,14 +792,14 @@ void BitSet::Multiply(UnsignedInt* multiplicand, UnsignedInt* result){
         
         for(p=0, carry.Clear(); p<GetSize(); p++){
             
-            (u.n) = ((((*multiplicand)[s]).n) & ((b[p]).n));
-            (t.n) = ((((result->b)[p+s]).n) ^ (u.n) ^ (carry.n));
+            u.Set(((*multiplicand)[s]) & (b[p]));
+            t.Set(((result->b)[p+s]) ^ u ^ carry);
             
-            (carry.n) = ((u.n) & ((((result->b)[p+s]).n) | (carry.n))) | ((((result->b)[p+s]).n) & (carry.n));
-            ((result->b)[p+s]).n = (t.n);
+            carry.Set((u & (((result->b)[p+s]) | carry)) | (((result->b)[p+s]) & carry));
+            ((result->b)[p+s]).Set(t);
             
         }
-        ((result->b)[p+s]).n = (carry.n);
+        ((result->b)[p+s]).Set(carry);
 
     }
     

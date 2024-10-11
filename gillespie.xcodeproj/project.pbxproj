@@ -50,7 +50,7 @@
 		038578012CB40BE1002E85AD /* double.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = double.cpp; path = src/double.cpp; sourceTree = "<group>"; };
 		038578022CB40BE1002E85AD /* int.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = int.cpp; path = src/int.cpp; sourceTree = "<group>"; };
 		038578032CB40BE1002E85AD /* bitset.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = bitset.cpp; path = src/bitset.cpp; sourceTree = "<group>"; };
-		038B1B192CB7F7E200B446EE /* gillespie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gillespie.entitlements; sourceTree = "<group>"; };
+		038B1B1A2CB7F83600B446EE /* gillespie.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = gillespie.entitlements; sourceTree = "<group>"; };
 		D1ADCAFB2B62C1EB007DDD5A /* gillespie */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = gillespie; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -85,7 +85,7 @@
 		D1ADCAF22B62C1EB007DDD5A = {
 			isa = PBXGroup;
 			children = (
-				038B1B192CB7F7E200B446EE /* gillespie.entitlements */,
+				038B1B1A2CB7F83600B446EE /* gillespie.entitlements */,
 				0311229F2CB432F4000DC0DB /* include */,
 				038578002CB40BE1002E85AD /* bits.cpp */,
 				038578032CB40BE1002E85AD /* bitset.cpp */,
@@ -311,7 +311,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = gillespie.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V3N3VGR839;
 				ENABLE_HARDENED_RUNTIME = YES;
@@ -336,7 +336,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = gillespie.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Development";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = V3N3VGR839;
 				ENABLE_HARDENED_RUNTIME = YES;

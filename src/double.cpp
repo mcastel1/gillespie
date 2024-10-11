@@ -27,7 +27,7 @@ inline void Double::Clear(){
     
     //set the fraction to zero
     for(p=0; p<b.GetSize(); p++){
-        (b[p]).n = 0;
+        (b[p]).Set(0);
     }
     
     //set the exponent to 1023

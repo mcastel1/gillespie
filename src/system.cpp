@@ -440,6 +440,8 @@ void systemnobits::iterate(void){
         switch (i) {
                 
             case 0:{
+                //the second reaction A+D -> 2 D  has been selected
+
                 
                 //update the as
                 //update a[0]
