@@ -205,12 +205,12 @@ void Bits::Print(ostream& output_stream){
 }
 
 
-//inline
-void Bits::operator = (const Bits& m){
-    
-    n = (m.n);
-    
-}
+////inline
+//void Bits::operator = (const Bits& m){
+//    
+//    n = (m.n);
+//    
+//}
 
 
 //return (this->n) | (m.n) (bitwise OR)
