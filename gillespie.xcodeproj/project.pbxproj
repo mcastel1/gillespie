@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		032C98982CD0FF4100446D6A /* system_nobits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 032C98952CD0FF4100446D6A /* system_nobits.cpp */; };
 		038577FB2CB40BD9002E85AD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038577FA2CB40BD9002E85AD /* main.cpp */; };
 		038578042CB40BE1002E85AD /* fraction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038577FC2CB40BE1002E85AD /* fraction.cpp */; };
-		038578052CB40BE1002E85AD /* system.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038577FD2CB40BE1002E85AD /* system.cpp */; };
 		038578062CB40BE1002E85AD /* unsigned_int.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038577FE2CB40BE1002E85AD /* unsigned_int.cpp */; };
 		038578072CB40BE1002E85AD /* lib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038577FF2CB40BE1002E85AD /* lib.cpp */; };
 		038578082CB40BE1002E85AD /* bits.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 038578002CB40BE1002E85AD /* bits.cpp */; };
@@ -41,9 +41,16 @@
 		0311229C2CB432F4000DC0DB /* main.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = main.hpp; sourceTree = "<group>"; };
 		0311229D2CB432F4000DC0DB /* system.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = system.hpp; sourceTree = "<group>"; };
 		0311229E2CB432F4000DC0DB /* unsigned_int.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = unsigned_int.hpp; sourceTree = "<group>"; };
+		032C98902CD0FF4100446D6A /* fraction.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = fraction.cpp; path = src/fraction.cpp; sourceTree = "<group>"; };
+		032C98912CD0FF4100446D6A /* bits.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = bits.cpp; path = src/bits.cpp; sourceTree = "<group>"; };
+		032C98922CD0FF4100446D6A /* int.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = int.cpp; path = src/int.cpp; sourceTree = "<group>"; };
+		032C98932CD0FF4100446D6A /* unsigned_int.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = unsigned_int.cpp; path = src/unsigned_int.cpp; sourceTree = "<group>"; };
+		032C98942CD0FF4100446D6A /* double.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = double.cpp; path = src/double.cpp; sourceTree = "<group>"; };
+		032C98952CD0FF4100446D6A /* system_nobits.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = system_nobits.cpp; path = src/system_nobits.cpp; sourceTree = "<group>"; };
+		032C98962CD0FF4100446D6A /* bitset.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = bitset.cpp; path = src/bitset.cpp; sourceTree = "<group>"; };
+		032C98972CD0FF4100446D6A /* lib.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = lib.cpp; path = src/lib.cpp; sourceTree = "<group>"; };
 		038577FA2CB40BD9002E85AD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		038577FC2CB40BE1002E85AD /* fraction.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = fraction.cpp; path = src/fraction.cpp; sourceTree = "<group>"; };
-		038577FD2CB40BE1002E85AD /* system.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = system.cpp; path = src/system.cpp; sourceTree = "<group>"; };
 		038577FE2CB40BE1002E85AD /* unsigned_int.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = unsigned_int.cpp; path = src/unsigned_int.cpp; sourceTree = "<group>"; };
 		038577FF2CB40BE1002E85AD /* lib.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = lib.cpp; path = src/lib.cpp; sourceTree = "<group>"; };
 		038578002CB40BE1002E85AD /* bits.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = bits.cpp; path = src/bits.cpp; sourceTree = "<group>"; };
@@ -85,6 +92,14 @@
 		D1ADCAF22B62C1EB007DDD5A = {
 			isa = PBXGroup;
 			children = (
+				032C98912CD0FF4100446D6A /* bits.cpp */,
+				032C98962CD0FF4100446D6A /* bitset.cpp */,
+				032C98942CD0FF4100446D6A /* double.cpp */,
+				032C98902CD0FF4100446D6A /* fraction.cpp */,
+				032C98922CD0FF4100446D6A /* int.cpp */,
+				032C98972CD0FF4100446D6A /* lib.cpp */,
+				032C98952CD0FF4100446D6A /* system_nobits.cpp */,
+				032C98932CD0FF4100446D6A /* unsigned_int.cpp */,
 				038B1B1A2CB7F83600B446EE /* gillespie.entitlements */,
 				0311229F2CB432F4000DC0DB /* include */,
 				038578002CB40BE1002E85AD /* bits.cpp */,
@@ -93,7 +108,6 @@
 				038577FC2CB40BE1002E85AD /* fraction.cpp */,
 				038578022CB40BE1002E85AD /* int.cpp */,
 				038577FF2CB40BE1002E85AD /* lib.cpp */,
-				038577FD2CB40BE1002E85AD /* system.cpp */,
 				038577FE2CB40BE1002E85AD /* unsigned_int.cpp */,
 				038577FA2CB40BD9002E85AD /* main.cpp */,
 				D1ADCAFC2B62C1EB007DDD5A /* Products */,
@@ -166,13 +180,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				038578042CB40BE1002E85AD /* fraction.cpp in Sources */,
-				038578052CB40BE1002E85AD /* system.cpp in Sources */,
-				038578062CB40BE1002E85AD /* unsigned_int.cpp in Sources */,
-				038578072CB40BE1002E85AD /* lib.cpp in Sources */,
 				038578082CB40BE1002E85AD /* bits.cpp in Sources */,
-				038578092CB40BE1002E85AD /* double.cpp in Sources */,
 				0385780A2CB40BE1002E85AD /* int.cpp in Sources */,
+				038578062CB40BE1002E85AD /* unsigned_int.cpp in Sources */,
+				038578092CB40BE1002E85AD /* double.cpp in Sources */,
+				032C98982CD0FF4100446D6A /* system_nobits.cpp in Sources */,
 				0385780B2CB40BE1002E85AD /* bitset.cpp in Sources */,
+				038578072CB40BE1002E85AD /* lib.cpp in Sources */,
 				038577FB2CB40BD9002E85AD /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

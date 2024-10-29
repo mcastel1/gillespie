@@ -43,7 +43,7 @@
  */
 
 #include "main.hpp"
-#include "system.hpp"
+#include "system_nobits.hpp"
 
 //all entries of BitSet_one are equal to 1
 
