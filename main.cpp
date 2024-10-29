@@ -43,6 +43,7 @@
  */
 
 #include "main.hpp"
+#include "system_bits.hpp"
 #include "system_nobits.hpp"
 
 //all entries of BitSet_one are equal to 1
@@ -132,17 +133,17 @@ int main(int argc, char * argv[]) {
     
     
     //
-    SystemBits FRANK(N, seed, output_directory);
-    systemnobits frank(N, seed, output_directory);
+    SystemBits frank_bits(N, seed, output_directory);
+    SystemNoBits frank_nobits(N, seed, output_directory);
     
     
     //********************* speed test without bits  *********************
     start_nobits = clock();
     for(s=0; s<n_bits*S; ++s){
-        frank.iterate();
+        frank_nobits.iterate();
     }
     end_nobits = clock();
-    frank.outfile.close();
+    frank_nobits.outfile.close();
     cout << endl << "Time for [n_bits*S] Iterate()s without bits = \t\t " << std::scientific << ((double)(end_nobits - start_nobits))/CLOCKS_PER_SEC << "s" <<  endl;
     
     
@@ -150,18 +151,18 @@ int main(int argc, char * argv[]) {
     //********************* speed test with bits  *********************
     start_bits = clock();
     for(s=0; s<S; ++s){
-        FRANK.Iterate();
+        frank_bits.Iterate();
     }
     end_bits = clock();
-    FRANK.outfile.close();
+    frank_bits.outfile.close();
     cout << "Time for S Iterate()s with bits = \t\t         " << std::scientific << ((double)(end_bits - start_bits))/CLOCKS_PER_SEC << "s" <<  endl << endl;
     
     
     cout << "Gain bits/nobits = " << ((double)(end_nobits - start_nobits)) / ((double)(end_bits - start_bits)) << endl;
     
     cout << endl << "dummy print";
-    FRANK.L.PrintBase10("");
-    cout << FRANK.tau << frank.tau << frank.z << frank.rhs;
+    frank_bits.L.PrintBase10("");
+    cout << frank_bits.tau << frank_nobits.tau << frank_nobits.z << frank_nobits.rhs;
     //
     
     cout << endl;
