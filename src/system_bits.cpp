@@ -342,15 +342,20 @@ void SystemBits::Iterate(void){
 
     
     //print simulation results
-    x[0].Print(outfile);
-    x[1].Print(outfile);
-    x[2].Print(outfile);
+    //print in base 2
+    //
+     x[0].Print(outfile);
+     x[1].Print(outfile);
+     x[2].Print(outfile);
+     //
     
-//    x[0].PrintBase10("x[0]", outfile);
-//    x[1].PrintBase10("x[1]", outfile);
-//    x[2].PrintBase10("x[2]", outfile);
-
-    outfile << tau << endl;
+    //print in base 10
+    /*
+    x[0].PrintBase10("x[0]", outfile);
+    x[1].PrintBase10("x[1]", outfile);
+    x[2].PrintBase10("x[2]", outfile);
+    outfile << tau << endl << endl;
+    */
     
 
     
