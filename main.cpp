@@ -28,7 +28,6 @@
  compile with optimization
  */
 // g++ main.cpp src/*.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated  -I/Users/michelecastellana/Documents/gillespie/include -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
-// clear; g++ main.cpp src/*.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE;  .
 
 //compile on calcsub
 //g++ -O3 -o main.o src/*.cpp -I ./ -lgsl -lgslcblas -lm main.cpp -Wall -I/usr/include/gsl
@@ -75,7 +74,7 @@ Bits Bits_one, Bits_zero;
 int main(int argc, char * argv[]) {
     
     int options;
-    unsigned long long int N=0, S=0, s;
+    unsigned long long int N=0, T=0, S=0, s;
     unsigned int i, seed=0;
     string output_directory;
     clock_t start_nobits, start_bits, end_nobits, end_bits;
@@ -88,12 +87,16 @@ int main(int argc, char * argv[]) {
     }
     
     
-    while ((options = getopt(argc, argv, ":N:S:s:o:")) != -1) {
+    while ((options = getopt(argc, argv, ":N:T:S:s:o:")) != -1) {
         
         switch (options) {
                 
             case 'N':
                 N = ((unsigned int)atoi(optarg));
+                break;  
+                
+            case 'T':
+                T = ((unsigned int)gsl_pow_int(10, atoi(optarg)));
                 break;
                 
             case 'S':
