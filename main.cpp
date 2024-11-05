@@ -28,7 +28,6 @@
  compile with optimization
  */
 // g++ main.cpp src/*.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated  -I/Users/michelecastellana/Documents/gillespie/include -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE
-// clear; g++ main.cpp src/*.cpp -llapack -lgsl -lcblas -lm -O3 -Wno-deprecated -I ./ -I/usr/local/include/gsl/ -o main.o -Wall -DHAVE_INLINE;  .
 
 //compile on calcsub
 //g++ -O3 -o main.o src/*.cpp -I ./ -lgsl -lgslcblas -lm main.cpp -Wall -I/usr/include/gsl
