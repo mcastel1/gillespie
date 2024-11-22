@@ -33,7 +33,7 @@
 //g++ -O3 -o main.o src/*.cpp -I ./ -lgsl -lgslcblas -lm main.cpp -Wall -I/usr/include/gsl
 
 //run with
-//./main.o -N 128 -S 5 -s 0 -o /Users/michelecastellana/Desktop
+//./main.o -N 128 -T 1 -S 5 -s 0 -o /Users/michelecastellana/Desktop
 /*
  N is the total perticle number in the Frank model
  S is log_10(total number of iterations)
@@ -74,8 +74,10 @@ Bits Bits_one, Bits_zero;
 int main(int argc, char * argv[]) {
     
     int options;
-    unsigned long long int N=0, T=0, S=0, s;
+    unsigned long long int N=0, T=0, S=0, s, t;
     unsigned int i, seed=0;
+    //the mean of the gain of the btiwise approach vs. the non-bitwise approach, and similarly for the mean of the square of the gain
+    double gain_av, gain_pow_2_av;
     string output_directory;
     clock_t start_nobits, start_bits, end_nobits, end_bits;
     
@@ -136,37 +138,48 @@ int main(int argc, char * argv[]) {
     
     
     //
-    SystemBits frank_bits(N, seed, output_directory);
-    SystemNoBits frank_nobits(N, seed, output_directory);
-    
-    
-    //********************* speed test without bits  *********************
-    start_nobits = clock();
-    for(s=0; s<n_bits*S; ++s){
-        frank_nobits.iterate();
+    for(gain_av=0.0, gain_pow_2_av=0.0, t=0; t<T; t++){
+        
+        SystemBits frank_bits(N, (unsigned int)(seed+t), output_directory);
+        SystemNoBits frank_nobits(N, (unsigned int)(seed+t), output_directory);
+        
+        
+        //********************* speed test without bits  *********************
+        start_nobits = clock();
+        for(s=0; s<n_bits*S; ++s){
+            frank_nobits.iterate();
+        }
+        end_nobits = clock();
+        frank_nobits.outfile.close();
+        cout << endl << "Time for [n_bits*S] Iterate()s without bits = \t\t " << std::scientific << ((double)(end_nobits - start_nobits))/CLOCKS_PER_SEC << "s" <<  endl;
+        
+        
+        
+        //********************* speed test with bits  *********************
+        start_bits = clock();
+        for(s=0; s<S; ++s){
+            frank_bits.Iterate();
+        }
+        end_bits = clock();
+        frank_bits.outfile.close();
+        cout << "Time for S Iterate()s with bits = \t\t         " << std::scientific << ((double)(end_bits - start_bits))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+        
+        
+        gain_av += ((double)(end_nobits - start_nobits)) / ((double)(end_bits - start_bits));
+        gain_pow_2_av += gsl_pow_2(((double)(end_nobits - start_nobits)) / ((double)(end_bits - start_bits)));
+        
+        cout << "Gain bits/nobits t = " << t << " = " << ((double)(end_nobits - start_nobits)) / ((double)(end_bits - start_bits)) << endl;
+        
+        cout << endl << "dummy print";
+        frank_bits.L.PrintBase10("");
+        cout << frank_bits.tau << frank_nobits.tau << frank_nobits.z << frank_nobits.rhs << endl;
+        //
+        
     }
-    end_nobits = clock();
-    frank_nobits.outfile.close();
-    cout << endl << "Time for [n_bits*S] Iterate()s without bits = \t\t " << std::scientific << ((double)(end_nobits - start_nobits))/CLOCKS_PER_SEC << "s" <<  endl;
     
-    
-    
-    //********************* speed test with bits  *********************
-    start_bits = clock();
-    for(s=0; s<S; ++s){
-        frank_bits.Iterate();
-    }
-    end_bits = clock();
-    frank_bits.outfile.close();
-    cout << "Time for S Iterate()s with bits = \t\t         " << std::scientific << ((double)(end_bits - start_bits))/CLOCKS_PER_SEC << "s" <<  endl << endl;
-    
-    
-    cout << "Gain bits/nobits = " << ((double)(end_nobits - start_nobits)) / ((double)(end_bits - start_bits)) << endl;
-    
-    cout << endl << "dummy print";
-    frank_bits.L.PrintBase10("");
-    cout << frank_bits.tau << frank_nobits.tau << frank_nobits.z << frank_nobits.rhs;
-    //
+    gain_av /= ((double)T);
+    gain_pow_2_av /= ((double)T);
+    cout << "Gain bits/nobits = " << gain_av << " +- " << sqrt(gain_pow_2_av - gsl_pow_2(gain_av)) << endl;
     
     cout << endl;
     return 0;
