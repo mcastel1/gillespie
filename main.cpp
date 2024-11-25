@@ -181,7 +181,13 @@ int main(int argc, char * argv[]) {
     
     gain_av /= ((double)T);
     gain_pow_2_av /= ((double)T);
-    cout << "<Gain bits/nobits> +- err_<Gain bits/nobits> = " << "\n" << gain_av << "\t" << sqrt(gain_pow_2_av - gsl_pow_2(gain_av)) << endl;
+    cout << "\nN,log_10(T),log_10(S),<Gain bits/nobits>,err_<Gain bits/nobits>:\n"
+    << N << ","
+    << log(T)/log(10.0) << ","
+    << log(S)/log(10.0)  << ","
+    << gain_av << ","
+    << sqrt(gain_pow_2_av - gsl_pow_2(gain_av))
+    << endl;
     
     cout << endl;
     return 0;
