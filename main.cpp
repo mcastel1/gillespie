@@ -181,8 +181,8 @@ int main(int argc, char * argv[]) {
     
     gain_av /= ((double)T);
     gain_pow_2_av /= ((double)T);
-    cout << "\nN,log_10(T),log_10(S),<Gain bits/nobits>,err_<Gain bits/nobits>:\n"
-    << N << ","
+    cout << "\nlog_2(N),log_10(T),log_10(S),<Gain bits/nobits>,err_<Gain bits/nobits>:\n"
+    << log(N)/log(2) << ","
     << log(T)/log(10.0) << ","
     << log(S)/log(10.0)  << ","
     << gain_av << ","
