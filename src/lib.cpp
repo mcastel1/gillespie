@@ -8,6 +8,7 @@
 #include "lib.hpp"
 
 #include <vector>
+#include <stdint.h>
 
 #include "double.hpp"
 #include "fraction.hpp"

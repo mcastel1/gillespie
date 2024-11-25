@@ -7,6 +7,8 @@
 
 #include "double.hpp"
 
+#include <stdint.h>
+
 #include "lib.hpp"
 #include "main.hpp"
 
