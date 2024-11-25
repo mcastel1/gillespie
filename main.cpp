@@ -140,6 +140,8 @@ int main(int argc, char * argv[]) {
     //
     for(gain_av=0.0, gain_pow_2_av=0.0, t=0; t<T; t++){
         
+        cout << "* t = " << t;
+         
         SystemBits frank_bits(N, (unsigned int)(seed+t), output_directory);
         SystemNoBits frank_nobits(N, (unsigned int)(seed+t), output_directory);
         
@@ -151,7 +153,7 @@ int main(int argc, char * argv[]) {
         }
         end_nobits = clock();
         frank_nobits.outfile.close();
-        cout << endl << "Time for [n_bits*S] Iterate()s without bits = \t\t " << std::scientific << ((double)(end_nobits - start_nobits))/CLOCKS_PER_SEC << "s" <<  endl;
+        cout << endl << "\tTime for [n_bits*S] Iterate()s without bits = \t\t " << std::scientific << ((double)(end_nobits - start_nobits))/CLOCKS_PER_SEC << "s" <<  endl;
         
         
         
@@ -162,24 +164,24 @@ int main(int argc, char * argv[]) {
         }
         end_bits = clock();
         frank_bits.outfile.close();
-        cout << "Time for S Iterate()s with bits = \t\t         " << std::scientific << ((double)(end_bits - start_bits))/CLOCKS_PER_SEC << "s" <<  endl << endl;
+        cout << "\tTime for S Iterate()s with bits = \t\t         " << std::scientific << ((double)(end_bits - start_bits))/CLOCKS_PER_SEC << "s" <<  endl << endl;
         
         
         gain_av += ((double)(end_nobits - start_nobits)) / ((double)(end_bits - start_bits));
         gain_pow_2_av += gsl_pow_2(((double)(end_nobits - start_nobits)) / ((double)(end_bits - start_bits)));
         
-        cout << "Gain bits/nobits t = " << t << " = " << ((double)(end_nobits - start_nobits)) / ((double)(end_bits - start_bits)) << endl;
+        cout << "\tGain bits/nobits = " << ((double)(end_nobits - start_nobits)) / ((double)(end_bits - start_bits)) << endl;
         
-        cout << endl << "dummy print";
+        cout << endl << "\tdummy print";
         frank_bits.L.PrintBase10("");
-        cout << frank_bits.tau << frank_nobits.tau << frank_nobits.z << frank_nobits.rhs << endl;
+        cout << "\t" << frank_bits.tau << frank_nobits.tau << frank_nobits.z << frank_nobits.rhs << endl;
         //
         
     }
     
     gain_av /= ((double)T);
     gain_pow_2_av /= ((double)T);
-    cout << "Gain bits/nobits = " << gain_av << " +- " << sqrt(gain_pow_2_av - gsl_pow_2(gain_av)) << endl;
+    cout << "<Gain bits/nobits> +- err_<Gain bits/nobits> = " << "\n" << gain_av << "\t" << sqrt(gain_pow_2_av - gsl_pow_2(gain_av)) << endl;
     
     cout << endl;
     return 0;
