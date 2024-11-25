@@ -9,7 +9,7 @@
 #define bits_hpp
 
 #include <iostream>
-
+#include <vector>
 #include "gsl_rng.h"
 
 
