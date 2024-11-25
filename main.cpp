@@ -31,6 +31,8 @@
 
 //compile on calcsub
 //g++ -O3 -o main.o src/*.cpp -I ./ -lgsl -lgslcblas -lm main.cpp -Wall -I/usr/include/gsl
+//compile on abacus
+//g++ main.cpp src/*.cpp -I ./include/ -I /mnt/beegfs/home/mcastel1/gsl/include/gsl  -I/mnt/beegfs/home/mcastel1/gsl/include/ -L/mnt/beegfs/home/mcastel1/gsl/lib/ -lgsl -lgslcblas -lm -O3 -Wno-deprecated  -o main.o -DHAVE_INLINE
 
 //run with
 //./main.o -N 128 -T 1 -S 5 -s 0 -o /Users/michelecastellana/Desktop
