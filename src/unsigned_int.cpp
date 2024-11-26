@@ -62,16 +62,15 @@ void UnsignedInt::PrintBase10(string title){
 
 
 //inline 
+//print *this in base 10 in comma-separated-value format
 void UnsignedInt::PrintBase10(const string& title, ostream& output_stream){
     
     unsigned int  p;
     vector<unsigned long long int> v;
     
-    output_stream << title << ": {";
     for(p=0, GetBase10(v); p<n_bits; p++){
-        output_stream << v[n_bits-1-p] << "\t";
+        output_stream << v[n_bits-1-p] << ",";
     }
-    output_stream << "}" << endl;
 
     
 }
