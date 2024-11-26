@@ -41,7 +41,7 @@ SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in, const 
     for(i=0; i<n_bits; i++){ outfile << "\"x[0][" << i << "]\",";}
     for(i=0; i<n_bits; i++){ outfile << "\"x[1][" << i << "]\",";}
     for(i=0; i<n_bits; i++){ outfile << "\"x[2][" << i << "]\",";}
-    outfile << "\"tau\"" << endl;
+    outfile << "\"tau\",\"R\"" << endl;
     
     N_N_m_1_2 = N*(N-1)/2;
 
@@ -143,7 +143,8 @@ void SystemBits::Iterate(void){
     tau = -1.0/((double)N_N_m_1_2)*log(r1);
     //the SetAll command here is a bottleneck
 //    R.SetAll(gsl_rng_uniform_int(ran, N_N_m_1_2));
-    R.SetAllToSize(gsl_rng_uniform_int(ran, N_N_m_1_2));
+    N1 = gsl_rng_uniform_int(ran, N_N_m_1_2);
+    R.SetAllToSize(N1);
     //the SetAll command here is a bottleneck
 
     /*
@@ -360,6 +361,6 @@ void SystemBits::Iterate(void){
      x[2].PrintBase10(outfile);
      */
     
-    outfile << tau << endl;
+    outfile << tau << "," << N1 << endl;
 
 }

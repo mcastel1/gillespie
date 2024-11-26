@@ -30,6 +30,8 @@ public:
     Bits compare_old, compare_new, /*as I run through the reactions, if changer = 0 (bitwise) I don't change x[] according to the reaction, while if changer = 1 I change the x[] according to the reaction */changer;
     //the random number used to draw the reaction time, equal to r1 in Eq. (10a) in gillespie2007stochastic
     double r1, tau;
+    //the random number used to draw the transition due to the reaction 
+    unsigned long long int N1;
     string out_directory;
     stringstream outfile_name;
     ofstream outfile;
