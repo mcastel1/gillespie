@@ -175,7 +175,7 @@ int main(int argc, char * argv[]) {
         cout << "\tGain bits/nobits = " << ((double)(end_nobits - start_nobits)) / ((double)(end_bits - start_bits)) << endl;
         
         cout << endl << "\tdummy print";
-        frank_bits.L.PrintBase10("");
+        frank_bits.L.PrintBase10(cout);
         cout << "\t" << frank_bits.tau << frank_nobits.tau << frank_nobits.z << frank_nobits.rhs << endl;
         //
         

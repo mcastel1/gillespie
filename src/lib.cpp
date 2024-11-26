@@ -398,7 +398,7 @@ inline void SpeedTestUnsignedIntAddto(unsigned long long int maximum_value, unsi
     
     //without this the for loop will not be exectued with -O3
     cout << endl;
-    A.back().PrintBase10("dummy print");
+    A.back().PrintBase10(cout);
     cout << "dummy print: a = " << a[S-1] << " " << b[S-1] << r << x << endl;
     
 }
@@ -631,7 +631,7 @@ inline void SpeedTestUnsignedIntMultiply(unsigned long long int maximum_value, u
     
     //without this the for loop will not be exectued with -O3
     cout << endl;
-    C.PrintBase10("dummy print");
+    C.PrintBase10(cout);
     cout << "dummy print a = " << a[S-1] << " " << c << " " << r << x << endl;
     
     
@@ -774,7 +774,7 @@ inline void SpeedTestFractionFloorMultiply(unsigned int n_bits_factor, unsigned 
     //without this the for loop will not be exectued with -O3
     cout << endl;
     A.back().PrintBase10("dummy print");
-    C.PrintBase10("dummy print");
+    C.PrintBase10(cout);
     cout << "dummy print: a = " << a.back() << " " << b << c << r << x << endl;
  
 

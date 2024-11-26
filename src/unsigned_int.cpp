@@ -52,18 +52,9 @@ void UnsignedInt::Set(unsigned int s, unsigned long long int i){
 }
 
 
-
-//inline 
-void UnsignedInt::PrintBase10(string title){
-    
-    PrintBase10(title, cout);
-    
-}
-
-
 //inline 
 //print *this in base 10 in comma-separated-value format
-void UnsignedInt::PrintBase10(const string& title, ostream& output_stream){
+void UnsignedInt::PrintBase10(ostream& output_stream){
     
     unsigned int  p;
     vector<unsigned long long int> v;
