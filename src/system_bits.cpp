@@ -358,7 +358,7 @@ void SystemBits::Iterate(void){
      x[0].PrintBase10(outfile);
      x[1].PrintBase10(outfile);
      x[2].PrintBase10(outfile);
-     outfile << tau << endl << endl;
+     outfile << tau << endl;
      //
 
 }
