@@ -36,7 +36,7 @@ SystemBits::SystemBits(unsigned long long int N_in, unsigned int seed_in, const 
     out_directory = out_directory_in;
     
     outfile_name.str("");
-    outfile_name << out_directory << "/out_bits.dat";
+    outfile_name << out_directory << "/out_bits.csv";
     outfile.open(outfile_name.str().c_str());
     for(i=0; i<n_bits; i++){ outfile << "\"x[0][" << i << "]\",";}
     for(i=0; i<n_bits; i++){ outfile << "\"x[1][" << i << "]\",";}
