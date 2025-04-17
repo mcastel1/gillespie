@@ -1,0 +1,3 @@
+Autres idees pour l'algorythme bitwise:
+- Gavin Crux: il s'interesse au calcul stocastique et digital
+Il y a des reseaux binaires de neurones ou tout est binaire et qu'on pourrait utilsier pour notre algorithme 
